@@ -14,12 +14,14 @@ $this->title = 'My Yii Application';
         <p><a class="btn btn-lg btn-success" href="#preukaz-zahranicie" role="button">Zacni</a></p>
     </div>
 
+    <iframe class="preview-pane" width="100%" height="650" frameborder="0" src=""></iframe>
+
     <div class="body-content">
 
 <div class="row section" id="preukaz-zahranicie">
         <div class="col-lg-12">
-            <p><a class="btn btn-lg btn-success" href="#ziadost-TP" role="button">Chcem volebny preukaz</a></p>
-            <p><a class="btn btn-lg btn-success" href="#zahranicie" role="button">Chcem volit zo zahranicia</a></p>
+            <p><a class="btn btn-lg btn-success" href="#ziadost-TP" role="button" onclick="getChoice(this)">Chcem volebny preukaz</a></p>
+            <p><a class="btn btn-lg btn-success" href="#zahranicie" role="button" onclick="getChoice(this)">Chcem volit zo zahranicia</a></p>
           
         </div>
       </div>
@@ -27,8 +29,8 @@ $this->title = 'My Yii Application';
 
       <div class="row section" id="zahranicie">
         <div class="col-lg-12">
-            <p><a class="btn btn-lg btn-success" href="#mamTP" role="button">Mam trvaly pobyt na slovensku</a></p>
-            <p><a class="btn btn-lg btn-success" href="#ziadost-noTP" role="button">Nemam trvaly pobyt na slovensku</a></p>         
+            <p><a class="btn btn-lg btn-success" href="#mamTP" role="button" onclick="getChoice(this)">Mam trvaly pobyt na slovensku</a></p>
+            <p><a class="btn btn-lg btn-success" href="#ziadost-noTP" role="button" onclick="getChoice(this)">Nemam trvaly pobyt na slovensku</a></p>         
           
         </div>
       </div>

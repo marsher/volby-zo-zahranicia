@@ -1,1 +1,0 @@
-# volby-zo-zahranicia

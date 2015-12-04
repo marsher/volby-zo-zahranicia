@@ -9,16 +9,18 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-
-class AppAsset extends AssetBundle
+/**
+ * @author Qiang Xue <qiang.xue@gmail.com>
+ * @since 2.0
+ */
+class SignatureAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $sourcePath = '@bower/signature_pad';
+
     public $css = [
-        'css/site.css',
     ];
     public $js = [
-        'js/site.js',
+        'signature_pad.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

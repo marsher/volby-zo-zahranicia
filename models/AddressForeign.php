@@ -8,12 +8,13 @@ use yii\base\Model;
 /**
  * LoginForm is the model behind the login form.
  */
-class BasicInfo extends Model
+class AddressForeign extends Model
 {
-    public $name;
-    public $lastname;
-    public $virginLastname;
-    public $birthNo;
+    public $street;
+    public $streetNo;
+    public $city;
+    public $zip;
+    public $country;
 
     /**
      * @return array the validation rules.
@@ -22,7 +23,7 @@ class BasicInfo extends Model
     {
         return [
             // username and password are both required
-            [['name', 'lastname', 'birthNo'], 'required'],
+            [['street', 'streetNo', 'city', 'zip', 'country'], 'required'],
             // rememberMe must be a boolean value
         ];
     }

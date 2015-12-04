@@ -9,16 +9,19 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-
-class AppAsset extends AssetBundle
+/**
+ * @author Qiang Xue <qiang.xue@gmail.com>
+ * @since 2.0
+ */
+class PdfmakeAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $sourcePath = '@bower/pdfmake/build';
+
     public $css = [
-        'css/site.css',
     ];
     public $js = [
-        'js/site.js',
+        'pdfmake.js',
+        'vfs_fonts.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

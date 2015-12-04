@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\BasicInfo;
+use app\models\AddressForeign;
+use app\models\AddressSlovakia;
 
 class SiteController extends Controller
 {
@@ -49,7 +52,12 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+            'basicInfo' => new BasicInfo,
+            'addressSlovakia' => new AddressSlovakia,
+            'addressForeign' => new AddressForeign,
+
+            ]);
     }
 
     public function actionLogin()

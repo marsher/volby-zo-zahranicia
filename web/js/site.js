@@ -158,7 +158,7 @@ var dd = {
 			alignment: 'center' 
 		},
 		{ 
-			text: $('#cityaddress').val(),
+			text: $('#adresa').val(),
 			alignment: 'right',
 			style: 'address', 
 		//	bold: false 

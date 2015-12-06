@@ -16,7 +16,13 @@ function mamTP(){
 	/*$('#preview-button').attr('onclick','createDocument(true,"TP")');
 	$('#download-button').attr('onclick','createDocument(false,"TP")');*/
 	$('#tpFlag').val('TP')
-	$('#sign-button').attr('onclick','createDocument(true)');
+}
+
+function preukazPoslat(){
+	$('#address-slovakia').show();
+	$('#tpFlag').val('pp');
+	$('#photo-link').hide();
+
 }
 
 

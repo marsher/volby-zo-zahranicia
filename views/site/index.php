@@ -25,7 +25,7 @@ $this->title = 'Volby zo zahranicia';
 
     <div class="row section" id="preukaz-zahranicie">
         <div class="col-lg-12">
-            <p><a class="btn btn-lg btn-success" href="#ziadost-TP" role="button" onclick="getChoice(this)">Chcem volebny preukaz</a></p>
+            <p><a class="btn btn-lg btn-success" href="#preukaz" role="button" onclick="getChoice(this)">Chcem hlasovaci preukaz</a></p>
             <p><a class="btn btn-lg btn-success" href="#zahranicie" role="button" onclick="getChoice(this)">Chcem volit zo zahranicia</a></p>
           
         </div>
@@ -36,6 +36,14 @@ $this->title = 'Volby zo zahranicia';
         <div class="col-lg-12">
             <p><a class="btn btn-lg btn-success" href="#mamTP" role="button" onclick="mamTP()">Mam trvaly pobyt na slovensku</a></p>
             <p><a class="btn btn-lg btn-success" href="#ziadost" role="button" onclick="nemamTP()">Nemam trvaly pobyt na slovensku</a></p>         
+            <input style="display:none" id="tpFlag" value="">
+        </div>
+    </div>
+
+    <div class="row section" id="preukaz">
+        <div class="col-lg-12">
+            <p><a class="btn btn-lg btn-success" href="#mamTP" role="button" onclick="preukazPoslat()">Preukaz chcem poslat</a></p>
+            <p><a class="btn btn-lg btn-success" href="#mamTP" role="button" onclick="preukazSplnomocnenec()">Preukaz preberie splnomocnenec</a></p>         
             <input style="display:none" id="tpFlag" value="">
         </div>
     </div>
@@ -129,7 +137,7 @@ $this->title = 'Volby zo zahranicia';
                         </div>
                     <div class="signature-controls">
                         <button id="clear-button" class="btn btn-default">Vycist</button>
-                        <a id="sign-button" class="btn btn-lg btn-success" href="#pdf">Uloz</a>
+                        <a id="sign-button" class="btn btn-lg btn-success" onclick="createDocument(true)" href="#pdf">Uloz</a>
                     </div>
                     <input style="display:none;" type="text" id="signature" value="">
             </div>

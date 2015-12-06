@@ -105,8 +105,8 @@ $this->title = 'Volby zo zahranicia';
                 'id' => 'address-foreign',
                 'options' => ['class' => 'form-horizontal'],
             ]) ?>
-            <h3>Adresa miesta pobytu v cudzine (pre zaslanie hlasovacích lístkov a obálok):</h3>
-            
+            <h3 id="foreign-header">Adresa miesta pobytu v cudzine (pre zaslanie hlasovacích lístkov a obálok):</h3>
+            <h3 id="local-header">Hlasovací preukaz žiadam zaslať na adresu:</h3>
             <?= $form->field($addressForeign, 'street') ?>
             <?= $form->field($addressForeign, 'streetNo') ?>
             <?= $form->field($addressForeign, 'city') ?>

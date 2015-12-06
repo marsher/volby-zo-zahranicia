@@ -7,6 +7,8 @@ function nemamTP(){
 	$('#download-button').attr('onclick','createDocument(false,"noTP")');
 	$('#sign-button').attr('onclick','createDocument(true,"noTP",signaturePad.toDataURL())');*/
 	$('#tpFlag').val('noTP')
+	$('#foreign-header').show();
+	$('#local-header').hide();
 	$('#cityaddress').val("Ministerstvo vnútra Slovenskej republiky\n odbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC\n");
 }
 
@@ -16,13 +18,17 @@ function mamTP(){
 	/*$('#preview-button').attr('onclick','createDocument(true,"TP")');
 	$('#download-button').attr('onclick','createDocument(false,"TP")');*/
 	$('#tpFlag').val('TP')
+	$('#foreign-header').show();
+	$('#local-header').hide();
 }
 
 function preukazPoslat(){
 	$('#address-slovakia').show();
 	$('#tpFlag').val('pp');
 	$('#photo-link').hide();
-
+	$('#addressforeign-country').val('Slovensko');
+	$('#foreign-header').hide();
+	$('#local-header').show();
 }
 
 
@@ -59,6 +65,16 @@ function nastavObec(){
 
 
 function createDocument(preview){
+	var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
 	var type = 	$('#tpFlag').val();
 // playground requires you to assign document definition to a variable called dd
 var paragraph,localaddress = [],noTP =[],vyhlasenie=[],signature=[],idPhoto=[];
@@ -186,8 +202,8 @@ if(type == 'TP'){
 
 }
 
-var dd = {
-	content: [
+if (type==="TP" || type ==="noTP"){
+	formContent =[
 		{ 
 			text: 'Žiadosť', 
 			style: 'header', 
@@ -271,7 +287,71 @@ var dd = {
 			//style: 'header', 
 		//	bold: false 
 		},
-		noTP,
+		noTP
+
+	]
+
+
+}
+
+if(type === "pp"){
+	formContent = [
+		{ 
+			text: $('#adresa').val(),
+			alignment: 'right',
+			style: 'address', 
+		//	bold: false 
+		},
+		{ 
+			text: 'Žiadosť o vydanie hlasovacieho preukazu', 
+			style: 'header', 
+			alignment: 'left' 
+		},
+		{ 
+			text: 'Meno: ' + $('#basicinfo-name').val() + ' Priezvisko: ' + $('#basicinfo-lastname').val(),
+			style: 'line',
+			//style: 'header', 
+		//	bold: false 
+		},
+		{ 
+			text: 'Rodné číslo: ' + $('#basicinfo-birthno').val() + ' Štátna príslušnosť: Slovenská republika',
+			style: 'line',
+			//style: 'header', 
+		//	bold: false 
+		},
+		{
+			text: 'Adresa trvalého pobytu: ' + $('#addressslovakia-street').val() + ', ' + $('#addressslovakia-streetno').val() + ', ' + $('#addressslovakia-city').val() + ', ' + $('#addressslovakia-zip').val()  + ', Slovenská republika',
+			style: 'line',
+		},
+		{ 
+			text: 'žiadam', 
+			style: 'header', 
+			alignment: 'center' 
+		},
+		{
+			text: 'podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016.',
+		},
+		{
+			text: 'Hlasovací preukaz žiadam zaslať na adresu:',
+			style: 'line',
+			alignment: 'left'
+		},
+		{ 
+			text: 'Meno: ' + $('#basicinfo-name').val() + ' Priezvisko: ' + $('#basicinfo-lastname').val(),
+			style: 'line',
+			//style: 'header', 
+		//	bold: false 
+		},
+		{
+			text: 'Adresa: ' + $('#addressforeign-street').val() + ', ' + $('#addressforeign-streetno').val() + ', ' + $('#addressforeign-city').val() + ', ' + $('#addressforeign-zip').val()  + ', ' + $('#addressforeign-country').val(),
+			style: 'line'
+		}
+	]
+}
+var dd = {
+	content: [
+		formContent,
+
 		{ 
 			text: 'V ' + $('#addressforeign-city').val(),
 			style: 'footer',
@@ -279,7 +359,7 @@ var dd = {
 		//	bold: false 
 		},
 		{ 
-			text: 'Dátum:',
+			text: 'Dátum: ' + dd +'. ' + mm + '. ' + yyyy,
 			style: 'footer',
 			margin: [0,-10,0,0],
 			//style: 'header', 

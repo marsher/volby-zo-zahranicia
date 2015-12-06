@@ -138,9 +138,49 @@ if(type == 'TP'){
 			}*/
 	];
 	vyhlasenie = [
+
 					{
-						text:'tu bude vyhlasenie',
-					}
+						text: $('#basicinfo-name').val() + ' ' + $('#basicinfo-lastname').val() + ' ' + $('#basicinfo-birthno').val(),
+						alignment: 'center',
+						pageBreak: 'before' 
+					},
+					{
+						text: $('#addressforeign-street').val() + ', ' + $('#addressforeign-streetno').val() + ', ' + $('#addressforeign-city').val() + ', ' + $('#addressforeign-zip').val()  + ', ' + $('#addressforeign-country').val(),
+						alignment: 'center',
+					},
+					{ 
+						text: 'ČESTNÉ VYHLÁSENIE', 
+						style: 'header', 
+						alignment: 'center' 
+					},
+					{
+						text: 'Na účely voľby poštou do Národnej rady Slovenskej republiky v roku 2016',
+						alignment: 'center' 
+					},
+					{ 
+						text: 'čestne vyhlasujem,', 
+						style: 'header', 
+						alignment: 'center' 
+					},
+					{
+						text: 'že nemám trvalý pobyt na území Slovenskej republiky.'
+					},
+					{ 
+						text: 'V ' + $('#addressforeign-city').val(),
+						style: 'footer',
+						//style: 'header', 
+					//	bold: false 
+					},
+					{ 
+						text: 'Dátum:',
+						style: 'footer',
+						//style: 'header', 
+					//	bold: false 
+					},
+					{
+			
+					},
+					signature,
 
 	];
 
@@ -241,6 +281,7 @@ var dd = {
 		{ 
 			text: 'Dátum:',
 			style: 'footer',
+			margin: [0,-10,0,0],
 			//style: 'header', 
 		//	bold: false 
 		},

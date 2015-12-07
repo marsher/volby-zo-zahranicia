@@ -2,6 +2,7 @@
 
 function nemamTP(){
 	$('#address-slovakia').hide();
+	$('#address-foreign').show();
 	$('#photo-link').show();
 	/*$('#preview-button').attr('onclick','createDocument(true,"noTP")');
 	$('#download-button').attr('onclick','createDocument(false,"noTP")');
@@ -9,26 +10,40 @@ function nemamTP(){
 	$('#tpFlag').val('noTP')
 	$('#foreign-header').show();
 	$('#local-header').hide();
-	$('#cityaddress').val("Ministerstvo vnútra Slovenskej republiky\n odbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC\n");
+	$('#proxy').hide();
 }
 
 function mamTP(){
 	$('#address-slovakia').show();
+	$('#address-foreign').show();
 	$('#photo-link').hide();
 	/*$('#preview-button').attr('onclick','createDocument(true,"TP")');
 	$('#download-button').attr('onclick','createDocument(false,"TP")');*/
 	$('#tpFlag').val('TP')
 	$('#foreign-header').show();
 	$('#local-header').hide();
+	$('#proxy').hide();
 }
 
 function preukazPoslat(){
 	$('#address-slovakia').show();
+	$('#address-foreign').show();
 	$('#tpFlag').val('pp');
 	$('#photo-link').hide();
 	$('#addressforeign-country').val('Slovensko');
 	$('#foreign-header').hide();
 	$('#local-header').show();
+	$('#proxy').hide();
+}
+
+function preukazSplnomocnenec(){
+	$('#address-slovakia').show();
+	$('#address-foreign').hide();
+	$('#tpFlag').val('ps');
+	$('#photo-link').hide();
+	$('#local-header').show();
+	$('#proxy').show();
+
 }
 
 
@@ -293,8 +308,49 @@ if (type==="TP" || type ==="noTP"){
 
 
 }
+if(type === "ps"){
+preukazHeader = 'Žiadosť o vydanie hlasovacieho preukazu a splnomocnenie na jeho prevzatie';
+preukazDelivery = [
+{
+			text: 'Na prevzatie hlasovacieho preukazu podľa § 46 ods. 6 zákona  splnomocňujem:',
+			style: 'line',
+			alignment: 'left'
+		},
+		{ 
+			text: 'Meno: ' + $('#proxy-name').val() + ' Priezvisko: ' + $('#proxy-lastname').val(),
+			style: 'line',
+			//style: 'header', 
+		//	bold: false 
+		},
+		{
+			text: 'Číslo občianskeho preukazu: ' + $('#proxy-idno').val(),
+			style: 'line'
+		}
+]
+}
 
 if(type === "pp"){
+preukazHeader = 'Žiadosť o vydanie hlasovacieho preukazu';
+preukazDelivery = [
+{
+			text: 'Hlasovací preukaz žiadam zaslať na adresu:',
+			style: 'line',
+			alignment: 'left'
+		},
+		{ 
+			text: 'Meno: ' + $('#basicinfo-name').val() + ' Priezvisko: ' + $('#basicinfo-lastname').val(),
+			style: 'line',
+			//style: 'header', 
+		//	bold: false 
+		},
+		{
+			text: 'Adresa: ' + $('#addressforeign-street').val() + ', ' + $('#addressforeign-streetno').val() + ', ' + $('#addressforeign-city').val() + ', ' + $('#addressforeign-zip').val()  + ', ' + $('#addressforeign-country').val(),
+			style: 'line'
+		}
+]
+}
+
+if(type === "pp" || type === "ps"){
 	formContent = [
 		{ 
 			text: $('#adresa').val(),
@@ -303,7 +359,7 @@ if(type === "pp"){
 		//	bold: false 
 		},
 		{ 
-			text: 'Žiadosť o vydanie hlasovacieho preukazu', 
+			text: preukazHeader, 
 			style: 'header', 
 			alignment: 'left' 
 		},
@@ -331,21 +387,7 @@ if(type === "pp"){
 		{
 			text: 'podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016.',
 		},
-		{
-			text: 'Hlasovací preukaz žiadam zaslať na adresu:',
-			style: 'line',
-			alignment: 'left'
-		},
-		{ 
-			text: 'Meno: ' + $('#basicinfo-name').val() + ' Priezvisko: ' + $('#basicinfo-lastname').val(),
-			style: 'line',
-			//style: 'header', 
-		//	bold: false 
-		},
-		{
-			text: 'Adresa: ' + $('#addressforeign-street').val() + ', ' + $('#addressforeign-streetno').val() + ', ' + $('#addressforeign-city').val() + ', ' + $('#addressforeign-zip').val()  + ', ' + $('#addressforeign-country').val(),
-			style: 'line'
-		}
+		preukazDelivery
 	]
 }
 var dd = {

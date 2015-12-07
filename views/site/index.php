@@ -85,6 +85,17 @@ $this->title = 'Volby zo zahranicia';
             <?= $form->field($basicInfo, 'birthNo') ?>
 
             <?php ActiveForm::end() ?>
+
+            <?php $form = ActiveForm::begin([
+                'id' => 'proxy',
+                'options' => ['class' => 'form-horizontal'],
+            ]) ?>
+            <h3>Udaje splnomocnenca</h3>
+            <?= $form->field($proxy, 'name') ?>
+            <?= $form->field($proxy, 'lastname') ?>
+            <?= $form->field($proxy, 'idNo') ?>
+
+            <?php ActiveForm::end() ?>
             
             
             <?php $form = ActiveForm::begin([

@@ -6,6 +6,9 @@ Vygenerovanu ziadost si volic moze bud stiahnut a poslat postou alebo ju poslat 
 Napad vznikol na platforma.slovensko.digital
 
 Changelog:
+
+0.4 - vsetky moznosti pokryte
+
 0.3 - Podpis a fotografia je vkladana do PDF
 
 0.2 - Proof of concept - signaturePad

@@ -11,6 +11,7 @@ use app\models\ContactForm;
 use app\models\BasicInfo;
 use app\models\AddressForeign;
 use app\models\AddressSlovakia;
+use app\models\Proxy;
 
 class SiteController extends Controller
 {
@@ -56,6 +57,7 @@ class SiteController extends Controller
             'basicInfo' => new BasicInfo,
             'addressSlovakia' => new AddressSlovakia,
             'addressForeign' => new AddressForeign,
+            'proxy' => new Proxy,
 
             ]);
     }

@@ -6,7 +6,6 @@
     <meta name="csrf-param" content="_csrf">
     <meta name="csrf-token" content="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">
     <title>Voľby zo zahraničia</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/site.css" rel="stylesheet">
 	<link href="assets/css/select2.min.css" rel="stylesheet"></head>
 <body>
@@ -14,40 +13,63 @@
 	<div class="wrap">
 		<div class="container">
                 <div class="site-index">
-					<div class="row section" id="top">
-						
-						<div class="">
-							<h1><span style="color:red">volby</span>.<span style="color:navy">slovensko</span>.digital</h1>
-
-							<p><span style="color:red; font-size:larger; font-weight:bold">98%</span> ľudí zo zahraničia nevolilo pretože sa nestihli zaregistrovať v termíne 50 dní pred poslednými parlamentnými voľbami.</p>
-							<p>Táto aplikácia Vám pomôže pripraviť žiadosť cez telefón alebo osobný počítač, bez tlačenia, scanovania, či špeciálnej čítačky na občiansky preukaz. Stačí Vám na to adresa, rodné číslo a prípadne foto Vášho pasu. Všetky zadané údaje sa spracovávajú vo Vašom prehliadači a nie sú odosielané na server.</p>
-							<p><a class="btn btn-lg btn-success" href="#preukaz-zahranicie" role="button">Pripraviť žiadosť</a></p>
-						</div>
-
+					<div id="intro" class="row">
+						<h1><strong class="digitalRed">volby</strong><em class="digitalBlue">.slovensko.</em>digital</h1>
+						<h2><strong class="digitalRed">98%</strong> ľudí zo zahraničia nevolilo pretože sa nestihli zaregistrovať v&nbsp;termíne 50 dní pred poslednými parlamentnými voľbami.</h2>
+						<h3>Pripravte si žiadosť cez telefón, bez tlačenia, scanovania, či špeciálnej čítačky na&nbsp;občiansky preukaz. 
+						Stačí vám na to adresa, rodné číslo a prípadne váš pas.</h3>
+						<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#zahranicie" role="button"><strong>Pripraviť žiadosť</strong></a>
+						<ul>
+						  <li>Vytorenie trvá približne <strong>3 minuty</strong></li>
+						  <li>Žiadosť je generovaná na <strong>vašom zariadení</strong></li>
+						  <li>Žiadne <strong>osobné dáta nie sú prenášané</strong></li>
+						  <li>Žiadosť odosielate z vášho e-mailu</li>
+						</ul>        
+						<!-- Sem dorobime Social buttonky -->
+						<h4>Tento nástroj na jednoduchú prípravu žiadostí vám prináša <a href="http://slovensko.digital/"><span>slovensko.digital</span></a></h4>
 					</div>
+
+					<div id="krokomer" >
+						<ul>
+						  <li><a href="#intro" class="btn-step digitalBlue">Späť na úvod</a></li>
+						  <li><a href="#zahranicie" class="btn-step digitalBlue">Späť na krok 1</a></li>
+						  <li><a href="#preukaz-zahranicie" class="btn-step digitalBlue">Späť na krok 2</a></li>
+						  <li><a href="#ziadost" class="btn-step digitalBlue">Späť na krok 3</a></li>
+						  <li><a href="#pdf" class="btn-step digitalBlue">Späť na krok 4</a></li>
+						  <li><a href="#sign" class="btn-step digitalBlue">Späť na krok 5</a></li>
+						</ul>
+						<h6><strong>Krok <span>0</span></strong> / 6</h6>
+					</div>
+
 					<div class="body-content">
 
-						<div class="row section" id="preukaz-zahranicie">
+						<div class="row section krok1" id="zahranicie">
 							<div class="col-lg-12">
-								<p><a class="btn btn-lg btn-success" href="#preukaz" role="button" onclick="getChoice(this)">Chcem hlasovací preukaz</a></p>
-								<p><a class="btn btn-lg btn-success" href="#zahranicie" role="button" onclick="getChoice(this)">Chcem voliť zo zahraničia</a></p>
-							  
-							</div>
-						</div>
-						
-						<div class="row section" id="zahranicie">
-							<div class="col-lg-12">
-								<p><a class="btn btn-lg btn-success" href="#mamTP" role="button" onclick="mamTP()">Mám trvalý pobyt na slovensku</a></p>
-								<p><a class="btn btn-lg btn-success" href="#ziadost" role="button" onclick="nemamTP()">Nemám trvalý pobyt na slovensku</a></p>         
+								<h2>Trvalý pobyt mám</h2>
+								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#preukaz-zahranicie" role="button"><strong>Registrovaný na Slovensku</strong></a>
+								<a class="btn btn-lg btn-success btn-step digitalRedFill" href="#ziadost" role="button" onclick="nemamTP()"><strong>Odhlásený</strong></a>         
 								<input style="display:none" id="tpFlag" value="">
 							</div>
 						</div>
 
-						<div class="row section" id="preukaz">
+						<div class="row section krok2" id="preukaz-zahranicie">
 							<div class="col-lg-12">
-								<p><a class="btn btn-lg btn-success" href="#mamTP" role="button" onclick="preukazPoslat()">Preukaz chcem poslať</a></p>
-								<p><a class="btn btn-lg btn-success" href="#mamTP" role="button" onclick="preukazSplnomocnenec()">Preukaz preberie splnomocnenec</a></p>         
-								<input style="display:none" id="tpFlag" value="">
+								<h3>V čase volieb budem mimo Slovenska</h3>
+								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#ziadost" role="button"  onclick="postaTP()"><strong>Chcem voliť poštou</strong></a>
+								<h5>(Žiadosť treba poslať najneskôr do 15.1.2016)</h5>
+								<h3>V čase volieb budem na Slovensku, ale&nbsp;chcem voliť v ktorejkoľvek volebnej miestnosti</h3>
+								<a class="btn btn-lg btn-success btn-step digitalRedFill" href="#preukaz" role="button"  onclick=""><strong>Chcem hlasovací preukaz</strong></a>
+								<h5>(Žiadosť treba poslať najneskôr do 15.2.2016)</h5>
+							</div>
+						</div>
+
+
+
+						<div class="row section krok2" id="preukaz">
+							<div class="col-lg-12">
+								<h3>Môžete si osobne prevziať preukaz?</h3>
+								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#ziadost" role="button"  onclick="preukazTP()"><strong>Chcem hlasovací preukaz poštou do vlastných rúk</strong></a>
+								<a class="btn btn-lg btn-success btn-step digitalRedFill" href="#ziadost" role="button"  onclick="preukazPS()"><strong>Pre preukaz mi zájde na úrad splnomocnenec</strong></a>
 							</div>
 						</div>
 
@@ -75,148 +97,157 @@
 							</div>
 						</div>
 						<div class="row section" id="ziadost">
+							<h2 class="posta-tp preukaz-tp digitalRed">Adresa vášho trvalého pobytu</h2>
+							<h2 class="nemam-tp digitalRed">Adresa miesta pobytu v cudzine <em>(pre zaslanie hlasovacích lístkov)</em></h2>
 							<div class="col-lg-12">
-								<form id="basic-info" class="form-horizontal" action="/" method="post">
-					<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            
-								<div class="form-group field-basicinfo-name required">
-					<label class="control-label" for="basicinfo-name">Meno</label>
-					<input type="text" id="basicinfo-name" class="form-control" name="BasicInfo[name]">
-					<div class="hint-block">Zadajte prosím svoje krstné meno</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-basicinfo-lastname required">
-					<label class="control-label" for="basicinfo-lastname">Priezvisko</label>
-					<input type="text" id="basicinfo-lastname" class="form-control" name="BasicInfo[lastname]">
-					<div class="hint-block">Zadajte prosím svoje priezvisko</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-basicinfo-maidenlastname">
-					<label class="control-label" for="basicinfo-maidenlastname">Rodné priezvisko</label>
-					<input type="text" id="basicinfo-maidenlastname" class="form-control" name="BasicInfo[maidenLastname]">
-					<div class="hint-block">Zadajte prosím svoje rodné priezvisko</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-basicinfo-birthno required">
-					<label class="control-label" for="basicinfo-birthno">Rodné číslo</label>
-					<input type="text" id="basicinfo-birthno" class="form-control" name="BasicInfo[birthNo]">
-					<div class="hint-block">Zadajte prosím svoje rodné číslo</div>
-					<div class="help-block"></div>
-					</div>
+								<form id="basic-info" class="form-horizontal preukaz-ps posta-tp preukaz-tp nemam-tp" action="/" method="post">
+									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            
+									<div class="form-group field-basicinfo-name required">
+										<label class="control-label" for="basicinfo-name">Meno</label>
+										<input type="text" id="basicinfo-name" class="form-control" name="BasicInfo[name]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-basicinfo-lastname required">
+										<label class="control-label" for="basicinfo-lastname">Priezvisko</label>
+										<input type="text" id="basicinfo-lastname" class="form-control" name="BasicInfo[lastname]">
+										<div class="help-block"></div>
+									</div>            
+									<div class="form-group field-basicinfo-maidenlastname">
+										<label class="control-label" for="basicinfo-maidenlastname">Rodné priezvisko <em>(Ak ste vydatá)</em></label>
+										<input type="text" id="basicinfo-maidenlastname" class="form-control" name="BasicInfo[maidenLastname]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-basicinfo-birthno required">
+										<label class="control-label" for="basicinfo-birthno">Rodné číslo</label>
+										<input type="text" id="basicinfo-birthno" class="form-control" name="BasicInfo[birthNo]">
+										<div class="help-block"></div>
+									</div>
 								</form>
-								<form id="proxy" class="form-horizontal" action="/" method="post">
-					<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            <h3>Údaje splnomocnenca</h3>
-								<div class="form-group field-proxy-name required">
-					<label class="control-label" for="proxy-name">Meno</label>
-					<input type="text" id="proxy-name" class="form-control" name="Proxy[name]">
-					<div class="hint-block">Zadajte prosím krstné meno splnomocneca</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-proxy-lastname required">
-					<label class="control-label" for="proxy-lastname">Priezvisko</label>
-					<input type="text" id="proxy-lastname" class="form-control" name="Proxy[lastname]">
-					<div class="hint-block">Zadajte prosím priezvisko splnomocnenca</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-proxy-idno required">
-					<label class="control-label" for="proxy-idno">Číslo občianskeho preukazu</label>
-					<input type="text" id="proxy-idno" class="form-control" name="Proxy[idNo]">
-					<div class="hint-block">Zadajte prosím číslo občianskeho preukazu alebo pasu splnomocnenca</div>
-					<div class="help-block"></div>
-					</div>
+								<form id="proxy" class="form-horizontal preukaz-ps" action="/" method="post">
+									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            <h3>Údaje splnomocnenca</h3>
+									<div class="form-group field-proxy-name required">
+										<label class="control-label" for="proxy-name">Meno</label>
+										<input type="text" id="proxy-name" class="form-control" name="Proxy[name]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-proxy-lastname required">
+										<label class="control-label" for="proxy-lastname">Priezvisko</label>
+										<input type="text" id="proxy-lastname" class="form-control" name="Proxy[lastname]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-proxy-idno required">
+										<label class="control-label" for="proxy-idno">Číslo občianskeho preukazu</label>
+										<input type="text" id="proxy-idno" class="form-control" name="Proxy[idNo]">
+										<div class="help-block"></div>
+									</div>
 								</form>            
 								
-								<form id="address-slovakia" class="form-horizontal" action="/" method="post">
-					<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            <hr>
-								<h3>Adresa trvalého pobytu v Slovenskej republike:</h3>
-								<div class="form-group field-addressslovakia-street required">
-					<label class="control-label" for="addressslovakia-street">Ulica</label>
-					<input type="text" id="addressslovakia-street" class="form-control" name="AddressSlovakia[street]">
-					<div class="hint-block">Zadajte prosím ulicu Vášho trvalého pobytu</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-addressslovakia-streetno required">
-					<label class="control-label" for="addressslovakia-streetno">Číslo domu</label>
-					<input type="text" id="addressslovakia-streetno" class="form-control" name="AddressSlovakia[streetNo]">
-					<div class="hint-block">Zadajte prosím číslo domu ulice Vášho trvalého pobytu</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-addressslovakia-city required">
-					<label class="control-label" for="addressslovakia-city">Mesto</label>
-					<input type="text" id="addressslovakia-city" class="form-control" name="AddressSlovakia[city]">
-					<div class="hint-block">Zadajte prosím mesto Vášho trvalého pobytu</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-addressslovakia-zip required">
-					<label class="control-label" for="addressslovakia-zip">PSČ</label>
-					<input type="text" id="addressslovakia-zip" class="form-control" name="AddressSlovakia[zip]">
-					<div class="hint-block">Zadajte prosím PSČ mesta Vášho trvalého pobytu</div>
-					<div class="help-block"></div>
-					</div>
-								</form>            <hr>
+								<form id="address-slovakia" class="form-horizontal preukaz-ps preukaz-tp posta-tp" action="/" method="post">
+									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            <hr>
+									<h3>Adresa trvalého pobytu v Slovenskej republike:</h3>
+									<div class="form-group field-addressslovakia-street required">
+										<label class="control-label" for="addressslovakia-street">Ulica</label>
+										<input type="text" id="addressslovakia-street" class="form-control" name="AddressSlovakia[street]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-addressslovakia-streetno required">
+										<label class="control-label" for="addressslovakia-streetno">Číslo domu</label>
+										<input type="text" id="addressslovakia-streetno" class="form-control" name="AddressSlovakia[streetNo]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-addressslovakia-city required">
+										<label class="control-label" for="addressslovakia-city">Mesto</label>
+										<input type="text" id="addressslovakia-city" class="form-control" name="AddressSlovakia[city]">
+										<div class="help-block"></div>
+									</div>
+										<div class="form-group field-addressslovakia-zip required">
+										<label class="control-label" for="addressslovakia-zip">PSČ</label>
+										<input type="text" id="addressslovakia-zip" class="form-control" name="AddressSlovakia[zip]">
+										<div class="help-block"></div>
+									</div>
+								</form>            
+								<hr>
 								
-								<form id="address-foreign" class="form-horizontal" action="/" method="post">
-					<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            <h3 id="foreign-header">Adresa miesta pobytu v cudzine (pre zaslanie hlasovacích lístkov a obálok):</h3>
-								<h3 id="local-header">Hlasovací preukaz žiadam zaslať na adresu:</h3>
-								<div class="form-group field-addressforeign-street required">
-					<label class="control-label" for="addressforeign-street">Ulica</label>
-					<input type="text" id="addressforeign-street" class="form-control" name="AddressForeign[street]">
-					<div class="hint-block">Zadajte prosím ulicu, kde chcete odoslať hlasovacie lístky</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-addressforeign-streetno required">
-					<label class="control-label" for="addressforeign-streetno">Číslo domu</label>
-					<input type="text" id="addressforeign-streetno" class="form-control" name="AddressForeign[streetNo]">
-					<div class="hint-block">Zadajte prosím číslo domu ulice, kde chcete odoslať hlasovacie lístky</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-addressforeign-city required">
-					<label class="control-label" for="addressforeign-city">Mesto</label>
-					<input type="text" id="addressforeign-city" class="form-control" name="AddressForeign[city]">
-					<div class="hint-block">Zadajte prosím mesto, kde chcete odoslať hlasovacie lístky</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-addressforeign-zip required">
-					<label class="control-label" for="addressforeign-zip">PSČ</label>
-					<input type="text" id="addressforeign-zip" class="form-control" name="AddressForeign[zip]">
-					<div class="hint-block">Zadajte prosím PSČ mesta, kde chcete odoslať hlasovacie lístky</div>
-					<div class="help-block"></div>
-					</div>            <div class="form-group field-addressforeign-country required">
-					<label class="control-label" for="addressforeign-country">Štát</label>
-					<input type="text" id="addressforeign-country" class="form-control" name="AddressForeign[country]">
-					<div class="hint-block">Zadajte prosím štát, kde chcete odoslať hlasovacie lístky</div>
-					<div class="help-block"></div>
-					</div>
+								<form id="address-foreign" class="form-horizontal posta-tp preukaz-tp nemam-tp" action="/" method="post">
+									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">            
+									<h3 id="foreign-header">Korešpondenčná adresa pre odoslanie hlasovacích lístkov alebo preukazu:</h3>
+									<div class="form-group field-addressforeign-street required">
+										<label class="control-label" for="addressforeign-street">Ulica</label>
+										<input type="text" id="addressforeign-street" class="form-control" name="AddressForeign[street]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-addressforeign-streetno required">
+										<label class="control-label" for="addressforeign-streetno">Číslo domu</label>
+										<input type="text" id="addressforeign-streetno" class="form-control" name="AddressForeign[streetNo]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-addressforeign-city required">
+										<label class="control-label" for="addressforeign-city">Mesto</label>
+										<input type="text" id="addressforeign-city" class="form-control" name="AddressForeign[city]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-addressforeign-zip required">
+										<label class="control-label" for="addressforeign-zip">PSČ</label>
+										<input type="text" id="addressforeign-zip" class="form-control" name="AddressForeign[zip]">
+										<div class="help-block"></div>
+									</div>
+									<div class="form-group field-addressforeign-country required">
+										<label class="control-label" for="addressforeign-country">Štát</label>
+										<input type="text" id="addressforeign-country" class="form-control" name="AddressForeign[country]">
+										<div class="help-block"></div>
+									</div>
 								</form>
-								<p><a class="btn btn-lg btn-success" href="#pdf" id='preview-button' role="button" onclick="createDocument(true)">Vytvor preview</a></p>         
+								<p><a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#pdf" id="preview-button" role="button" onclick="createDocument(true)"><strong>Vytvor náhľad žiadosti</strong></a></p>         
 							 
 							</div>
-						  </div>
-        <div class="row section" id="pdf">
-            <div class="col-lg-12">
-                <iframe id="preview" width=100% height= 500px>
-                </iframe>  
-                <p><a class="btn btn-lg btn-success" href="#pdf" id='download-button' role="button" onclick="createDocument(false,'TP')">Stiahnuť</a></p>         
-                <p><a class="btn btn-lg btn-success" href="#sign" role="button">Podpis</a></p>
-                <p><a class="btn btn-lg btn-success" href="#photo" id='photo-link' role="button">IDcko</a></p>         
-            </div>
-        </div>
-        <div class="row section" id="sign">
-            <div class="col-lg-12">
-                        <div class="signature-pad">
-                            <canvas></canvas>
-                        </div>
-                    <div class="signature-controls">
-                        <button id="clear-button" class="btn btn-default">Znovu podpísať</button>
-                        <a id="sign-button" class="btn btn-lg btn-success" onclick="createDocument(true)" href="#pdf">Vlož podpis do PDF dokumentu</a>
-                    </div>
-                    <input style="display:none;" type="text" id="signature" value="">
-            </div>
-        
-        </div>
+						</div>
+						
+						<div class="row section" id="pdf">
+							 <div class="col-lg-12">
+								<iframe id="preview" width="100%" height="600px"></iframe>  
+								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#sign" role="button"><strong>Podpísať</strong></a>
+								<a class="btn btn-lg btn-default secondary digitalBlue" href="#pdf" id="download-button" role="button" onclick="createDocument(false,'TP')">Stiahnuť</a>
+							</div>
+						</div>
+						<div class="row section" id="sign">
+							<div class="col-lg-12">
+								<div class="signature-pad">
+									<span>Tu sa prosím podpíšte</span>
+									<canvas></canvas>
+								</div>
+								<div class="signature-controls">
+									<a id="sign-button" class="btn btn-lg btn-success btn-step digitalBlueFill" onclick="createDocument(true)" href="#pdf-final"><strong>Použiť</strong></a>
+									<button id="clear-button" class="btn btn-default secondary">Vyčistiť</button>
+								</div>
+								<input style="display:none;" type="text" id="signature" value="">
+							</div>
+						
+						</div>
 
 
-        <div class="row section" id="photo">
-            <div class="col-lg-12">
-                        <div class="photo-input">
-                            <input type="file" capture="camera" accept="image/*" id="camera-input" name="cameraInput">
-                        </div>
-                        <img id="camera-preview" style= "height:200px">
-                    
-                        <a id="id-button" class="btn btn-lg btn-success" href="#pdf">Ulož</a>
-            </div>
-        
-        </div>
-</div>    </div>
-</div>
+						<div class="row section" id="photo">
+							<div class="col-lg-12">
+										<div class="photo-input">
+											<input type="file" capture="camera" accept="image/*" id="camera-input" name="cameraInput">
+										</div>
+										<img id="camera-preview" style="height:200px">
+									
+										<a id="id-button" class="btn btn-lg btn-success" href="#pdf">Uloz</a>
+							</div>
+						
+						</div>
+
+
+						<div class="row section" id="pdf-final">
+							<div class="col-lg-12">
+								<iframe id="final" width="100%" height="600px"></iframe>  
+								<a class="btn btn-lg btn-success secondary digitalBlue" href="#pdf" id="download-button" role="button" onclick="createDocument(false,'TP')">Stiahnuť</a>
+								<a class="btn btn-lg btn-success digitalBlueFill" href="#send" role="button"><strong>Odoslať</strong></a>
+							</div>
+						</div>
+					</div>    
+				</div>
+			</div>
 
 
 <script src="assets/js/jquery-latest.min.js"></script>

@@ -45,7 +45,7 @@
 						  <li>Žiadosť odosielate z Vášho e-mailu</li>
 						</ul>        
 						<!-- Sem dorobime Social buttonky -->
-						<h4>Tento nástroj na jednoduchú prípravu žiadostí Vám prináša <a href="http://slovensko.digital/"><span>slovensko.digital</span></a></h4>
+						<h4>Tento nástroj na jednoduchú prípravu žiadostí Vám prináša <a href="//slovensko.digital/"><span>slovensko.digital</span></a></h4>
 					</div>
 
 					<div id="krokomer" >
@@ -227,7 +227,7 @@
 							 <div class="col-lg-12">
 								<iframe id="preview" width="100%" height="600px"></iframe>  
 								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#sign" role="button"><strong>Podpísať</strong></a>
-								<a class="btn btn-lg btn-default secondary digitalBlue" href="#pdf" id="download-button" role="button" onclick="createDocument(false,'TP')">Stiahnuť</a>
+								<a class="btn btn-lg btn-default secondary digitalBlue" href="#pdf" data-js-download-document role="button">Stiahnuť</a>
 							</div>
 						</div>
 						<div class="row section" id="sign">
@@ -262,8 +262,23 @@
 						<div class="row section" id="pdf-final">
 							<div class="col-lg-12">
 								<iframe id="final" width="100%" height="600px"></iframe>  
-								<a class="btn btn-lg btn-success secondary digitalBlue" href="#pdf" id="download-button" role="button" onclick="createDocument(false,'TP')">Stiahnuť</a>
-								<a id="send" class="btn btn-lg btn-success digitalBlueFill" href="#send" role="button"><strong>Odoslať</strong></a>
+								<a class="btn btn-lg btn-success secondary digitalBlue" href="#pdf" data-js-download-document role="button">Stiahnuť</a>
+								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#sendsection" role="button"><strong>Po uložení pokračujte tu</strong></a>
+							</div>
+						</div>
+						
+						<div class="row section krok7" id="sendsection">
+							<div class="col-lg-12">
+								<h2>Odošlite email</h2>
+								<p>Odošlite email na emailovú adresu: <b><span id="sendto"></span></b></p>
+								<br>
+								<p>S predmetom: <b><span class="bold" id="emailsubject"></span></b></p>
+								<br>
+								<p>S textom: <b><span class="bold" id="emailbody"></span></b></p>
+								<br>
+								<p>alebo ak máte aktivovaného mailového klienta, vyskúšajte vytvoriť email automaticky:</p>
+								<a id="send" class="btn btn-lg btn-success digitalBlueFill" href="" role="button"><strong>Vytvoriť email</strong></a>
+								<p>Po odoslaní emailu očakávajte potvrdenie z obecného úradu, že Vaša žiadosť bola spracovaná. Ak sa tak nestane, kontaktujte ich telefonicky.</p>
 							</div>
 						</div>
 					</div>    
@@ -280,7 +295,6 @@
 <script src="assets/js/pdfmake.min.js"></script>
 <script src="assets/js/vfs_fonts.js"></script>
 <script src="assets/js/signature_pad.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">jQuery(document).ready(function () {
 jQuery('#basic-info').yiiActiveForm([{"id":"basicinfo-name","name":"name","container":".field-basicinfo-name","input":"#basicinfo-name","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať Vaše krstné meno."});}},{"id":"basicinfo-lastname","name":"lastname","container":".field-basicinfo-lastname","input":"#basicinfo-lastname","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {

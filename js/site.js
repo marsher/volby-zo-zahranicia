@@ -25,11 +25,13 @@ function updateMenu(i) {
     $('#krokomer li:nth-child(4) a').attr('href', '#pdf');
     $('#krokomer li:nth-child(5) a').attr('href', '#sign');
     $('#krokomer li:nth-child(6) a').attr('href', '#photo');
+    $('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
   } else {
     $('#krokomer li:nth-child(3) a').attr('href', '#preukaz-zahranicie');
     $('#krokomer li:nth-child(4) a').attr('href', '#ziadost');
     $('#krokomer li:nth-child(5) a').attr('href', '#pdf');
     $('#krokomer li:nth-child(6) a').attr('href', '#sign');
+    $('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
   }
 }
 
@@ -68,30 +70,6 @@ function preukazPS(){
 	$('#photo-link').hide();
 	$('#tpFlag').val('ziadostOPreukaPreSplnomocnenca')
 }
-
-/*
-function preukazPoslat(){
-	$('#address-slovakia').show();
-	$('#address-foreign').show();
-	$('#tpFlag').val('pp');
-	$('#photo-link').hide();
-	$('#addressforeign-country').val('Slovensko');
-	$('#foreign-header').hide();
-	$('#local-header').show();
-	$('#proxy').hide();
-}
-
-function preukazSplnomocnenec(){
-	$('#address-slovakia').show();
-	$('#address-foreign').hide();
-	$('#tpFlag').val('ps');
-	$('#photo-link').hide();
-	$('#local-header').show();
-	$('#proxy').show();
-
-}
-
-*/
 
 
 function getAddressOneLine(id){
@@ -153,6 +131,11 @@ function nastavObec(){
 			var subj = "Žiadosť o hlasovací preukaz";
 			var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec.";
 		}
+		
+		$("#sendto").html(o[ico][6]);
+		$("#emailsubject").html(subj);
+		$("#emailbody").html(textemailu);
+		
 		$("#addressslovakia-zip").val(o[ico][4]);
 		$("#send").attr("href","mailto:"+o[ico][6]+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(textemailu));
 	}
@@ -640,7 +623,13 @@ $(document).ready(function(){
 	$('#id-button').on("click", function (event) {
 		createDocument(true);
 	});
-	
+
+	$('[data-js-download-document]').on('click', function(e){
+		e.preventDefault();
+		var src = $('#final').attr('src');
+		window.open(src);
+	});
+
 	$('#camera-input').change(function(){
 		var reader = new FileReader();
 		reader.onloadend = function(){

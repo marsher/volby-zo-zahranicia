@@ -10,7 +10,7 @@
 	// "o" variable saves characters so the file is not as huge as with the regular keys
 	// "election" exports array in a variable so it's accessible inside of another files
 	var o = [];
-	app.election = o;
+	election.cities = o;
 
 	o['mvsr'] = ['Ministerstvo vnútra Slovenskej republiky', 'odbor volieb, referenda a politických strán', 'Drieňová', '22', '826 86', 'Bratislava 29', 'volby@minv.sk', '', '', '', '', ''];
 	o['00800121'] = ['Obecný úrad', '', 'Uhrovské Podhradie', '20', '956 42 ', 'Žitná-Radiša ', '', 'Bánovce nad Bebravou', 'Trenčiansky', '038', '769 44 19', ''];

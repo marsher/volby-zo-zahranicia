@@ -36,15 +36,23 @@ function updateMenu(i) {
 }
 
 function nemamTP(){
-  // update back button
   clearForm();  
   updateMenu(true);
 	$('.nemam-tp').show();
 	$('#photo-link').show();
-	/*$('#preview-button').attr('onclick','createDocument(true,"noTP")');
-	$('#download-button').attr('onclick','createDocument(false,"noTP")');
-	$('#sign-button').attr('onclick','createDocument(true,"noTP",signaturePad.toDataURL())');*/
-	$('#tpFlag').val('volbaPostouBezTrvalehoPobytu')
+	$('#tpFlag').val('volbaPostouBezTrvalehoPobytu');
+
+
+	var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
+	var textemailu = "Podľa § 59 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu podľa žiadosti v prílohe.";
+	
+	
+	$("#sendto").html("volby@minv.sk");
+	$("#emailsubject").html(subj);
+	$("#emailbody").html(textemailu);
+	
+	$("#addressslovakia-zip").val("mvsr");
+	$("#send").attr("href","mailto:volby@minv.sk?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(textemailu));	
 }
 
 function postaTP(){

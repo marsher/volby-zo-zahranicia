@@ -1,40 +1,42 @@
 /* STEP 0 */
 var krok = 0;
 
-$('a.btn-step').click(function () {
-  if ($(this).is('#krokomer a')) {
-    krok--;
-  } else {
-    krok++;
-  }
-  updateStep();
-  $('.row').hide();
-  $.when($($(this).attr('href')).show()).done(resizeCanvas())
+$('a.btn-step').click(function(){
+	if($(this).hasClass("dontcountstep")){
+		// nepocitaj krok
+	}else{
+		if ($(this).is('#krokomer a')) { krok--; } else { krok++; }
+	}
+	updateStep();
+	$('.row').hide();
+	$.when($($(this).attr('href')).show()).done(resizeCanvas())
 });
 
 function updateStep() {
-  $('#krokomer li').hide();
-  $('#krokomer li:nth-child(' + krok + ')').show();
-  $('#krokomer h6 span').text(krok);
+    $('#krokomer li').hide();
+    $('#krokomer li:nth-child('+krok+')').show();
+    $('#krokomer .actual-step').show();
+    $('#krokomer .actual-step span').text(krok);
 }
 
 function clearForm() {
-  $('#ziadost h2').hide();
-  $('#ziadost form').hide();
+	$('#ziadost h2').hide();
+	$('#ziadost form').hide();
 }
 
 function updateMenu(i) {
-  if (i) {
-    $('#krokomer li:nth-child(3) a').attr('href', '#ziadost');
-    $('#krokomer li:nth-child(4) a').attr('href', '#pdf');
-    $('#krokomer li:nth-child(5) a').attr('href', '#sign');
-    $('#krokomer li:nth-child(6) a').attr('href', '#photo');
-  } else {
-    $('#krokomer li:nth-child(3) a').attr('href', '#preukaz-zahranicie');
-    $('#krokomer li:nth-child(4) a').attr('href', '#ziadost');
-    $('#krokomer li:nth-child(5) a').attr('href', '#pdf');
-    $('#krokomer li:nth-child(6) a').attr('href', '#sign');
-  }
+	if (i) {
+		$('#krokomer li:nth-child(3) a').attr('href', '#ziadost');
+		$('#krokomer li:nth-child(4) a').attr('href', '#pdf');
+		$('#krokomer li:nth-child(5) a').attr('href', '#sign');
+		$('#krokomer li:nth-child(6) a').attr('href', '#pdf-final');
+	} else {
+		$('#krokomer li:nth-child(3) a').attr('href', '#preukaz-zahranicie');
+		$('#krokomer li:nth-child(4) a').attr('href', '#ziadost');
+		$('#krokomer li:nth-child(5) a').attr('href', '#pdf');
+		$('#krokomer li:nth-child(6) a').attr('href', '#sign');
+		$('#krokomer li:nth-child(7) a').attr('href', '#pdf-final');
+	}
 }
 
 function nemamTP() {

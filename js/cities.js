@@ -22,7 +22,6 @@
 	o['00322466'] = ['Obecný úrad', '', 'Ondavka', '', '086 36', 'Nižná Polianka', '', 'Bardejov', 'Prešovský', '054', '479 91 70', ''];
 	o['00323284'] = ['Obecný úrad', '', '', '12', '067 33 ', 'Papín', 'obecnechvalovapolianka@gmail.com', 'Humenné', 'Prešovský', '057', '788 03 33,779 81 22 ', ''];
 	o['00696048'] = ['Obecný úrad', '', '', '21', '061 01 ', 'Spišská Stará Ves', '', 'Kežmarok', 'Prešovský', '052', '489 21 67', '0903 728 680'];
-	o[''] = ['Vojenský obvod', '', '', '', '059 56', 'Javorina', 'obecnyurad@tjavorina.eu', 'Kežmarok', 'Prešovský', '052', '', ''];
 	o['00696315'] = ['Obecný úrad', '', '', '13', '059 04 ', 'Spišské Hanušovce', 'obeczalesie@mail.t-com.sk', 'Kežmarok', 'Prešovský', '052', '489 21 43', '0902 896 648'];
 	o['00647641'] = ['Obecný úrad', '', 'Selce', '1', '962 51', 'Čabradský Vrbovok', 'ouselce@selce.sk ', 'Krupina', 'Banskobystrický', '045', '559 71 63', ''];
 	o['00649091'] = ['Obecný úrad', '', 'Sudince', '27', '962 69', 'Lišov', 'obecsudince@zoznam.sk', 'Krupina', 'Banskobystrický', '045', '558 91 16 ', '0908 499 900'];
@@ -1042,7 +1041,7 @@
 	o['00692361'] = ['Obecný úrad', '', 'Slopná', '159', '018 21', 'Dolný Lieskov', 'obec@slopna.sk;obec.slopna@slopna.sk;starosta@slopna.sk;sekretariat@slopna.sk', 'Považská Bystrica', 'Trenčiansky', '042', '435 31 62', '0904 876 343'];
 	o['00305073'] = ['Obecný úrad', '', 'Hlavná', '132', '900 26', 'Slovenský Grob', 'obec@slovensky-grob.sk;juran@slovensky-grob.sk', 'Pezinok', 'Bratislavský', '033', '647 82 10', '0907 330 472'];
 	o['00310026'] = ['Obecný úrad', '', 'Sološnica', '527', '906 37', 'Sološnica', 'obec@solosnicask.net;starosta@solosnicask.net', 'Malacky', 'Bratislavský', '034', '654 88 25,658 41 81', '0905 418 760'];
-	o['00326 569'] = ['Obecný úrad', '', 'Hornádska', '241', '059 14', 'Spišský Štiavnik', 'obec@spisskystiavnik.sk', 'Poprad', 'Prešovský', '052', '788 56 01,02,03', ''];
+	o['00326569'] = ['Obecný úrad', '', 'Hornádska', '241', '059 14', 'Spišský Štiavnik', 'obec@spisskystiavnik.sk', 'Poprad', 'Prešovský', '052', '788 56 01,02,03', ''];
 	o['00329631'] = ['Obecný úrad', '', 'Tatranská', '4', '053 14', 'Spišský Štvrtok ', 'obec@spisskystvrtok.sk;jan.gres@spisskystvrtok.sk', 'Levoča', 'Prešovský', '053 ', '459 82 22,469 90 74  ', '0911 633 722 '];
 	o['00321010'] = ['Obecný úrad', '', 'Stará Kremnička', '198', '965 01', 'Stará Kremnička', 'obec@starakremnicka.sk;starosta@starakremnicka.sk', 'Žiar nad Hronom', 'Banskobystrický', '045', '673 71 05', '0918 354 864'];
 	o['00310034'] = ['Obecný úrad', '', 'Stará Myjava', '145', '907 01', 'Myjava', 'obec@staramyjava.sk;starosta@staramyjava.sk', 'Myjava', 'Trenčiansky', '034', '621 55 79', '0907 983 556'];
@@ -2501,7 +2500,7 @@
 	o['00309745'] = ['Mestský úrad', '', 'Nám. M. R. Štefánika ', '560/4 ', '907 14 ', 'Myjava', 'primator@myjava.sk;podatelna@myjava.sk', 'Myjava', 'Trenčiansky', '034', '690 72 10,690 71 11', '0905 865 513'];
 	o['00309150'] = ['Mestský úrad', '', 'Hlavné námestie', '10', '940 35', 'Nové Zámky', 'primator@novezamky.sk;info@novezamky.sk', 'Nové Zámky', 'Nitriansky', '035', '640 02 25-27,32,33,35,38', '0903 497 292,0902 987 601'];
 	o['00310905'] = ['Mestský úrad', '', 'Námestie SNP', '212/4', '958 01', 'Partizánske', 'primator@partizanske.sk;sekretariat@partizanske.sk', 'Partizánske', 'Trenčiansky', '038', '749 20 92,93,97,3105,536 30 11,22,52', ''];
-	o['00317667'] = ['Mestský úrad', '', 'Centrum', '2/3', '017 13', 'Považská Bystrica', 'primator@povazska-bystrica.sk;prednosta@povazska-bystrica.sk', 'Považská Bystrica', 'Trenčiansky', '042', '430 52 00,430 51 11', '0905 033 779,0918 949 555'];
+	o['00317667'] = ['Mestský úrad', '', 'Centrum', '2/3', '017 01', 'Považská Bystrica', 'primator@povazska-bystrica.sk;prednosta@povazska-bystrica.sk', 'Považská Bystrica', 'Trenčiansky', '042', '430 52 00,430 51 11', '0905 033 779,0918 949 555'];
 	o['00327646'] = ['Mestský úrad', '', 'Hlavná', '73', '080 68', 'Prešov 1', 'primator@presov.sk', 'Prešov', 'Prešovský', '051', '772 30 41, 3100 101, 3100 109', ''];
 	o['00321591'] = ['Mestský úrad', '', 'Námestie SNP', '1/29', '013 13', 'Rajecké Teplice', 'primator@rajecke-teplice.sk;prednosta@rajecke-teplice.sk;sekretariat@rajecke-teplice.sk', 'Žilina', 'Žilinský', '041', '509 90 60-4', '0904 137 008'];
 	o['00306185'] = ['Mestský úrad', '', 'Námestie Sv. Trojice', '7', '927 15', 'Šaľa', 'primator@sala.sk;mesto@sala.sk', 'Šaľa', 'Nitriansky', '031', '770 59 81-4', '0911 362 320'];

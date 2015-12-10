@@ -2,7 +2,11 @@
 var krok = 0;
 
 $('a.btn-step').click(function(){
-	if ($(this).is('#krokomer a')) { krok--; } else { krok++; }
+	if($(this).hasClass("dontcountstep")){
+		// nepocitaj krok
+	}else{
+		if ($(this).is('#krokomer a')) { krok--; } else { krok++; }
+	}
 	updateStep();
 	$('.row').hide();
 	$.when($($(this).attr('href')).show()).done(resizeCanvas())
@@ -25,14 +29,13 @@ function updateMenu(i) {
 		$('#krokomer li:nth-child(3) a').attr('href', '#ziadost');
 		$('#krokomer li:nth-child(4) a').attr('href', '#pdf');
 		$('#krokomer li:nth-child(5) a').attr('href', '#sign');
-		$('#krokomer li:nth-child(6) a').attr('href', '#photo');
-		$('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
+		$('#krokomer li:nth-child(6) a').attr('href', '#pdf-final');
 	} else {
 		$('#krokomer li:nth-child(3) a').attr('href', '#preukaz-zahranicie');
 		$('#krokomer li:nth-child(4) a').attr('href', '#ziadost');
 		$('#krokomer li:nth-child(5) a').attr('href', '#pdf');
 		$('#krokomer li:nth-child(6) a').attr('href', '#sign');
-		$('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
+		$('#krokomer li:nth-child(7) a').attr('href', '#pdf-final');
 	}
 }
 

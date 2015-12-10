@@ -640,7 +640,13 @@ $(document).ready(function(){
 	$('#id-button').on("click", function (event) {
 		createDocument(true);
 	});
-	
+
+	$('[data-js-download-document]').on('click', function(e){
+		e.preventDefault();
+		var src = $('#final').attr('src');
+		window.open(src);
+	});
+
 	$('#camera-input').change(function(){
 		var reader = new FileReader();
 		reader.onloadend = function(){

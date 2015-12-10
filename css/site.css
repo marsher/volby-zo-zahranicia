@@ -2,7 +2,9 @@ html,
 body {
     height: 100%;
 }
-
+h1{
+	font-size:20pt;
+}
 .wrap {
     min-height: 100%;
     height: auto;
@@ -91,8 +93,8 @@ a.desc:after {
 }
 
 .section {
-    padding-top: 350px;
-    margin-bottom: 350px;
+	min-height: 1000px;
+	padding:20px 0 200px 20px;
 }
 
 .signature-pad {

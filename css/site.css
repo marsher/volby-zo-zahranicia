@@ -36,7 +36,7 @@ h4 { font-size:32px; line-height:48px; color:#777; }
 h5 { font-size:24px; line-height:32px; color:#888; }
 h6 { font-size:36px; color:#999; }
 
-#intro a.btn { margin:56px 0; }
+#intro a.btn { margin:56px 0; text-decoration: none; }
 #intro a.btn:hover { text-decoration:none; }
 #intro ul { font-size:27px; line-height:42px; padding-left:20px; list-style:square; color:#777; }
 #intro ul strong { font-weight:normal; color:#111; }

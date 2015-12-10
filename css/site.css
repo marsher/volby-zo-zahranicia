@@ -1,3 +1,4 @@
+* {box-sizing: border-box;}
 html, body { height: 100%; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif; }
 
 
@@ -19,11 +20,11 @@ h1, a, h6 { font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed",
 * { margin:0; padding:0; border:0; }
 h1, h2, h3, h4, h5, h6, h7, em { font-style:normal; font-weight:normal; }
 
-.wrap { width:640px; min-height:100%; height: auto; margin:0 auto; }
+.wrap { position: relative; max-width:640px; width: 100%; min-height:100%; height: auto; margin:0 auto; padding: 0 20px; }
 .btn { display:block; width:100%; height:120px; font-size:34px; line-height:120px; text-align:center; }
 .btn.secondary { background-color:#999; color:#fff; text-decoration:none; }
 .btn.secondary:hover { background-color:#777; }
-.row { width:520px; padding:0 60px; }
+.row { width:100%; padding:0; }
 
 #intro { min-height:100%; background-color:#fff; z-index:2; position:relative; display:block; }
 
@@ -46,10 +47,10 @@ height:36px; padding:16px 0; margin-bottom:60px; }
 #intro h4 a span { display:none; }
 
 .row { display:none; }
-
-#krokomer { position:fixed; left:50%; top:0; z-index:1; width:520px; margin:0 0 0 -260px; height:128px; line-height:128px; border-bottom:1px solid #eee; background-color:#fff; }
-#krokomer li { float:right; list-style:none; }
-#krokomer li a { text-decoration:none; font-size:36px; padding:32px 0; }
+.nav { position:fixed; top:0; z-index:3; width:100%; line-height:64px; border-bottom:1px solid #eee; background-color:#fff; font-size: 20px;}
+.nav-item { position: absolute; right: 0; display: none; list-style: none; padding-right: 20px;}
+.nav-item a { text-decoration:none; padding:32px 0; }
+.actual-step {display: none;color: #999; font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif; }
 
 .section { padding-top:128px; font-size:36px; }
 .section a { margin:24px 0; }
@@ -91,11 +92,10 @@ h6 { font-size:18px; }
 #intro h4 { margin-top:32px; padding:24px 0 48px 0; }
 #intro h4 a { background-size:138px 18px; padding:0; }
 
-#krokomer { width:600px; margin-left:-300px; height:64px; line-height:64px; }
-#krokomer li a { font-size:18px; padding:16px 0; }
+.nav-item a { font-size:18px; padding:16px 0; }
 
 .btn { display:block; width:100%; height:60px; font-size:20px; line-height:60px; }
-.row { width:600px;  }
+.row { width:100%; padding: 0 60px; }
 .section { padding-top:64px; font-size:18px; }
 .section a { margin:16px 0; }
 

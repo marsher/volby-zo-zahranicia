@@ -9,9 +9,10 @@ $('a.btn-step').click(function(){
 });
 
 function updateStep() {
-	$('#krokomer li').hide();
-	$('#krokomer li:nth-child('+krok+')').show();
-	$('#krokomer h6 span').text(krok);
+    $('#krokomer li').hide();
+    $('#krokomer li:nth-child('+krok+')').show();
+    $('#krokomer .actual-step').show();
+    $('#krokomer .actual-step span').text(krok);
 }
 
 function clearForm() {

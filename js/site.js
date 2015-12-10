@@ -147,7 +147,7 @@ function nastavObec(){
 }
 $(function() {
 	nastavObec();
-	$("#obec").select2();
+	$("#addressslovakia-city").select2();
 });
 
 function createDocument(preview){

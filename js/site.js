@@ -2,61 +2,65 @@
 var krok = 0;
 
 $('a.btn-step').click(function(){
-  if ($(this).is('#krokomer a')) { krok--; } else { krok++; }
-  updateStep();
-  $('.row').hide();
-  $.when($($(this).attr('href')).show()).done(resizeCanvas())
+	if ($(this).is('#krokomer a')) { krok--; } else { krok++; }
+	updateStep();
+	$('.row').hide();
+	$.when($($(this).attr('href')).show()).done(resizeCanvas())
 });
 
 function updateStep() {
-  $('#krokomer li').hide();
-  $('#krokomer li:nth-child('+krok+')').show();
-  $('#krokomer h6 span').text(krok);
+    $('#krokomer li').hide();
+    $('#krokomer li:nth-child('+krok+')').show();
+    $('#krokomer .actual-step').show();
+    $('#krokomer .actual-step span').text(krok);
 }
 
 function clearForm() {
-  $('#ziadost h2').hide();
-  $('#ziadost form').hide();
+	$('#ziadost h2').hide();
+	$('#ziadost form').hide();
 }
 
 function updateMenu(i) {
-  if(i) {
-    $('#krokomer li:nth-child(3) a').attr('href', '#ziadost');
-    $('#krokomer li:nth-child(4) a').attr('href', '#pdf');
-    $('#krokomer li:nth-child(5) a').attr('href', '#sign');
-    $('#krokomer li:nth-child(6) a').attr('href', '#photo');
-    $('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
-  } else {
-    $('#krokomer li:nth-child(3) a').attr('href', '#preukaz-zahranicie');
-    $('#krokomer li:nth-child(4) a').attr('href', '#ziadost');
-    $('#krokomer li:nth-child(5) a').attr('href', '#pdf');
-    $('#krokomer li:nth-child(6) a').attr('href', '#sign');
-    $('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
-  }
+	if (i) {
+		$('#krokomer li:nth-child(3) a').attr('href', '#ziadost');
+		$('#krokomer li:nth-child(4) a').attr('href', '#pdf');
+		$('#krokomer li:nth-child(5) a').attr('href', '#sign');
+		$('#krokomer li:nth-child(6) a').attr('href', '#photo');
+		$('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
+	} else {
+		$('#krokomer li:nth-child(3) a').attr('href', '#preukaz-zahranicie');
+		$('#krokomer li:nth-child(4) a').attr('href', '#ziadost');
+		$('#krokomer li:nth-child(5) a').attr('href', '#pdf');
+		$('#krokomer li:nth-child(6) a').attr('href', '#sign');
+		$('#krokomer li:nth-child(7) a').attr('href', '#sendsection');
+	}
 }
 
 function nemamTP(){
-  clearForm();  
-  updateMenu(true);
+	clearForm();
+	updateMenu(true);
+
 	$('.nemam-tp').show();
 	$('#photo-link').show();
-	$('#tpFlag').val('volbaPostouBezTrvalehoPobytu');
+	$('#tpFlag').val('volbaPostouBezTrvalehoPobytu')
 
 
-	var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
-	var textemailu = "Podľa § 59 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu podľa žiadosti v prílohe.";
-	
-	
-	$("#sendto").html("volby@minv.sk");
-	$("#emailsubject").html(subj);
-	$("#emailbody").html(textemailu);
-	
-	$("#addressslovakia-zip").val("mvsr");
-	$("#send").attr("href","mailto:volby@minv.sk?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(textemailu));	
+
+
+		var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
+		var textemailu = "Podľa § 59 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu podľa žiadosti v prílohe.";
+
+
+		$("#sendto").html("volby@minv.sk");
+		$("#emailsubject").html(subj);
+		$("#emailbody").html(textemailu);
+
+		$("#addressslovakia-zip").val("mvsr");
+		$("#send").attr("href","mailto:volby@minv.sk?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(textemailu));
 }
 
 function postaTP(){
-  clearForm();  
+  clearForm();
   updateMenu(false);
 	$('.posta-tp').show();
 	$('#photo-link').hide();
@@ -64,7 +68,7 @@ function postaTP(){
 }
 
 function preukazTP(){
-  clearForm();  
+  clearForm();
   updateMenu(0);
 	$('.preukaz-tp').show();
 	$('#photo-link').hide();
@@ -72,7 +76,7 @@ function preukazTP(){
 }
 
 function preukazPS(){
-  clearForm();  
+  clearForm();
   updateMenu(0);
 	$('.preukaz-ps').show();
 	$('#photo-link').hide();
@@ -88,11 +92,11 @@ function getAddressOneLine(id){
 		ret += $('#'+id+'-city').val() + " " + $('#'+id+'-streetno').val();
 	}
 	if(ret!= " ") ret+= ", ";
-	
+
 	ret+= $('#'+id+'-zip').val() + " " + $('#'+id+'-city').val();
-	
+
 	if(ret!= " ") ret+= ", ";
-	
+
 	if(id ==  "addressslovakia"){
 		ret += "Slovenská republika";
 	}else{
@@ -124,8 +128,8 @@ function nastavObec(){
 			adresa += o[ico][4] + " " + o[ico][5] + "\n" + o[ico][6];
 		}
 		$("#adresa").val(adresa);
-		
-		
+
+
 		var type = 	$('#tpFlag').val();
 		var subj = "Ziadost";
 		var textemailu = "";
@@ -139,11 +143,11 @@ function nastavObec(){
 			var subj = "Žiadosť o hlasovací preukaz";
 			var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec.";
 		}
-		
+
 		$("#sendto").html(o[ico][6]);
 		$("#emailsubject").html(subj);
 		$("#emailbody").html(textemailu);
-		
+
 		$("#addressslovakia-zip").val(o[ico][4]);
 		$("#send").attr("href","mailto:"+o[ico][6]+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(textemailu));
 	}
@@ -155,15 +159,15 @@ $(function() {
 
 function createDocument(preview){
 	var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; 
-    var yyyy = today.getFullYear();
-    if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    } 
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+	if(dd<10){
+		dd='0'+dd
+	}
+	if(mm<10){
+		mm='0'+mm
+	}
 	var type = 	$('#tpFlag').val();
 	// playground requires you to assign document definition to a variable called dd
 	var paragraph,localaddress = [],noTP =[],vyhlasenie=[],signature=[],idPhoto=[];
@@ -174,47 +178,47 @@ function createDocument(preview){
 
 	signature2 = [];
 	if($('#signature').val() != ''){
-		signature = 
-			[	
+		signature =
+			[
 				{ text: '', style: 'space'},
-				{ 
+				{
 					text: ['V ',{ text: $('#addressforeign-city').val(),style: 'value'} ],
 					style: 'footer',
 				},
-				{ 
+				{
 					text: ['Dátum: ',{text: ''+dd +'. ' + mm + '. ' + yyyy,style: 'value'} ],
 					style: 'footer',
 				},
-				{ 
-					image: $('#signature').val(), width:120, style : 'signatureStyle' 
+				{
+					image: $('#signature').val(), width:120, style : 'signatureStyle'
 				},
-				{	
+				{
 					text:'                      Podpis                      ',
 					style: 'signatureTextStyle'
 				}
-			]; 
-		
+			];
+
 		var signature2 = [
 			{ text: '', style: 'space'},
-			{ 
+			{
 				text: ['V ',{ text: $('#addressforeign-city').val(),style: 'value'} ],
 				style: 'footer',
 			},
-			{ 
+			{
 				text: ['Dátum: ',{text: ''+dd +'. ' + mm + '. ' + yyyy,style: 'value'} ],
 				style: 'footer',
 			},
-			{ 
+			{
 				image: $('#signature').val(), width:150, alignment: 'right'
 			},
-			{	
+			{
 					text:'                      Podpis                      ',
 					style: 'signatureTextStyle'
 			}
 		];
 	}
 	if($('#camera-input')[0].files.length > 0){
-		idPhoto = 
+		idPhoto =
 		[
 			{
 				image: $('#camera-preview').attr('src'),
@@ -224,16 +228,14 @@ function createDocument(preview){
 		]
 	}
 
-	
-	
 	if(type == 'volbaPostouSTrvalymPobytom'){
 		paragraph = 'Podľa   § 60 ods. 1   zákona   č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016.';
 		localaddress = [
 			{text:'',style:'spacesmall'},
-			{ 
+			{
 				text: 'Adresa trvalého pobytu v Slovenskej republike:',
 				style: 'line',
-				//style: 'header', 
+				//style: 'header',
 				bold: true
 			},
 			{
@@ -265,18 +267,18 @@ function createDocument(preview){
 				]
 			},
 			{text:'',style:'spacesmall'},
-			{ 
+			{
 				text: 'Adresa miesta pobytu v cudzine (pre zaslanie hlasovacích lístkov a obálok):',
 				style: 'line',
-				//style: 'header', 
+				//style: 'header',
 				bold: true
 			}
 		];
-	}else 
+	}else
 	if(type == 'volbaPostouBezTrvalehoPobytu'){
 		paragraph = 'Podľa   § 59 ods. 1   zákona   č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu:';
 		noTP = [
-		
+
 			{text:'',style:'spacesmall'},
 				{
 					text:'Prílohy:',
@@ -292,29 +294,29 @@ function createDocument(preview){
 			{
 				text: $('#basicinfo-name').val() + ' ' + $('#basicinfo-lastname').val() + ' ' + $('#basicinfo-birthno').val(),
 				alignment: 'center',
-				pageBreak: 'before' 
+				pageBreak: 'before'
 			},
 			{
 				text: getAddressOneLine('addressforeign'),
 				alignment: 'center',
 			},
-			
+
 			{text:'',style:'space'},
-			{ 
-				text: 'ČESTNÉ VYHLÁSENIE', 
-				style: 'header', 
-				alignment: 'center' 
+			{
+				text: 'ČESTNÉ VYHLÁSENIE',
+				style: 'header',
+				alignment: 'center'
 			},
 			{text:'',style:'space'},
 			{
 				text: 'Na účely voľby poštou do Národnej rady Slovenskej republiky v roku 2016',
-				alignment: 'center' 
+				alignment: 'center'
 			},
 			{text:'',style:'space'},
-			{ 
-				text: 'čestne vyhlasujem,', 
-				style: 'header', 
-				alignment: 'center' 
+			{
+				text: 'čestne vyhlasujem,',
+				style: 'header',
+				alignment: 'center'
 			},
 			{text:'',style:'space'},
 			{
@@ -327,28 +329,28 @@ function createDocument(preview){
 
 	if (type==="volbaPostouSTrvalymPobytom" || type ==="volbaPostouBezTrvalehoPobytu"){
 		formContent =[
-			{ 
-				text: 'Žiadosť', 
-				style: 'header', 
-				alignment: 'center' 
+			{
+				text: 'Žiadosť',
+				style: 'header',
+				alignment: 'center'
 			},
-			{ 
-				text: 'o voľbu poštou', 
-				style: 'header', 
-				alignment: 'center' 
+			{
+				text: 'o voľbu poštou',
+				style: 'header',
+				alignment: 'center'
 			},
-			{ 
-				text: 'pre voľby do Národnej rady Slovenskej republiky v roku 2016', 
-				style: 'header', 
-				alignment: 'center' 
+			{
+				text: 'pre voľby do Národnej rady Slovenskej republiky v roku 2016',
+				style: 'header',
+				alignment: 'center'
 			},
 			{text:'',style:'space'},
-			{ 
+			{
 				text: $('#adresa').val(),
-				style: 'address', 
+				style: 'address',
 			},
 			{text:'',style:'space'},
-			{ 
+			{
 				text: [
 					paragraph
 					],
@@ -429,7 +431,7 @@ function createDocument(preview){
 				style: 'line',
 				alignment: 'left'
 			},
-			{ 
+			{
 				columns:[
 					{
 						text: ['Meno: ',{text: $('#basicinfo-name').val(),style: 'value'} ],
@@ -454,7 +456,7 @@ function createDocument(preview){
 				style: 'line',
 				alignment: 'left'
 			},
-			{ 
+			{
 				columns:[
 					{
 						text: ['Meno: ',{text: $('#proxy-name').val(),style: 'value'} ],
@@ -473,15 +475,15 @@ function createDocument(preview){
 
 	if(type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca"){
 		formContent = [
-			{ 
+			{
 				text: $('#adresa').val(),
-				style: 'address', 
+				style: 'address',
 			},
 			{ text: '', style: 'space'},
-			{ 
-				text: preukazHeader, 
-				style: 'header', 
-				alignment: 'left' 
+			{
+				text: preukazHeader,
+				style: 'header',
+				alignment: 'left'
 			},
 			{ text: '', style: 'space'},
 			{
@@ -513,16 +515,16 @@ function createDocument(preview){
 				style: 'line',
 			},
 			{ text: '', style: 'space'},
-			{ 
-				text: 'žiadam', 
-				style: 'header', 
-				alignment: 'center' 
+			{
+				text: 'žiadam',
+				style: 'header',
+				alignment: 'center'
 			},
 			{ text: '', style: 'space'},
 			{
 				text: [
 					{text:'podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov '},
-					{text:'o vydanie hlasovacieho preukazu',bold:true}, 
+					{text:'o vydanie hlasovacieho preukazu',bold:true},
 					{text:' pre voľby do Národnej rady Slovenskej republiky v roku 2016.'},
 				]
 			},
@@ -546,7 +548,7 @@ function createDocument(preview){
 			value: {
 				fontSize: 12,
 				bold: true,
-				decoration: 'underline', 
+				decoration: 'underline',
 				decorationStyle: 'dotted'
 			},
 			address: {
@@ -582,7 +584,7 @@ function createDocument(preview){
 				decorationStyle: 'dotted',
 				alignment:'right',
 				margin: [30,10],
-				fontSize: 9			
+				fontSize: 9
 			}
 		}
 	}
@@ -603,20 +605,20 @@ canvas = document.querySelector("canvas");
 // to make it look crisp on mobile devices.
 // This also causes canvas to be cleared.
 function resizeCanvas() {
-    // When zoomed out to less than 100%, for some very strange reason,
-    // some browsers report devicePixelRatio as less than 1
-    // and only part of the canvas is cleared then.
-    var ratio =  Math.max(window.devicePixelRatio || 1, 1);
-    canvas.width = canvas.offsetWidth * ratio;
-    canvas.height = canvas.offsetHeight * ratio;
-    canvas.getContext("2d").scale(ratio, ratio);
+	// When zoomed out to less than 100%, for some very strange reason,
+	// some browsers report devicePixelRatio as less than 1
+	// and only part of the canvas is cleared then.
+	var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+	canvas.width = canvas.offsetWidth * ratio;
+	canvas.height = canvas.offsetHeight * ratio;
+	canvas.getContext("2d").scale(ratio, ratio);
 }
 
 window.onresize = resizeCanvas;
 
 $(document).ready(function(){
 	resizeCanvas();
-	
+
 	signaturePad = new SignaturePad(canvas);
 
 	$('#clear-button').on("click", function (event) {
@@ -645,8 +647,4 @@ $(document).ready(function(){
 		}
 		reader.readAsDataURL($('#camera-input')[0].files[0]);
 	})
-
-
 });
-
-

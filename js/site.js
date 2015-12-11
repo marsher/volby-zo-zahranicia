@@ -48,7 +48,13 @@ function nemamTP() {
   /*$('#preview-button').attr('onclick','createDocument(true,"noTP")');
    $('#download-button').attr('onclick','createDocument(false,"noTP")');
    $('#sign-button').attr('onclick','createDocument(true,"noTP",signaturePad.toDataURL())');*/
-  $('#tpFlag').val('volbaPostouBezTrvalehoPobytu')
+  $('#tpFlag').val('volbaPostouBezTrvalehoPobytu');
+  $("#addressslovakia-kraj").val("Mimo SR");
+  nastavKraj();
+  $("#addressslovakia-okres").val("Mimo SR");
+  nastavOkres();
+  $("#addressslovakia-obec").val("mvsr");
+  
 }
 
 function postaTP() {

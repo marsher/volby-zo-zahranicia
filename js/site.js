@@ -747,7 +747,8 @@ $(document).ready(function () {
 	  $("#alertie").show();
 	  $(".body-content .section").css("padding","100px 0 0 0");
 	  $("#intro").css("padding","100px 0 0 0");
-	  
+	  $("#final").hide();
+	  $("#preview").hide();
   }
   
 });

@@ -148,8 +148,24 @@ function nastavObec() {
     }
     $("#adresa").val(adresa);
 
-    var subj = "Hlasovanie postou alebo ziadost o listky";
-    var textemailu = "Toto je text emailu";
+    var type =  $('#tpFlag').val();
+    var subj = "Ziadost";
+    var textemailu = "";
+    if(type == 'volbaPostouSTrvalymPobytom'){
+      var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
+      var textemailu = "Podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016. Žiadosť odosielam v prílohe";
+    }else if(type == "volbaPostouSTrvalymPobytom"){
+      var subj = "Žiadosť o hlasovací preukaz";
+      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz si želám odoslať na adresu uvedenú v žiadosti.";
+    }else if(type =="volbaPostouBezTrvalehoPobytu"){
+      var subj = "Žiadosť o hlasovací preukaz";
+      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec.";
+    }
+
+    $("#sendto").html(o[ico][6]);
+    $("#emailsubject").html(subj);
+    $("#emailbody").html(textemailu);
+
     $("#addressslovakia-zip").val(o[ico][4]);
     cityName = o[ico][5];
     $("#send").attr("href", "mailto:" + o[ico][6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));

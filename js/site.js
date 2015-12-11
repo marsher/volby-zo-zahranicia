@@ -131,7 +131,7 @@ function getAddressOneLine(id) {
   return ret;
 }
 
-var cityName = '';
+var cityName;
 function nastavObec() {
 
 	// list/db of all cities comes from external file (js/cities)

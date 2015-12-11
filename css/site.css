@@ -1,5 +1,5 @@
 * {box-sizing: border-box;}
-html, body { height: 100%; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif; }
+html, body { height: 100%; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif; color: #333;}
 
 
 /* Slovensko.DIGITAL COLORs */
@@ -20,25 +20,28 @@ h1, a, h6 { font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed",
 * { margin:0; padding:0; border:0; }
 h1, h2, h3, h4, h5, h6, h7, em { font-style:normal; font-weight:normal; }
 
+.main-wrapper { padding-top: 100px; }
 .wrap { position: relative; max-width:640px; width: 100%; min-height:100%; height: auto; margin:0 auto; padding: 0 20px; }
-.btn { display:block; width:100%; font-size:18px; line-height:1.5; padding: 30px; text-align:center; text-decoration: none; text-transform: uppercase; transition: background-color 0.5s ease;}
+.btn { position: relative; display:block; width:100%; font-size:18px; line-height:1.5; padding: 30px; text-align:center; text-decoration: none; transition: background-color 0.5s ease; }
 .btn.secondary { background-color:#999; color:#fff; text-decoration:none; }
 .btn.secondary:hover { background-color:#777; }
 .row { width:100%; padding:0; }
+.btn-group {display: block; font-size: 0; text-align: center;}
+.btn-group .btn { display: inline-block; width: 45%; margin: 2%; font-size: 28px; color: white; font-size: 20px; padding: 15px; }
 
 #intro {display:block;}
 
 h1 { font-size:48px; color:#000; padding:60px 0 0 0;}
 h1 a { display: block; }
-h2 { font-size:26px; line-height:1.3; padding:40px 0 0 0; }
+h2 { font-size:26px; line-height:1.3; padding:0; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;}
 h2 strong { font-size:38px; font-weight:normal; }
 h2 em { font-size:30px; line-height:42px; }
-h3 { font-size:22px; line-height:1.5; color:#555; padding-top:48px; }
+h3 { font-size:22px; line-height:1.5; color:#555; }
 h4 { font-size:20px; line-height:1.5; color:#777; }
-h5 { font-size:24px; line-height:32px; color:#888; }
+h5 { font-size:18px; line-height:1.5; color:#888; margin-bottom: 30px;}
 h6 { font-size:36px; color:#999; }
 
-.intro { min-height:100%; margin-top: 80px; background-color:#fff; z-index:2; position:relative; }
+.intro { min-height:100%; background-color:#fff; z-index:2; position:relative; }
 .intro a.btn { margin:30px 0; text-decoration: none; }
 .intro a.btn:hover { text-decoration:none; }
 .intro ul { font-size:20px; line-height:1.4; padding-left:20px; list-style:square; color:#777; }
@@ -64,23 +67,26 @@ h6 { font-size:36px; color:#999; }
 .actual-step {display: none; right: 0; top: 10px; color: #ccc; font-weight: 100; font-size: 14px;}
 .actual-step span { font-size: 1.8em;  color: #0097fd;}
 .actual-step span:after { content: "/"; color: #ccc;font-size: 14px;}
-.actual-step {display: block;}
-.section { padding-top:128px; font-size:36px; }
+.section { font-size:36px; }
 .section a { margin:24px 0; }
 
-#ziadost label { display:block; font-size:34px; color:#555; padding:24px 0 12px 0;  }
-#ziadost label em { font-size:28px; color:#888;  }
-#ziadost input, #ziadost select  { background-color:#eee; width:100%; height:80px; border:3px solid #ccc; outline:none; font-size:40px; padding:0 16px; }
+label { display:block; font-size:16px; color:#555; padding:12px 0 6px 0;  }
+label em { color:#888; }
+input, select, .select2  { background-color:#eee; width:100%; border:3px solid #ccc; outline:none; font-size:18px; padding:15px 15px; font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;}
 #ziadost input:focus { border-color:#0097fd; background-color:#eef8ff; }
 
 #pdf iframe, #pdf-final iframe { background-color:#eee; }
-#pdf .btn, #pdf-final .btn, #sign .btn { width:252px; float:left; }
-#pdf .btn.secondary, #pdf-final .btn.secondary, #sign .btn.secondary { margin-right:16px; }
-#sign button { margin: 24px 0; }
 #sign .signature-pad { border: 4px solid #eee; position:relative; }
 #sign .signature-pad canvas { position:relative; width:100%; height:592px; z-index:2; }
 #sign .signature-pad span { position:absolute; width:100%; text-align:center; z-index:1; left:0; top:32px; color:#ddd; }
 
+.sendsection {
+    font-size: 16px;
+    color: 555;
+}
+.sendsection p {
+    margin-bottom: 20px;
+}
 /* TEMP JUMP TO STEP 2
 #sign { display:block; }
 .intro, #krokomer li { display:none; } */
@@ -93,13 +99,13 @@ h6 { font-size:36px; color:#999; }
 .wrap { width:720px; }
 
 h1 { font-size:32px; padding:64px 0 0 0; }
-h2 { font-size:24px; line-height:32px; padding:24px 0 0 0; }
+h2 { font-size:24px; line-height:32px; padding:0 0 20px; margin-bottom: 20px;}
 h2 strong { font-size:24px; font-weight:normal; }
-h3 { font-size:20px; line-height:30px; padding-top:16px; }
+h3 { font-size:20px; line-height:30px; }
 h4 { font-size:18px; color:#777; }
 h6 { font-size:18px; }
 
-.intro { width:600px; padding:0 60px; margin-top: 100px;}
+.intro { width:600px; padding:0 60px;}
 .intro a.btn { margin:24px 0; width:66%; }
 .intro ul { font-size:18px; line-height:32px; padding-left:20px; list-style:square; color:#777; }
 .intro h4 { margin-top:32px; padding:24px 0 0 0; }
@@ -109,16 +115,9 @@ h6 { font-size:18px; }
 
 .btn { display:block; width:100%; font-size:20px; }
 .row { width:100%; padding: 0 60px; }
-.section { padding-top:64px; font-size:18px; }
+.section { font-size:18px; }
 .section a { margin:16px 0; }
 
-#ziadost label { font-size:17px; padding:12px 0 6px 0;  }
-#ziadost label em { font-size:14px; }
-#ziadost input, #ziadost select  { height:40px; font-size:20px; padding:0 16px; }
-#ziadost input:focus { border-color:#0097fd; background-color:#eef8ff; }
-
-#pdf .btn, #pdf-final .btn, #sign .btn { width:292px; float:left; }
-#pdf .btn.secondary, #pdf-final .btn.secondary, #sign .btn.secondary { margin-right:16px; }
 #sign button { margin: 16px 0; }
 
 }
@@ -188,5 +187,7 @@ a.desc:after {
 
 .help-block{
 	color:red;
-	font-size:smaller;
+	font-size:14px;
+    margin: 10px 0;
+    font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;
 }

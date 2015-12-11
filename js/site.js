@@ -669,6 +669,10 @@ $(document).ready(function () {
   $('[data-js-download-document]').on('click', function(e){
     e.preventDefault();
     var src = $('#final').attr('src');
+	
+	$('#step6but1').addClass('secondary');
+	$('#step6but2').removeClass('secondary');
+	
     window.open(src);
   });
 

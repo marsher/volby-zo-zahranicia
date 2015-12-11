@@ -562,7 +562,7 @@ function createDocument(preview) {
       },
       line: {
         fontSize: 12,
-        margin: [0, 0, 0, 0],
+        margin: [0, 7, 0, 0],
         padding: [0, 0, 0, 0]
       },
       footer: {
@@ -572,7 +572,7 @@ function createDocument(preview) {
       },
       space: {
         fontSize: 12,
-        margin: [0, 50, 0, 0]
+        margin: [0, 40, 0, 0]
       },
       spacesmall: {
         fontSize: 12,

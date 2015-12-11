@@ -124,7 +124,7 @@ function getAddressOneLine(id) {
 function nastavObec() {
 
 	// list/db of all cities comes from external file (js/cities)
-  var o = election.cities.slice();
+  var o = election.cities;
 
   var adresa = "";
   var ico = $("#addressslovakia-city").val();

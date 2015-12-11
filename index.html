@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="sk-SK">
 <head>
-
-	<!-- set utf8, force renderer for ie, csrf uniq token -->
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="csrf-param" content="_csrf" />
-	<meta name="csrf-token" content="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==" />
 
 	<!-- add description of the website -->
 	<title>Voľby zo zahraničia</title>
@@ -134,7 +130,6 @@
 							<h2 class="nemam-tp digitalRed">Adresa miesta pobytu v cudzine <em>(pre zaslanie hlasovacích lístkov)</em></h2>
 							<div class="col-lg-12">
 								<form id="basic-info" class="form-horizontal preukaz-ps posta-tp preukaz-tp nemam-tp" action="/" method="post">
-									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">
 									<div class="form-group field-basicinfo-name required">
 										<label class="control-label" for="basicinfo-name">Meno</label>
 										<input type="text" id="basicinfo-name" class="form-control" name="BasicInfo[name]">
@@ -157,7 +152,6 @@
 									</div>
 								</form>
 								<form id="proxy" class="form-horizontal preukaz-ps" action="/" method="post">
-									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">
 									<h3>Údaje splnomocnenca</h3>
 									<div class="form-group field-proxy-name required">
 										<label class="control-label" for="proxy-name">Meno</label>
@@ -177,7 +171,6 @@
 								</form>
 
 								<form id="address-slovakia" class="form-horizontal preukaz-ps preukaz-tp posta-tp" action="/" method="post">
-									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">
 									<hr>
 									<h3>Adresa trvalého pobytu v Slovenskej republike:</h3>
 									<div class="form-group field-addressslovakia-street required">
@@ -220,7 +213,6 @@
 								<hr>
 
 								<form id="address-foreign" class="form-horizontal posta-tp preukaz-tp nemam-tp" action="/" method="post">
-									<input type="hidden" name="_csrf" value="by1FSXJxWjMgXzwiIzIRSltDEn46MmkHN3UzAhYjN11ZZx8cMCkXfA==">
 									<h3 id="foreign-header">Korešpondenčná adresa pre odoslanie hlasovacích lístkov alebo preukazu:</h3>
 									<div class="form-group field-addressforeign-street required">
 										<label class="control-label" for="addressforeign-street">Ulica</label>

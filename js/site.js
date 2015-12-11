@@ -121,10 +121,11 @@ function getAddressOneLine(id) {
   return ret;
 }
 
+var cityName;
 function nastavObec() {
 
 	// list/db of all cities comes from external file (js/cities)
-  var o = election.cities.slice();
+  var o = election.cities;
 
   var adresa = "";
   var ico = $("#addressslovakia-city").val();
@@ -150,6 +151,7 @@ function nastavObec() {
     var subj = "Hlasovanie postou alebo ziadost o listky";
     var textemailu = "Toto je text emailu";
     $("#addressslovakia-zip").val(o[ico][4]);
+    cityName = o[ico][5];
     $("#send").attr("href", "mailto:" + o[ico][6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
   }
 }
@@ -257,7 +259,7 @@ function createDocument(preview) {
       {
         columns: [
           {text: 'Obec: ', style: 'line',},
-          {text: $('#addressslovakia-city').val().toUpperCase(), style: 'value'},
+          {text: cityName.toUpperCase(), style: 'value'},
           {text: ''}
         ]
       },

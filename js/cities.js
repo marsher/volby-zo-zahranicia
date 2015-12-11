@@ -2145,7 +2145,7 @@
 	o['00305065'] = ['Mestský úrad', '', 'Mierové námestie', '8', '903 01', 'Senec', 'musenec@senec.sk'];
 	o['00327751'] = ['Obecný úrad', '', '', '31', '082 03', 'Lemešany', 'obec.seniakovce@zoznam.sk'];
 	o['00319546'] = ['Obecný úrad', '', 'Senné', '81', '991 01', 'Senné', 'obec.senne@gmail.com'];
-	o['00309974'] = ['Mestský úrad', '', 'Štefánikova', '1408/56', '905 25', 'Senica', 'spravca@msu.senica.sk'];
+	o['00309974'] = ['Mestský úrad', '', 'Štefánikova', '1408/56', '905 01', 'Senica', 'spravca@msu.senica.sk'];
 	o['00325767'] = ['Obecný úrad', '', 'Športová', '230', '072 13', 'Palín', 'podatelna@obecsenne.sk'];
 	o['00320234'] = ['Obecný úrad', '', 'Senohrad', '151', '962 43', 'Senohrad', 'info@senohrad.sk'];
 	o['00324698'] = ['Obecný úrad', '', '', '200', '044 58', 'Seňa', 'obecsena@obecsena.sk'];

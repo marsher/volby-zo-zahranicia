@@ -154,7 +154,7 @@ function nastavObec() {
         }
         adresa += "\n";
       }
-      adresa += o[ico][4] + " " + o[ico][5] + "\n" + o[ico][6];
+      adresa += o[ico][4] + " " + o[ico][5] + "\n" + o[ico][6].replace(/;/i, "\n");
     }
     $("#adresa").val(adresa);
 

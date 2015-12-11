@@ -105,11 +105,21 @@ function getAddressOneLine(id) {
   if ($('#' + id + '-street').val()) {
     ret += $('#' + id + '-street').val() + " " + $('#' + id + '-streetno').val();
   } else {
-    ret += $('#' + id + '-city').val() + " " + $('#' + id + '-streetno').val();
+    if (id == "addressslovakia") {
+      cityName + " " + $('#' + id + '-streetno').val();
+    } else {
+      ret += $('#' + id + '-city').val() + " " + $('#' + id + '-streetno').val();
+    }
+    
   }
   if (ret != " ") ret += ", ";
 
-  ret += $('#' + id + '-zip').val() + " " + $('#' + id + '-city').val();
+  
+  if (id == "addressslovakia") {
+    ret += $('#' + id + '-zip').val() + " " + cityName;
+  } else {
+    ret += $('#' + id + '-zip').val() + " " + $('#' + id + '-city').val();
+  }
 
   if (ret != " ") ret += ", ";
 
@@ -121,10 +131,11 @@ function getAddressOneLine(id) {
   return ret;
 }
 
+var cityName;
 function nastavObec() {
 
 	// list/db of all cities comes from external file (js/cities)
-  var o = election.cities.slice();
+  var o = election.cities;
 
   var adresa = "";
   var ico = $("#addressslovakia-city").val();
@@ -147,9 +158,26 @@ function nastavObec() {
     }
     $("#adresa").val(adresa);
 
-    var subj = "Hlasovanie postou alebo ziadost o listky";
-    var textemailu = "Toto je text emailu";
+    var type =  $('#tpFlag').val();
+    var subj = "Ziadost";
+    var textemailu = "";
+    if(type == 'volbaPostouSTrvalymPobytom'){
+      var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
+      var textemailu = "Podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016. Žiadosť odosielam v prílohe";
+    }else if(type == "volbaPostouSTrvalymPobytom"){
+      var subj = "Žiadosť o hlasovací preukaz";
+      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz si želám odoslať na adresu uvedenú v žiadosti.";
+    }else if(type =="volbaPostouBezTrvalehoPobytu"){
+      var subj = "Žiadosť o hlasovací preukaz";
+      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec.";
+    }
+
+    $("#sendto").html(o[ico][6]);
+    $("#emailsubject").html(subj);
+    $("#emailbody").html(textemailu);
+
     $("#addressslovakia-zip").val(o[ico][4]);
+    cityName = o[ico][5];
     $("#send").attr("href", "mailto:" + o[ico][6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
   }
 }
@@ -257,7 +285,7 @@ function createDocument(preview) {
       {
         columns: [
           {text: 'Obec: ', style: 'line',},
-          {text: $('#addressslovakia-city').val().toUpperCase(), style: 'value'},
+          {text: cityName.toUpperCase(), style: 'value'},
           {text: ''}
         ]
       },
@@ -551,6 +579,7 @@ function createDocument(preview) {
       value: {
         fontSize: 12,
         bold: true,
+        margin: [0, 7, 0, 0],
         decoration: 'underline',
         decorationStyle: 'dotted'
       },
@@ -562,7 +591,7 @@ function createDocument(preview) {
       },
       line: {
         fontSize: 12,
-        margin: [0, 0, 0, 0],
+        margin: [0, 7, 0, 0],
         padding: [0, 0, 0, 0]
       },
       footer: {
@@ -572,7 +601,7 @@ function createDocument(preview) {
       },
       space: {
         fontSize: 12,
-        margin: [0, 50, 0, 0]
+        margin: [0, 40, 0, 0]
       },
       spacesmall: {
         fontSize: 12,
@@ -635,6 +664,12 @@ $(document).ready(function () {
 
   $('#id-button').on("click", function (event) {
     createDocument(true);
+  });
+
+  $('[data-js-download-document]').on('click', function(e){
+    e.preventDefault();
+    var src = $('#final').attr('src');
+    window.open(src);
   });
 
   $('#camera-input').change(function () {

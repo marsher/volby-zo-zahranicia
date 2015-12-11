@@ -195,3 +195,7 @@ a.desc:after {
 .body-content .section{
 	padding: 50px 0 0 0;
 }
+.justify{    
+	text-align: justify;
+    text-justify: inter-word;
+}

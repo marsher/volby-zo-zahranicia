@@ -661,7 +661,7 @@ function createDocument(preview) {
         margin: [0, 20, 0, 0]
       },
       signatureStyle: {
-        margin: [0, -20, 0, 0],
+        margin: [0, -60, 0, 0],
         alignment: 'right'
       },
       signatureTextStyle: {

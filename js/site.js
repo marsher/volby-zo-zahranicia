@@ -132,6 +132,45 @@ function getAddressOneLine(id) {
 }
 
 var cityName;
+
+function nacitajKraje(){
+	var options = $("#addressslovakia-kraj");
+	options.find('option').remove();
+	for (var key in election.cities) {
+		options.append($("<option />").text(key));
+	}
+	nastavKraj();
+}
+function nastavKraj(){
+	var options = $("#addressslovakia-okres");
+	options.find('option').remove();
+    var kraj = $("#addressslovakia-kraj").val();
+	for (var key in election.cities[kraj]) {
+		options.append($("<option />").text(key));
+	}
+	nastavOkres();
+}
+function nastavOkres(){
+	var options = $("#addressslovakia-city");
+	options.find('option').remove();
+    var kraj = $("#addressslovakia-kraj").val();
+    var okres = $("#addressslovakia-okres").val();
+	for (var key in election.cities[kraj][okres]) {
+		options.append($("<option />").val(key).text(election.cities[kraj][okres][key][10]));
+	}
+	nastavObec();
+}
+function getObec(){
+	
+  var ico = $("#addressslovakia-city").val();
+  var kraj = $("#addressslovakia-kraj").val();
+  var okres = $("#addressslovakia-okres").val();
+  
+    if (ico && o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
+		return o[kraj][okres][ico][10];
+	}
+	return "Nepodarilo sa načítať obec";
+}
 function nastavObec() {
 
 	// list/db of all cities comes from external file (js/cities)
@@ -139,23 +178,28 @@ function nastavObec() {
 
   var adresa = "";
   var ico = $("#addressslovakia-city").val();
+  var kraj = $("#addressslovakia-kraj").val();
+  var okres = $("#addressslovakia-okres").val();
+  
   if (ico) {
-    if (o[ico]) {
-      adresa = o[ico][0] + "\n";
-      if (o[ico][1] != "") {
-        adresa += o[ico][1] + "\n";
+	
+    if (o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
+	  var data = o[kraj][okres][ico];
+      adresa = data[0] + "\n";
+      if (data[1] != "") {
+        adresa += data[1] + "\n";
       }
-      if (o[ico][2] != "" || o[ico][3] != "") {
-        if (o[ico][2]) {
-          adresa += o[ico][2] + " ";
+      if (data[2] != "" || data[3] != "") {
+        if (data[2]) {
+          adresa += data[2] + " ";
         }
-        if (o[ico][3]) {
-          adresa += o[ico][3];
+        if (data[3]) {
+          adresa += data[3];
         }
         adresa += "\n";
       }
-      adresa += o[ico][4] + " " + o[ico][5] + "\n" + o[ico][6];
-    }
+      adresa += data[4] + " " + data[5] + "\n" + data[6];
+	  
     $("#adresa").val(adresa);
 
     var type =  $('#tpFlag').val();
@@ -172,18 +216,21 @@ function nastavObec() {
       var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec.";
     }
 
-    $("#sendto").html(o[ico][6]);
+    $("#sendto").html(data[6]);
     $("#emailsubject").html(subj);
     $("#emailbody").html(textemailu);
 
-    $("#addressslovakia-zip").val(o[ico][4]);
-    cityName = o[ico][5];
-    $("#send").attr("href", "mailto:" + o[ico][6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
+    $("#addressslovakia-zip").val(data[4]);
+    cityName = data[5];
+    $("#send").attr("href", "mailto:" + data[6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
+	
+    }
   }
 }
 $(function () {
-  nastavObec();
-  $("#addressslovakia-city").select2({width:'100%'});
+	nacitajKraje();
+  //nastavObec();
+  //$("#addressslovakia-city").select2({width:'100%'});
 });
 
 function createDocument(preview) {

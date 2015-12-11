@@ -551,6 +551,7 @@ function createDocument(preview) {
       value: {
         fontSize: 12,
         bold: true,
+        margin: [0, 7, 0, 0],
         decoration: 'underline',
         decorationStyle: 'dotted'
       },

@@ -191,3 +191,7 @@ a.desc:after {
     margin: 10px 0;
     font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;
 }
+
+.body-content .section{
+	padding: 50px 0 0 0;
+}

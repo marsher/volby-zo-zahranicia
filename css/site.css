@@ -25,6 +25,8 @@ h1, h2, h3, h4, h5, h6, h7, em { font-style:normal; font-weight:normal; }
 .btn.secondary { background-color:#999; color:#fff; text-decoration:none; }
 .btn.secondary:hover { background-color:#777; }
 .row { width:100%; padding:0; }
+.btn-sm-text { line-height: 60px; font-size:30px; }
+
 
 #intro { min-height:100%; background-color:#fff; z-index:2; position:relative; display:block; }
 
@@ -99,6 +101,7 @@ h6 { font-size:18px; }
 .nav-item a { font-size:18px; padding:16px 0; }
 
 .btn { display:block; width:100%; height:60px; font-size:20px; line-height:60px; }
+.btn-sm-text { white-space: nowrap;font-size: 18px; }
 .row { width:100%; padding: 0 60px; }
 .section { padding-top:64px; font-size:18px; }
 .section a { margin:16px 0; }

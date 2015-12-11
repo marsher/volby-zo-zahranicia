@@ -204,7 +204,7 @@ function nastavObec() {
         }
         adresa += "\n";
       }
-      adresa += data[4] + " " + data[5] + "\n" + data[6];
+      adresa += data[4] + " " + data[5] + "\n" + data[6].replace(/;/i, "\n");
 	  
     $("#adresa").val(adresa);
 

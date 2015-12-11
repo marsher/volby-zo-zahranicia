@@ -1,3 +1,5 @@
+window.election = window.election || {};
+
 /* STEP 0 */
 var krok = 0;
 
@@ -130,7 +132,8 @@ function nastavObec() {
   var ico = $("#addressslovakia-city").val();
   if (ico) {
     if (o[ico]) {
-      adresa = o[ico][0] + "\n";
+        window.election.currentlySelectedCity = o[ico];
+        adresa = o[ico][0] + "\n";
       if (o[ico][1] != "") {
         adresa += o[ico][1] + "\n";
       }
@@ -237,33 +240,33 @@ function createDocument(preview) {
       {
         text: 'Adresa trvalého pobytu v Slovenskej republike:',
         style: 'line',
-        //style: 'header', 
+        //style: 'header',
         bold: true
       },
       {
         columns: [
-          {text: 'Ulica: ', style: 'line',},
+          {text: 'Ulica: ', style: 'line'},
           {text: $('#addressslovakia-street').val().toUpperCase(), style: 'value'},
           {text: ''}
         ]
       },
       {
         columns: [
-          {text: 'Číslo domu: ', style: 'line',},
+          {text: 'Číslo domu: ', style: 'line'},
           {text: $('#addressslovakia-streetno').val().toUpperCase(), style: 'value'},
           {text: ''}
         ]
       },
       {
         columns: [
-          {text: 'Obec: ', style: 'line',},
-          {text: $('#addressslovakia-city').val().toUpperCase(), style: 'value'},
+          {text: 'Obec: ', style: 'line'},
+          {text: window.election.currentlySelectedCity[5].toUpperCase(), style: 'value'},
           {text: ''}
         ]
       },
       {
         columns: [
-          {text: 'PSČ: ', style: 'line',},
+          {text: 'PSČ: ', style: 'line'},
           {text: $('#addressslovakia-zip').val(), style: 'value'},
           {text: ''}
         ]
@@ -272,7 +275,7 @@ function createDocument(preview) {
       {
         text: 'Adresa miesta pobytu v cudzine (pre zaslanie hlasovacích lístkov a obálok):',
         style: 'line',
-        //style: 'header', 
+        //style: 'header',
         bold: true
       }
     ];
@@ -644,5 +647,5 @@ $(document).ready(function () {
     }
     reader.readAsDataURL($('#camera-input')[0].files[0]);
   })
-  
+
 });

@@ -105,7 +105,7 @@ h3 { font-size:20px; line-height:30px; }
 h4 { font-size:18px; color:#777; }
 h6 { font-size:18px; }
 
-.intro { width:600px; padding:0 60px;}
+.intro { width:600px; padding:0px;}
 .intro a.btn { margin:24px 0; width:66%; }
 .intro ul { font-size:18px; line-height:32px; padding-left:20px; list-style:square; color:#777; }
 .intro h4 { margin-top:32px; padding:24px 0 0 0; }
@@ -114,7 +114,7 @@ h6 { font-size:18px; }
 .nav-item a {  }
 
 .btn { display:block; width:100%; font-size:20px; }
-.row { width:100%; padding: 0 60px; }
+.row { width:100%; padding: 0px; }
 .section { font-size:18px; }
 .section a { margin:16px 0; }
 

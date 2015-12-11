@@ -105,11 +105,21 @@ function getAddressOneLine(id) {
   if ($('#' + id + '-street').val()) {
     ret += $('#' + id + '-street').val() + " " + $('#' + id + '-streetno').val();
   } else {
-    ret += $('#' + id + '-city').val() + " " + $('#' + id + '-streetno').val();
+    if (id == "addressslovakia") {
+      cityName + " " + $('#' + id + '-streetno').val();
+    } else {
+      ret += $('#' + id + '-city').val() + " " + $('#' + id + '-streetno').val();
+    }
+    
   }
   if (ret != " ") ret += ", ";
 
-  ret += $('#' + id + '-zip').val() + " " + $('#' + id + '-city').val();
+  
+  if (id == "addressslovakia") {
+    ret += $('#' + id + '-zip').val() + " " + cityName;
+  } else {
+    ret += $('#' + id + '-zip').val() + " " + $('#' + id + '-city').val();
+  }
 
   if (ret != " ") ret += ", ";
 

@@ -18,6 +18,7 @@ $('a.btn-step').click(function() {
     $.when($($btn.attr('href')).show()).done(function() {
         resizeCanvas();
         App.Analytics.trackStep($btn.prop('hash'), App.currentStep, isStepBack);
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
     })
 });
 

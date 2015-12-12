@@ -81,30 +81,6 @@ function preukazPS() {
   $('#tpFlag').val('ziadostOPreukaPreSplnomocnenca')
 }
 
-/*
- function preukazPoslat(){
- $('#address-slovakia').show();
- $('#address-foreign').show();
- $('#tpFlag').val('pp');
- $('#photo-link').hide();
- $('#addressforeign-country').val('Slovensko');
- $('#foreign-header').hide();
- $('#local-header').show();
- $('#proxy').hide();
- }
-
- function preukazSplnomocnenec(){
- $('#address-slovakia').show();
- $('#address-foreign').hide();
- $('#tpFlag').val('ps');
- $('#photo-link').hide();
- $('#local-header').show();
- $('#proxy').show();
-
- }
-
- */
-
 
 function getAddressOneLine(id) {
   var ret = "";
@@ -211,15 +187,19 @@ function nastavObec() {
     var type =  $('#tpFlag').val();
     var subj = "Ziadost";
     var textemailu = "";
+	var meno = $('#basicinfo-name').val()+" "+$('#basicinfo-lastname').val();
     if(type == 'volbaPostouSTrvalymPobytom'){
       var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
-      var textemailu = "Podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016. Žiadosť odosielam v prílohe. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. Ďakujem.";
-    }else if(type == "volbaPostouSTrvalymPobytom"){
+      var textemailu = "Podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016. Žiadosť odosielam v prílohe. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A")+" "+meno;
+    }else if(type == 'volbaPostouBezTrvalehoPobytu'){
+      var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
+      var textemailu = "Podľa   § 59 ods. 1   zákona   č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu uvedenú v žiadosti. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A")+" "+meno;
+    }else if(type == "ziadostOPreukazPostou"){
       var subj = "Žiadosť o hlasovací preukaz";
-      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz si želám odoslať na adresu uvedenú v žiadosti. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. Ďakujem.";
-    }else if(type =="volbaPostouBezTrvalehoPobytu"){
+      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz si želám odoslať na adresu uvedenú v žiadosti. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A")+" "+meno;
+    }else if(type =="ziadostOPreukaPreSplnomocnenca"){
       var subj = "Žiadosť o hlasovací preukaz";
-      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. Ďakujem.";
+      var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A")+" "+meno;
     }
 
     $("#sendto").html(data[6]);
@@ -233,13 +213,9 @@ function nastavObec() {
     }
   }
 }
-$(function () {
-	nacitajKraje();
-  //nastavObec();
-  //$("#addressslovakia-city").select2({width:'100%'});
-});
 
 function createDocument(preview) {
+  nastavObec();
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
@@ -312,7 +288,7 @@ function createDocument(preview) {
 
 
   if (type == 'volbaPostouSTrvalymPobytom') {
-    paragraph = 'Podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. Ďakujem.';
+    paragraph = 'Podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016.';
     localaddress = [
       {text: '', style: 'spacesmall'},
       {
@@ -617,6 +593,12 @@ function createDocument(preview) {
     ]
   }
   var dd = {
+	pageSize: 'A4',
+	info: {
+		title: 'Žiadosť o účasť vo voľbách',
+		author: 'volby.digital',
+		subject: 'Žiadosť o účasť vo voľbách',
+	},
     content: [
       formContent,
       signature,
@@ -751,6 +733,8 @@ $(document).ready(function () {
 	  $("#preview").hide();
   }
   
+  nacitajKraje();
+  nastavObec();
 });
 
 

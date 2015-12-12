@@ -1076,7 +1076,6 @@ election.cities={'Banskobystrický kraj':{'Okres Banská Bystrica':{'badin':['Ob
 'zemplinske-hradiste':['Obecný úrad','','Obecná','392','076 01','Zemplínske Hradište','bocianopolis@azet.sk;obec@zemplinskehradiste.sk','056','672 73 23','0907 977 290','Zemplínske Hradište'],
 'zemplinske-jastrabie':['Obecný úrad','','Hlavná ','27/61','076 05 ','Zemplínske Jastrabie','obeczjastrabie@centrum.sk;obeczemplinskejastrabie@kid.sk','056','668 19 90, 91, 92','0911 602 640,0902 919 680,0902 919 681','Zemplínske Jastrabie'],
 'zemplinsky-branc':['Obecný úrad','','Kostolná ','42','076 02 ','Novosad ','obeczbranc@e-max.sk','056','668 88 60','0948 281 600','Zemplínsky Branč']}},
-'Mimo SR':{'Mimo SR':{'mvsr':['Ministerstvo vnútra Slovenskej republiky','odbor volieb, referenda a politických strán','Drieňová','22','826 86','Bratislava 29','volby@minv.sk','','','','Ministerstvo vnútra Slovenskej republiky']}},
 'Nitriansky kraj':{'Okres Komárno':{'bajc':['Obecný úrad','','Bajč','130','946 54','Bajč','ocubajc@stonline.sk','035','768 11 39','0918 458 076','Bajč'],
 'batorove-kosihy':['Obecný úrad','','Bátorove Kosihy','873','946 34','Bátorové Kosihy','batorovekosihy@batorovekosihy.sk','035','761 17 20,21,22,30,31','0905 625 600','Bátorove Kosihy'],
 'bodza':['Obecný úrad','','Bodza','108','946 16','Bodza','bodza@real-net.sk','035','778 00 22','0905 400 881','Bodza'],

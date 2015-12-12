@@ -75,11 +75,7 @@ function nemamTP() {
   $('#photo-link').show();
 
   $('#tpFlag').val('volbaPostouBezTrvalehoPobytu');
-  $("#addressslovakia-kraj").val("Mimo SR");
-  nastavKraj();
-  $("#addressslovakia-okres").val("Mimo SR");
-  nastavOkres();
-  $("#addressslovakia-obec").val("mvsr");
+  $("#adresa").val("Ministerstvo vnútra Slovenskej republiky\nodbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC");
 
 }
 
@@ -160,12 +156,9 @@ function nacitajKraje(){
 	var options = $("#addressslovakia-kraj");
 	options.find('option').remove();
 	for (var key in election.cities) {
-		if(key == "Mimo SR"){
-			options.append($("<option />").text(key).addClass("hidden").addClass("nemam-tp"));
-		}else{
-			options.append($("<option />").text(key));
-		}
+		options.append($("<option />").text(key));
 	}
+	options.select2({width:"100%"});
 	nastavKraj();
 }
 function nastavKraj(){
@@ -176,6 +169,8 @@ function nastavKraj(){
 		options.append($("<option />").text(key));
 	}
 	nastavOkres();
+	options.select2({width:"100%"});
+
 }
 function nastavOkres(){
 	var options = $("#addressslovakia-city");
@@ -186,6 +181,8 @@ function nastavOkres(){
 		options.append($("<option />").val(key).text(election.cities[kraj][okres][key][10]));
 	}
 	nastavObec();
+	options.select2({width:"100%"});
+
 }
 function getObec(){
 
@@ -228,8 +225,13 @@ function nastavObec() {
       }
       adresa += data[4] + " " + data[5] + "\n" + data[6].replace(/;/i, "\n");
 
-    $("#adresa").val(adresa);
 
+    if($('#tpFlag').val() == 'volbaPostouBezTrvalehoPobytu'){
+  	  $("#adresa").val("Ministerstvo vnútra Slovenskej republiky\nodbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC");
+    }else{
+      $("#adresa").val(adresa);
+    }
+	
     var type =  $('#tpFlag').val();
     var subj = "Ziadost";
     var textemailu = "";

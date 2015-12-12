@@ -231,8 +231,15 @@ function nastavObec() {
       $("#sendto").html("volby@minv.sk");
     }else{
       $("#adresa").val(adresa);
-      $("#sendto").html(data[6]);
+	  $("#sendto").html(data[6]);
     }
+	if($("#sendto").html().indexOf("@") == -1){
+		$("#sendemail").hide();
+		$("#noemail").show();
+	}else{
+		$("#sendemail").show();
+		$("#noemail").hide();
+	}
 	
     var type =  $('#tpFlag').val();
     var subj = "Ziadost";

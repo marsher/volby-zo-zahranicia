@@ -199,3 +199,6 @@ a.desc:after {
 	text-align: justify;
     text-justify: inter-word;
 }
+.hidden{
+	display:none;
+}

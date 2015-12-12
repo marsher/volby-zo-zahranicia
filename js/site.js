@@ -1,13 +1,24 @@
-window.election.currentStep = 0;
-$('a.btn-step').click(function() {
-	var $btn = $(this);
-	if (!$btn.hasClass("dontcountstep")) {
-		if ($btn.is('#krokomer a')) { window.election.currentStep--; } else { window.election.currentStep++; }
-	}
+var App = window.election;
 
-	updateStep(window.election.currentStep);
-	$('.row').hide();
-	$.when($($(this).attr('href')).show()).done(resizeCanvas())
+App.currentStep = 0;
+$('a.btn-step').click(function() {
+    var $btn = $(this);
+    var isStepBack = false;
+
+    if (!$btn.hasClass("dontcountstep")) {
+        isStepBack = $btn.is('#krokomer a');
+        (isStepBack)
+            ? App.currentStep--
+            : App.currentStep++;
+
+        updateStep(App.currentStep);
+    }
+
+    $('.row').hide();
+    $.when($($btn.attr('href')).show()).done(function() {
+        resizeCanvas();
+        App.Analytics.trackStep($btn.prop('hash'), App.currentStep, isStepBack);
+    })
 });
 
 function updateStep(step) {

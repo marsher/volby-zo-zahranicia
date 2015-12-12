@@ -1,22 +1,38 @@
-/* STEP 0 */
-var krok = 0;
-
-$('a.btn-step').click(function(){
-	if($(this).hasClass("dontcountstep")){
-		// nepocitaj krok
-	}else{
-		if ($(this).is('#krokomer a')) { krok--; } else { krok++; }
+window.election.currentStep = 0;
+$('a.btn-step').click(function() {
+	var $btn = $(this);
+	if (!$btn.hasClass("dontcountstep")) {
+		if ($btn.is('#krokomer a')) { window.election.currentStep--; } else { window.election.currentStep++; }
 	}
-	updateStep();
+
+	updateStep(window.election.currentStep);
 	$('.row').hide();
 	$.when($($(this).attr('href')).show()).done(resizeCanvas())
 });
 
-function updateStep() {
-    $('#krokomer li').hide();
-    $('#krokomer li:nth-child('+krok+')').show();
-    $('#krokomer .actual-step').show();
-    $('#krokomer .actual-step span').text(krok);
+function updateStep(step) {
+    var $progressContainer = $('.nav--progress');
+
+    if (0 === step) {
+        $progressContainer.hide();
+        return;
+    }
+
+    $progressContainer
+        .find('li:nth-child('+step+')')
+        .siblings('li')
+            .hide()
+        .end()
+        .show();
+
+    var $stepCounter = $progressContainer.find('.counter');
+    $stepCounter
+        .children('.counter__step')
+            .text(step)
+        .end()
+        .show();
+
+    $progressContainer.show();
 }
 
 function clearForm() {
@@ -52,7 +68,7 @@ function nemamTP() {
   $("#addressslovakia-okres").val("Mimo SR");
   nastavOkres();
   $("#addressslovakia-obec").val("mvsr");
-  
+
 }
 
 function postaTP() {
@@ -84,7 +100,7 @@ function getAddressOneLine(id) {
   var ret = "";
   var format = $('#' + id + '-format').val();
   if(!format) format = "sk";
-  
+
   if ($('#' + id + '-street').val()) {
 	if(format=="sk"){
      ret += $('#' + id + '-street').val() + " " + $('#' + id + '-streetno').val();
@@ -95,18 +111,18 @@ function getAddressOneLine(id) {
     if (id == "addressslovakia") {
       getObec() + " " + $('#' + id + '-streetno').val();
     } else {
-		
+
  	 if(format=="sk"){
       ret += $('#' + id + '-city').val() + " " + $('#' + id + '-streetno').val();
 	 }else if(format == "usa"){
       ret += $('#' + id + '-streetno').val() + " " + $('#' + id + '-city').val();
 	 }
     }
-    
+
   }
   if (ret != " ") ret += ", ";
 
-  
+
   if (id == "addressslovakia") {
 	ret += $('#' + id + '-zip').val() + " " + getObec();
   } else {
@@ -156,7 +172,7 @@ function nastavOkres(){
 	nastavObec();
 }
 function getObec(){
-	
+
   var ico = $("#addressslovakia-city").val();
   var kraj = $("#addressslovakia-kraj").val();
   var okres = $("#addressslovakia-okres").val();
@@ -176,9 +192,9 @@ function nastavObec() {
   var ico = $("#addressslovakia-city").val();
   var kraj = $("#addressslovakia-kraj").val();
   var okres = $("#addressslovakia-okres").val();
-  
+
   if (ico) {
-	
+
     if (o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
 	  var data = o[kraj][okres][ico];
       adresa = data[0] + "\n";
@@ -195,7 +211,7 @@ function nastavObec() {
         adresa += "\n";
       }
       adresa += data[4] + " " + data[5] + "\n" + data[6].replace(/;/i, "\n");
-	  
+
     $("#adresa").val(adresa);
 
     var type =  $('#tpFlag').val();
@@ -222,7 +238,7 @@ function nastavObec() {
 
     $("#addressslovakia-zip").val(data[4]);
     $("#send").attr("href", "mailto:" + data[6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
-	
+
     }
   }
 }
@@ -307,7 +323,7 @@ function createDocument(preview) {
       {
         text: 'Adresa trvalého pobytu v Slovenskej republike:',
         style: 'line',
-        //style: 'header', 
+        //style: 'header',
         bold: true
       },
       {
@@ -342,7 +358,7 @@ function createDocument(preview) {
       {
         text: 'Adresa miesta pobytu v cudzine (pre zaslanie hlasovacích lístkov a obálok):',
         style: 'line',
-        //style: 'header', 
+        //style: 'header',
         bold: true
       }
     ];
@@ -668,11 +684,11 @@ function createDocument(preview) {
       }
     }
   }
-  
+
   if(detectIE()){
 	  pdfMake.createPdf(dd).download();
   }else{
-  
+
 	  if (preview === true) {
 		pdfMake.createPdf(dd).getDataUrl(function (result) {
 		  $('#preview').attr('src', result);
@@ -723,10 +739,10 @@ $(document).ready(function () {
   $('[data-js-download-document]').on('click', function(e){
     e.preventDefault();
     var src = $('#final').attr('src');
-	
+
 	$('#step6but1').addClass('secondary');
 	$('#step6but2').removeClass('secondary');
-	
+
     window.open(src);
   });
 
@@ -737,7 +753,7 @@ $(document).ready(function () {
     }
     reader.readAsDataURL($('#camera-input')[0].files[0]);
   });
-  
+
   if(detectIE()){
 	  $("#alertie").show();
 	  $(".body-content .section").css("padding","100px 0 0 0");
@@ -745,7 +761,7 @@ $(document).ready(function () {
 	  $("#final").hide();
 	  $("#preview").hide();
   }
-  
+
   nacitajKraje();
   nastavObec();
 });

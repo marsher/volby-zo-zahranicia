@@ -57,6 +57,15 @@ if (($handle = fopen("../obce_08_12_2015.txt", "r")) !== FALSE) {
 							if(strpos($em,"primator") !== false){
 								unset($emaily[$k]);
 							}
+							if(strpos($em,"primatorka") !== false){
+								unset($emaily[$k]);
+							}
+							if(strpos($em,"kancelariaprimatora") !== false){
+								unset($emaily[$k]);
+							}
+							if(strpos($em,"primator") !== false){
+								unset($emaily[$k]);
+							}
 							if(strpos($em,"prednosta") !== false){
 								unset($emaily[$k]);
 							}
@@ -121,8 +130,9 @@ if (($handle = fopen("../obce_08_12_2015.txt", "r")) !== FALSE) {
 						//exit;
 						/**/
 					}
+					$e = implode(";",$emaily);
 					$name = \AsyncWeb\Text\Texts::clear($data[$n2k["obec"]]);
-					$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$data[$n2k["email"]]."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."']";
+					$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."']";
 				}
 			}
 		}

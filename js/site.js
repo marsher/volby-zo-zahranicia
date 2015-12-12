@@ -246,8 +246,9 @@ function nastavObec() {
     $("#sendto").html(data[6]);
     $("#emailsubject").html(subj);
     $("#emailbody").html(textemailu);
-
-    $("#addressslovakia-zip").val(data[4]);
+	if(jQuery.data( document.body, "psc-locked")){}else{
+		$("#addressslovakia-zip").val(data[4]);
+	}
     $("#send").attr("href", "mailto:" + data[6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
 
     }
@@ -255,6 +256,7 @@ function nastavObec() {
 }
 
 function createDocument(preview) {
+  jQuery.data( document.body, "psc-locked", "1");
   nastavObec();
   var today = new Date();
   var dd = today.getDate();

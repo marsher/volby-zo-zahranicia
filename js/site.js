@@ -159,7 +159,11 @@ function nacitajKraje(){
 	var options = $("#addressslovakia-kraj");
 	options.find('option').remove();
 	for (var key in election.cities) {
-		options.append($("<option />").text(key));
+		if(key == "Mimo SR"){
+			options.append($("<option />").text(key).addClass("hidden").addClass("nemam-tp"));
+		}else{
+			options.append($("<option />").text(key));
+		}
 	}
 	nastavKraj();
 }

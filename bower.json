@@ -1,0 +1,17 @@
+{
+  "name": "volby-zo-zahranicia",
+  "homepage": "https://github.com/marsher/volby-zo-zahranicia",
+  "description": "Appka na generovanie ziadosti pre volby do NRSR 2016",
+  "main": "",
+  "moduleType": [],
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "select2": "~4.0.1",
+    "signature_pad": "~1.5.2",
+    "pdfmake": "~0.1.20"
+  }
+}

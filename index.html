@@ -9,7 +9,7 @@
 	<!-- add description of the website -->
 	<title>Voľby zo zahraničia</title>
 	<meta name="description" content="Pripravte si žiadosť cez telefón a bez čítačky. Stačí Vám adresa a rodné číslo." />
-	<link href="assets/css/select2.min.css" rel="stylesheet" />
+	<link href="assets/components/select2/dist/css/select2.min.css" rel="stylesheet">
 	<link href="css/site.css" rel="stylesheet" />
 
 	<!-- open graph specification if anyone shares -->
@@ -23,8 +23,6 @@
 	<meta name="twitter:image" content="https://volby.digital/images/banner.png"/>
 	<meta name="twitter:title" content="Voľby zo zahraničia" />
 	<meta name="twitter:description" content="Pripravte si žiadosť cez telefón a bez čítačky. Stačí Vám adresa a rodné číslo.."/>
-
-
 </head>
 <body>
 
@@ -68,7 +66,7 @@
 						</h4>
 						<div class="alert alert-danger hidden" id="alertie">POZOR! Používate prehliadač ktorý nepodporuje vytváranie náhľadov. Odporúčame Vám použiť chrome alebo firefox.</div>
 						<div id="github" class="github formatted">
-							<br/> Dostupné sú aj <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia">zdrojové kódy</a>, 
+							<br/> Dostupné sú aj <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia">zdrojové kódy</a>,
 							<a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/blob/master/README.md">dodatočné informácie</a>
 							a <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/issues">issues</a> na Githube.
 						</div>
@@ -315,16 +313,16 @@
 		</div>
 	</main>
 
-<script src="assets/js/jquery-latest.min.js"></script>
+<script src="assets/components/jquery/dist/jquery.min.js"></script>
 <script src="assets/e560cfe3/yii.js"></script>
 <script src="assets/e560cfe3/yii.validation.js"></script>
 <script src="assets/e560cfe3/yii.activeForm.js"></script>
 <script src="js/cities.js"></script>
 <script src="js/site.js"></script>
-<script src="assets/js/select2.min.js"></script>
-<script src="assets/js/pdfmake.min.js"></script>
-<script src="assets/js/vfs_fonts.js"></script>
-<script src="assets/js/signature_pad.min.js"></script>
+<script src="assets/components/select2/dist/js/select2.full.min.js"></script>
+<script src="assets/components/pdfmake/build/pdfmake.min.js"></script>
+<script src="assets/components/pdfmake/build/vfs_fonts.js"></script>
+<script src="assets/components/signature_pad/signature_pad.min.js"></script>
 <script type="text/javascript">jQuery(document).ready(function () {
 jQuery('#basic-info').yiiActiveForm([{"id":"basicinfo-name","name":"name","container":".field-basicinfo-name","input":"#basicinfo-name","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať Vaše krstné meno."});}},{"id":"basicinfo-lastname","name":"lastname","container":".field-basicinfo-lastname","input":"#basicinfo-lastname","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {

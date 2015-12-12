@@ -47,8 +47,8 @@ h6 { font-size:36px; color:#999; }
 .intro ul { font-size:20px; line-height:1.4; padding-left:20px; list-style:square; color:#777; }
 .intro ul li { margin-bottom: 8px;}
 .intro ul strong { font-weight:normal; color:#111; }
-.intro h4 { border-top:1px solid #eee; margin-top:48px; padding:32px 0 64px 0; }
-.intro h4 a { display:block; background:url("../images/standard-logo.png") no-repeat center left; height:36px; margin-top: 20px;}
+.intro h4 { border-top:1px solid #eee; margin-top:10px; padding:10px 0;}
+.intro h4 a { display:inline-block; background:url("../images/standard-logo.png") no-repeat 0 bottom; height:36px; width:277px ;background-size:138px 18px;}
 .intro h4 a span { display:none; }
 
 /* links to github */
@@ -108,9 +108,6 @@ h6 { font-size:18px; }
 .intro { width:600px; padding:0px;}
 .intro a.btn { margin:24px 0; width:66%; }
 .intro ul { font-size:18px; line-height:32px; padding-left:20px; list-style:square; color:#777; }
-.intro h4 { margin-top:32px; padding:24px 0 0 0; }
-.intro h4 a { background-size:138px 18px; padding:0; }
-
 .nav-item a {  }
 
 .btn { display:block; width:100%; font-size:20px; }

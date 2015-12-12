@@ -228,8 +228,10 @@ function nastavObec() {
 
     if($('#tpFlag').val() == 'volbaPostouBezTrvalehoPobytu'){
   	  $("#adresa").val("Ministerstvo vnútra Slovenskej republiky\nodbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC");
+      $("#sendto").html("volby@minv.sk");
     }else{
       $("#adresa").val(adresa);
+      $("#sendto").html(data[6]);
     }
 	
     var type =  $('#tpFlag').val();
@@ -250,7 +252,6 @@ function nastavObec() {
       var textemailu = "Podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz za mňa preberie splnomocnenec. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. V prílohe zasielam podpísanú žiadosť. "+decodeURIComponent("%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A")+" "+meno;
     }
 
-    $("#sendto").html(data[6]);
     $("#emailsubject").html(subj);
     $("#emailbody").html(textemailu);
 	if(jQuery.data( document.body, "psc-locked")){}else{

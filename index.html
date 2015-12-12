@@ -327,15 +327,38 @@
 <script src="assets/js/pdfmake.min.js"></script>
 <script src="assets/js/vfs_fonts.js"></script>
 <script src="assets/js/signature_pad.min.js"></script>
-<script type="text/javascript">jQuery(document).ready(function () {
+<script type="text/javascript">
+var validateBirthNumber = function(value, messages) {
+	// rules according to https://sk.wikipedia.org/wiki/Rodn%C3%A9_%C4%8D%C3%ADslo
+	// considering that people born in 2000 and later are not allowed to vote yet
+	if (value.substr(0,2) < 54) {
+		yii.validation.regularExpression(value, messages, {
+			"pattern":/^\d{2}[0156]\d{3}\/\d{3}$/,
+			"message":"Rodné číslo pred rokom 1954 musí mať 9 číslic vo formáte XXXXXX/XXX. Tretia číslica musí byť 0,1,5 alebo 6."
+		});
+	} else {
+		yii.validation.regularExpression(value, messages, {
+			"pattern":/^\d{2}[0156]\d{3}\/\d{4}$/,
+			"message":"Rodné číslo musí mať 10 číslic vo formáte XXXXXX/XXXX. Tretia číslica musí byť 0,1,5 alebo 6."
+		});
+		if (messages.length == 0) {
+			var rc = value.substr(0,6).concat(value.substr(7,11));
+			if (rc % 11 != 0) {
+				yii.validation.addMessage(messages, "Rodné číslo by malo byť delitelné 11. Nemáte v ňom preklep?", value);
+			}
+		}
+	}
+};
+
+jQuery(document).ready(function () {
 jQuery('#basic-info').yiiActiveForm([{"id":"basicinfo-name","name":"name","container":".field-basicinfo-name","input":"#basicinfo-name","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať Vaše krstné meno."});}},{"id":"basicinfo-lastname","name":"lastname","container":".field-basicinfo-lastname","input":"#basicinfo-lastname","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať Vaše priezvisko."});}},{"id":"basicinfo-birthno","name":"birthNo","container":".field-basicinfo-birthno","input":"#basicinfo-birthno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať Vaše rodné číslo."});}}], []);
+"message":"Pre vytvorenie žiadosti je potrebné zadať Vaše rodné číslo."}); validateBirthNumber(value, messages);}}], []);
 jQuery('#proxy').yiiActiveForm([{"id":"proxy-name","name":"name","container":".field-proxy-name","input":"#proxy-name","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať krstné meno splnomocnenca."});}},{"id":"proxy-lastname","name":"lastname","container":".field-proxy-lastname","input":"#proxy-lastname","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať priezvisko splnomocnenca."});}},{"id":"proxy-idno","name":"idNo","container":".field-proxy-idno","input":"#proxy-idno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať rodné číslo splnomocnenca."});}}], []);
+"message":"Pre vytvorenie žiadosti je potrebné zadať rodné číslo splnomocnenca."}); validateBirthNumber(value, messages);}}], []);
 jQuery('#address-slovakia').yiiActiveForm([{"id":"addressslovakia-street","name":"street","container":".field-addressslovakia-street","input":"#addressslovakia-street","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Ulica Vášho trvalého pobytu nemôže byť nevyplnená."});}},{"id":"addressslovakia-streetno","name":"streetNo","container":".field-addressslovakia-streetno","input":"#addressslovakia-streetno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Číslo domu Vášho trvalého pobytu nemôže byť nevyplnené."});}},{"id":"addressslovakia-city","name":"city","container":".field-addressslovakia-city","input":"#addressslovakia-city","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {

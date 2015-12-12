@@ -61,12 +61,14 @@ h6 { font-size:36px; color:#999; }
 .logo {display: inline-block; padding:0; margin: 10px 0; line-height: 1; max-width: 50%;}
 .logo img { width: 100%; height: auto; max-width: 200px;}
 .nav {position:fixed; top:0; z-index:3; width:100%; line-height: 1; border-bottom:1px solid #eee; background-color:#fff; font-size: 12px; font-weight: 400; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif;}
-.nav-etapes { position: absolute; right: 20px; top: 10px; text-align: right;}
 .nav-item { display: none; list-style: none; margin-top: 10px;}
 .nav-item a { text-decoration:none; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif; font-size: 1.2em;}
-.actual-step {display: none; right: 0; top: 10px; color: #ccc; font-weight: 100; font-size: 14px;}
-.actual-step span { font-size: 1.8em;  color: #0097fd;}
-.actual-step span:after { content: "/"; color: #ccc;font-size: 14px;}
+.nav--progress { position: absolute; right: 20px; top: 10px; text-align: right; }
+
+.counter { display: none; right: 0; top: 10px; color: #ccc; font-weight: 100; font-size: 14px; }
+.counter__step { font-size: 1.8em;  color: #0097fd; }
+.counter__step:after { content: "/"; color: #ccc;font-size: 14px; }
+
 .section { font-size:36px; }
 .section a { margin:24px 0; }
 

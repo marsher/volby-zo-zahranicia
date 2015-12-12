@@ -45,9 +45,7 @@ function nemamTP() {
   updateMenu(true);
   $('.nemam-tp').show();
   $('#photo-link').show();
-  /*$('#preview-button').attr('onclick','createDocument(true,"noTP")');
-   $('#download-button').attr('onclick','createDocument(false,"noTP")');
-   $('#sign-button').attr('onclick','createDocument(true,"noTP",signaturePad.toDataURL())');*/
+
   $('#tpFlag').val('volbaPostouBezTrvalehoPobytu');
   $("#addressslovakia-kraj").val("Mimo SR");
   nastavKraj();
@@ -84,13 +82,25 @@ function preukazPS() {
 
 function getAddressOneLine(id) {
   var ret = "";
+  var format = $('#' + id + '-format').val();
+  if(!format) format = "sk";
+  
   if ($('#' + id + '-street').val()) {
-    ret += $('#' + id + '-street').val() + " " + $('#' + id + '-streetno').val();
+	if(format=="sk"){
+     ret += $('#' + id + '-street').val() + " " + $('#' + id + '-streetno').val();
+	}else if(format == "usa"){
+     ret += $('#' + id + '-streetno').val() + " " + $('#' + id + '-street').val();
+	}
   } else {
     if (id == "addressslovakia") {
-      cityName + " " + $('#' + id + '-streetno').val();
+      getObec() + " " + $('#' + id + '-streetno').val();
     } else {
+		
+ 	 if(format=="sk"){
       ret += $('#' + id + '-city').val() + " " + $('#' + id + '-streetno').val();
+	 }else if(format == "usa"){
+      ret += $('#' + id + '-streetno').val() + " " + $('#' + id + '-city').val();
+	 }
     }
     
   }
@@ -98,9 +108,13 @@ function getAddressOneLine(id) {
 
   
   if (id == "addressslovakia") {
-    ret += $('#' + id + '-zip').val() + " " + cityName;
+	ret += $('#' + id + '-zip').val() + " " + getObec();
   } else {
+   if(format=="sk"){
     ret += $('#' + id + '-zip').val() + " " + $('#' + id + '-city').val();
+   }else if(format == "usa"){
+    ret += $('#' + id + '-city').val() + " " + $('#' + id + '-zip').val();
+   }
   }
 
   if (ret != " ") ret += ", ";
@@ -113,7 +127,6 @@ function getAddressOneLine(id) {
   return ret;
 }
 
-var cityName;
 
 function nacitajKraje(){
 	var options = $("#addressslovakia-kraj");
@@ -147,11 +160,12 @@ function getObec(){
   var ico = $("#addressslovakia-city").val();
   var kraj = $("#addressslovakia-kraj").val();
   var okres = $("#addressslovakia-okres").val();
-  
-    if (ico && o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
-		return o[kraj][okres][ico][10];
-	}
-	return "Nepodarilo sa načítať obec";
+  var o = election.cities;
+
+  if (ico && o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
+	return o[kraj][okres][ico][10];
+  }
+  return "Nepodarilo sa načítať obec";
 }
 function nastavObec() {
 
@@ -207,7 +221,6 @@ function nastavObec() {
     $("#emailbody").html(textemailu);
 
     $("#addressslovakia-zip").val(data[4]);
-    cityName = data[5];
     $("#send").attr("href", "mailto:" + data[6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
 	
     }
@@ -314,7 +327,7 @@ function createDocument(preview) {
       {
         columns: [
           {text: 'Obec: ', style: 'line',},
-          {text: cityName.toUpperCase(), style: 'value'},
+          {text: getObec().toUpperCase(), style: 'value'},
           {text: ''}
         ]
       },

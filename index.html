@@ -241,6 +241,14 @@
 										<input type="text" id="addressforeign-country" class="form-control" name="AddressForeign[country]">
 										<div class="help-block"></div>
 									</div>
+									<div class="form-group field-addressforeign-format hidden preukaz-ps preukaz-tp nemam-tp">
+										<label class="control-label" for="addressforeign-format">Formát adresy</label>
+										<select id="addressforeign-format" class="form-control" name="AddressForeign[format]">
+											<option value="sk">SK formát - Ulica číslo, PSČ Mesto, Štát</option>
+											<option value="usa">USA formát - číslo ulica, Mesto PSČ, Štát</option>
+										</select>
+										<div class="help-block"></div>
+									</div>
 								</form>
 								<p><a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#pdf" id="preview-button" role="button" onclick="createDocument(true)"><strong>Vytvor náhľad žiadosti</strong></a></p>
 							</div>

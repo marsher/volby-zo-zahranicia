@@ -12,6 +12,7 @@ if (($handle = fopen("../obce_08_12_2015.txt", "r")) !== FALSE) {
 					}
 				}else{
 					$email = $data[$n2k["email"]];
+					$email = str_replace(",",";",$email);
 					$emaily = explode(";",$email);
 					
 					if(count($emaily) != 1){
@@ -38,6 +39,24 @@ if (($handle = fopen("../obce_08_12_2015.txt", "r")) !== FALSE) {
 								$emaily = array($em);break;
 							}
 							if(strpos($em,"miestnyurad") === 0){
+								$emaily = array($em);break;
+							}
+							if(strpos($em,"urad@") === 0){
+								$emaily = array($em);break;
+							}
+							if(strpos($em,"mesto@") === 0){
+								$emaily = array($em);break;
+							}
+							if(strpos($em,"msu.") === 0){
+								$emaily = array($em);break;
+							}
+							if(strpos($em,"obu@") === 0){
+								$emaily = array($em);break;
+							}
+							if(strpos($em,"msu@") === 0){
+								$emaily = array($em);break;
+							}
+							if(strpos($em,"info@") !== false){
 								$emaily = array($em);break;
 							}
 							

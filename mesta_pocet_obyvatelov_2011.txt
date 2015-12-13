@@ -1,0 +1,138 @@
+1;Bratislava;411228
+2;Košice;240433
+3;Prešov;91782
+4;Žilina;81494
+5;Banská Bystrica;80003
+6;Nitra;78916
+7;Trnava;66358
+8;Martin;57428
+9;Trenčín;55877
+10;Poprad;52862
+11;Prievidza;48978
+12;Zvolen;43318
+13;Považská Bystrica;41241
+14;Michalovce;40027
+15;Nové Zámky;39646
+16;Spišská Nová Ves;38045
+17;Humenné;35053
+18;Levice;34844
+19;Komárno;34349
+20;Bardejov;33696
+21;Liptovský Mikuláš;31921
+22;Lučenec;28475
+23;Ružomberok;28400
+24;Piešťany;28268
+25;Topoľčany;27177
+26;Dubnica nad Váhom;25305
+27;Čadca;24959
+28;Rimavská Sobota;24640
+29;Trebišov;24401
+30;Partizánske;24115
+31;Šaľa;23554
+32;Vranov nad Topľou;23250
+33;Hlohovec;22701
+34;Dunajská Streda;22477
+35;Brezno;21894
+36;Pezinok;21179
+37;Snina;20723
+38;Nové Mesto nad Váhom;20415
+39;Senica;20255
+40;Žiar nad Hronom;19883
+41;Rožňava;19706
+42;Dolný Kubín;19633
+43;Bánovce nad Bebravou;19564
+44;Púchov;18168
+45;Handlová;17766
+46;Malacky;17051
+47;Senec;17050
+48;Kežmarok;16832
+49;Stará Ľubovňa;16341
+50;Sereď;16235
+51;Kysucké Nové Mesto;15699
+52;Galanta;15138
+53;Detva;15046
+54;Levoča;14830
+55;Skalica;14441
+56;Veľký Krtíš;12999
+57;Revúca;12828
+58;Šamorín;12726
+59;Sabinov;12710
+60;Zlaté Moravce;12337
+61;Myjava;12330
+62;Svidník;11721
+63;Nová Dubnica;11466
+64;Bytča;11318
+65;Holíč;11255
+66;Moldava nad Bodvou;11068
+67;Stropkov;10940
+68;Štúrovo;10919
+69;Fiľakovo;10817
+70;Kolárovo;10696
+71;Banská Štiavnica;10409
+72;Šurany;10177
+73;Veľké Kapušany;9406
+74;Stará Turá;9404
+75;Tvrdošín;9355
+76;Stupava;9282
+77;Vráble;8970
+78;Veľký Meder;8859
+79;Krompachy;8758
+80;Modra;8751
+81;Sečovce;8236
+82;Krupina;8046
+83;Námestovo;7936
+84;Hriňová;7814
+85;Turzovka;7802
+86;Hnúšťa;7781
+87;Hurbanovo;7751
+88;Kráľovský Chlmec;7698
+89;Šahy;7624
+90;Svit;7608
+91;Liptovský Hrádok;7601
+92;Nová Baňa;7551
+93;Vrútky;7539
+94;Tornaľa;7509
+95;Trstená;7482
+96;Želiezovce;7186
+97;Krásno nad Kysucou;6920
+98;Medzilaborce;6809
+99;Turčianske Teplice;6694
+100;Žarnovica;6490
+101;Lipany;6427
+102;Spišská Belá;6387
+103;Nemšová;6274
+104;Vrbové;6263
+105;Gelnica;6202
+106;Sobrance;5981
+107;Rajec;5860
+108;Poltár;5826
+109;Dobšiná;5702
+110;Kremnica;5601
+111;Sládkovičovo;5479
+112;Ilava;5391
+113;Veľký Šariš;5292
+114;Gbely;5205
+115;Svätý Jur;5141
+116;Sliač;5117
+117;Brezová pod Bradlom;5110
+118;Šaštín - Stráže;5107
+119;Bojnice;4923
+120;Strážske;4416
+121;Tisovec;4306
+122;Nováky;4269
+123;Medzev;4261
+124;Vysoké Tatry;4250
+125;Trenčianske Teplice;4197
+126;Giraltovce;4188
+127;Leopoldov;4162
+128;Spišské Podhradie;4078
+129;Čierna nad Tisou;3885
+130;Tlmače;3823
+131;Hanušovce nad Topľou;3741
+132;Spišské Vlachy;3610
+133;Podolínec;3257
+134;Jelšava;3229
+135;Rajecké Teplice;2833
+136;Spišská Stará Ves;2264
+137;Modrý Kameň;1555
+138;Dudince;1475

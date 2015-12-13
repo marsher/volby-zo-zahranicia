@@ -1,4 +1,5 @@
-html, body { height: 100%; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif; }
+* {box-sizing: border-box;}
+html, body { height: 100%; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif; color: #333;}
 
 
 /* Slovensko.DIGITAL COLORs */
@@ -19,95 +20,103 @@ h1, a, h6 { font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed",
 * { margin:0; padding:0; border:0; }
 h1, h2, h3, h4, h5, h6, h7, em { font-style:normal; font-weight:normal; }
 
-.wrap { width:640px; min-height:100%; height: auto; margin:0 auto; }
-.btn { display:block; width:100%; height:120px; font-size:34px; line-height:120px; text-align:center; }
+.main-wrapper { padding-top: 100px; }
+.wrap { position: relative; max-width:640px; width: 100%; min-height:100%; height: auto; margin:0 auto; padding: 0 20px; }
+.btn { position: relative; display:block; width:100%; font-size:18px; line-height:1.5; padding: 30px; text-align:center; text-decoration: none; transition: background-color 0.5s ease; }
 .btn.secondary { background-color:#999; color:#fff; text-decoration:none; }
 .btn.secondary:hover { background-color:#777; }
-.row { width:520px; padding:0 60px; }
+.row { width:100%; padding:0; }
+.btn-group {display: block; font-size: 0; text-align: center;}
+.btn-group .btn { display: inline-block; width: 45%; margin: 2%; font-size: 28px; color: white; font-size: 20px; padding: 15px; }
 
-#intro { min-height:100%; background-color:#fff; z-index:2; position:relative; display:block; }
+#intro {display:block;}
 
-h1 { font-size:48px; color:#000; padding:60px 0 0 0; }
-h2 { font-size:34px; line-height:48px; color:#555; padding:72px 0 0 0; }
-h2 strong { font-size:48px; font-weight:normal; }
+h1 { font-size:48px; color:#000; padding:60px 0 0 0;}
+h1 a { display: block; }
+h2 { font-size:26px; line-height:1.3; padding:0; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;}
+h2 strong { font-size:38px; font-weight:normal; }
 h2 em { font-size:30px; line-height:42px; }
-h3 { font-size:28px; line-height:42px; color:#555; padding-top:48px; }
-h4 { font-size:32px; line-height:48px; color:#777; }
-h5 { font-size:24px; line-height:32px; color:#888; }
+h3 { font-size:22px; line-height:1.5; color:#555; }
+h4 { font-size:20px; line-height:1.5; color:#777; }
+h5 { font-size:18px; line-height:1.5; color:#888; margin-bottom: 30px;}
 h6 { font-size:36px; color:#999; }
 
-#intro a.btn { margin:56px 0; }
-#intro a.btn:hover { text-decoration:none; }
-#intro ul { font-size:27px; line-height:42px; padding-left:20px; list-style:square; color:#777; }
-#intro ul strong { font-weight:normal; color:#111; }
-#intro h4 { border-top:1px solid #eee; margin-top:48px; padding:32px 0 64px 0; }
-#intro h4 a { display:block; background:url(http://slovensko.digital/img/logo.png) no-repeat center left; width:100%; 
-height:36px; padding:16px 0; margin-bottom:60px; }
-#intro h4 a span { display:none; }
+.intro { min-height:100%; background-color:#fff; z-index:2; position:relative; }
+.intro a.btn { margin:30px 0; text-decoration: none; }
+.intro a.btn:hover { text-decoration:none; }
+.intro ul { font-size:20px; line-height:1.4; padding-left:20px; list-style:square; color:#777; }
+.intro ul li { margin-bottom: 8px;}
+.intro ul strong { font-weight:normal; color:#111; }
+.intro h4 { border-top:1px solid #eee; margin-top:10px; padding:10px 0;}
+.intro h4 a { display:inline-block; background:url("../images/standard-logo.png") no-repeat 0 bottom; height:36px; width:277px ;background-size:138px 18px;}
+.intro h4 a span { display:none; }
+
+/* links to github */
+.github { font-size: 16px; color: #C1C1C1; border-top: 1px solid #eee; padding: 13px 0 0; margin: 0 0 100px 0; }
+.github a { color: #84B6D7; }
+.github a:hover { color: #0061a3; }
 
 .row { display:none; }
 
-#krokomer { position:fixed; left:50%; top:0; z-index:1; width:520px; margin:0 0 0 -260px; height:128px; line-height:128px; border-bottom:1px solid #eee; background-color:#fff; }
-#krokomer li { float:right; list-style:none; }
-#krokomer li a { text-decoration:none; font-size:36px; padding:32px 0; }
+.logo {display: inline-block; padding:0; margin: 10px 0; line-height: 1; max-width: 50%;}
+.logo img { width: 100%; height: auto; max-width: 200px;}
+.nav {position:fixed; top:0; z-index:3; width:100%; line-height: 1; border-bottom:1px solid #eee; background-color:#fff; font-size: 12px; font-weight: 400; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif;}
+.nav-item { display: none; list-style: none; margin-top: 10px;}
+.nav-item a { text-decoration:none; font-family:Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif; font-size: 1.2em;}
+.nav--progress { position: absolute; right: 20px; top: 10px; text-align: right; }
 
-.section { display: none; }
+.counter { display: none; right: 0; top: 10px; color: #ccc; font-weight: 100; font-size: 14px; }
+.counter__step { font-size: 1.8em;  color: #0097fd; }
+.counter__step:after { content: "/"; color: #ccc;font-size: 14px; }
 
-.section { padding-top:128px; font-size:36px; }
+.section { font-size:36px; }
 .section a { margin:24px 0; }
 
-#ziadost label { display:block; font-size:34px; color:#555; padding:24px 0 12px 0;  }
-#ziadost label em { font-size:28px; color:#888;  }
-#ziadost input, #ziadost select  { background-color:#eee; width:100%; height:80px; border:3px solid #ccc; outline:none; font-size:40px; padding:0 16px; }
+label { display:block; font-size:16px; color:#555; padding:12px 0 6px 0;  }
+label em { color:#888; }
+input, select, .select2  { background-color:#eee; width:100%; border:3px solid #ccc; outline:none; font-size:18px; padding:15px 15px; font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;}
 #ziadost input:focus { border-color:#0097fd; background-color:#eef8ff; }
 
 #pdf iframe, #pdf-final iframe { background-color:#eee; }
-#pdf .btn, #pdf-final .btn, #sign .btn { width:252px; float:left; }
-#pdf .btn.secondary, #pdf-final .btn.secondary, #sign .btn.secondary { margin-right:16px; }
-#sign button { margin: 24px 0; }
 #sign .signature-pad { border: 4px solid #eee; position:relative; }
-#sign .signature-pad canvas { position:relative; width:100%; height:592px; z-index:2; }
+#sign .signature-pad canvas { position:relative; width:100%; height:160px; z-index:2; }
 #sign .signature-pad span { position:absolute; width:100%; text-align:center; z-index:1; left:0; top:32px; color:#ddd; }
 
-/* TEMP JUMP TO STEP 2 
+.sendsection {
+    font-size: 16px;
+    color: 555;
+}
+.sendsection p {
+    margin-bottom: 20px;
+}
+/* TEMP JUMP TO STEP 2
 #sign { display:block; }
-#intro, #krokomer li { display:none; } */
+.intro, #krokomer li { display:none; } */
 
 
 /* A truly mobile-first CSS, media exception defined for desktop */
 
-@media only screen and (min-width: 880px) { 
+@media only screen and (min-width: 880px) {
 
 .wrap { width:720px; }
 
 h1 { font-size:32px; padding:64px 0 0 0; }
-h2 { font-size:24px; line-height:32px; padding:24px 0 0 0; }
+h2 { font-size:24px; line-height:32px; padding:0 0 20px; margin-bottom: 20px;}
 h2 strong { font-size:24px; font-weight:normal; }
-h3 { font-size:20px; line-height:30px; padding-top:16px; }
+h3 { font-size:20px; line-height:30px; }
 h4 { font-size:18px; color:#777; }
 h6 { font-size:18px; }
 
-#intro { width:600px; padding:0 60px;  }
-#intro a.btn { margin:24px 0; height:64px; line-height:64px; font-size:20px; width:66%; }
-#intro ul { font-size:18px; line-height:32px; padding-left:20px; list-style:square; color:#777; }
-#intro h4 { margin-top:32px; padding:24px 0 48px 0; }
-#intro h4 a { background-size:138px 18px; padding:0; }
+.intro { width:600px; padding:0px;}
+.intro a.btn { margin:24px 0; width:66%; }
+.intro ul { font-size:18px; line-height:32px; padding-left:20px; list-style:square; color:#777; }
+.nav-item a {  }
 
-#krokomer { width:600px; margin-left:-300px; height:64px; line-height:64px; }
-#krokomer li a { font-size:18px; padding:16px 0; }
-
-.btn { display:block; width:100%; height:60px; font-size:20px; line-height:60px; }
-.row { width:600px;  }
-.section { padding-top:64px; font-size:18px; }
+.btn { display:block; width:100%; font-size:20px; }
+.row { width:100%; padding: 0px; }
+.section { font-size:18px; }
 .section a { margin:16px 0; }
 
-#ziadost label { font-size:17px; padding:12px 0 6px 0;  }
-#ziadost label em { font-size:14px; }
-#ziadost input, #ziadost select  { height:40px; font-size:20px; padding:0 16px; }
-#ziadost input:focus { border-color:#0097fd; background-color:#eef8ff; }
-
-#pdf .btn, #pdf-final .btn, #sign .btn { width:292px; float:left; }
-#pdf .btn.secondary, #pdf-final .btn.secondary, #sign .btn.secondary { margin-right:16px; }
 #sign button { margin: 16px 0; }
 
 }
@@ -173,4 +182,22 @@ a.desc:after {
 
 .form-horizontal .control-label{
 	text-align:left;
+}
+
+.help-block{
+	color:red;
+	font-size:14px;
+    margin: 10px 0;
+    font-family:Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;
+}
+
+.body-content .section{
+	padding: 50px 0 0 0;
+}
+.justify{
+	text-align: justify;
+    text-justify: inter-word;
+}
+.hidden{
+	display:none;
 }

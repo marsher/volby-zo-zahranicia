@@ -209,9 +209,11 @@ function nastavObec() {
     if($('#tpFlag').val() == 'volbaPostouBezTrvalehoPobytu'){
   	  $("#adresa").val("Ministerstvo vnútra Slovenskej republiky\nodbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC");
       $("#sendto").html("volby@minv.sk");
+	  $("#phone").html("");
     }else{
       $("#adresa").val(adresa);
 	  $("#sendto").html(data[6]);
+	  $("#phone").html(data[7] + " / " + data[8]);
     }
 	if($("#sendto").html().indexOf("@") == -1){
 		$("#sendemail").hide();

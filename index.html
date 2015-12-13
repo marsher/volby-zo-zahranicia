@@ -24,6 +24,11 @@
 	<meta name="twitter:title" content="Voľby zo zahraničia" />
 	<meta name="twitter:description" content="Pripravte si žiadosť cez telefón a bez čítačky. Stačí Vám adresa a rodné číslo.."/>
 
+	<style>
+		.section {
+			display: none;
+		}
+	</style>
 
 </head>
 <body>
@@ -32,16 +37,10 @@
 			<h1 class="logo"><a href="#"><img src="images/logo.png" title="volby.digital"></a></h1>
 			<div class="nav--progress">
 				<div class="counter">
-					<span class="counter__step">0</span>7
+					<span class="counter__step">0</span>8
 				</div>
 				<ul>
-					<li class="nav-item"><a href="#intro" class="btn-step digitalBlue">Späť na úvod</a></li>
-					<li class="nav-item"><a href="#zahranicie" class="btn-step digitalBlue">Späť na krok 1</a></li>
-					<li class="nav-item"><a href="#preukaz-zahranicie" class="btn-step digitalBlue">Späť na krok 2</a></li>
-					<li class="nav-item"><a href="#ziadost" class="btn-step digitalBlue">Späť na krok 3</a></li>
-					<li class="nav-item"><a href="#pdf" class="btn-step digitalBlue">Späť na krok 4</a></li>
-					<li class="nav-item"><a href="#sign" class="btn-step digitalBlue">Späť na krok 5</a></li>
-					<li class="nav-item"><a href="#pdf-final" class="btn-step digitalBlue">Späť na krok 6</a></li>
+					<li class="nav-item"><a href="" class="digitalBlue"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -51,13 +50,13 @@
 		<div class="wrap">
 			<div class="container">
 				<div class="site-index">
-					<div id="intro" class="intro row">
+					<div id="intro" class="intro row section">
 						<h2 class="justify">Až <strong class="digitalRed">98%</strong> ľudí zo zahraničia <b>nevolilo</b> v posledných parlamentných voľbách, pre zložitý proces a skoré termíny — my sme proces zjednodušili na <b>3 minúty, 20 slov a 8 klikov</b>.</h2>
 						<h3 class="justify">Pripravte si žiadosť cez telefón, bez tlačenia, skenovania či špeciálnej čítačky na&nbsp;občiansky preukaz.
 						Stačí Vám na to adresa, rodné číslo a prípadne Váš pas.</h3>
 						
 						
-						<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#zahranicie" role="button"><strong>Pripraviť žiadosť</strong></a>
+						<a class="btn btn-lg btn-success digitalBlueFill" href="#start" role="button"><strong>Pripraviť žiadosť</strong></a>
 						<ul>
 						  <li>Vytvorenie trvá približne <strong>3 minúty</strong></li>
 						  <li>Žiadosť je generovaná vo <strong>Vašom prehliadači</strong></li>
@@ -78,21 +77,21 @@
 					</div>
 
 					<div class="body-content">
-						<div class="row section krok1" id="zahranicie">
+						<div class="row section krok1" id="start">
 							<div class="col-lg-12">
 								<h2>Trvalý pobyt mám</h2>
-								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#preukaz-zahranicie" role="button"><strong>Registrovaný na Slovensku</strong></a>
-								<a class="btn btn-lg btn-success btn-step digitalRedFill" href="#ziadost" role="button" onclick="nemamTP()"><strong>Odhlásený</strong></a>
+								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-na-slovensku" role="button"><strong>Registrovaný na Slovensku</strong></a>
+								<a class="btn btn-lg btn-success digitalRedFill" href="#tp-odhlaseny" role="button"><strong>Odhlásený</strong></a>
 								<input style="display:none" id="tpFlag" value="">
 							</div>
 						</div>
 
-						<div class="row section krok2" id="preukaz-zahranicie">
+						<div class="row section krok2" id="tp-na-slovensku">
 							<div class="col-lg-12">
 								<h2>Voliť budem</h2>
-								<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#ziadost" role="button"  onclick="postaTP()"><strong>poštou zo zahraničia</strong></a>
+								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-na-slovensku&volba-postou" role="button"><strong>poštou zo zahraničia</strong></a>
 								<h5>(Žiadosť treba poslať najneskôr do 15.1.2016)</h5>
-								<a class="btn btn-lg btn-success btn-step digitalRedFill" href="#preukaz" role="button"  onclick=""><strong>hlasovacím preukazom na Slovensku</strong></a>
+								<a class="btn btn-lg btn-success digitalRedFill" href="#tp-na-slovensku&volba-s-preukazom" role="button"><strong>hlasovacím preukazom na Slovensku</strong></a>
 								<h3>Hlasovacím preukazom je možné voliť v ktorejkoľvek volebnej miestnosti na Slovensku.</h3>
 								<h5>(Žiadosť treba poslať najneskôr do 15.2.2016)</h5>
 							</div>
@@ -101,8 +100,8 @@
 						<div class="row section krok2" id="preukaz">
 							<div class="col-lg-12">
 								<h2>Môžete si osobne prevziať preukaz?</h2>
-								<a class="btn btn-lg btn-success btn-step dontcountstep digitalBlueFill" href="#ziadost" role="button"  onclick="preukazTP()"><strong>Chcem hlasovací preukaz poštou do vlastných rúk</strong></a>
-								<a class="btn btn-lg btn-success btn-step dontcountstep digitalRedFill" href="#ziadost" role="button"  onclick="preukazPS()"><strong>Pre preukaz mi zájde na úrad splnomocnenec</strong></a>
+								<a class="btn btn-lg btn-success dontcountstep digitalBlueFill" href="#tp-na-slovensku&volba-s-preukazom&preukaz-do-vlastnych-ruk" role="button"><strong>Chcem hlasovací preukaz poštou do vlastných rúk</strong></a>
+								<a class="btn btn-lg btn-success dontcountstep digitalRedFill" href="#tp-na-slovensku&volba-s-preukazom&preukaz-preberie-splnomocnenec" role="button"><strong>Pre preukaz mi zájde na úrad splnomocnenec</strong></a>
 							</div>
 						</div>
 
@@ -253,7 +252,7 @@
 										<div class="help-block"></div>
 									</div>
 								</form>
-								<p><a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#pdf" id="preview-button" role="button" onclick="createDocument(true)"><strong>Vytvor náhľad žiadosti</strong></a></p>
+								<p><a class="btn btn-lg btn-success digitalBlueFill btn-submit-form" href="#pdf" id="preview-button" role="button"><strong>Vytvor náhľad žiadosti</strong></a></p>
 							</div>
 						</div>
 
@@ -261,8 +260,8 @@
 							 <div class="col-lg-12">
 								<iframe id="preview" width="100%" height="600px"></iframe>
 								<div class="btn-group">
-									<a class="btn btn-lg btn-success btn-step digitalBlueFill" href="#sign" role="button">Podpísať</a>
-									<a class="btn btn-lg btn-default secondary digitalBlue" href="#pdf" data-js-download-document role="button">Stiahnuť</a>
+									<a class="btn btn-lg btn-success digitalBlueFill btn-sign-pdf" href="#sign" role="button">Podpísať</a>
+									<a class="btn btn-lg btn-default secondary digitalBlue btn-download-pdf" href="#pdf" role="button">Stiahnuť</a>
 								</div>
 							</div>
 						</div>
@@ -274,7 +273,7 @@
 									<canvas></canvas>
 								</div>
 								<div class="signature-controls btn-group">
-									<a id="sign-button" class="btn btn-lg btn-success btn-step digitalBlueFill" href="#pdf-final"><strong>Použiť</strong></a>
+									<a class="btn btn-lg btn-success digitalBlueFill btn-finalize-pdf" href="#pdf-final"><strong>Použiť</strong></a>
 									<button id="clear-button" class="btn btn-default secondary">Vyčistiť</button>
 								</div>
 								<input style="display:none;" type="text" id="signature" value="">
@@ -296,8 +295,8 @@
 								<iframe id="final" width="100%" height="600px"></iframe>
 								<p>Stiahnite si Vašu žiadosť do počítača alebo telefónu. Neskôr ju pripojíte k emailu.</p>
 								<div class="btn-group">
-									<a class="btn btn-lg btn-success  digitalBlueFill" href="#pdf" id="step6but1" data-js-download-document role="button">Stiahnuť</a>
-									<a class="btn btn-lg btn-success btn-step secondary digitalBlueFill" id="step6but2" href="#sendsection" role="button"><strong>Po uložení pokračujte tu</strong></a>
+									<a class="btn btn-lg btn-success digitalBlueFill btn-download-pdf" href="#pdf" id="step6but1" role="button">Stiahnuť</a>
+									<a class="btn btn-lg btn-success secondary digitalBlueFill btn-show-final-info" id="step6but2" href="#sendsection" role="button"><strong>Po uložení pokračujte tu</strong></a>
 								</div>
 							</div>
 						</div>
@@ -333,11 +332,13 @@
 	</noscript>
 
 <script src="assets/js/jquery-latest.min.js"></script>
+<script src="assets/js/jquery.mobile.hashchange.min.js"></script>
 <script src="assets/e560cfe3/yii.js"></script>
 <script src="assets/e560cfe3/yii.validation.js"></script>
 <script src="assets/e560cfe3/yii.activeForm.js"></script>
 <script src="js/cities.js"></script>
 <script src="js/analytics.js"></script>
+<script src="js/request-generator-app.js"></script>
 <script src="js/site.js"></script>
 <script src="assets/js/select2.min.js"></script>
 <script src="assets/js/pdfmake.min.js"></script>
@@ -367,6 +368,12 @@ var validateBirthNumber = function(value, messages) {
 };
 
 jQuery(document).ready(function () {
+
+	var application = new RequestGeneratorApp();
+
+	$(window).hashchange(application.run.bind(application));
+	$(window).hashchange();
+
 jQuery('#basic-info').yiiActiveForm([{"id":"basicinfo-name","name":"name","container":".field-basicinfo-name","input":"#basicinfo-name","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať Vaše krstné meno."});}},{"id":"basicinfo-lastname","name":"lastname","container":".field-basicinfo-lastname","input":"#basicinfo-lastname","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
 "message":"Pre vytvorenie žiadosti je potrebné zadať Vaše priezvisko."});}},{"id":"basicinfo-birthno","name":"birthNo","container":".field-basicinfo-birthno","input":"#basicinfo-birthno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {

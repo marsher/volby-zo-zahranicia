@@ -29,6 +29,11 @@ h1, h2, h3, h4, h5, h6, h7, em { font-style:normal; font-weight:normal; }
 .btn-group {display: block; font-size: 0; text-align: center;}
 .btn-group .btn { display: inline-block; width: 45%; margin: 2%; font-size: 28px; color: white; font-size: 20px; padding: 15px; }
 
+.copy-btn {	padding-top: 2px;	border-radius: 2px;	cursor: pointer;	background-color:#ddd; transition: background-color 0s;}
+.copy-btn:hover {	background-color:#aaa; transition: background-color 0.6s;}
+.copy-btn:focus:hover, .copy-btn.selected:hover {	}
+.copy-btn:active, .copy-btn.selected { background-color:#666; transition: background-color 0s;}
+
 #intro {display:block;}
 
 h1 { font-size:48px; color:#000; padding:60px 0 0 0;}

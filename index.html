@@ -308,9 +308,24 @@
 								<p style="color:red;font-weight:bold">Nezabudnite priložiť prílohu k emailu.</p>
 								<a id="send" class="btn btn-lg btn-success digitalBlueFill" href="" role="button"><strong>Vytvoriť email</strong></a>
 								<p>Ak máte aktivovaného mailového klienta, tlačítko vyššie by malo vytvoriť email automaticky. Ak nie, odošlite nasledovný email:</p>
-								<p>Na emailovú adresu: <strong><span id="sendto"></span></strong></p>
-								<p>S predmetom: <b><span class="bold" id="emailsubject"></span></b></p>
-								<p>S textom: <b><span class="bold" id="emailbody"></span></b></p>
+								<p>
+									Na emailovú adresu: <strong><span id="sendto"></span></strong>
+									<button type="button" class="copy-btn" data-clipboard-target="#sendto" title="Skopírovať email do schránky (Ctrl+C)">
+										<img src="images/copy.png" alt="Skopíruj"/>
+									</button>
+								</p>
+								<p>
+									S predmetom: <b><span class="bold" id="emailsubject"></span></b>
+									<button type="button" class="copy-btn" data-clipboard-target="#emailsubject" title="Skopírovať predmet do schránky (Ctrl+C)">
+										<img src="images/copy.png" alt="Skopíruj"/>
+									</button>
+								</p>
+								<p>
+									S textom: <b><span class="bold" id="emailbody"></span></b>
+									<button type="button" class="copy-btn" data-clipboard-target="#emailbody" title="Skopírovať text do schránky (Ctrl+C)">
+										<img src="images/copy.png" alt="Skopíruj"/>
+									</button>
+								</p>
 								<p>Po odoslaní emailu <strong>s prílohou</strong> očakávajte potvrdenie z obecného úradu, že Vaša žiadosť bola spracovaná. Ak sa tak nestane, kontaktujte ich telefonicky.</p>
 								<p>Ak nedostanete potvrdenie o prijatí Vašej pošty do 3 dní, skúste im zavolať na telefón: <b><span class="bold" id="phone"></span></b></p>
 							</div>
@@ -343,7 +358,13 @@
 <script src="assets/js/pdfmake.min.js"></script>
 <script src="assets/js/vfs_fonts.js"></script>
 <script src="assets/js/signature_pad.min.js"></script>
+<script src="assets/js/clipboard.min.js"></script>
 <script type="text/javascript">
+var clipboard = new Clipboard('.copy-btn');
+clipboard.on('success', function(e) {
+    e.clearSelection();
+});
+
 var validateBirthNumber = function(value, messages) {
 	// rules according to https://sk.wikipedia.org/wiki/Rodn%C3%A9_%C4%8D%C3%ADslo
 	// considering that people born in 2000 and later are not allowed to vote yet

@@ -5,6 +5,8 @@ $i = 0;
 $out = array();
 
 if (($handle = fopen("../obce_08_12_2015.txt", "r")) !== FALSE) {
+			$topCities = get_top_cities();
+			
 			while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
 				if($i==1){
 					foreach($data as $k=>$v){
@@ -139,6 +141,9 @@ if (($handle = fopen("../obce_08_12_2015.txt", "r")) !== FALSE) {
 		}
 $ret = 'election.cities={';
 ksort($out);
+
+$bestCities = array();
+
 $ik = 0;
 foreach($out as $kraj=>$okdata){$ik ++;
 	$io = 0;
@@ -167,6 +172,9 @@ foreach($out as $kraj=>$okdata){$ik ++;
 		ksort($obecdata);
 		foreach($obecdata as $clear=>$info){$iobce++;
 			if($iobce > 1) $ret.=",\n";
+			
+			if( !empty( $topCities[$clear] ) ) $bestCities[$kraj][$okres][$clear] = $topCities[$clear];
+			
 			$ret.="'".$clear."':".$info;
 		}
 		$ret.="}";
@@ -175,6 +183,93 @@ foreach($out as $kraj=>$okdata){$ik ++;
 }
 	$ret .= '};';
 
+//priprava najpouzivanejsich miest
+$bestCities['Bratislavský']['Bratislava 5']['bratislava-petrzalka-mestska-cast'] =  111111;//lebo bratislava v zozname mesta_pocet_obyvatelov_2011.txt nie je podelena
+$topOkresy = array();
+
+foreach($bestCities as $krajNazov => &$okresy ){
+	foreach($okresy as $okresNazov => &$mesta ){
+		foreach( $mesta as $obyvatelov){
+			$topOkresy[ $krajNazov ][ $okresNazov ] += $obyvatelov;
+		}
+		
+		arsort($mesta);
+		$okresy[$okresNazov] = $mesta;
+	}
+	
+	arsort($topOkresy[ $krajNazov ]);
+}
+
+$topMestaFinal = array();
+//mame aj okresy, aj mesta, podme to spojit
+foreach($topOkresy as $krajNazov => $okres ){
+	foreach($okres as $okresNazov => $pocet ){
+		$topMestaFinal[ $krajNazov ][ $okresNazov ] = array_keys($bestCities[ $krajNazov ][ $okresNazov ])[0];
+	}
+}
+print_r($topMestaFinal);echo '</pre>';die;
+//
+$ret .="\n\n";
+$ret .= 'election.topcities={';
+
+$ik = 0;
+foreach($topMestaFinal as $kraj=>$okdata){$ik ++;
+	$io = 0;
+	if($ik > 1) $ret.=",\n";
+	$ret.="'$kraj kraj':{";
+
+	foreach($okdata as $okres=>$mesto){$io ++;
+		if($io > 1) $ret.=",";
+
+		$ret.="'Okres $okres':['$mesto']";
+	}
+	$ret.="}";
+}
+$ret .= '};';
+
+
 var_dump(file_put_contents("out01.html",print_r($out,true)));
 var_dump(file_put_contents("out02.html",$ret));
+
+
+function get_top_cities(){
+	$aTopCities = array();
+	
+	$aTmpTopCities = file("mesta_pocet_obyvatelov_2011.txt");
+	
+	foreach( $aTmpTopCities as $sLine ){
+		if( $sLine ){
+			$aLine = explode( ';', trim($sLine) );
+			$aTopCities[ clear($aLine[1]) ] = $aLine[2];
+		}
+	}
+	
+	return $aTopCities;
+}
+
+
+//$aPreferableEmails = array( 'podatelna','info','sekretariat','obec','ocu','ou','starosta','starostka'); 
+function get_relevant_email($emails){
+	global $aPreferableEmails;
+	
+	$bestEmails = array();
+	
+	if(count($emails) != 1){
+		foreach( $emails as $email ){
+			$em = explode( '@', $email, 2);
+			
+			if( in_array($em[0], $aPreferableEmails) ){
+				$bestEmails[ array_search($em[0], $aPreferableEmails) ] = $email;
+			}
+		}
+		
+		if( $bestEmails ){
+			ksort($bestEmails);
+			
+			return reset($bestEmails);
+		}
+	}
+	
+	return implode(";",$emails);
+}
 

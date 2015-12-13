@@ -700,11 +700,11 @@ function createDocument(preview) {
 	  if (preview === true) {
 		pdfMake.createPdf(dd).getDataUrl(function (result) {
 		  $('#preview').attr('src', result);
+		});
+	  } else {
+		pdfMake.createPdf(dd).getDataUrl(function (result) {
 		  $('#final').attr('src', result);
 		});
-
-	  } else {
-		pdfMake.createPdf(dd).open()
 	  }
   }
 }
@@ -743,7 +743,7 @@ $(document).ready(function () {
 		return false;
 	}else{
 		$('#signature').val(signaturePad.toDataURL());
-		createDocument(true);
+		createDocument(false);
 	}
   });
 

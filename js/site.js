@@ -2,55 +2,14 @@ var App = window.election;
 
 App.currentStep = 0;
 
-function updateStep(step) {
-    var $progressContainer = $('.nav--progress');
-
-    if (0 === step) {
-        $progressContainer.hide();
-        return;
-    }
-
-    $progressContainer
-        .find('li:nth-child('+step+')')
-        .siblings('li')
-            .hide()
-        .end()
-        .show();
-
-    var $stepCounter = $progressContainer.find('.counter');
-    $stepCounter
-        .children('.counter__step')
-            .text(step)
-        .end()
-        .show();
-
-    $progressContainer.show();
-}
-
 function clearForm() {
 	$('#ziadost h2').hide();
 	$('#ziadost form').hide();
 }
 
-function updateMenu(i) {
-	if (i) {
-		$('#krokomer li:nth-child(3) a').attr('href', '#ziadost');
-		$('#krokomer li:nth-child(4) a').attr('href', '#pdf');
-		$('#krokomer li:nth-child(5) a').attr('href', '#sign');
-		$('#krokomer li:nth-child(6) a').attr('href', '#pdf-final');
-	} else {
-		$('#krokomer li:nth-child(3) a').attr('href', '#preukaz-zahranicie');
-		$('#krokomer li:nth-child(4) a').attr('href', '#ziadost');
-		$('#krokomer li:nth-child(5) a').attr('href', '#pdf');
-		$('#krokomer li:nth-child(6) a').attr('href', '#sign');
-		$('#krokomer li:nth-child(7) a').attr('href', '#pdf-final');
-	}
-}
-
 function nemamTP() {
   // update back button
   clearForm();
-  updateMenu(true);
   $('.nemam-tp').show();
   $('#photo-link').show();
 
@@ -61,7 +20,6 @@ function nemamTP() {
 
 function postaTP() {
   clearForm();
-  updateMenu(false);
   $('.posta-tp').show();
   $('#photo-link').hide();
   $('#tpFlag').val('volbaPostouSTrvalymPobytom')
@@ -69,7 +27,6 @@ function postaTP() {
 
 function preukazTP() {
   clearForm();
-  updateMenu(0);
   $('.preukaz-tp').show();
   $('#photo-link').hide();
   $('#tpFlag').val('ziadostOPreukazPostou')
@@ -77,7 +34,6 @@ function preukazTP() {
 
 function preukazPS() {
   clearForm();
-  updateMenu(0);
   $('.preukaz-ps').show();
   $('#photo-link').hide();
   $('#tpFlag').val('ziadostOPreukaPreSplnomocnenca')
@@ -728,82 +684,44 @@ function resizeCanvas() {
 
 window.onresize = resizeCanvas;
 
-$(document).ready(function () {
+$(document).ready(function ()
+{
   resizeCanvas();
 
   signaturePad = new SignaturePad(canvas);
 
-  $('#clear-button').on("click", function (event) {
+  $('#clear-button').on("click", function (event)
+  {
     signaturePad.clear();
   });
 
-  $('#sign-button').on("click", function (e) {
-	if(signaturePad.isEmpty()){
-		alert("Podpíšte sa prosím");
-		e.preventDefault();
-		e.stopPropagation();
-		return false;
-	}else{
-		$('#signature').val(signaturePad.toDataURL());
-		createDocument(false);
-	}
-  });
-
-  $('#id-button').on("click", function (event) {
+  $('#id-button').on("click", function (event)
+  {
     createDocument(true);
   });
 
-  $('[data-js-download-document]').on('click', function(e){
-    e.preventDefault();
-    var src = $('#final').attr('src');
-
-	$('#step6but1').addClass('secondary');
-	$('#step6but2').removeClass('secondary');
-
-    window.open(src);
-  });
-
-  $('#camera-input').change(function () {
+  $('#camera-input').change(function ()
+  {
     var reader = new FileReader();
-    reader.onloadend = function () {
+    reader.onloadend = function ()
+    {
       $('#camera-preview').attr('src', reader.result)
     }
     reader.readAsDataURL($('#camera-input')[0].files[0]);
   });
 
-  if(detectIE()){
-	  $("#alertie").show();
-	  $(".body-content .section").css("padding","100px 0 0 0");
-	  $("#intro").css("padding","100px 0 0 0");
-	  $("#final").hide();
-	  $("#preview").hide();
+  if (detectIE())
+  {
+    $("#alertie").show();
+    $(".body-content .section").css("padding", "100px 0 0 0");
+    $("#intro").css("padding", "100px 0 0 0");
+    $("#final").hide();
+    $("#preview").hide();
   }
 
   nacitajKraje();
   nastavObec();
-  
-  
-  // posunute za $('#sign-button').on("click", function (event) { aby sa platno nevymazalo ked sa skryje
-  $('a.btn-step').click(function() {
-    var $btn = $(this);
-    var isStepBack = false;
 
-    if (!$btn.hasClass("dontcountstep")) {
-        isStepBack = $btn.is('#krokomer a');
-        (isStepBack)
-            ? App.currentStep--
-            : App.currentStep++;
-
-        updateStep(App.currentStep);
-    }
-
-    $('.row').hide();
-    $.when($($btn.attr('href')).show()).done(function() {
-        resizeCanvas();
-        App.Analytics.trackStep($btn.prop('hash'), App.currentStep, isStepBack);
-        $('html, body').animate({ scrollTop: 0 }, 'slow');
-    })
-  });
 });
 
 

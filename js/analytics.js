@@ -5,9 +5,12 @@ election.Analytics = (function(undefined) {
      * @param {int} stepNumber
      * @param {boolean} isStepBack
      */
-    function trackStep(step, stepNumber, isStepBack) {
-        var action = (isStepBack) ? 'step back' : 'next step';
-        track('Application', action, step, stepNumber);
+    function trackStep(step, stepNumber) {
+        track('Application', 'step', step, stepNumber);
+    }
+
+    function trackStepBack(stepNumber, previousStepNumber) {
+        track('Application', 'step_back', stepNumber, previousStepNumber);
     }
 
     /**
@@ -35,6 +38,7 @@ election.Analytics = (function(undefined) {
 
     return {
         track: track,
-        trackStep: trackStep
+        trackStep: trackStep,
+        trackStepBack: trackStepBack
     }
 })();

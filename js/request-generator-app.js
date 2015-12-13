@@ -3,9 +3,10 @@ var RequestGeneratorApp = function() {
         tp: -1, // {'tp-na-slovensku', 'tp-odhlaseny'}
         volba: -1, // {volba-postou, volba-s-preukazom}
         preukaz: -1, // {preukaz-do-vlastnych-ruk, preukaz-preberie-splnomocnenec}
-        pdf: '' // {pdf-preview, pdf-sign, pdf-finalize}
+        action: '' // {action-preview, action-sign, action-finalize, action-send}
     };
 
+    this.active_section = null;
     this.has_form_data = false;
 
     this.init();
@@ -38,10 +39,130 @@ RequestGeneratorApp.prototype = {
 
             that.signPdf();
         });
+
+        $('.btn-show-final-info').on('click', function(e){
+            e.preventDefault();
+
+            that.showFinalInfo();
+        });
+
+        $('.nav--progress a').on('click', function() {
+            App.Analytics.trackStepBack(that.getStep(that.active_section), that.getPreviousStep());
+        });
+    },
+
+    getStep: function(section)
+    {
+        var steps_map = {
+            'intro': 0,
+            'start': 1,// 'intro',
+            'tp-na-slovensku': 2,// 'start',
+            'preukaz': 3,// 'tp-na-slovensku',
+            'ziadost': 4,
+            'pdf': 5,
+            'sign': 6,
+            'pdf-final': 7,
+            'sendsection': 8
+        };
+
+        return steps_map[section];
+    },
+
+    renderStep: function()
+    {
+        var step = this.getStep(this.active_section);
+
+        if (step > 0)
+        {
+            var a = $('.nav-item a');
+
+            $('.counter__step').text(step);
+            var previous_step = this.getPreviousStep();
+            a.attr('href', '#' + this.getBackUrl()).text(previous_step == 0 ? 'Späť na úvod' : 'Späť na krok ' + previous_step);
+
+            $('.counter').show();
+            $('.nav-item').show();
+        }
+        else
+        {
+            $('.nav-item').hide();
+            $('.counter').hide();
+        }
+    },
+
+    getBackUrl: function() {
+        switch (this.getStep(this.active_section))
+        {
+            case 0: return null;
+            case 1: return 'intro';
+            case 2: return 'start';
+            default: return this.getBasePreviousStateUrl();
+        }
+    },
+
+    getPreviousStep: function()
+    {
+        var section_and_state = this.resolveSectionAndState(this.getBackUrl());
+        return this.getStep(section_and_state[0]);
+    },
+
+    getBasePreviousStateUrl: function()
+    {
+        var hash = location.hash.replace( /^#/, '');
+
+        if (this.state.action)
+        {
+            var previous_action = this.getPreviousAction();
+
+            if (previous_action)
+            {
+                return hash.replace(/&action-.*/, '&' + previous_action);
+            }
+        }
+
+        hash = hash.replace(/&{0,1}[^&]*$/, '');
+
+        return hash ? hash : 'start';
+    },
+
+    getPreviousAction: function()
+    {
+        var actions = ['action-preview', 'action-sign', 'action-finalize', 'action-send'];
+
+        var current_action_index = actions.indexOf(this.state.action);
+
+        if (current_action_index > 0)
+        {
+            return actions[current_action_index - 1];
+        }
+        else
+        {
+            return null;
+        }
     },
 
     run: function() {
-        var hash = location.hash.replace( /^#/, '');
+        var section_and_state = this.resolveSectionAndState(location.hash);
+
+        var section = section_and_state[0];
+
+        if (section)
+        {
+            this.state = section_and_state[1];
+            this.setActiveSection(section);
+
+            this.renderStep();
+        }
+        else
+        {
+            location.hash = '#intro';
+        }
+    },
+
+    resolveSectionAndState: function(hash)
+    {
+        hash = hash.replace( /^#/, '');
+
         var section;
 
         switch (hash)
@@ -51,7 +172,7 @@ RequestGeneratorApp.prototype = {
                 section = hash;
                 break;
             case 'tp-na-slovensku&volba-s-preukazom':
-                section = 'volba-s-preukazom';
+                section = 'preukaz';
                 break;
             case 'tp-odhlaseny':
             case 'tp-na-slovensku&volba-postou':
@@ -63,35 +184,34 @@ RequestGeneratorApp.prototype = {
                 section = 'intro';
         }
 
-        this.stateFromHash(hash);
+        var state = this.stateFromHash(hash);
 
-        if (this.state.pdf != '')
+        if (state.action != '')
         {
             if (this.has_form_data)
             {
-                switch (this.state.pdf)
+                switch (state.action)
                 {
-                    case 'pdf-preview':
+                    case 'action-preview':
                         section = 'pdf';
                         break;
 
-                    case 'pdf-sign':
+                    case 'action-sign':
                         section = 'sign';
                         break;
 
-                    case 'pdf-finalize':
+                    case 'action-finalize':
                         section = 'pdf-final';
+                        break;
+
+                    case 'action-send':
+                        section = 'sendsection';
                         break;
                 }
             }
-            else
-            {
-                location.hash = '#intro';
-            }
-
         }
 
-        this.showSection(section);
+        return [section, state];
     },
 
     submitForm: function()
@@ -99,35 +219,58 @@ RequestGeneratorApp.prototype = {
         createDocument(true);
         this.has_form_data = true;
 
-        var hash = location.hash.replace( /^#/, '').replace(/&pdf-.*/, '');
-        location.hash = hash + '&pdf-preview';
+        var hash = location.hash.replace( /^#/, '').replace(/&action-.*/, '');
+        location.hash = hash + '&action-preview';
     },
 
     signPdf: function()
     {
-        var hash = location.hash.replace( /^#/, '').replace(/&pdf-.*/, '');
-        location.hash = hash + '&pdf-sign';
+        var hash = location.hash.replace( /^#/, '').replace(/&action-.*/, '');
+        location.hash = hash + '&action-sign';
     },
 
     downloadPdf: function()
     {
-        createDocument(false, 'TP');
+        var src;
+
+        if (this.active_section == 'pdf')
+        {
+            src = $('#preview').attr('src');
+        }
+        else
+        {
+            src = $('#final').attr('src');
+        }
+
+        window.open(src);
     },
 
     finalizePdf: function()
     {
-        $('.section').hide();
+        if(signaturePad.isEmpty())
+        {
+            alert("Podpíšte sa prosím");
+        }
+        else
+        {
+            $('#signature').val(signaturePad.toDataURL());
+            createDocument(false);
 
-//		$('#signature').val(signaturePad.toDataURL());
-//		createDocument(true);
+            $('#pdf-final').show();
 
-        $('#pdf-final').show();
+            var hash = location.hash.replace( /^#/, '').replace(/&action-.*/, '');
+            location.hash = hash + '&action-finalize';
+        }
+    },
 
-        //var hash = location.hash.replace( /^#/, '').replace(/&pdf-.*/, '');
-        //location.hash = hash + '&pdf-finalize';
+    showFinalInfo: function()
+    {
+        var hash = location.hash.replace( /^#/, '').replace(/&action-.*/, '');
+        location.hash = hash + '&action-send';
     },
 
     initForm: function() {
+
         if (this.state.tp == 'tp-odhlaseny')
         {
             nemamTP();
@@ -151,36 +294,41 @@ RequestGeneratorApp.prototype = {
 
     stateFromHash: function(hash)
     {
-        var that = this;
-
-        this.state = {
+        var state = {
             tp: -1,
             volba: -1,
             preukaz: -1,
-            pdf: ''
+            action: ''
         };
 
         var parts = hash.split('&');
 
         $.each(parts, function(i, part) {
-            $.each(['tp', 'volba', 'preukaz', 'pdf'], function(i, prefix) {
+            $.each(['tp', 'volba', 'preukaz', 'action'], function(i, prefix) {
                 if (part.indexOf(prefix) == 0)
                 {
-                    that.state[prefix] = part;
+                    state[prefix] = part;
                 }
             })
         });
+
+        return state;
     },
 
-    showSection: function(id)
+    setActiveSection: function(section)
     {
+        this.active_section = section;
+
         var that = this;
 
         $('.section').hide();
-        $.when($('#' + id).show()).done(function(){
+        $.when($('#' + this.active_section).show()).done(function(){
             resizeCanvas();
+            App.Analytics.trackStep(location.hash.replace( /^#/, ''), that.getStep(that.active_section));
 
-            if (id == 'ziadost')
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+            if (that.active_section == 'ziadost')
             {
                 that.initForm();
             }

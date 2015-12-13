@@ -51,6 +51,8 @@ height:36px; padding:16px 0; margin-bottom:60px; }
 #krokomer li { float:right; list-style:none; }
 #krokomer li a { text-decoration:none; font-size:36px; padding:32px 0; }
 
+.section { display: none; }
+
 .section { padding-top:128px; font-size:36px; }
 .section a { margin:24px 0; }
 

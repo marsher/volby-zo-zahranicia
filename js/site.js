@@ -1,26 +1,6 @@
 var App = window.election;
 
 App.currentStep = 0;
-$('a.btn-step').click(function() {
-    var $btn = $(this);
-    var isStepBack = false;
-
-    if (!$btn.hasClass("dontcountstep")) {
-        isStepBack = $btn.is('#krokomer a');
-        (isStepBack)
-            ? App.currentStep--
-            : App.currentStep++;
-
-        updateStep(App.currentStep);
-    }
-
-    $('.row').hide();
-    $.when($($btn.attr('href')).show()).done(function() {
-        resizeCanvas();
-        App.Analytics.trackStep($btn.prop('hash'), App.currentStep, isStepBack);
-        $('html, body').animate({ scrollTop: 0 }, 'slow');
-    })
-});
 
 function updateStep(step) {
     var $progressContainer = $('.nav--progress');
@@ -755,9 +735,16 @@ $(document).ready(function () {
     signaturePad.clear();
   });
 
-  $('#sign-button').on("click", function (event) {
-    $('#signature').val(signaturePad.toDataURL());
-    createDocument(true);
+  $('#sign-button').on("click", function (e) {
+	if(signaturePad.isEmpty()){
+		alert("Podpíšte sa prosím");
+		e.preventDefault();
+		e.stopPropagation();
+		return false;
+	}else{
+		$('#signature').val(signaturePad.toDataURL());
+		createDocument(true);
+	}
   });
 
   $('#id-button').on("click", function (event) {
@@ -792,6 +779,29 @@ $(document).ready(function () {
 
   nacitajKraje();
   nastavObec();
+  
+  
+  // posunute za $('#sign-button').on("click", function (event) { aby sa platno nevymazalo ked sa skryje
+  $('a.btn-step').click(function() {
+    var $btn = $(this);
+    var isStepBack = false;
+
+    if (!$btn.hasClass("dontcountstep")) {
+        isStepBack = $btn.is('#krokomer a');
+        (isStepBack)
+            ? App.currentStep--
+            : App.currentStep++;
+
+        updateStep(App.currentStep);
+    }
+
+    $('.row').hide();
+    $.when($($btn.attr('href')).show()).done(function() {
+        resizeCanvas();
+        App.Analytics.trackStep($btn.prop('hash'), App.currentStep, isStepBack);
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    })
+  });
 });
 
 

@@ -246,7 +246,7 @@ function nastavObec() {
 	if(jQuery.data( document.body, "psc-locked")){}else{
 		$("#addressslovakia-zip").val(data[4]);
 	}
-    $("#send").attr("href", "mailto:" + data[6] + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
+    $("#send").attr("href", "mailto:" + $("#sendto").html() + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
 
     }
   }

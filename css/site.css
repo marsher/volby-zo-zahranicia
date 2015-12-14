@@ -117,9 +117,12 @@ h2 {
 	box-shadow: none;
 }
 
+.form-group .help-block {
+	font-size: .9em;
+}
+
 label {
 	font-weight: normal;
-	font-size: .9em;
 	color: #555;
 }
 

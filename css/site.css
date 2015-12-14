@@ -237,6 +237,10 @@ h2.as-title-with-padding, h3.as-title-with-padding {
 	margin-top: 1.8em;
 }
 
+.embed-responsive-210by297 {
+	padding-bottom: 141.43%;
+}
+
 .digitalBlue {
 	color: #0097fd;
 }

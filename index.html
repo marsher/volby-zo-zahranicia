@@ -9,6 +9,10 @@
 	<!-- add description of the website -->
 	<title>Voľby zo zahraničia</title>
 	<meta name="description" content="Pripravte si žiadosť cez telefón a bez čítačky. Stačí Vám adresa a rodné číslo." />
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 	<link href="assets/css/select2.min.css" rel="stylesheet" />
 	<link href="css/site.css" rel="stylesheet" />
 
@@ -32,80 +36,427 @@
 
 </head>
 <body>
-	<div id="krokomer" class="nav">
-		<div class="wrap">
-			<h1 class="logo"><a href="#"><img src="images/logo.png" title="volby.digital"></a></h1>
-			<div class="nav--progress">
-				<div class="counter">
-					<span class="counter__step">0</span>8
+
+<nav class="navbar navbar-volby navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"><img src="images/logo.png" title="volby.digital"></a>
+		</div>
+
+		<div id="krokomer" class="navbar-steps">
+			<div class="wrap">
+				<div class="nav--progress">
+					<div class="counter">
+						<span class="counter__step">0</span>8
+					</div>
+					<span class="nav-item"><a href="" class="digitalBlue"></a></span>
 				</div>
-				<ul>
-					<li class="nav-item"><a href="" class="digitalBlue"></a></li>
-				</ul>
 			</div>
 		</div>
 	</div>
+</nav>
+
+<div class="steps">
+	<div class="container">
+
+		<!-- ----- ----- -->
+		<!-- HOME PAGE -->
+		<!-- ----- ----- -->
+		<div id="intro" class="intro section">
+			<p class="text-justify text-biggest paragraph-1">
+				Až <span class="digitalRed text-biggest">98%</span> ľudí zo zahraničia <strong>nevolilo</strong> v&nbsp;posledných
+				parlamentných voľbách, pre zložitý proces a&nbsp;skoré termíny — my sme proces zjednodušili na
+				<strong>3&nbsp;minúty, 20&nbsp;slov a&nbsp;8&nbsp;klikov</strong>.
+			</p>
+
+			<hr>
+
+			<p class="text-justify text-bigger paragraph-2">
+				Pripravte si žiadosť cez telefón, bez tlačenia, skenovania či špeciálnej čítačky na&nbsp;občiansky preukaz.
+				Stačí Vám na to adresa, rodné číslo a prípadne Váš pas.
+			</p>
+
+			<p>
+				<a class="btn btn-block btn-success btn-volby-blue" href="#start" role="button">Pripraviť žiadosť</a>
+			</p>
+
+			<ul class="text-big text-color-lighter">
+				<li>Vytvorenie trvá približne <strong>3 minúty</strong></li>
+				<li>Žiadosť je generovaná vo <strong>Vašom prehliadači</strong></li>
+				<li>Žiadne <strong>osobné dáta nie sú prenášané internetom</strong></li>
+				<li>Žiadosť odosielate z <strong>Vášho</strong> e-mailu</li>
+			</ul>
+
+			<hr>
+
+			<!-- Sem dorobime Social buttonky -->
+
+			<p class="powered-by text-center">
+				Tento nástroj Vám prináša
+				<a target="_blank" href="http://slovensko.digital/">
+					<img src="./images/standard-logo.png">
+				</a>
+			</p>
+
+			<hr>
+
+			<div class="alert alert-danger hidden" id="alertie">POZOR! Používate prehliadač ktorý nepodporuje vytváranie náhľadov. Odporúčame Vám použiť chrome alebo firefox.</div>
+
+			<p id="github" class="footer text-center">
+				<br/> Dostupné sú aj <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia">zdrojové kódy</a>,
+				<a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/blob/master/README.md">dodatočné informácie</a>
+				a <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/issues">issues</a> na Githube.
+			</p>
+		</div>
+
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 1 -->
+		<!-- ----- ----- -->
+		<div class="section krok1" id="start">
+			<h2 class="as-title-with-padding">Trvalý pobyt mám</h2>
+			<hr>
+			<p>
+				<a class="btn btn-block btn-volby-blue" href="#tp-na-slovensku" role="button">
+					<strong>na Slovensku</strong></a>
+			</p>
+			<p>
+				<a class="btn btn-block btn-volby-blue" href="#tp-odhlaseny" role="button">
+					<strong>v zahraničí</strong></a>
+			</p>
+			<p class="text-color-lighter">
+				(Pobyt v zahraničí zvoľte, ak ste si odhlásili trvalý pobyt zo Slovenska.)
+			</p>
+			<input style="display:none" id="tpFlag" value="">
+		</div>
+
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 2 -->
+		<!-- ----- ----- -->
+		<div class="section krok2" id="tp-na-slovensku">
+
+			<h2 class="as-title-with-padding">Voliť budem</h2>
+			<hr>
+			<p>
+				<a class="btn btn-volby-blue btn-block" href="#tp-na-slovensku&volba-postou" role="button">poštou zo zahraničia</a>
+			</p>
+			<p class="text-color-lighter">
+				(Žiadosť treba poslať najneskôr do 15.1.2016)
+			</p>
+			<p>
+				<a class="btn btn-volby-blue btn-block" href="#tp-na-slovensku&volba-s-preukazom" role="button">hlasovacím preukazom na Slovensku</a>
+			</p>
+			<p>
+				Hlasovacím preukazom je možné voliť v ktorejkoľvek volebnej miestnosti na Slovensku.
+			</p>
+			<p class="text-color-lighter">(Žiadosť treba poslať najneskôr do 15.2.2016)</p>
+
+		</div>
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 3 -->
+		<!-- ----- ----- -->
+		<div class="section krok2" id="preukaz">
+			<h2 class="as-title-with-padding">Môžete si osobne prevziať preukaz?</h2>
+			<hr>
+			<p>
+				<a class="btn btn-block btn-volby-blue dontcountstep" href="#tp-na-slovensku&volba-s-preukazom&preukaz-do-vlastnych-ruk" role="button"><strong>Chcem hlasovací preukaz poštou do vlastných rúk</strong></a>
+			</p>
+			<p>
+				<a class="btn btn-block btn-volby-blue dontcountstep" href="#tp-na-slovensku&volba-s-preukazom&preukaz-preberie-splnomocnenec" role="button"><strong>Pre preukaz mi zájde na úrad splnomocnenec</strong></a>
+			</p>
+		</div>
+
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 4 -->
+		<!-- ----- ----- -->
+		<div class="section" id="ziadost">
+			<div class="posta-tp preukaz-tp preukaz-ps nemam-tp">
+				<h2 class="digitalRed as-title-with-padding">Vaše údaje</h2>
+			</div>
+			<hr>
+			<p>
+				Žiadne údaje nie sú odosielané cez internet
+			</p>
+			<div class="preukaz-ps posta-tp preukaz-tp nemam-tp">
+				<form id="basic-info" action="/" method="post">
+					<div class="form-group field-basicinfo-name required">
+						<label class="control-label" for="basicinfo-name">Meno</label>
+						<input type="text" id="basicinfo-name" class="form-control" name="BasicInfo[name]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-basicinfo-lastname required">
+						<label class="control-label" for="basicinfo-lastname">Priezvisko</label>
+						<input type="text" id="basicinfo-lastname" class="form-control" name="BasicInfo[lastname]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-basicinfo-maidenlastname">
+						<label class="control-label" for="basicinfo-maidenlastname">Rodné priezvisko <em>(Ak ste vydatá)</em></label>
+						<input type="text" id="basicinfo-maidenlastname" class="form-control" name="BasicInfo[maidenLastname]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-basicinfo-birthno required">
+						<label class="control-label" for="basicinfo-birthno">Rodné číslo (s lomítkom)</label>
+						<input type="text" id="basicinfo-birthno" class="form-control" name="BasicInfo[birthNo]" autocomplete="off">
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+			<div class="preukaz-ps">
+				<h3 class="digitalRed as-title-with-padding">Údaje splnomocnenca</h3>
+				<hr>
+				<form id="proxy" action="/" method="post">
+
+					<div class="form-group field-proxy-name required">
+						<label class="control-label" for="proxy-name">Meno</label>
+						<input type="text" id="proxy-name" class="form-control" name="Proxy[name]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-proxy-lastname required">
+						<label class="control-label" for="proxy-lastname">Priezvisko</label>
+						<input type="text" id="proxy-lastname" class="form-control" name="Proxy[lastname]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-proxy-idno required">
+						<label class="control-label" for="proxy-idno">Číslo občianskeho preukazu</label>
+						<input type="text" id="proxy-idno" class="form-control" name="Proxy[idNo]">
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+			<div class="preukaz-ps preukaz-tp posta-tp">
+				<h3 class="as-title-with-padding digitalRed">
+					Vaša adresa trvalého pobytu v Slovenskej republike</h3>
+				<hr>
+				<form id="address-slovakia" action="/" method="post">
+					<div class="form-group field-addressslovakia-street required">
+						<label class="control-label" for="addressslovakia-street">Ulica</label>
+						<input type="text" id="addressslovakia-street" class="form-control" name="AddressSlovakia[street]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-streetno required">
+						<label class="control-label" for="addressslovakia-streetno">Číslo domu</label>
+						<input type="text" id="addressslovakia-streetno" class="form-control" name="AddressSlovakia[streetNo]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-kraj required">
+						<label class="control-label" for="addressslovakia-kraj">Kraj</label>
+						<select class="form-control" id="addressslovakia-kraj" name="AddressSlovakia[kraj]" onchange="nastavKraj()" >
+							<option value="mvsr">DB obcí sa nenačítala</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-okres required">
+						<label class="control-label" for="addressslovakia-okres">Okres</label>
+						<select class="form-control" id="addressslovakia-okres" name="AddressSlovakia[okres]" onchange="nastavOkres()" >
+							<option value="mvsr">DB obcí sa nenačítala</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-city required">
+						<label class="control-label" for="addressslovakia-city">Mesto/Obec</label>
+						<select class="form-control" id="addressslovakia-city" name="AddressSlovakia[city]" onchange="nastavObec()" >
+							<option value="mvsr">DB obcí sa nenačítala</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-zip required">
+						<label class="control-label" for="addressslovakia-zip">PSČ</label>
+						<input type="text" id="addressslovakia-zip" class="form-control" name="AddressSlovakia[zip]">
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+			<div class="posta-tp preukaz-tp nemam-tp">
+				<h3 id="foreign-header" class="as-title-with-padding digitalRed">
+					Korešpondenčná adresa pre odoslanie hlasovacích lístkov alebo preukazu</h3>
+				<hr>
+				<form id="address-foreign" action="/" method="post">
+					<div class="form-group field-addressforeign-street required">
+						<label class="control-label" for="addressforeign-street">Ulica</label>
+						<input type="text" id="addressforeign-street" class="form-control" name="AddressForeign[street]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-streetno required">
+						<label class="control-label" for="addressforeign-streetno">Číslo domu</label>
+						<input type="text" id="addressforeign-streetno" class="form-control" name="AddressForeign[streetNo]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-city required">
+						<label class="control-label" for="addressforeign-city">Mesto</label>
+						<input type="text" id="addressforeign-city" class="form-control" name="AddressForeign[city]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-zip required">
+						<label class="control-label" for="addressforeign-zip">PSČ</label>
+						<input type="text" id="addressforeign-zip" class="form-control" name="AddressForeign[zip]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-country required">
+						<label class="control-label" for="addressforeign-country">Štát</label>
+						<input type="text" id="addressforeign-country" class="form-control" name="AddressForeign[country]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-format preukaz-ps preukaz-tp nemam-tp">
+						<label class="control-label" for="addressforeign-format">Formát adresy</label>
+						<select id="addressforeign-format" class="form-control" name="AddressForeign[format]">
+							<option value="sk">SK formát - Ulica číslo, PSČ Mesto, Štát</option>
+							<option value="usa">USA formát - číslo ulica, Mesto PSČ, Štát</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+			<p>
+				<a class="btn btn-volby-blue btn-block btn-submit-form" href="#pdf" id="preview-button" role="button">Vytvor náhľad žiadosti</a>
+			</p>
+
+		</div>
+
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 5 -->
+		<!-- ----- ----- -->
+		<div class="section" id="pdf">
+			<iframe id="preview" width="100%" height="600px"></iframe>
+			<div class="row">
+				<div class="col-sm-6">
+					<p>
+						<a class="btn btn-volby-blue btn-block btn-sign-pdf" href="#sign" role="button">Podpísať</a>
+					</p>
+				</div>
+				<div class="col-sm-6">
+					<p>
+						<a class="btn btn-volby-blue btn-block btn-download-pdf" href="#pdf" role="button">Stiahnuť</a>
+					</p>
+				</div>
+			</div>
+			<div class="btn-group">
+			</div>
+		</div>
+
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 6 -->
+		<!-- ----- ----- -->
+		<div class="section" id="sign">
+			<div class="signature-pad">
+				<span>Tu sa prosím podpíšte</span>
+				<canvas></canvas>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<p>
+						<a class="btn btn-volby-blue btn-block btn-finalize-pdf" href="#pdf-final">Použiť</a>
+					</p>
+				</div>
+				<div class="col-sm-6">
+					<p>
+						<button id="clear-button" class="btn btn-volby-gray btn-block">Vyčistiť</button>
+					</p>
+				</div>
+			</div>
+
+			<input style="display:none;" type="text" id="signature" value="">
+		</div>
+
+
+
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 7 -->
+		<!-- ----- ----- -->
+		<div class="section" id="pdf-final">
+			<iframe id="final" width="100%" height="600px"></iframe>
+			<p>Stiahnite si Vašu žiadosť do počítača alebo telefónu. Neskôr ju pripojíte k emailu.</p>
+			<div class="btn-group">
+
+
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<p>
+						<a class="btn btn-volby-blue btn-block btn-download-pdf" href="#pdf" id="step6but1" role="button">Stiahnuť</a>
+					</p>
+				</div>
+				<div class="col-sm-6">
+					<p>
+						<a class="btn btn-volby-blue btn-block btn-show-final-info" id="step6but2" href="#sendsection" role="button">Po uložení pokračujte tu</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 8 -->
+		<!-- ----- ----- -->
+		<div class="section krok7 sendsection" id="sendsection">
+			<div class="" id="sendemail">
+				<h2>Odošlite email</h2>
+				<div class="alert alert-warning" role="alert">
+					Nezabudnite priložiť prílohu k emailu.
+				</div>
+				<a id="send" class="btn btn-volby-blue btn-block" href="" role="button">Vytvoriť email</a>
+				<p>
+					Ak máte aktivovaného mailového klienta, tlačítko vyššie by malo vytvoriť email automaticky.
+					Ak nie, odošlite nasledovný email:</p>
+				<p>
+					Na emailovú adresu: <strong><span id="sendto"></span></strong>
+					<button type="button" class="copy-btn" data-clipboard-target="#sendto" title="Skopírovať email do schránky (Ctrl+C)">
+						<img src="images/copy.png" alt="Skopíruj"/>
+					</button>
+				</p>
+				<p>
+					S predmetom: <b><span class="bold" id="emailsubject"></span></b>
+					<button type="button" class="copy-btn" data-clipboard-target="#emailsubject" title="Skopírovať predmet do schránky (Ctrl+C)">
+						<img src="images/copy.png" alt="Skopíruj"/>
+					</button>
+				</p>
+				<p>
+					S textom: <b><span class="bold" id="emailbody"></span></b>
+					<button type="button" class="copy-btn" data-clipboard-target="#emailbody" title="Skopírovať text do schránky (Ctrl+C)">
+						<img src="images/copy.png" alt="Skopíruj"/>
+					</button>
+				</p>
+				<p>Po odoslaní emailu <strong>s prílohou</strong> očakávajte potvrdenie z obecného úradu, že Vaša žiadosť bola spracovaná. Ak sa tak nestane, kontaktujte ich telefonicky.</p>
+				<p>Ak nedostanete potvrdenie o prijatí Vašej pošty do 3 dní, skúste im zavolať na telefón: <b><span class="bold" id="phone"></span></b></p>
+			</div>
+			<div class="col-lg-12 hidden justify" id="noemail">
+				<h2>Odošlite žiadosť</h2>
+				<p>Bohužiaľ sme nenašli email pre Vašu obec. Vygenerovanú žiadosť v PDF si však stále môžete vytlačiť a odoslať poštou na adresu úradu v hlavičke žiadosti. Ak im pošlete žiadosť poštou, prosím upovedomte ich, aby si zriadili emailovú adresu, aby ste pre prípadné ďalšie voľby takúto žiadosť nemuseli odosielať poštou.</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
 
 	<main class="main-wrapper">
 		<div class="wrap">
 			<div class="container">
 				<div class="site-index">
-					<div id="intro" class="intro row section">
-						<h2 class="justify">Až <strong class="digitalRed">98%</strong> ľudí zo zahraničia <b>nevolilo</b> v posledných parlamentných voľbách, pre zložitý proces a skoré termíny — my sme proces zjednodušili na <b>3 minúty, 20 slov a 8 klikov</b>.</h2>
-						<h3 class="justify">Pripravte si žiadosť cez telefón, bez tlačenia, skenovania či špeciálnej čítačky na&nbsp;občiansky preukaz.
-						Stačí Vám na to adresa, rodné číslo a prípadne Váš pas.</h3>
-						
-						
-						<a class="btn btn-lg btn-success digitalBlueFill" href="#start" role="button"><strong>Pripraviť žiadosť</strong></a>
-						<ul>
-						  <li>Vytvorenie trvá približne <strong>3 minúty</strong></li>
-						  <li>Žiadosť je generovaná vo <strong>Vašom prehliadači</strong></li>
-						  <li>Žiadne <strong>osobné dáta nie sú prenášané internetom</strong></li>
-						  <li>Žiadosť odosielate z <strong>Vášho</strong> e-mailu</li>
-						</ul>
-						<!-- Sem dorobime Social buttonky -->
-						<h4>
-							Tento nástroj Vám prináša
-							<a target="_blank" href="http://slovensko.digital/"><span>slovensko.digital</span></a>
-						</h4>
-						<div class="alert alert-danger hidden" id="alertie">POZOR! Používate prehliadač ktorý nepodporuje vytváranie náhľadov. Odporúčame Vám použiť chrome alebo firefox.</div>
-						<div id="github" class="github formatted">
-							<br/> Dostupné sú aj <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia">zdrojové kódy</a>,
-							<a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/blob/master/README.md">dodatočné informácie</a>
-							a <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/issues">issues</a> na Githube.
-						</div>
-					</div>
+
 
 					<div class="body-content">
-						<div class="row section krok1" id="start">
-							<div class="col-lg-12">
-								<h2>Trvalý pobyt mám</h2>
-								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-na-slovensku" role="button">
-									<strong>na Slovensku</strong></a>
-								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-odhlaseny" role="button">
-									<strong>v zahraničí</strong></a>
-								<input style="display:none" id="tpFlag" value="">
-							</div>
-						</div>
 
-						<div class="row section krok2" id="tp-na-slovensku">
-							<div class="col-lg-12">
-								<h2>Voliť budem</h2>
-								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-na-slovensku&volba-postou" role="button"><strong>poštou zo zahraničia</strong></a>
-								<h5>(Žiadosť treba poslať najneskôr do 15.1.2016)</h5>
-								<a class="btn btn-lg btn-success digitalRedFill" href="#tp-na-slovensku&volba-s-preukazom" role="button"><strong>hlasovacím preukazom na Slovensku</strong></a>
-								<h3>Hlasovacím preukazom je možné voliť v ktorejkoľvek volebnej miestnosti na Slovensku.</h3>
-								<h5>(Žiadosť treba poslať najneskôr do 15.2.2016)</h5>
-							</div>
-						</div>
 
-						<div class="row section krok2" id="preukaz">
-							<div class="col-lg-12">
-								<h2>Môžete si osobne prevziať preukaz?</h2>
-								<a class="btn btn-lg btn-success dontcountstep digitalBlueFill" href="#tp-na-slovensku&volba-s-preukazom&preukaz-do-vlastnych-ruk" role="button"><strong>Chcem hlasovací preukaz poštou do vlastných rúk</strong></a>
-								<a class="btn btn-lg btn-success dontcountstep digitalRedFill" href="#tp-na-slovensku&volba-s-preukazom&preukaz-preberie-splnomocnenec" role="button"><strong>Pre preukaz mi zájde na úrad splnomocnenec</strong></a>
-							</div>
-						</div>
+
 
 						<div class="row section" id="mamTP">
 							<div class="col-lg-12">
@@ -130,157 +481,8 @@
 							</div>
 						</div>
 
-						<div class="row section" id="ziadost">
-							<h2 class="posta-tp preukaz-tp digitalRed">Adresa Vášho trvalého pobytu</h2>
-							<h2 class="nemam-tp digitalRed">Adresa miesta pobytu v cudzine <em>(pre zaslanie hlasovacích lístkov)</em></h2>
-							<p>Žiadne údaje nie sú odosielané cez internet</p>
-							<div class="col-lg-12">
-								<form id="basic-info" class="form-horizontal preukaz-ps posta-tp preukaz-tp nemam-tp" action="/" method="post">
-									<div class="form-group field-basicinfo-name required">
-										<label class="control-label" for="basicinfo-name">Meno</label>
-										<input type="text" id="basicinfo-name" class="form-control" name="BasicInfo[name]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-basicinfo-lastname required">
-										<label class="control-label" for="basicinfo-lastname">Priezvisko</label>
-										<input type="text" id="basicinfo-lastname" class="form-control" name="BasicInfo[lastname]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-basicinfo-maidenlastname">
-										<label class="control-label" for="basicinfo-maidenlastname">Rodné priezvisko <em>(Ak ste vydatá)</em></label>
-										<input type="text" id="basicinfo-maidenlastname" class="form-control" name="BasicInfo[maidenLastname]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-basicinfo-birthno required">
-										<label class="control-label" for="basicinfo-birthno">Rodné číslo (s lomítkom)</label>
-										<input type="text" id="basicinfo-birthno" class="form-control" name="BasicInfo[birthNo]" autocomplete="off">
-										<div class="help-block"></div>
-									</div>
-								</form>
-								<form id="proxy" class="form-horizontal preukaz-ps" action="/" method="post">
-									<h3>Údaje splnomocnenca</h3>
-									<div class="form-group field-proxy-name required">
-										<label class="control-label" for="proxy-name">Meno</label>
-										<input type="text" id="proxy-name" class="form-control" name="Proxy[name]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-proxy-lastname required">
-										<label class="control-label" for="proxy-lastname">Priezvisko</label>
-										<input type="text" id="proxy-lastname" class="form-control" name="Proxy[lastname]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-proxy-idno required">
-										<label class="control-label" for="proxy-idno">Číslo občianskeho preukazu</label>
-										<input type="text" id="proxy-idno" class="form-control" name="Proxy[idNo]">
-										<div class="help-block"></div>
-									</div>
-								</form>
 
-								<form id="address-slovakia" class="form-horizontal preukaz-ps preukaz-tp posta-tp" action="/" method="post">
-									<hr>
-									<h3>Adresa trvalého pobytu v Slovenskej republike:</h3>
-									<div class="form-group field-addressslovakia-street required">
-										<label class="control-label" for="addressslovakia-street">Ulica</label>
-										<input type="text" id="addressslovakia-street" class="form-control" name="AddressSlovakia[street]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-streetno required">
-										<label class="control-label" for="addressslovakia-streetno">Číslo domu</label>
-										<input type="text" id="addressslovakia-streetno" class="form-control" name="AddressSlovakia[streetNo]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-kraj required">
-										<label class="control-label" for="addressslovakia-kraj">Kraj</label>
-										<select class="form-control" id="addressslovakia-kraj" name="AddressSlovakia[kraj]" onchange="nastavKraj()" >
-											<option value="mvsr">DB obcí sa nenačítala</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-okres required">
-										<label class="control-label" for="addressslovakia-okres">Okres</label>
-										<select class="form-control" id="addressslovakia-okres" name="AddressSlovakia[okres]" onchange="nastavOkres()" >
-											<option value="mvsr">DB obcí sa nenačítala</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-city required">
-										<label class="control-label" for="addressslovakia-city">Mesto/Obec</label>
-										<select class="form-control" id="addressslovakia-city" name="AddressSlovakia[city]" onchange="nastavObec()" >
-											<option value="mvsr">DB obcí sa nenačítala</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-										<div class="form-group field-addressslovakia-zip required">
-										<label class="control-label" for="addressslovakia-zip">PSČ</label>
-										<input type="text" id="addressslovakia-zip" class="form-control" name="AddressSlovakia[zip]">
-										<div class="help-block"></div>
-									</div>
-								</form>
-								<hr>
 
-								<form id="address-foreign" class="form-horizontal posta-tp preukaz-tp nemam-tp" action="/" method="post">
-									<h3 id="foreign-header">Korešpondenčná adresa pre odoslanie hlasovacích lístkov alebo preukazu:</h3>
-									<div class="form-group field-addressforeign-street required">
-										<label class="control-label" for="addressforeign-street">Ulica</label>
-										<input type="text" id="addressforeign-street" class="form-control" name="AddressForeign[street]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-streetno required">
-										<label class="control-label" for="addressforeign-streetno">Číslo domu</label>
-										<input type="text" id="addressforeign-streetno" class="form-control" name="AddressForeign[streetNo]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-city required">
-										<label class="control-label" for="addressforeign-city">Mesto</label>
-										<input type="text" id="addressforeign-city" class="form-control" name="AddressForeign[city]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-zip required">
-										<label class="control-label" for="addressforeign-zip">PSČ</label>
-										<input type="text" id="addressforeign-zip" class="form-control" name="AddressForeign[zip]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-country required">
-										<label class="control-label" for="addressforeign-country">Štát</label>
-										<input type="text" id="addressforeign-country" class="form-control" name="AddressForeign[country]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-format hidden preukaz-ps preukaz-tp nemam-tp">
-										<label class="control-label" for="addressforeign-format">Formát adresy</label>
-										<select id="addressforeign-format" class="form-control" name="AddressForeign[format]">
-											<option value="sk">SK formát - Ulica číslo, PSČ Mesto, Štát</option>
-											<option value="usa">USA formát - číslo ulica, Mesto PSČ, Štát</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-								</form>
-								<p><a class="btn btn-lg btn-success digitalBlueFill btn-submit-form" href="#pdf" id="preview-button" role="button"><strong>Vytvor náhľad žiadosti</strong></a></p>
-							</div>
-						</div>
-
-						<div class="row section" id="pdf">
-							 <div class="col-lg-12">
-								<iframe id="preview" width="100%" height="600px"></iframe>
-								<div class="btn-group">
-									<a class="btn btn-lg btn-success digitalBlueFill btn-sign-pdf" href="#sign" role="button">Podpísať</a>
-									<a class="btn btn-lg btn-default secondary digitalBlue btn-download-pdf" href="#pdf" role="button">Stiahnuť</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="row section" id="sign">
-							<div class="col-lg-12">
-								<div class="signature-pad">
-									<span>Tu sa prosím podpíšte</span>
-									<canvas></canvas>
-								</div>
-								<div class="signature-controls btn-group">
-									<a class="btn btn-lg btn-success digitalBlueFill btn-finalize-pdf" href="#pdf-final"><strong>Použiť</strong></a>
-									<button id="clear-button" class="btn btn-default secondary">Vyčistiť</button>
-								</div>
-								<input style="display:none;" type="text" id="signature" value="">
-							</div>
-						</div>
 
 						<div class="row section" id="photo">
 							<div class="col-lg-12">
@@ -292,49 +494,9 @@
 							</div>
 						</div>
 
-						<div class="row section" id="pdf-final">
-							<div class="col-lg-12">
-								<iframe id="final" width="100%" height="600px"></iframe>
-								<p>Stiahnite si Vašu žiadosť do počítača alebo telefónu. Neskôr ju pripojíte k emailu.</p>
-								<div class="btn-group">
-									<a class="btn btn-lg btn-success digitalBlueFill btn-download-pdf" href="#pdf" id="step6but1" role="button">Stiahnuť</a>
-									<a class="btn btn-lg btn-success secondary digitalBlueFill btn-show-final-info" id="step6but2" href="#sendsection" role="button"><strong>Po uložení pokračujte tu</strong></a>
-								</div>
-							</div>
-						</div>
 
-						<div class="row section krok7 sendsection" id="sendsection">
-							<div class="col-lg-12" id="sendemail">
-								<h2>Odošlite email</h2>
-								<p style="color:red;font-weight:bold">Nezabudnite priložiť prílohu k emailu.</p>
-								<a id="send" class="btn btn-lg btn-success digitalBlueFill" href="" role="button"><strong>Vytvoriť email</strong></a>
-								<p>Ak máte aktivovaného mailového klienta, tlačítko vyššie by malo vytvoriť email automaticky. Ak nie, odošlite nasledovný email:</p>
-								<p>
-									Na emailovú adresu: <strong><span id="sendto"></span></strong>
-									<button type="button" class="copy-btn" data-clipboard-target="#sendto" title="Skopírovať email do schránky (Ctrl+C)">
-										<img src="images/copy.png" alt="Skopíruj"/>
-									</button>
-								</p>
-								<p>
-									S predmetom: <b><span class="bold" id="emailsubject"></span></b>
-									<button type="button" class="copy-btn" data-clipboard-target="#emailsubject" title="Skopírovať predmet do schránky (Ctrl+C)">
-										<img src="images/copy.png" alt="Skopíruj"/>
-									</button>
-								</p>
-								<p>
-									S textom: <b><span class="bold" id="emailbody"></span></b>
-									<button type="button" class="copy-btn" data-clipboard-target="#emailbody" title="Skopírovať text do schránky (Ctrl+C)">
-										<img src="images/copy.png" alt="Skopíruj"/>
-									</button>
-								</p>
-								<p>Po odoslaní emailu <strong>s prílohou</strong> očakávajte potvrdenie z obecného úradu, že Vaša žiadosť bola spracovaná. Ak sa tak nestane, kontaktujte ich telefonicky.</p>
-								<p>Ak nedostanete potvrdenie o prijatí Vašej pošty do 3 dní, skúste im zavolať na telefón: <b><span class="bold" id="phone"></span></b></p>
-							</div>
-							<div class="col-lg-12 hidden justify" id="noemail">
-								<h2>Odošlite žiadosť</h2>
-								<p>Bohužiaľ sme nenašli email pre Vašu obec. Vygenerovanú žiadosť v PDF si však stále môžete vytlačiť a odoslať poštou na adresu úradu v hlavičke žiadosti. Ak im pošlete žiadosť poštou, prosím upovedomte ich, aby si zriadili emailovú adresu, aby ste pre prípadné ďalšie voľby takúto žiadosť nemuseli odosielať poštou.</p>
-							</div>
-						</div>
+
+
 					</div>
 				</div>
 			</div>
@@ -397,30 +559,163 @@ jQuery(document).ready(function () {
 	$(window).hashchange(application.run.bind(application));
 	$(window).hashchange();
 
-jQuery('#basic-info').yiiActiveForm([{"id":"basicinfo-name","name":"name","container":".field-basicinfo-name","input":"#basicinfo-name","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať Vaše krstné meno."});}},{"id":"basicinfo-lastname","name":"lastname","container":".field-basicinfo-lastname","input":"#basicinfo-lastname","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať Vaše priezvisko."});}},{"id":"basicinfo-birthno","name":"birthNo","container":".field-basicinfo-birthno","input":"#basicinfo-birthno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať Vaše rodné číslo."}); validateBirthNumber(value, messages);}}], []);
-jQuery('#proxy').yiiActiveForm([{"id":"proxy-name","name":"name","container":".field-proxy-name","input":"#proxy-name","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať krstné meno splnomocnenca."});}},{"id":"proxy-lastname","name":"lastname","container":".field-proxy-lastname","input":"#proxy-lastname","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať priezvisko splnomocnenca."});}},{"id":"proxy-idno","name":"idNo","container":".field-proxy-idno","input":"#proxy-idno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Pre vytvorenie žiadosti je potrebné zadať číslo občianskeho preukazu splnomocnenca."});}}], []);
-jQuery('#address-slovakia').yiiActiveForm([{"id":"addressslovakia-street","name":"street","container":".field-addressslovakia-street","input":"#addressslovakia-street","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Ulica Vášho trvalého pobytu nemôže byť nevyplnená."});}},{"id":"addressslovakia-streetno","name":"streetNo","container":".field-addressslovakia-streetno","input":"#addressslovakia-streetno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Číslo domu Vášho trvalého pobytu nemôže byť nevyplnené."});}},{"id":"addressslovakia-city","name":"city","container":".field-addressslovakia-city","input":"#addressslovakia-city","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Mesto Vášho trvalého pobytu nemôže byť nevyplnené."});}},{"id":"addressslovakia-zip","name":"zip","container":".field-addressslovakia-zip","input":"#addressslovakia-zip","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Poštové smerovacie číslo Vášho trvalého pobytu nemôže byť nevyplnené."});}}], []);
-jQuery('#address-foreign').yiiActiveForm([{"id":"addressforeign-street","name":"street","container":".field-addressforeign-street","input":"#addressforeign-street","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Ulica adresy kde chcete odoslať žiadosť nemôže byť nevyplnená."});}},{"id":"addressforeign-streetno","name":"streetNo","container":".field-addressforeign-streetno","input":"#addressforeign-streetno","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Číslo domu adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."});}},{"id":"addressforeign-city","name":"city","container":".field-addressforeign-city","input":"#addressforeign-city","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Mesto adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."});}},{"id":"addressforeign-zip","name":"zip","container":".field-addressforeign-zip","input":"#addressforeign-zip","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Poštové smerovacie číslo adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."});}},{"id":"addressforeign-country","name":"country","container":".field-addressforeign-country","input":"#addressforeign-country","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {
-"message":"Štát adresy kde chcete odoslať žiadosť nemôže byť nevyplnený."});}}], []);
+	jQuery('#basic-info').yiiActiveForm([{
+		"id": "basicinfo-name",
+		"name": "name",
+		"container": ".field-basicinfo-name",
+		"input": "#basicinfo-name",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Pre vytvorenie žiadosti je potrebné zadať Vaše krstné meno."
+			});
+		}
+	}, {
+		"id": "basicinfo-lastname",
+		"name": "lastname",
+		"container": ".field-basicinfo-lastname",
+		"input": "#basicinfo-lastname",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Pre vytvorenie žiadosti je potrebné zadať Vaše priezvisko."
+			});
+		}
+	}, {
+		"id": "basicinfo-birthno",
+		"name": "birthNo",
+		"container": ".field-basicinfo-birthno",
+		"input": "#basicinfo-birthno",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Pre vytvorenie žiadosti je potrebné zadať Vaše rodné číslo."
+			});
+			validateBirthNumber(value, messages);
+		}
+	}], []);
+	jQuery('#proxy').yiiActiveForm([{
+		"id": "proxy-name",
+		"name": "name",
+		"container": ".field-proxy-name",
+		"input": "#proxy-name",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Pre vytvorenie žiadosti je potrebné zadať krstné meno splnomocnenca."
+			});
+		}
+	}, {
+		"id": "proxy-lastname",
+		"name": "lastname",
+		"container": ".field-proxy-lastname",
+		"input": "#proxy-lastname",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Pre vytvorenie žiadosti je potrebné zadať priezvisko splnomocnenca."
+			});
+		}
+	}, {
+		"id": "proxy-idno",
+		"name": "idNo",
+		"container": ".field-proxy-idno",
+		"input": "#proxy-idno",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Pre vytvorenie žiadosti je potrebné zadať číslo občianskeho preukazu splnomocnenca."
+			});
+		}
+	}], []);
+	jQuery('#address-slovakia').yiiActiveForm([{
+		"id": "addressslovakia-street",
+		"name": "street",
+		"container": ".field-addressslovakia-street",
+		"input": "#addressslovakia-street",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Ulica Vášho trvalého pobytu nemôže byť nevyplnená."
+			});
+		}
+	}, {
+		"id": "addressslovakia-streetno",
+		"name": "streetNo",
+		"container": ".field-addressslovakia-streetno",
+		"input": "#addressslovakia-streetno",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Číslo domu Vášho trvalého pobytu nemôže byť nevyplnené."
+			});
+		}
+	}, {
+		"id": "addressslovakia-city",
+		"name": "city",
+		"container": ".field-addressslovakia-city",
+		"input": "#addressslovakia-city",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Mesto Vášho trvalého pobytu nemôže byť nevyplnené."
+			});
+		}
+	}, {
+		"id": "addressslovakia-zip",
+		"name": "zip",
+		"container": ".field-addressslovakia-zip",
+		"input": "#addressslovakia-zip",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Poštové smerovacie číslo Vášho trvalého pobytu nemôže byť nevyplnené."
+			});
+		}
+	}], []);
+	jQuery('#address-foreign').yiiActiveForm([{
+		"id": "addressforeign-street",
+		"name": "street",
+		"container": ".field-addressforeign-street",
+		"input": "#addressforeign-street",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Ulica adresy kde chcete odoslať žiadosť nemôže byť nevyplnená."
+			});
+		}
+	}, {
+		"id": "addressforeign-streetno",
+		"name": "streetNo",
+		"container": ".field-addressforeign-streetno",
+		"input": "#addressforeign-streetno",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Číslo domu adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."
+			});
+		}
+	}, {
+		"id": "addressforeign-city",
+		"name": "city",
+		"container": ".field-addressforeign-city",
+		"input": "#addressforeign-city",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Mesto adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."
+			});
+		}
+	}, {
+		"id": "addressforeign-zip",
+		"name": "zip",
+		"container": ".field-addressforeign-zip",
+		"input": "#addressforeign-zip",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Poštové smerovacie číslo adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."
+			});
+		}
+	}, {
+		"id": "addressforeign-country",
+		"name": "country",
+		"container": ".field-addressforeign-country",
+		"input": "#addressforeign-country",
+		"validate": function (attribute, value, messages, deferred, $form) {
+			yii.validation.required(value, messages, {
+				"message": "Štát adresy kde chcete odoslať žiadosť nemôže byť nevyplnený."
+			});
+		}
+	}], []);
 });
 
-$(document).ready(function(){
-	$(".section").css("min-height",$( window ).height() - 100);
-});
 </script>
 
 <script src="js/ga.js"></script>

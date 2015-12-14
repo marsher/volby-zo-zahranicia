@@ -242,6 +242,7 @@ function get_relevant_emails($sEmails, $sObecClearName){
 		if($emailsWeight){
 			arsort($emailsWeight);
 			if($v= key($emailsWeight)){
+				if( reset($emailsWeight) == 0 ) return implode(";", array_keys( $emailsWeight ) );
 				return $v;
 			}
 		}

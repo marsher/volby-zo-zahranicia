@@ -101,9 +101,9 @@ function nacitajObce() {
     options.append($("<option />").val(key).text(value.name + ", " + value.okres));
   });
 
-	if(!iOSVersion()){
-		options.select2({width:"100%"});
-	}
+  if(!iOSversion()){
+    options.select2({width:"100%"});
+  }
 }
 
 function getCityName(){

@@ -656,9 +656,9 @@ function createDocument(preview,download) {
 	
   var name = "ziadost";
   if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
-	  name = "zidost-o-hlasovaci-preukaz.pdf";
+	  name = "ziadost-o-hlasovaci-preukaz.pdf";
   }else{
-	  name = "zidost-o-voblu-postou.pdf";
+	  name = "ziadost-o-volbu-postou.pdf";
   }
   
   if(detectIE() || download){

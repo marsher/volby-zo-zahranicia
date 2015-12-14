@@ -3,7 +3,7 @@ require_once('c:\webserver\vhost\AsyncWeb\gitAW\AsyncWeb\src\AsyncWeb\Text\Texts
 use AsyncWeb\Text\Texts;
 var_dump(Texts::clear("NRIčouťľéíáťší+"));
 
-$aForcedEmails = array('starostka@karlovaves.sk','radnica@mestosnv.sk','kravany@kravany.com','');//bude priradeny iba jediny pre obec
+$aForcedEmails = array('starostka@karlovaves.sk','radnica@mestosnv.sk','kravany@kravany.com');//bude priradeny iba jediny pre obec
 $aDisabledEmails = array('daniel.juracek@bosaca.eu','obec.bartosovce@wi-net.sk','oubenice@gaya.sk','betlanovce@stonline.sk','oub.kostol@apo.sk','dusan.zeliznak@gmail.com','obecboliarov@netkosice.sk','oubajtava@mail.t-com.sk','babindol@babindol.sk','peter.nemecek@obecbab.sk');
 $aPreferableEmailParts = array( 'podatelna','obec', 'ocu', 'ou', 'obu', 'urad', 'mu','msu','mesto','sekretariat','kancelaria','obecnyurad','miestnyurad','mestskyyurad','info','referent','NAZOVOBCE@NAZOVOBCE.SK','@NAZOVOBCE.SK','NAZOVOBCE','NAZOVOBCE@','primator','primatorka','starosta','starostka','kancelariaprimatora','prednosta','prednostka'); 
 
@@ -136,15 +136,28 @@ function get_relevant_emails($sEmails, $sObecClearName){
 
 	$sEmails = str_replace( array(",","\t",' '), array(";",'',''), $sEmails);
 	$aEmails = explode(";",$sEmails);
+	foreach($aEmails as $k=>$em){
+		$aEmails[$k] = $em = trim($em);
+		if(!$em){
+			unset($aEmails[$k]);
+		}
+	}
 	//echo "<bR>BEG:";var_dump($aEmails,$sObecClearName);
 	if(count($aEmails) > 1){
 		foreach($aForcedEmails as $sForcedEmail){
 			if( $pos = array_keys($aEmails, $sForcedEmail) ){
-				return $aEmails[$pos];
+				if(!isset($aEmails[$pos[0]])){
+					var_dump($aForcedEmails);
+					var_dump($aEmails);
+					var_dump($pos);
+					exit;
+				}
+				return $aEmails[$pos[0]];
 			}
 		}
 
 		foreach( $aEmails as $k => $sEmail ){
+			
 			if( $pos = array_search($sEmail, $aDisabledEmails) !== false ){
 				unset( $aEmails[$k]);continue;
 			}
@@ -156,6 +169,9 @@ function get_relevant_emails($sEmails, $sObecClearName){
 			
 			$emBeforeAt = $em[0];
 			$emAfterAt = $em[1];
+			if(!$emAfterAt){
+				var_dump($em);exit;
+			}
 			
 			$t = false;
 			if( ($t = array_search($emBeforeAt, $aPreferableEmailParts) ) !== false ){

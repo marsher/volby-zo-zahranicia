@@ -698,6 +698,11 @@ $(document).ready(function ()
     signaturePad.clear();
   });
 
+  $('#step6but1').on("click", function(event){
+	  $('#step6but1').addClass("btn-volby-gray").removeClass("btn-volby-blue");
+	  $('#step6but2').addClass("btn-volby-blue").removeClass("btn-volby-gray");
+  });
+  
   $('#id-button').on("click", function (event)
   {
     createDocument(true);

@@ -9,6 +9,10 @@
 	<!-- add description of the website -->
 	<title>Voľby zo zahraničia</title>
 	<meta name="description" content="Pripravte si žiadosť cez telefón a bez čítačky. Stačí Vám adresa a rodné číslo." />
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 	<link href="assets/css/select2.min.css" rel="stylesheet" />
 	<link href="css/site.css" rel="stylesheet" />
 
@@ -32,49 +36,95 @@
 
 </head>
 <body>
-	<div id="krokomer" class="nav">
-		<div class="wrap">
-			<h1 class="logo"><a href="#"><img src="images/logo.png" title="volby.digital"></a></h1>
-			<div class="nav--progress">
-				<div class="counter">
-					<span class="counter__step">0</span>8
+
+<nav class="navbar navbar-volby">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"><img src="images/logo.png" title="volby.digital"></a>
+		</div>
+
+		<div id="krokomer" class="navbar-steps">
+			<div class="wrap">
+				<div class="nav--progress">
+					<div class="counter">
+						<span class="counter__step">0</span>8
+					</div>
+					<ul>
+						<li class="nav-item"><a href="" class="digitalBlue"></a></li>
+					</ul>
 				</div>
-				<ul>
-					<li class="nav-item"><a href="" class="digitalBlue"></a></li>
-				</ul>
 			</div>
 		</div>
 	</div>
+</nav>
+
+<div class="steps">
+	<div class="container">
+
+		<!-- ----- ----- -->
+		<!-- HOME PAGE -->
+		<!-- ----- ----- -->
+		<div id="intro" class="intro section">
+			<p class="text-justify text-biggest">
+				Až <strong class="digitalRed">98%</strong> ľudí zo zahraničia <strong>nevolilo</strong> v&nbsp;posledných
+				parlamentných voľbách, pre zložitý proces a&nbsp;skoré termíny — my sme proces zjednodušili na
+				<strong>3&nbsp;minúty, 20&nbsp;slov a&nbsp;8&nbsp;klikov</strong>.
+			</p>
+
+			<hr>
+
+			<p class="text-justify text-bigger">
+				Pripravte si žiadosť cez telefón, bez tlačenia, skenovania či špeciálnej čítačky na&nbsp;občiansky preukaz.
+				Stačí Vám na to adresa, rodné číslo a prípadne Váš pas.
+			</p>
+
+			<p>
+				<a class="btn btn-block btn-success btn-volby-blue digitalBlueFill" href="#start" role="button">Pripraviť žiadosť</a>
+			</p>
+
+			<ul class="text-big text-color-lighter">
+				<li>Vytvorenie trvá približne <strong>3 minúty</strong></li>
+				<li>Žiadosť je generovaná vo <strong>Vašom prehliadači</strong></li>
+				<li>Žiadne <strong>osobné dáta nie sú prenášané internetom</strong></li>
+				<li>Žiadosť odosielate z <strong>Vášho</strong> e-mailu</li>
+			</ul>
+
+			<hr>
+
+			<!-- Sem dorobime Social buttonky -->
+
+			<p class="powered-by text-center">
+				Tento nástroj Vám prináša
+				<a target="_blank" href="http://slovensko.digital/">
+					<img src="./images/standard-logo.png">
+				</a>
+			</p>
+
+			<hr>
+
+			<div class="alert alert-danger hidden" id="alertie">POZOR! Používate prehliadač ktorý nepodporuje vytváranie náhľadov. Odporúčame Vám použiť chrome alebo firefox.</div>
+
+			<p id="github" class="footer text-center">
+				<br/> Dostupné sú aj <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia">zdrojové kódy</a>,
+				<a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/blob/master/README.md">dodatočné informácie</a>
+				a <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/issues">issues</a> na Githube.
+			</p>
+		</div>
+
+
+
+
+	</div>
+</div>
+
+
+
 
 	<main class="main-wrapper">
 		<div class="wrap">
 			<div class="container">
 				<div class="site-index">
-					<div id="intro" class="intro row section">
-						<h2 class="justify">Až <strong class="digitalRed">98%</strong> ľudí zo zahraničia <b>nevolilo</b> v posledných parlamentných voľbách, pre zložitý proces a skoré termíny — my sme proces zjednodušili na <b>3 minúty, 20 slov a 8 klikov</b>.</h2>
-						<h3 class="justify">Pripravte si žiadosť cez telefón, bez tlačenia, skenovania či špeciálnej čítačky na&nbsp;občiansky preukaz.
-						Stačí Vám na to adresa, rodné číslo a prípadne Váš pas.</h3>
-						
-						
-						<a class="btn btn-lg btn-success digitalBlueFill" href="#start" role="button"><strong>Pripraviť žiadosť</strong></a>
-						<ul>
-						  <li>Vytvorenie trvá približne <strong>3 minúty</strong></li>
-						  <li>Žiadosť je generovaná vo <strong>Vašom prehliadači</strong></li>
-						  <li>Žiadne <strong>osobné dáta nie sú prenášané internetom</strong></li>
-						  <li>Žiadosť odosielate z <strong>Vášho</strong> e-mailu</li>
-						</ul>
-						<!-- Sem dorobime Social buttonky -->
-						<h4>
-							Tento nástroj Vám prináša
-							<a target="_blank" href="http://slovensko.digital/"><span>slovensko.digital</span></a>
-						</h4>
-						<div class="alert alert-danger hidden" id="alertie">POZOR! Používate prehliadač ktorý nepodporuje vytváranie náhľadov. Odporúčame Vám použiť chrome alebo firefox.</div>
-						<div id="github" class="github formatted">
-							<br/> Dostupné sú aj <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia">zdrojové kódy</a>,
-							<a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/blob/master/README.md">dodatočné informácie</a>
-							a <a target="_blank" href="https://github.com/marsher/volby-zo-zahranicia/issues">issues</a> na Githube.
-						</div>
-					</div>
+
 
 					<div class="body-content">
 						<div class="row section krok1" id="start">

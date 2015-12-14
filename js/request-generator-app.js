@@ -22,10 +22,15 @@ RequestGeneratorApp.prototype = {
             that.submitForm();
         });
 
-        $('.btn-download-pdf').on('click', function(e){
+        $('.btn-download-preview').on('click', function(e){
             e.preventDefault();
-
-            that.downloadPdf();
+			createDocument(true,true);
+            //that.downloadPdf();
+        }); 
+		$('.btn-download-pdf').on('click', function(e){
+            e.preventDefault();
+			createDocument(false,true);
+            //that.downloadPdf();
         });
 
         $('.btn-finalize-pdf').on('click', function(e){

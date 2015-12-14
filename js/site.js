@@ -211,7 +211,7 @@ function nastavObec() {
   }
 }
 
-function createDocument(preview) {
+function createDocument(preview,download) {
   jQuery.data( document.body, "psc-locked", "1");
   nastavObec();
   var today = new Date();
@@ -661,7 +661,7 @@ function createDocument(preview) {
 	  name = "zidost-o-voblu-postou.pdf";
   }
   
-  if(detectIE()){
+  if(detectIE() || download){
 	  pdfMake.createPdf(dd).download(name);
   }else{
 

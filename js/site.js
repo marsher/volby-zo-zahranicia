@@ -655,10 +655,18 @@ function createDocument(preview,download) {
   }
 	
   var name = "ziadost";
-  if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
-	  name = "ziadost-o-hlasovaci-preukaz.pdf";
+  if(preview){
+	  if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
+		  name = "ziadost-o-hlasovaci-preukaz.pdf";
+	  }else{
+		  name = "ziadost-o-volbu-postou.pdf";
+	  }
   }else{
-	  name = "ziadost-o-volbu-postou.pdf";
+	  if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
+		  name = "ziadost-o-hlasovaci-preukaz-nahlad.pdf";
+	  }else{
+		  name = "ziadost-o-volbu-postou-nahlad.pdf";
+	  }
   }
   
   if(detectIE() || isAndroid() || download){

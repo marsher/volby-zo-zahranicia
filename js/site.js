@@ -653,9 +653,16 @@ function createDocument(preview) {
       }
     }
   }
-
+	
+  var name = "ziadost";
+  if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
+	  name = "zidost-o-hlasovaci-preukaz.pdf";
+  }else{
+	  name = "zidost-o-voblu-postou.pdf";
+  }
+  
   if(detectIE()){
-	  pdfMake.createPdf(dd).download();
+	  pdfMake.createPdf(dd).download(name);
   }else{
 
 	  if (preview === true) {

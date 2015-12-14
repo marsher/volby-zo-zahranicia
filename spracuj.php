@@ -1,11 +1,16 @@
 <?php
 require_once('c:\webserver\vhost\AsyncWeb\gitAW\AsyncWeb\src\AsyncWeb\Text\Texts.php');
+require_once('c:\webserver\vhost\AsyncWeb\gitAW\AsyncWeb\src\AsyncWeb\Text\Validate.php');
 use AsyncWeb\Text\Texts;
-var_dump(Texts::clear("NRIčouťľéíáťší+"));
+use AsyncWeb\Text\Validate;
+
 
 $aForcedEmails = array('starostka@karlovaves.sk','radnica@mestosnv.sk','kravany@kravany.com');//bude priradeny iba jediny pre obec
 $aDisabledEmails = array('daniel.juracek@bosaca.eu','obec.bartosovce@wi-net.sk','oubenice@gaya.sk','betlanovce@stonline.sk','oub.kostol@apo.sk','dusan.zeliznak@gmail.com','obecboliarov@netkosice.sk','oubajtava@mail.t-com.sk','babindol@babindol.sk','peter.nemecek@obecbab.sk');
 $aPreferableEmailParts = array( 'sluzbyobcanom','podatelna','obec', 'ocu', 'ou', 'obu', 'urad', 'mu','msu','mesto','sekretariat','kancelaria','obecnyurad','miestnyurad','mestskyyurad','info','referent','NAZOVOBCE@NAZOVOBCE.SK','@NAZOVOBCE.SK','NAZOVOBCE','NAZOVOBCE@','primator','primatorka','starosta','starostka','kancelariaprimatora','prednosta','prednostka'); 
+
+$chybneemaily = "";
+
 
 $i = 0;
 //$out["Mimo SR"]["Mimo SR"]["mvsr"] = "['Ministerstvo vnútra Slovenskej republiky','odbor volieb, referenda a politických strán','Drieňová','22','826 86','Bratislava 29','volby@minv.sk','','','','Ministerstvo vnútra Slovenskej republiky']";
@@ -25,6 +30,14 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 					$name = Texts::clear($data[$n2k["obec"]]);
 					
 					$e = get_relevant_emails( $data[$n2k["email"]], $name );
+					if($e){
+						$emails = explode(";",$e);
+						foreach($emails as $em){
+							if(!Validate::check("email",$em)){
+								$chybneemaily .= $em."\n";
+							}
+						}
+					}
 					//if( $e ) echo $name,":\t",$e,'<br>';//for debug
 					
 					$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."']";
@@ -40,7 +53,7 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 				}
 			}
 		}
-
+file_put_contents("chybneemaily.txt",$chybneemaily);
 
 foreach($okresc as $kraj=>$odata){
 	arsort($odata);

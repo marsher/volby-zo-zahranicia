@@ -171,6 +171,159 @@
 			</p>
 		</div>
 
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 4 -->
+		<!-- ----- ----- -->
+		<div class="section" id="ziadost">
+			<div class="posta-tp preukaz-tp preukaz-ps nemam-tp">
+				<h2 class="digitalRed as-title-with-padding">Vaše údaje</h2>
+			</div>
+			<hr>
+			<p>
+				Žiadne údaje nie sú odosielané cez internet
+			</p>
+			<div class="preukaz-ps posta-tp preukaz-tp nemam-tp">
+				<form id="basic-info" action="/" method="post">
+					<div class="form-group field-basicinfo-name required">
+						<label class="control-label" for="basicinfo-name">Meno</label>
+						<input type="text" id="basicinfo-name" class="form-control" name="BasicInfo[name]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-basicinfo-lastname required">
+						<label class="control-label" for="basicinfo-lastname">Priezvisko</label>
+						<input type="text" id="basicinfo-lastname" class="form-control" name="BasicInfo[lastname]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-basicinfo-maidenlastname">
+						<label class="control-label" for="basicinfo-maidenlastname">Rodné priezvisko <em>(Ak ste vydatá)</em></label>
+						<input type="text" id="basicinfo-maidenlastname" class="form-control" name="BasicInfo[maidenLastname]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-basicinfo-birthno required">
+						<label class="control-label" for="basicinfo-birthno">Rodné číslo (s lomítkom)</label>
+						<input type="text" id="basicinfo-birthno" class="form-control" name="BasicInfo[birthNo]" autocomplete="off">
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+			<div class="preukaz-ps">
+				<h3 class="digitalRed as-title-with-padding">Údaje splnomocnenca</h3>
+				<hr>
+				<form id="proxy" action="/" method="post">
+
+					<div class="form-group field-proxy-name required">
+						<label class="control-label" for="proxy-name">Meno</label>
+						<input type="text" id="proxy-name" class="form-control" name="Proxy[name]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-proxy-lastname required">
+						<label class="control-label" for="proxy-lastname">Priezvisko</label>
+						<input type="text" id="proxy-lastname" class="form-control" name="Proxy[lastname]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-proxy-idno required">
+						<label class="control-label" for="proxy-idno">Číslo občianskeho preukazu</label>
+						<input type="text" id="proxy-idno" class="form-control" name="Proxy[idNo]">
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+			<div class="preukaz-ps preukaz-tp posta-tp">
+				<h3 class="as-title-with-padding digitalRed">
+					Vaša adresa trvalého pobytu v Slovenskej republike</h3>
+				<hr>
+				<form id="address-slovakia" action="/" method="post">
+					<div class="form-group field-addressslovakia-street required">
+						<label class="control-label" for="addressslovakia-street">Ulica</label>
+						<input type="text" id="addressslovakia-street" class="form-control" name="AddressSlovakia[street]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-streetno required">
+						<label class="control-label" for="addressslovakia-streetno">Číslo domu</label>
+						<input type="text" id="addressslovakia-streetno" class="form-control" name="AddressSlovakia[streetNo]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-kraj required">
+						<label class="control-label" for="addressslovakia-kraj">Kraj</label>
+						<select class="form-control" id="addressslovakia-kraj" name="AddressSlovakia[kraj]" onchange="nastavKraj()" >
+							<option value="mvsr">DB obcí sa nenačítala</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-okres required">
+						<label class="control-label" for="addressslovakia-okres">Okres</label>
+						<select class="form-control" id="addressslovakia-okres" name="AddressSlovakia[okres]" onchange="nastavOkres()" >
+							<option value="mvsr">DB obcí sa nenačítala</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-city required">
+						<label class="control-label" for="addressslovakia-city">Mesto/Obec</label>
+						<select class="form-control" id="addressslovakia-city" name="AddressSlovakia[city]" onchange="nastavObec()" >
+							<option value="mvsr">DB obcí sa nenačítala</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressslovakia-zip required">
+						<label class="control-label" for="addressslovakia-zip">PSČ</label>
+						<input type="text" id="addressslovakia-zip" class="form-control" name="AddressSlovakia[zip]">
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+			<div class="posta-tp preukaz-tp nemam-tp">
+				<h3 id="foreign-header" class="as-title-with-padding digitalRed">
+					Korešpondenčná adresa pre odoslanie hlasovacích lístkov alebo preukazu</h3>
+				<hr>
+				<form id="address-foreign" action="/" method="post">
+					<div class="form-group field-addressforeign-street required">
+						<label class="control-label" for="addressforeign-street">Ulica</label>
+						<input type="text" id="addressforeign-street" class="form-control" name="AddressForeign[street]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-streetno required">
+						<label class="control-label" for="addressforeign-streetno">Číslo domu</label>
+						<input type="text" id="addressforeign-streetno" class="form-control" name="AddressForeign[streetNo]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-city required">
+						<label class="control-label" for="addressforeign-city">Mesto</label>
+						<input type="text" id="addressforeign-city" class="form-control" name="AddressForeign[city]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-zip required">
+						<label class="control-label" for="addressforeign-zip">PSČ</label>
+						<input type="text" id="addressforeign-zip" class="form-control" name="AddressForeign[zip]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-country required">
+						<label class="control-label" for="addressforeign-country">Štát</label>
+						<input type="text" id="addressforeign-country" class="form-control" name="AddressForeign[country]">
+						<div class="help-block"></div>
+					</div>
+					<div class="form-group field-addressforeign-format preukaz-ps preukaz-tp nemam-tp">
+						<label class="control-label" for="addressforeign-format">Formát adresy</label>
+						<select id="addressforeign-format" class="form-control" name="AddressForeign[format]">
+							<option value="sk">SK formát - Ulica číslo, PSČ Mesto, Štát</option>
+							<option value="usa">USA formát - číslo ulica, Mesto PSČ, Štát</option>
+						</select>
+						<div class="help-block"></div>
+					</div>
+				</form>
+			</div>
+
+
+			<p>
+				<a class="btn btn-volby-blue btn-block btn-submit-form" href="#pdf" id="preview-button" role="button"><strong>Vytvor náhľad žiadosti</strong></a>
+			</p>
+
+		</div>
+
 	</div>
 </div>
 
@@ -208,134 +361,6 @@
 									</div>
 									<p><a class="btn btn-lg btn-success" href="#ziadost" role="button">Dalej</a></p>
 								</form>
-							</div>
-						</div>
-
-						<div class="row section" id="ziadost">
-							<h2 class="posta-tp preukaz-tp digitalRed">Adresa Vášho trvalého pobytu</h2>
-							<h2 class="nemam-tp digitalRed">Adresa miesta pobytu v cudzine <em>(pre zaslanie hlasovacích lístkov)</em></h2>
-							<p>Žiadne údaje nie sú odosielané cez internet</p>
-							<div class="col-lg-12">
-								<form id="basic-info" class="form-horizontal preukaz-ps posta-tp preukaz-tp nemam-tp" action="/" method="post">
-									<div class="form-group field-basicinfo-name required">
-										<label class="control-label" for="basicinfo-name">Meno</label>
-										<input type="text" id="basicinfo-name" class="form-control" name="BasicInfo[name]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-basicinfo-lastname required">
-										<label class="control-label" for="basicinfo-lastname">Priezvisko</label>
-										<input type="text" id="basicinfo-lastname" class="form-control" name="BasicInfo[lastname]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-basicinfo-maidenlastname">
-										<label class="control-label" for="basicinfo-maidenlastname">Rodné priezvisko <em>(Ak ste vydatá)</em></label>
-										<input type="text" id="basicinfo-maidenlastname" class="form-control" name="BasicInfo[maidenLastname]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-basicinfo-birthno required">
-										<label class="control-label" for="basicinfo-birthno">Rodné číslo (s lomítkom)</label>
-										<input type="text" id="basicinfo-birthno" class="form-control" name="BasicInfo[birthNo]" autocomplete="off">
-										<div class="help-block"></div>
-									</div>
-								</form>
-								<form id="proxy" class="form-horizontal preukaz-ps" action="/" method="post">
-									<h3>Údaje splnomocnenca</h3>
-									<div class="form-group field-proxy-name required">
-										<label class="control-label" for="proxy-name">Meno</label>
-										<input type="text" id="proxy-name" class="form-control" name="Proxy[name]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-proxy-lastname required">
-										<label class="control-label" for="proxy-lastname">Priezvisko</label>
-										<input type="text" id="proxy-lastname" class="form-control" name="Proxy[lastname]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-proxy-idno required">
-										<label class="control-label" for="proxy-idno">Číslo občianskeho preukazu</label>
-										<input type="text" id="proxy-idno" class="form-control" name="Proxy[idNo]">
-										<div class="help-block"></div>
-									</div>
-								</form>
-
-								<form id="address-slovakia" class="form-horizontal preukaz-ps preukaz-tp posta-tp" action="/" method="post">
-									<hr>
-									<h3>Adresa trvalého pobytu v Slovenskej republike:</h3>
-									<div class="form-group field-addressslovakia-street required">
-										<label class="control-label" for="addressslovakia-street">Ulica</label>
-										<input type="text" id="addressslovakia-street" class="form-control" name="AddressSlovakia[street]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-streetno required">
-										<label class="control-label" for="addressslovakia-streetno">Číslo domu</label>
-										<input type="text" id="addressslovakia-streetno" class="form-control" name="AddressSlovakia[streetNo]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-kraj required">
-										<label class="control-label" for="addressslovakia-kraj">Kraj</label>
-										<select class="form-control" id="addressslovakia-kraj" name="AddressSlovakia[kraj]" onchange="nastavKraj()" >
-											<option value="mvsr">DB obcí sa nenačítala</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-okres required">
-										<label class="control-label" for="addressslovakia-okres">Okres</label>
-										<select class="form-control" id="addressslovakia-okres" name="AddressSlovakia[okres]" onchange="nastavOkres()" >
-											<option value="mvsr">DB obcí sa nenačítala</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressslovakia-city required">
-										<label class="control-label" for="addressslovakia-city">Mesto/Obec</label>
-										<select class="form-control" id="addressslovakia-city" name="AddressSlovakia[city]" onchange="nastavObec()" >
-											<option value="mvsr">DB obcí sa nenačítala</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-										<div class="form-group field-addressslovakia-zip required">
-										<label class="control-label" for="addressslovakia-zip">PSČ</label>
-										<input type="text" id="addressslovakia-zip" class="form-control" name="AddressSlovakia[zip]">
-										<div class="help-block"></div>
-									</div>
-								</form>
-								<hr>
-
-								<form id="address-foreign" class="form-horizontal posta-tp preukaz-tp nemam-tp" action="/" method="post">
-									<h3 id="foreign-header">Korešpondenčná adresa pre odoslanie hlasovacích lístkov alebo preukazu:</h3>
-									<div class="form-group field-addressforeign-street required">
-										<label class="control-label" for="addressforeign-street">Ulica</label>
-										<input type="text" id="addressforeign-street" class="form-control" name="AddressForeign[street]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-streetno required">
-										<label class="control-label" for="addressforeign-streetno">Číslo domu</label>
-										<input type="text" id="addressforeign-streetno" class="form-control" name="AddressForeign[streetNo]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-city required">
-										<label class="control-label" for="addressforeign-city">Mesto</label>
-										<input type="text" id="addressforeign-city" class="form-control" name="AddressForeign[city]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-zip required">
-										<label class="control-label" for="addressforeign-zip">PSČ</label>
-										<input type="text" id="addressforeign-zip" class="form-control" name="AddressForeign[zip]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-country required">
-										<label class="control-label" for="addressforeign-country">Štát</label>
-										<input type="text" id="addressforeign-country" class="form-control" name="AddressForeign[country]">
-										<div class="help-block"></div>
-									</div>
-									<div class="form-group field-addressforeign-format hidden preukaz-ps preukaz-tp nemam-tp">
-										<label class="control-label" for="addressforeign-format">Formát adresy</label>
-										<select id="addressforeign-format" class="form-control" name="AddressForeign[format]">
-											<option value="sk">SK formát - Ulica číslo, PSČ Mesto, Štát</option>
-											<option value="usa">USA formát - číslo ulica, Mesto PSČ, Štát</option>
-										</select>
-										<div class="help-block"></div>
-									</div>
-								</form>
-								<p><a class="btn btn-lg btn-success digitalBlueFill btn-submit-form" href="#pdf" id="preview-button" role="button"><strong>Vytvor náhľad žiadosti</strong></a></p>
 							</div>
 						</div>
 

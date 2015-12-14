@@ -1,7 +1,5 @@
 
 
-
-
 body {
 	font-family: Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif;
 	color: #333;
@@ -30,6 +28,10 @@ h1 {
 }
 h2 {
 	font-size: 1.4em;
+}
+
+.container {
+	max-width: 720px; /* TODO */
 }
 
 .navbar {
@@ -77,17 +79,7 @@ h2 {
 
 
 
-.container {
-	max-width: 720px; /* TODO */
-}
 
-
-
-
-
-
-
-/* home page */
 
 .intro .paragraph-1 {
 	color: #333;
@@ -103,7 +95,42 @@ h2 {
 	color: #111;
 }
 
-/* counter */
+
+
+/* forms */
+
+.form-control, select, .select2 {
+	font-size: 1em;
+	border-radius: 0;
+	background-color: #eee;
+	border: 3px solid #ccc;
+	outline: none;
+	padding: .8em;
+	font-family: Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;
+	height: auto;
+	color: #000;
+}
+
+.form-control, .form-control:focus, .has-error .form-control, .has-error .form-control:focus {
+	box-shadow: none;
+}
+
+label {
+	font-weight: normal;
+	font-size: .9em;
+	color: #555;
+}
+
+label em {
+	color: #888;
+	font-style: normal;
+}
+
+
+#ziadost input:focus {
+	border-color: #0097fd;
+	background-color: #eef8ff;
+}
 
 
 
@@ -164,8 +191,8 @@ h2 {
 	color: #777;
 }
 
-h2.as-title-with-padding {
-	margin-top: 2em;
+h2.as-title-with-padding, h3.as-title-with-padding {
+	margin-top: 1.8em;
 }
 
 .digitalBlue {
@@ -202,6 +229,27 @@ h2.as-title-with-padding {
 .digitalRedFill:hover {
 	background-color: #b10f0f;
 	text-decoration: none;
+}
+
+.copy-btn {
+	padding-top: 2px;
+	border-radius: 2px;
+	cursor: pointer;
+	background-color: #ddd;
+	transition: background-color 0s;
+}
+
+.copy-btn:hover {
+	background-color: #aaa;
+	transition: background-color 0.6s;
+}
+
+.copy-btn:focus:hover, .copy-btn.selected:hover {
+}
+
+.copy-btn:active, .copy-btn.selected {
+	background-color: #666;
+	transition: background-color 0s;
 }
 
 
@@ -248,26 +296,7 @@ h1, a, h6 {
 	padding: 15px;
 }
 
-.copy-btn {
-	padding-top: 2px;
-	border-radius: 2px;
-	cursor: pointer;
-	background-color: #ddd;
-	transition: background-color 0s;
-}
 
-.copy-btn:hover {
-	background-color: #aaa;
-	transition: background-color 0.6s;
-}
-
-.copy-btn:focus:hover, .copy-btn.selected:hover {
-}
-
-.copy-btn:active, .copy-btn.selected {
-	background-color: #666;
-	transition: background-color 0s;
-}
 
 #intro {
 	display: block;
@@ -453,31 +482,9 @@ h6 {
 	margin: 24px 0;
 }
 
-label {
-	display: block;
-	font-size: 16px;
-	color: #555;
-	padding: 12px 0 6px 0;
-}
 
-label em {
-	color: #888;
-}
 
-input, select, .select2 {
-	background-color: #eee;
-	width: 100%;
-	border: 3px solid #ccc;
-	outline: none;
-	font-size: 18px;
-	padding: 15px 15px;
-	font-family: Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;
-}
 
-#ziadost input:focus {
-	border-color: #0097fd;
-	background-color: #eef8ff;
-}
 
 #pdf iframe, #pdf-final iframe {
 	background-color: #eee;

@@ -3,10 +3,10 @@ var App = window.election;
 App.currentStep = 0;
 
 function clearForm() {
-  $('#ziadost .preukaz-ps').hide();
-  $('#ziadost .posta-tp').hide();
-  $('#ziadost .preukaz-tp').hide();
-  $('#ziadost .nemam-tp').hide();
+  $('.preukaz-ps').hide();
+  $('.posta-tp').hide();
+  $('.preukaz-tp').hide();
+  $('.nemam-tp').hide();
 
 }
 

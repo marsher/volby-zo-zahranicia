@@ -18,6 +18,7 @@ $out = array();
 $best = array();
 $bsetn = array();
 $okresc = array();
+$csv = "";
 if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 			$topCities = get_top_cities();
 			
@@ -28,7 +29,11 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 					}
 				}else{
 					$name = Texts::clear($data[$n2k["obec"]]);
-					
+					foreach(explode(";",$data[$n2k["email"]]) as $email){
+						$email = trim($email);
+						if(!$email) continue; 
+						$csv.='"'.$email.'","'.str_replace('"','""',$data[$n2k["obec"]]).'"'."\n";
+					}
 					$e = get_relevant_emails( $data[$n2k["email"]], $name );
 					if($e){
 						$emails = explode(";",$e);
@@ -54,6 +59,7 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 			}
 		}
 file_put_contents("chybneemaily.txt",$chybneemaily);
+file_put_contents("emaily.txt",$csv);
 
 foreach($okresc as $kraj=>$odata){
 	arsort($odata);

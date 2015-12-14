@@ -5,7 +5,7 @@ var_dump(Texts::clear("NRIčouťľéíáťší+"));
 
 $aForcedEmails = array('starostka@karlovaves.sk','radnica@mestosnv.sk','kravany@kravany.com');//bude priradeny iba jediny pre obec
 $aDisabledEmails = array('daniel.juracek@bosaca.eu','obec.bartosovce@wi-net.sk','oubenice@gaya.sk','betlanovce@stonline.sk','oub.kostol@apo.sk','dusan.zeliznak@gmail.com','obecboliarov@netkosice.sk','oubajtava@mail.t-com.sk','babindol@babindol.sk','peter.nemecek@obecbab.sk');
-$aPreferableEmailParts = array( 'podatelna','obec', 'ocu', 'ou', 'obu', 'urad', 'mu','msu','mesto','sekretariat','kancelaria','obecnyurad','miestnyurad','mestskyyurad','info','referent','NAZOVOBCE@NAZOVOBCE.SK','@NAZOVOBCE.SK','NAZOVOBCE','NAZOVOBCE@','primator','primatorka','starosta','starostka','kancelariaprimatora','prednosta','prednostka'); 
+$aPreferableEmailParts = array( 'sluzbyobcanom','podatelna','obec', 'ocu', 'ou', 'obu', 'urad', 'mu','msu','mesto','sekretariat','kancelaria','obecnyurad','miestnyurad','mestskyyurad','info','referent','NAZOVOBCE@NAZOVOBCE.SK','@NAZOVOBCE.SK','NAZOVOBCE','NAZOVOBCE@','primator','primatorka','starosta','starostka','kancelariaprimatora','prednosta','prednostka'); 
 
 $i = 0;
 //$out["Mimo SR"]["Mimo SR"]["mvsr"] = "['Ministerstvo vnútra Slovenskej republiky','odbor volieb, referenda a politických strán','Drieňová','22','826 86','Bratislava 29','volby@minv.sk','','','','Ministerstvo vnútra Slovenskej republiky']";
@@ -130,16 +130,18 @@ function get_top_cities(){
 
 function get_relevant_emails($sEmails, $sObecClearName){
 	global $aForcedEmails,$aDisabledEmails,$aPreferableEmailParts;
-	
 	$bestEmailsWithDomain = array();
 	$bestEmails = array();
 
 	$sEmails = str_replace( array(",","\t",' '), array(";",'',''), $sEmails);
 	$aEmails = explode(";",$sEmails);
+	$emailsWeight = array();
 	foreach($aEmails as $k=>$em){
 		$aEmails[$k] = $em = trim($em);
 		if(!$em){
 			unset($aEmails[$k]);
+		}else{
+			$emailsWeight[$em] = 0;
 		}
 	}
 	//echo "<bR>BEG:";var_dump($aEmails,$sObecClearName);
@@ -157,16 +159,14 @@ function get_relevant_emails($sEmails, $sObecClearName){
 		}
 
 		foreach( $aEmails as $k => $sEmail ){
-			
+			if(!$sEmail) continue;
 			if( $pos = array_search($sEmail, $aDisabledEmails) !== false ){
 				unset( $aEmails[$k]);continue;
 			}
 			
 			$sObecCClearName = str_replace('-','',$sObecClearName);
 			$sEmailForSearch = str_replace(array('.','-'),'',$sEmail);
-			
 			$em = explode( '@', trim($sEmailForSearch), 2);
-			
 			$emBeforeAt = $em[0];
 			$emAfterAt = $em[1];
 			if(!$emAfterAt){
@@ -177,20 +177,37 @@ function get_relevant_emails($sEmails, $sObecClearName){
 			if( $sEmail == $sObecCClearName.'@'.$sObecCClearName.'sk' ){
 				$bestEmailsWithDomain[ 'NAZOVOBCE@NAZOVOBCE.SK' ] = $sEmail	;
 				$t = array_search('NAZOVOBCE@NAZOVOBCE.SK', $aPreferableEmailParts);
-			}elseif( $emAfterAt == $sObecCClearName.'sk' ){
+				$emailsWeight[$sEmail] += 1000;
+			}
+			if( strpos($emAfterAt,$sObecCClearName) !== false){
 				$bestEmailsWithDomain[ '@NAZOVOBCE.SK' ] = $sEmail;
 				$t = array_search('@NAZOVOBCE.SK', $aPreferableEmailParts);
-			}elseif( ($t = array_search($emBeforeAt, $aPreferableEmailParts) ) !== false ){
+				$emailsWeight[$sEmail] += 500;
+			}
+			if( ($t = array_search($emBeforeAt, $aPreferableEmailParts) ) !== false ){
 				//podla zoznamu klucovych slov
-			}elseif( strpos($sEmail, $sObecCClearName.'@' ) === 0 ){
+			}
+			if( strpos($sEmail, $sObecCClearName.'@' ) === 0 ){
 				$bestEmails[ 'NAZOVOBCE@' ] = $sEmail;
 				$t = array_search('NAZOVOBCE@', $aPreferableEmailParts);
-			}elseif( $emBeforeAt == $sObecCClearName ){
+				$emailsWeight[$sEmail] += 200;
+			}
+			if( $emBeforeAt == $sObecCClearName ){
 				$bestEmails[ 'NAZOVOBCE' ] = $sEmail;
 				$t = array_search('NAZOVOBCE', $aPreferableEmailParts);
+				$emailsWeight[$sEmail] += 200;
 			}
-			//var_dump(__LINE__, $t,$sObecCClearName,$emBeforeAt,$emAfterAt, '======',$emAfterAt,$sObecCClearName.'sk','********');echo '<br>';
 			
+			$i = 500;
+			$diff = round($i/(count($aPreferableEmailParts)+10));
+			foreach($aPreferableEmailParts as $part){
+				if(strpos($emBeforeAt,$part)!== false){
+
+					$emailsWeight[$sEmail] += $i;
+				}
+				
+				$i-=$diff;
+			}
 			
 			if( $t == false ){
 				foreach( $aPreferableEmailParts as $k => $aPreferableEmailPart ){
@@ -209,6 +226,12 @@ function get_relevant_emails($sEmails, $sObecClearName){
 			}
 		}
 		
+		if($emailsWeight){
+			arsort($emailsWeight);
+			if($v= key($emailsWeight)){
+				return $v;
+			}
+		}
 		if( $bestEmailsWithDomain ){
 			ksort($bestEmailsWithDomain);
 			//var_dump(__LINE__,$bestEmailsWithDomain);

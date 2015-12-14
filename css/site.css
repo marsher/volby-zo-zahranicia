@@ -135,10 +135,11 @@ h2 {
 	background-color: #0097fd;
 	border-color: #0097fd;
 	border-radius: 0;
-	padding: 1.6em 0;
+	padding: 1.6em 1em;
 	font-weight: bold;
 	transition: background-color 0.5s ease;
 	font-size: 1em;
+	white-space: normal;
 }
 
 .btn-volby-blue:hover, .btn-volby-blue:active, .btn-volby-blue:focus {

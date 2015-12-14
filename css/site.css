@@ -133,6 +133,32 @@ label em {
 }
 
 
+#pdf iframe, #pdf-final iframe {
+	background-color: #eee;
+}
+
+#sign .signature-pad {
+	border: 4px solid #eee;
+	position: relative;
+}
+
+#sign .signature-pad canvas {
+	position: relative;
+	width: 100%;
+	height: 160px;
+	z-index: 2;
+}
+
+#sign .signature-pad span {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	z-index: 1;
+	left: 0;
+	top: 32px;
+	color: #ddd;
+}
+
 
 
 
@@ -152,11 +178,9 @@ label em {
 
 /* components */
 
-.btn-volby-blue {
+.btn-volby-blue, .btn-volby-gray {
 	font-family: Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;
 	color: #fff;
-	background-color: #0097fd;
-	border-color: #0097fd;
 	border-radius: 0;
 	padding: 1.6em 1em;
 	font-weight: bold;
@@ -165,10 +189,27 @@ label em {
 	white-space: normal;
 }
 
+.btn-volby-blue {
+	background-color: #0097fd;
+	border-color: #0097fd;
+}
+
+.btn-volby-gray {
+	background-color: #999;
+	border-color: #999;
+}
+
+.btn-volby-gray:hover, .btn-volby-gray:active, .btn-volby-gray:focus,
 .btn-volby-blue:hover, .btn-volby-blue:active, .btn-volby-blue:focus {
 	color: #fff;
+}
+.btn-volby-blue:hover, .btn-volby-blue:active, .btn-volby-blue:focus {
 	background-color: #0061a3;
 	border-color: #0061a3;
+}
+.btn-volby-gray:hover, .btn-volby-gray:active, .btn-volby-gray:focus {
+	background-color: #777;
+	border-color: #777;
 }
 
 
@@ -482,31 +523,7 @@ h6 {
 
 
 
-#pdf iframe, #pdf-final iframe {
-	background-color: #eee;
-}
 
-#sign .signature-pad {
-	border: 4px solid #eee;
-	position: relative;
-}
-
-#sign .signature-pad canvas {
-	position: relative;
-	width: 100%;
-	height: 160px;
-	z-index: 2;
-}
-
-#sign .signature-pad span {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	z-index: 1;
-	left: 0;
-	top: 32px;
-	color: #ddd;
-}
 
 .sendsection {
 	font-size: 16px;

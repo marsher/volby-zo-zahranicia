@@ -661,7 +661,7 @@ function createDocument(preview,download) {
 	  name = "ziadost-o-volbu-postou.pdf";
   }
   
-  if(detectIE() || download){
+  if(detectIE() || isAndroid() || download){
 	  pdfMake.createPdf(dd).download(name);
   }else{
 
@@ -737,6 +737,12 @@ $(document).ready(function ()
 	$("#download-final-btn").hide();
 	
   }
+  if(isAndroid()){
+    $("#final").hide();
+    $("#preview").hide();
+    $("#download-final-btn").hide();
+	$("#download-preview-btn").hide();
+  }
   iosver =iOSversion();
   if(iosver){
 	if(iosver >= 8){
@@ -778,6 +784,9 @@ function detectIE() {
 
     // other browser
     return false;
+}
+function isAndroid(){
+	return (ua.indexOf("android") > -1);
 }
 function iOSversion() {
   //http://stackoverflow.com/questions/8348139/detect-ios-version-less-than-5-with-javascript

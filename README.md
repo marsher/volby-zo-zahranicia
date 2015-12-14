@@ -24,9 +24,10 @@ Oficiálne informácie o hlasovaní poštou pre osobu bez trvalého pobytu na Sl
 [platforma.slovensko.digital](https://platforma.slovensko.digital/)
 
 **Zoznam podporovaných/otestovaných zariadení:**  
-Windows 10, Firefox 42.0 - Plná funkcionalita
-Windows 10, Chrome 47.0.2526.80 - Plná funkcionalita
-Android 5.1.1, Chrome 47.0.2526.83 - Funguje, ale preview a finálnu verziu priamo sťahuje
+
+* Windows 10, Firefox 42.0 - Plná funkcionalita
+* Windows 10, Chrome 47.0.2526.80 - Plná funkcionalita
+* Android 5.1.1, Chrome 47.0.2526.83 - Funguje, ale preview a finálnu verziu priamo sťahuje
 
 ---
 

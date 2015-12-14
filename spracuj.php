@@ -174,13 +174,14 @@ function get_relevant_emails($sEmails, $sObecClearName){
 			}
 			
 			$t = false;
-			if( ($t = array_search($emBeforeAt, $aPreferableEmailParts) ) !== false ){
-			}elseif( $sEmail == $sObecCClearName.'@'.$sObecCClearName.'sk' ){
+			if( $sEmail == $sObecCClearName.'@'.$sObecCClearName.'sk' ){
 				$bestEmailsWithDomain[ 'NAZOVOBCE@NAZOVOBCE.SK' ] = $sEmail	;
 				$t = array_search('NAZOVOBCE@NAZOVOBCE.SK', $aPreferableEmailParts);
 			}elseif( $emAfterAt == $sObecCClearName.'sk' ){
 				$bestEmailsWithDomain[ '@NAZOVOBCE.SK' ] = $sEmail;
 				$t = array_search('@NAZOVOBCE.SK', $aPreferableEmailParts);
+			}elseif( ($t = array_search($emBeforeAt, $aPreferableEmailParts) ) !== false ){
+				//podla zoznamu klucovych slov
 			}elseif( strpos($sEmail, $sObecCClearName.'@' ) === 0 ){
 				$bestEmails[ 'NAZOVOBCE@' ] = $sEmail;
 				$t = array_search('NAZOVOBCE@', $aPreferableEmailParts);

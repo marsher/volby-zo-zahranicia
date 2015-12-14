@@ -732,6 +732,17 @@ $(document).ready(function ()
     $("#intro").css("padding", "100px 0 0 0");
     $("#final").hide();
     $("#preview").hide();
+	
+	$("#download-preview-btn").hide();
+	$("#download-final-btn").hide();
+	
+  }
+  iosver =iOSversion();
+  if(iosver){
+	if(iosver >= 8){
+		$("#download-final-btn").hide();
+		$("#download-final-ios-text").show();
+	}
   }
 
   nacitajKraje();
@@ -767,4 +778,12 @@ function detectIE() {
 
     // other browser
     return false;
+}
+function iOSversion() {
+  //http://stackoverflow.com/questions/8348139/detect-ios-version-less-than-5-with-javascript
+  if (/iP(hone|od|ad)/.test(navigator.platform)) {
+    // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+    var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+    return parseInt(v[1], 10);
+  }
 }

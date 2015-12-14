@@ -97,7 +97,7 @@ function nacitajKraje(){
 	for (var key in election.cities) {
 		options.append($("<option />").text(key));
 	}
-	if(!iOSVersion()){
+	if(!iOSversion()){
 		options.select2({width:"100%"});
 	}
 	nastavKraj();
@@ -110,7 +110,7 @@ function nastavKraj(){
 		options.append($("<option />").text(key));
 	}
 	nastavOkres();
-	if(!iOSVersion()){
+	if(!iOSversion()){
 		options.select2({width:"100%"});
 	}
 }
@@ -123,7 +123,7 @@ function nastavOkres(){
 		options.append($("<option />").val(key).text(election.cities[kraj][okres][key][10]));
 	}
 	nastavObec();
-	if(!iOSVersion()){
+	if(!iOSversion()){
 		options.select2({width:"100%"});
 	}
 }

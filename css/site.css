@@ -4,6 +4,7 @@ body {
 	font-family: Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif;
 	color: #333;
 	font-size: 18px;
+	padding-top: 80px;
 }
 
 ul {
@@ -31,7 +32,7 @@ h2 {
 }
 
 .container {
-	max-width: 720px; /* TODO */
+	max-width: 600px;
 }
 
 .navbar {
@@ -39,6 +40,7 @@ h2 {
 }
 .navbar-volby {
 	border-bottom: 1px solid #eee;
+	background-color: #fff;
 }
 .navbar-volby .navbar-header {
 	width: 60%;

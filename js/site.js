@@ -97,7 +97,9 @@ function nacitajKraje(){
 	for (var key in election.cities) {
 		options.append($("<option />").text(key));
 	}
-	options.select2({width:"100%"});
+	if(!iOSVersion()){
+		options.select2({width:"100%"});
+	}
 	nastavKraj();
 }
 function nastavKraj(){
@@ -108,8 +110,9 @@ function nastavKraj(){
 		options.append($("<option />").text(key));
 	}
 	nastavOkres();
-	options.select2({width:"100%"});
-
+	if(!iOSVersion()){
+		options.select2({width:"100%"});
+	}
 }
 function nastavOkres(){
 	var options = $("#addressslovakia-city");
@@ -120,8 +123,9 @@ function nastavOkres(){
 		options.append($("<option />").val(key).text(election.cities[kraj][okres][key][10]));
 	}
 	nastavObec();
-	options.select2({width:"100%"});
-
+	if(!iOSVersion()){
+		options.select2({width:"100%"});
+	}
 }
 function getObec(){
 

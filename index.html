@@ -49,9 +49,7 @@
 					<div class="counter">
 						<span class="counter__step">0</span>8
 					</div>
-					<ul>
-						<li class="nav-item"><a href="" class="digitalBlue"></a></li>
-					</ul>
+					<span class="nav-item"><a href="" class="digitalBlue"></a></span>
 				</div>
 			</div>
 		</div>
@@ -65,21 +63,21 @@
 		<!-- HOME PAGE -->
 		<!-- ----- ----- -->
 		<div id="intro" class="intro section">
-			<p class="text-justify text-biggest">
-				Až <strong class="digitalRed">98%</strong> ľudí zo zahraničia <strong>nevolilo</strong> v&nbsp;posledných
+			<p class="text-justify text-biggest paragraph-1">
+				Až <span class="digitalRed text-biggest">98%</span> ľudí zo zahraničia <strong>nevolilo</strong> v&nbsp;posledných
 				parlamentných voľbách, pre zložitý proces a&nbsp;skoré termíny — my sme proces zjednodušili na
 				<strong>3&nbsp;minúty, 20&nbsp;slov a&nbsp;8&nbsp;klikov</strong>.
 			</p>
 
 			<hr>
 
-			<p class="text-justify text-bigger">
+			<p class="text-justify text-bigger paragraph-2">
 				Pripravte si žiadosť cez telefón, bez tlačenia, skenovania či špeciálnej čítačky na&nbsp;občiansky preukaz.
 				Stačí Vám na to adresa, rodné číslo a prípadne Váš pas.
 			</p>
 
 			<p>
-				<a class="btn btn-block btn-success btn-volby-blue digitalBlueFill" href="#start" role="button">Pripraviť žiadosť</a>
+				<a class="btn btn-block btn-success btn-volby-blue" href="#start" role="button">Pripraviť žiadosť</a>
 			</p>
 
 			<ul class="text-big text-color-lighter">
@@ -113,6 +111,50 @@
 
 
 
+		<!-- ----- ----- -->
+		<!-- STEP 1 -->
+		<!-- ----- ----- -->
+		<div class="section krok1" id="start">
+			<h2 class="as-title-with-padding">Trvalý pobyt mám</h2>
+			<hr>
+			<p>
+				<a class="btn btn-block btn-volby-blue" href="#tp-na-slovensku" role="button">
+					<strong>na Slovensku</strong></a>
+			</p>
+			<p>
+				<a class="btn btn-block btn-volby-blue" href="#tp-odhlaseny" role="button">
+					<strong>v zahraničí</strong></a>
+			</p>
+			<p class="text-color-lighter">
+				(Pobyt v zahraničí zvoľte, ak ste si odhlásili trvalý pobyt zo Slovenska.)
+			</p>
+			<input style="display:none" id="tpFlag" value="">
+		</div>
+
+
+
+		<!-- ----- ----- -->
+		<!-- STEP 2 -->
+		<!-- ----- ----- -->
+		<div class="section krok2" id="tp-na-slovensku">
+
+			<h2 class="as-title-with-padding">Voliť budem</h2>
+			<hr>
+			<p>
+				<a class="btn btn-volby-blue btn-block" href="#tp-na-slovensku&volba-postou" role="button"><strong>poštou zo zahraničia</strong></a>
+			</p>
+			<p class="text-color-lighter">
+				(Žiadosť treba poslať najneskôr do 15.1.2016)
+			</p>
+			<p>
+				<a class="btn btn-volby-blue btn-block" href="#tp-na-slovensku&volba-s-preukazom" role="button"><strong>hlasovacím preukazom na Slovensku</strong></a>
+			</p>
+			<p>
+				Hlasovacím preukazom je možné voliť v ktorejkoľvek volebnej miestnosti na Slovensku.
+			</p>
+			<p class="text-color-lighter">(Žiadosť treba poslať najneskôr do 15.2.2016)</p>
+
+		</div>
 
 	</div>
 </div>
@@ -127,27 +169,7 @@
 
 
 					<div class="body-content">
-						<div class="row section krok1" id="start">
-							<div class="col-lg-12">
-								<h2>Trvalý pobyt mám</h2>
-								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-na-slovensku" role="button">
-									<strong>na Slovensku</strong></a>
-								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-odhlaseny" role="button">
-									<strong>v zahraničí</strong></a>
-								<input style="display:none" id="tpFlag" value="">
-							</div>
-						</div>
 
-						<div class="row section krok2" id="tp-na-slovensku">
-							<div class="col-lg-12">
-								<h2>Voliť budem</h2>
-								<a class="btn btn-lg btn-success digitalBlueFill" href="#tp-na-slovensku&volba-postou" role="button"><strong>poštou zo zahraničia</strong></a>
-								<h5>(Žiadosť treba poslať najneskôr do 15.1.2016)</h5>
-								<a class="btn btn-lg btn-success digitalRedFill" href="#tp-na-slovensku&volba-s-preukazom" role="button"><strong>hlasovacím preukazom na Slovensku</strong></a>
-								<h3>Hlasovacím preukazom je možné voliť v ktorejkoľvek volebnej miestnosti na Slovensku.</h3>
-								<h5>(Žiadosť treba poslať najneskôr do 15.2.2016)</h5>
-							</div>
-						</div>
 
 						<div class="row section krok2" id="preukaz">
 							<div class="col-lg-12">

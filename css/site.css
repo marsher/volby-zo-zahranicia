@@ -4,7 +4,7 @@
 
 body {
 	font-family: Georgia, "Lucida Bright", "DejaVu Serif", Constantia, serif;
-	color: #555;
+	color: #333;
 	font-size: 18px;
 }
 
@@ -22,6 +22,16 @@ p, li {
 	line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+
+}
+h1 {
+
+}
+h2 {
+	font-size: 1.4em;
+}
+
 .navbar {
 	min-height: 80px;
 }
@@ -29,7 +39,8 @@ p, li {
 	border-bottom: 1px solid #eee;
 }
 .navbar-volby .navbar-header {
-	width: 50%;
+	width: 60%;
+	float: left;
 }
 .navbar-header a.navbar-brand {
 }
@@ -39,6 +50,29 @@ p, li {
 }
 .navbar-steps {
 	float: right;
+	text-align: right;
+	width: 40%;
+}
+
+.counter {
+	display: none;
+	color: #ccc;
+	font-size: .75em;
+}
+
+.navbar-steps .nav--progress span.nav-item a {
+	font-size: .75em;
+}
+
+.counter__step {
+	font-size: 1.8em;
+	color: #0097fd;
+}
+
+.counter__step:after {
+	content: "/";
+	color: #ccc;
+	font-size: .6em;
 }
 
 
@@ -53,17 +87,25 @@ p, li {
 
 
 
-/* customized sections */
+/* home page */
 
-.intro .text-biggest {
+.intro .paragraph-1 {
 	color: #333;
 	margin: .25em 0;
 }
 
-.intro .text-color-lighter strong {
+.intro .paragraph-2 {
+	color: #555;
+}
+
+.intro ul li strong {
 	font-weight: 400;
 	color: #111;
 }
+
+/* counter */
+
+
 
 
 
@@ -121,10 +163,9 @@ p, li {
 	color: #777;
 }
 
-
-/*
-
-
+h2.as-title-with-padding {
+	margin-top: 2em;
+}
 
 .digitalBlue {
 	color: #0097fd;
@@ -162,50 +203,18 @@ p, li {
 	text-decoration: none;
 }
 
-.digitalBlueFill strong, .digitalRedFill strong {
-	color: #fff;
-}
+
+
+/*
+
+
+
+
 
 h1, a, h6 {
 	font-family: Arial, Helvetica, "Myriad Pro", "DejaVu Sans Condensed", sans-serif;
 }
 
-* {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-h1, h2, h3, h4, h5, h6, h7, em {
-	font-style: normal;
-	font-weight: normal;
-}
-
-.main-wrapper {
-	padding-top: 100px;
-}
-
-.wrap {
-	position: relative;
-	max-width: 640px;
-	width: 100%;
-	min-height: 100%;
-	height: auto;
-	margin: 0 auto;
-	padding: 0 20px;
-}
-
-.btn {
-	position: relative;
-	display: block;
-	width: 100%;
-	font-size: 18px;
-	line-height: 1.5;
-	padding: 30px;
-	text-align: center;
-	text-decoration: none;
-	transition: background-color 0.5s ease;
-}
 
 .btn.secondary {
 	background-color: #999;
@@ -433,25 +442,7 @@ h6 {
 	text-align: right;
 }
 
-.counter {
-	display: none;
-	right: 0;
-	top: 10px;
-	color: #ccc;
-	font-weight: 100;
-	font-size: 14px;
-}
 
-.counter__step {
-	font-size: 1.8em;
-	color: #0097fd;
-}
-
-.counter__step:after {
-	content: "/";
-	color: #ccc;
-	font-size: 14px;
-}
 
 .section {
 	font-size: 36px;

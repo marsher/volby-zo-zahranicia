@@ -1,3 +1,5 @@
+var App = window.election;
+
 function createDocument(preview,download) {
   jQuery.data( document.body, "psc-locked", "1");
   nastavObec();
@@ -11,7 +13,7 @@ function createDocument(preview,download) {
   if (mm < 10) {
     mm = '0' + mm
   }
-  var type = $('#tpFlag').val();
+  
   // playground requires you to assign document definition to a variable called dd
   var paragraph, localaddress = [], noTP = [], vyhlasenie = [], signature = [], idPhoto = [];
   var signaturedata = signaturePad.toDataURL();
@@ -72,7 +74,7 @@ function createDocument(preview,download) {
   }
 
 
-  if (type == 'volbaPostouSTrvalymPobytom') {
+  if (App.request_form == 'volbaPostouSTrvalymPobytom') {
     paragraph = 'Podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016.';
     localaddress = [
       {text: '', style: 'spacesmall'},
@@ -118,7 +120,7 @@ function createDocument(preview,download) {
         bold: true
       }
     ];
-  } else if (type == 'volbaPostouBezTrvalehoPobytu') {
+  } else if (App.request_form == 'volbaPostouBezTrvalehoPobytu') {
     paragraph = 'Podľa   § 59 ods. 1   zákona   č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu:';
     noTP = [
 
@@ -172,7 +174,7 @@ function createDocument(preview,download) {
 
   }
 
-  if (type === "volbaPostouSTrvalymPobytom" || type === "volbaPostouBezTrvalehoPobytu") {
+  if (App.request_form === "volbaPostouSTrvalymPobytom" || App.request_form === "volbaPostouBezTrvalehoPobytu") {
     formContent = [
       {
         text: 'Žiadosť',
@@ -268,7 +270,7 @@ function createDocument(preview,download) {
       noTP
     ]
   }
-  if (type === "ziadostOPreukazPostou") {
+  if (App.request_form === "ziadostOPreukazPostou") {
     preukazHeader = 'Žiadosť o vydanie hlasovacieho preukazu';
     preukazDelivery = [
       {
@@ -293,7 +295,7 @@ function createDocument(preview,download) {
     ]
   }
 
-  if (type === "ziadostOPreukaPreSplnomocnenca") {
+  if (App.request_form === "ziadostOPreukaPreSplnomocnenca") {
     preukazHeader = 'Žiadosť o vydanie hlasovacieho preukazu a splnomocnenie na jeho prevzatie';
     preukazDelivery = [
       {
@@ -318,7 +320,7 @@ function createDocument(preview,download) {
     ]
   }
 
-  if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
+  if (App.request_form === "ziadostOPreukazPostou" || App.request_form === "ziadostOPreukaPreSplnomocnenca") {
     formContent = [
       {
         text: $('#adresa').val(),
@@ -443,13 +445,13 @@ function createDocument(preview,download) {
 	
   var name = "ziadost";
   if(preview){
-	  if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
+	  if (App.request_form === "ziadostOPreukazPostou" || App.request_form === "ziadostOPreukaPreSplnomocnenca") {
 		  name = "ziadost-o-hlasovaci-preukaz.pdf";
 	  }else{
 		  name = "ziadost-o-volbu-postou.pdf";
 	  }
   }else{
-	  if (type === "ziadostOPreukazPostou" || type === "ziadostOPreukaPreSplnomocnenca") {
+	  if (App.request_form === "ziadostOPreukazPostou" || App.request_form === "ziadostOPreukaPreSplnomocnenca") {
 		  name = "ziadost-o-hlasovaci-preukaz-nahlad.pdf";
 	  }else{
 		  name = "ziadost-o-volbu-postou-nahlad.pdf";

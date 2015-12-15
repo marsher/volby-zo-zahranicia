@@ -16,7 +16,7 @@ function nemamTP() {
   $('.nemam-tp').show();
   $('#photo-link').show();
 
-  $('#tpFlag').val('volbaPostouBezTrvalehoPobytu');
+  App.request_form = 'volbaPostouBezTrvalehoPobytu';
   $("#adresa").val("Ministerstvo vnútra Slovenskej republiky\nodbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC");
 
 }
@@ -25,29 +25,24 @@ function postaTP() {
   clearForm();
   $('.posta-tp').show();
   $('#photo-link').hide();
-  $('#tpFlag').val('volbaPostouSTrvalymPobytom')
+  App.request_form = 'volbaPostouSTrvalymPobytom';
 }
 
 function preukazTP() {
   clearForm();
   $('.preukaz-tp').show();
   $('#photo-link').hide();
-  $('#tpFlag').val('ziadostOPreukazPostou')
+  App.request_form = 'ziadostOPreukazPostou';
 }
 
 function preukazPS() {
   clearForm();
   $('.preukaz-ps').show();
   $('#photo-link').hide();
-  $('#tpFlag').val('ziadostOPreukaPreSplnomocnenca')
+  App.request_form = 'ziadostOPreukaPreSplnomocnenca';
 }
 
 
-
-var clipboard = new Clipboard('.copy-btn');
-clipboard.on('success', function(e) {
-    e.clearSelection();
-});
 
 
 
@@ -128,4 +123,11 @@ $(document).ready(function ()
   nacitajKraje();
   nastavObec();
 
+  
+  var clipboard = new Clipboard('.copy-btn');
+  clipboard.on('success', function(e) {
+     e.clearSelection();
+  });
+  
 });
+

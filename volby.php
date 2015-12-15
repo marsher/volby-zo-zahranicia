@@ -22,16 +22,16 @@ if(isset($_REQUEST["email"])){
 
 ?><!DOCTYPE html>
 <html lang="sk">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Potvrdenie emailu</title>
-	    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script async type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<style>
-		body{margin:1em;}
+			body{margin:1em;}
 		</style>
 	</head>
 	<body>
@@ -43,7 +43,7 @@ if(isset($_REQUEST["email"])){
 			<div class="panel-body">
 				<?php if(!$obec){echo '<div class="alert alert-danger">Nenašli sme Vašu obec</div>';}?>
 				<p>Prosím, nastavte si Váš email, na ktorý chcete prijímať žiadosti pre voľbu poštou a žiadosti o hlasovací preukaz.</p>
-				<?php 
+				<?php
 				if($thx == "1"){echo '<div class="alert alert-success">Úspešne ste nastavili email pre obec: <b>'.$obec.'</b></div>';}else
 				if($thx == "2"){echo '<div class="alert alert-danger">Nepodarilo sa uložiť informáciu. Prosím kontaktujte nás.</div>';}else
 				if($obec){echo '<div class="alert alert-info">Nastavujete email pre obec: <b>'.$obec.'</b></div>';}?>

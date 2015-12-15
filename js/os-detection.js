@@ -29,7 +29,7 @@ function detectIE() {
 }
 function isAndroid(){
 	var ua = window.navigator.userAgent;
-    return (ua.indexOf("android") > -1);
+    return (ua.indexOf("android") > -1) || (ua.indexOf("Android") > -1);
 }
 function iOSversion() {
   //http://stackoverflow.com/questions/8348139/detect-ios-version-less-than-5-with-javascript

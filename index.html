@@ -372,7 +372,7 @@
 				</div>
 				<div class="col-sm-6">
 					<p>
-						<button id="clear-button" class="btn btn-volby-gray btn-block">Vyčistiť</button>
+						<button type="button" id="clear-button" class="btn btn-volby-gray btn-block">Vyčistiť</button>
 					</p>
 				</div>
 			</div>
@@ -450,9 +450,11 @@
 				<p>Po odoslaní emailu <strong>s prílohou</strong> očakávajte potvrdenie z obecného úradu, že Vaša žiadosť bola spracovaná. Ak sa tak nestane, kontaktujte ich telefonicky.</p>
 				<p id="phonetext">Ak nedostanete potvrdenie o prijatí Vašej pošty do 3 dní, skúste im zavolať na telefón: <b><span class="bold" id="phone"></span></b></p>
 			</div>
-			<div class="col-lg-12 hidden justify" id="noemail">
-				<h2>Odošlite žiadosť</h2>
-				<p>Bohužiaľ sme nenašli email pre Vašu obec. Vygenerovanú žiadosť v PDF si však stále môžete vytlačiť a odoslať poštou na adresu úradu v hlavičke žiadosti. Ak im pošlete žiadosť poštou, prosím upovedomte ich, aby si zriadili emailovú adresu, aby ste pre prípadné ďalšie voľby takúto žiadosť nemuseli odosielať poštou.</p>
+			<div class="row hidden justify" id="noemail">
+				<div class="col-lg-12">
+					<h2>Odošlite žiadosť</h2>
+					<p>Bohužiaľ sme nenašli email pre Vašu obec. Vygenerovanú žiadosť v PDF si však stále môžete vytlačiť a odoslať poštou na adresu úradu v hlavičke žiadosti. Ak im pošlete žiadosť poštou, prosím upovedomte ich, aby si zriadili emailovú adresu, aby ste pre prípadné ďalšie voľby takúto žiadosť nemuseli odosielať poštou.</p>
+				</div>
 			</div>
 		</div>
 
@@ -517,7 +519,7 @@
 			</div>
 		</div>
 	</main>
-	<noscript> 
+	<noscript>
 		<style type="text/css">
 			.main-wrapper, #krokomer {display:none;}
 		</style>
@@ -569,8 +571,8 @@ var validateBirthNumber = function(value, messages) {
 
 jQuery(document).ready(function () {
 	var ua = navigator.userAgent;
-	
-	var pathname = window.location.pathname;	
+
+	var pathname = window.location.pathname;
 	var test = pathname.indexOf('/test/');
 	if( test > -1 ){
 		$( '<p class="footer text-center">Váš prehliadač je: '+ua+'</p>' ).insertAfter( "#github" );

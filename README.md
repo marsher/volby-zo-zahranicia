@@ -31,7 +31,7 @@ https://volby.digital/test/
 * Windows 10, Chrome 47.0.2526.80 - Plná funkcionalita
 * Windows 10, Internet explorer 11.0.26 - Funguje, ale náhľad PDF nefunguje, ale ponúka PDF na stiahnutie
 * Windows 10, Edge 20.10260.16384.0 - Funguje, ale náhľad PDF nefunguje, ale ponúka PDF na stiahnutie
-* Windows 7 64bit, Chrome 46.0.2490.86m: Nefunguje - Podposiovanie je nefunkčné
+* Windows 7 64bit, Chrome 46.0.2490.86m: Nefunguje - Podpisovanie je nefunkčné
 * Windows 7, Internet explorer 11.0.9600 - Funguje, ale náhľad PDF nefunguje, ale ponúka PDF na stiahnutie
 * Windows 7, Firefox 42.0 - Plná funkcionalita
 * Android 5.1.1, Chrome 47.0.2526.83 - Funguje, ale preview a finálnu verziu priamo sťahuje
@@ -41,7 +41,8 @@ https://volby.digital/test/
 * Mac OS X El Capitan v10.11.1, Chrome 46.0.2490.86 (64-bit): Nefunguje - Podposiovanie je nefunkčné
 * Mac OS X El Capitan v10.11.1, Safari Version 9.0.1: Plná funkcionalita
 * iOS 9.2 (iPad),Mobile Safari 9.0: Plná funkcionalita
-
+* Ubuntu 14.10, Chrome 46.0.2490.86 - Podpisovanie je nefunkčné
+* Ubuntu 14.10, Firefox 42.0 - Plná funkcionalita
 
 ---
 

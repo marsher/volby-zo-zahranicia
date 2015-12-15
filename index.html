@@ -568,6 +568,18 @@ var validateBirthNumber = function(value, messages) {
 };
 
 jQuery(document).ready(function () {
+	var ua = navigator.userAgent;
+	
+	var pathname = window.location.pathname;	
+	var test = pathname.indexOf('/test/');
+	if( test > -1 ){
+		$( '<p class="footer text-center">Váš prehliadač je: '+ua+'</p>' ).insertAfter( "#github" );
+	} else {
+		if( ua.indexOf('Android') > -1 && ua.indexOf('Chrome') == -1 ){
+			$( '<p><span class="digitalRed text-biggest">Pozor! Máte nepodporovaný prehliadač a nemusí Vám všetko správne fungovať. Použite prosím Google Chrome.'
+				+'</span></p>' ).insertAfter( ".text-justify.text-bigger.paragraph-2" );
+		}
+	}
 
 	var application = new RequestGeneratorApp();
 

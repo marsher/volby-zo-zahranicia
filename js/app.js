@@ -63,6 +63,11 @@ function resizeCanvas() {
 
 window.onresize = resizeCanvas;
 
+function makeSecondStep6ButtonPrimary(){
+	  $('#step6but1').addClass("btn-volby-gray").removeClass("btn-volby-blue");
+	  $('#step6but2').addClass("btn-volby-blue").removeClass("btn-volby-gray");
+}
+
 $(document).ready(function ()
 {
   resizeCanvas();
@@ -75,8 +80,7 @@ $(document).ready(function ()
   });
 
   $('#step6but1').on("click", function(event){
-	  $('#step6but1').addClass("btn-volby-gray").removeClass("btn-volby-blue");
-	  $('#step6but2').addClass("btn-volby-blue").removeClass("btn-volby-gray");
+	  makeSecondStep6ButtonPrimary();
   });
   
   $('#id-button').on("click", function (event)
@@ -104,19 +108,21 @@ $(document).ready(function ()
 	
 	$("#download-preview-btn").hide();
 	$("#download-final-btn").hide();
-	
+	makeSecondStep6ButtonPrimary();
   }
   if(isAndroid()){
     $("#final").hide();
     $("#preview").hide();
     $("#download-final-btn").hide();
 	$("#download-preview-btn").hide();
+	makeSecondStep6ButtonPrimary();
   }
   iosver =iOSversion();
   if(iosver){
 	if(iosver >= 8){
 		$("#download-final-btn").hide();
 		$("#download-final-ios-text").show();
+		makeSecondStep6ButtonPrimary();
 	}
   }
 

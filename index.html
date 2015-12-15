@@ -36,6 +36,15 @@
 
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v2.5&appId=133245520136227";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 
 <nav class="navbar navbar-volby navbar-fixed-top">
 	<div class="container">
@@ -79,6 +88,7 @@
 			<p>
 				<a class="btn btn-block btn-success btn-volby-blue" href="#start" role="button">Pripraviť žiadosť</a>
 			</p>
+				<div class="fb-share-button" data-href="https://volby.digital/" data-layout="button_count"></div>
 
 			<ul class="text-big text-color-lighter">
 				<li>Vytvorenie trvá približne <strong>3 minúty</strong></li>
@@ -440,6 +450,8 @@
 					Nezabudnite priložiť <b>foto pasu</b> k emailu.
 				</div>
 				<a id="send" class="btn btn-volby-blue btn-block" href="" role="button">Vytvoriť email</a>
+				
+				
 				<p>
 					Ak máte aktivovaného mailového klienta, tlačítko vyššie by malo vytvoriť email automaticky.
 					Ak nie, odošlite nasledovný email:</p>

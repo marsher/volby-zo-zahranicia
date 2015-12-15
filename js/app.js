@@ -1,7 +1,5 @@
 var App = window.election;
 
-App.currentStep = 0;
-
 function clearForm() {
   $('.preukaz-ps').hide();
   $('.posta-tp').hide();

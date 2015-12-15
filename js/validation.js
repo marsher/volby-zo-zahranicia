@@ -28,6 +28,16 @@ jQuery(document).ready(function () {
 	var test = pathname.indexOf('/test/');
 	if( test > -1 ){
 		$( '<p class="footer text-center">Váš prehliadač je: '+ua+'</p>' ).insertAfter( "#github" );
+		if(detectIE()){
+			$( '<p class="footer text-center">Používate Internet explorer</p>' ).insertAfter( "#github" );
+		}
+		if(isAndroid()){
+			$( '<p class="footer text-center">Používate Android</p>' ).insertAfter( "#github" );
+		}
+		var ver = iOSversion();
+		if(ver){
+			$( '<p class="footer text-center">Používate iOS '+ver+'</p>' ).insertAfter( "#github" );
+		}
 	} else {
 		if( ua.indexOf('Android') > -1 && ua.indexOf('Chrome') == -1 ){
 			$( '<p><span class="digitalRed text-biggest">Pozor! Máte nepodporovaný prehliadač a nemusí Vám všetko správne fungovať. Použite prosím Google Chrome.'

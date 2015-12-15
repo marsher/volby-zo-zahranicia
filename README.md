@@ -19,6 +19,8 @@ Oficiálne informácie o hlasovaní poštou pre osobu s trvalým pobytom na Slov
 Oficiálne informácie o hlasovaní poštou pre osobu bez trvalého pobytu na Slovensku: http://www.minv.sk/?nr16-posta1
 
 ---
+**Testovacia stránka:**  
+https://volby.digital/test/
 
 **Nápad vznikol na:**  
 [platforma.slovensko.digital](https://platforma.slovensko.digital/)

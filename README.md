@@ -20,7 +20,7 @@ Oficiálne informácie o hlasovaní poštou pre osobu bez trvalého pobytu na Sl
 
 
 ---
-** Ako si nechať doručiť hlasovacie lístky na adresu, ktorú ešte nepoznáte? **
+**Ako si nechať doručiť hlasovacie lístky na adresu, ktorú ešte nepoznáte?**
 (V prípade, že ste napríklad kamionista, ktorý je mesiac na cestách, alebo adresu v cudzine v mesiaci február, marec ešte nepoznáte) 
 Pošty vo väčšine krajín sveta umožňujú poslať zásielku ako POSTE RESTANTE. To znamená, že si zistíte iba adresu pošty v meste, v ktorom budete v čase doručenia hlasovacích lístkov. Ako adresu miesta pobytu v cudzine zadáte:
 ```

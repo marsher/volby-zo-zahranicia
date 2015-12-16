@@ -12,7 +12,7 @@ if (($handle = fopen("emaily.txt", "r")) !== FALSE) {
 $thx = false;
 if(isset($_REQUEST["email"])){
 	$out = fopen('corrections.csv', 'a+');
-	if(fputcsv($out, array($_REQUEST["u"],$_REQUEST["email"]))){
+	if(fputcsv($out, array($_REQUEST["u"],$_REQUEST["email"],date("c"),$_SERVER["REMOTE_ADDR"]))){
 		$thx = "1";
 	}else{
 		$thx = "2";

@@ -10,9 +10,10 @@ if (($handle = fopen("emaily.txt", "r")) !== FALSE) {
     fclose($handle);
 }
 $thx = false;
+$email = $_REQUEST["u"];
 if(isset($_REQUEST["email"])){
 	$out = fopen('corrections.csv', 'a+');
-	if(fputcsv($out, array($_REQUEST["u"],$_REQUEST["email"],date("c"),$_SERVER["REMOTE_ADDR"]))){
+	if(fputcsv($out, array($_REQUEST["u"],$email=$_REQUEST["email"],date("c"),$_SERVER["REMOTE_ADDR"]))){
 		$thx = "1";
 	}else{
 		$thx = "2";
@@ -52,7 +53,7 @@ if(isset($_REQUEST["email"])){
 						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-10">
 							<input type="hidden" name="u" value="<?php echo htmlspecialchars($_REQUEST["u"]);?>">
-							<input type="email" name="email" class="form-control" id="inputEmail3" value="<?php echo htmlspecialchars($_REQUEST["u"]);?>" placeholder="Email pre voľby">
+							<input type="email" name="email" class="form-control" id="inputEmail3" value="<?php echo htmlspecialchars($email);?>" placeholder="Email pre voľby">
 						</div>
 					</div>
 					<div class="form-group">

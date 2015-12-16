@@ -18,6 +18,21 @@ Oficiálne informácie o hlasovaní poštou pre osobu s trvalým pobytom na Slov
 
 Oficiálne informácie o hlasovaní poštou pre osobu bez trvalého pobytu na Slovensku: http://www.minv.sk/?nr16-posta1
 
+
+---
+** Ako si nechať doručiť hlasovacie lístky na adresu, ktorú ešte nepoznáte? **
+(V prípade, že ste napríklad kamionista, ktorý je mesiac na cestách, alebo adresu v cudzine v mesiaci február, marec ešte nepoznáte) 
+Pošty vo väčšine krajín sveta umožňujú poslať zásielku ako POSTE RESTANTE. To znamená, že si zistíte iba adresu pošty v meste, v ktorom budete v čase doručenia hlasovacích lístkov. Ako adresu miesta pobytu v cudzine zadáte:
+```
+Meno Priezvisko
+Poste restante
+Adresa posty
+PSC MESTO
+KRAJINA
+```
+Zásielka sa drží na pošte doručenia 2 týždne. Preto ak nebudete v danom meste celú dobu v rámci ktorej Vám môžu prísť hlasovacie lístky, bude dobré sa informovať úradníkov kam ste zasielali žiadosť o lístky kedy Vám to pošlú. Nedá sa na to spoliehať, pretože majú iba povinnosť Vám to poslať v termíne do 35 dní pred voľbami a nie Vás o dátume poslania informovať. 
+Zásielka sa Vám vydá na základe dokladu totožnosti, kde sa overuje Vaše meno.
+
 ---
 **Testovacia stránka:**  
 https://volby.digital/test/

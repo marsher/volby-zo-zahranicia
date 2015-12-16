@@ -42,7 +42,7 @@ if(isset($_REQUEST["email"])){
 			</div>
 			<div class="panel-body">
 				<?php if(!$obec){echo '<div class="alert alert-danger">Nenašli sme Vašu obec</div>';}?>
-				<p>Prosím, nastavte si Váš email, na ktorý chcete prijímať žiadosti pre voľbu poštou a žiadosti o hlasovací preukaz.</p>
+				<p>Prosím, potvrďte správnosť oficiálneho emailu, na ktorý budete prijímať žiadosti pre voľbu poštou a žiadosti o hlasovací preukaz. Ak je emailová adresa chybná, opravte ju prosím.</p>
 				<?php
 				if($thx == "1"){echo '<div class="alert alert-success">Úspešne ste nastavili email pre obec: <b>'.$obec.'</b></div>';}else
 				if($thx == "2"){echo '<div class="alert alert-danger">Nepodarilo sa uložiť informáciu. Prosím kontaktujte nás.</div>';}else
@@ -57,7 +57,7 @@ if(isset($_REQUEST["email"])){
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<input type="submit" class="btn btn-primary" value="Nastaviť">
+							<input type="submit" class="btn btn-primary" value="Potvrdiť emailovú adresu">
 						</div>
 					</div>
 				</form>

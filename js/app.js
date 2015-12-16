@@ -126,6 +126,12 @@ $(document).ready(function ()
 
   nacitajKraje();
   nastavObec();
+  
+  $("#showhelp").on("click",function(){
+	  $(".help").show();	
+	  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+  });
+  $(".help").hide();
 
   
   var clipboard = new Clipboard('.copy-btn');

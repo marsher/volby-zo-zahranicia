@@ -325,7 +325,7 @@ RequestGeneratorApp.prototype = {
         this.active_section = section;
 
         var that = this;
-
+		$('.help').hide();
         $('.section').hide();
         $.when($('#' + this.active_section).show()).done(function(){
             resizeCanvas();

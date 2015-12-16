@@ -117,10 +117,10 @@ $(document).ready(function ()
   }
   iosver =iOSversion();
   if(iosver){
+	$("#download-final-ios-text").show();
 	if(iosver >= 8){
-		$("#download-final-btn").hide();
-		$("#download-final-ios-text").show();
-		makeSecondStep6ButtonPrimary();
+		//$("#download-final-btn").hide();
+		//makeSecondStep6ButtonPrimary();
 	}
   }
 

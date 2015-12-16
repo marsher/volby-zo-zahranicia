@@ -20,18 +20,21 @@ Oficiálne informácie o hlasovaní poštou pre osobu bez trvalého pobytu na Sl
 
 
 ---
-**Ako si nechať doručiť hlasovacie lístky na adresu, ktorú ešte nepoznáte?**
-(V prípade, že ste napríklad kamionista, ktorý je mesiac na cestách, alebo adresu v cudzine v mesiaci február, marec ešte nepoznáte) 
-Pošty vo väčšine krajín sveta umožňujú poslať zásielku ako POSTE RESTANTE. To znamená, že si zistíte iba adresu pošty v meste, v ktorom budete v čase doručenia hlasovacích lístkov. Ako adresu miesta pobytu v cudzine zadáte:
+**Ako si nechať doručiť hlasovacie lístky na adresu v cudzine, ktorú ešte nepoznáte?**
+
+(Kamionisti, ktorý sú mesiac na cestách po EU, alebo ľudia, ktorí adresu v cudzine po 30.1. keď im hlasovacie lístky majú prísť v čase keď majú o ne požiadať, teda do 15.1. ešte nepoznajú)
+V tomto prípade môžete požiadať o poslatie zásielky na adresu pošty v meste, kde budete v danú dobu. To znamená, že si zistíte iba adresu pošty v meste, v ktorom budete v čase doručenia hlasovacích lístkov. Ako adresu miesta pobytu v cudzine vo formulári zadáte namiesto Ulice a čísla slová "Poste Restante" - http://i.imgur.com/REVhJsM.jpg Obec Vám to pošle na adresu:
 ```
 Meno Priezvisko
-Poste restante
-Adresa posty
+Poste Restante
 PSC MESTO
 KRAJINA
 ```
-Zásielka sa drží na pošte doručenia 2 týždne. Preto ak nebudete v danom meste celú dobu v rámci ktorej Vám môžu prísť hlasovacie lístky, bude dobré sa informovať úradníkov kam ste zasielali žiadosť o lístky kedy Vám to pošlú. Nedá sa na to spoliehať, pretože majú iba povinnosť Vám to poslať v termíne do 35 dní pred voľbami a nie Vás o dátume poslania informovať. 
 Zásielka sa Vám vydá na základe dokladu totožnosti, kde sa overuje Vaše meno.
+**Zásielka sa drží na pošte doručenia 2 týždne.** Preto ak nebudete v danom meste celú dobu v rámci ktorej Vám môžu prísť hlasovacie lístky, bude dobré sa informovať úradníkov kam ste zasielali žiadosť o lístky kedy Vám to pošlú. Nedá sa na to spoliehať, pretože majú iba povinnosť Vám to poslať v termíne do 35 dní pred voľbami a nie Vás o dátume poslania informovať. Prípadne predom dohodnúť dlhšiu dobu dodania. V možnostiach pošty je "Predĺženie odbernej lehoty, Časové doposielanie, Splnomocnenie, Doručenie na inú adresu na žiadosť adresáta" ( http://www.posta.sk/sluzby/doporucena-zasielka-svet a Infolinke pošty 0800 122 413 )
+Zásielky sa budú posielať doporučene. Do niektorych krajín to nie je možné, preto ak by bol problém, treba sa dohodnúť s obcou na nedoporučenej zásielke.
+
+*Toto platí iba pre tých, ktorí nepoznajú adresu svojho pobytu v cudzine v mesiaci február, keď prídu hlasovacie lístky*
 
 ---
 **Testovacia stránka:**  

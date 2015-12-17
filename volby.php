@@ -56,11 +56,17 @@ if(isset($_REQUEST["email"])){
 							<input type="email" name="email" class="form-control" id="inputEmail3" value="<?php echo htmlspecialchars($email);?>" placeholder="Email pre voľby">
 						</div>
 					</div>
+					<?php
+					if($thx != "1"){
+						?>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<input type="submit" class="btn btn-primary" value="Potvrdiť emailovú adresu">
 						</div>
 					</div>
+					<?php 
+					}
+					?>
 				</form>
 			</div>
 		</div>

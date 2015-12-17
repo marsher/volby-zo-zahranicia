@@ -126,6 +126,7 @@ $(document).ready(function ()
 
   nacitajKraje();
   nastavObec();
+  nastavPosteRestante();// pri nastavenom posterestante a refreshi stranky treba nacitat obsah
   
   $("#showhelp").on("click",function(){
 	  $(".help").show();	

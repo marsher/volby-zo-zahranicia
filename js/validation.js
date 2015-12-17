@@ -21,6 +21,14 @@ var validateBirthNumber = function(value, messages) {
 	}
 };
 
+var validatePSC = function(value, messages) {
+	if( value.length != 5 ) yii.validation.addMessage(messages, "Vaše domáce PSČ by malo byť dlhé 5 číslic.", value);
+	else yii.validation.regularExpression(value, messages, {
+			"pattern":/^\d{5}$/,
+			"message":"Vaše domáce PSČ by malo obsahovať iba číslá."
+		});
+}
+
 jQuery(document).ready(function () {
 	var ua = navigator.userAgent;
 
@@ -152,6 +160,7 @@ jQuery(document).ready(function () {
 			yii.validation.required(value, messages, {
 				"message": "Poštové smerovacie číslo Vášho trvalého pobytu nemôže byť nevyplnené."
 			});
+			validatePSC(value, messages);
 		}
 	}], []);
 	jQuery('#address-foreign').yiiActiveForm([{

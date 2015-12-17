@@ -137,9 +137,44 @@ function createDocument(preview,download) {
       },
       {
         ul: [
+		  'čestné vyhlásenie voliča, že nemá trvalý pobyt na území Slovenskej republiky.',
           'fotokópia časti cestovného dokladu Slovenskej republiky s osobnými údajmi voliča alebo fotokópia osvedčenia o štátnom občianstve Slovenskej republiky voliča.',
         ]
       }
+    ];
+    vyhlasenie = [
+      {
+        text: $('#basicinfo-name').val() + ' ' + $('#basicinfo-lastname').val() + ' ' + $('#basicinfo-birthno').val(),
+        alignment: 'center',
+        pageBreak: 'before'
+      },
+      {
+        text: getAddressOneLine('addressforeign'),
+        alignment: 'center',
+      },
+
+      {text: '', style: 'space'},
+      {
+        text: 'ČESTNÉ VYHLÁSENIE',
+        style: 'header',
+        alignment: 'center'
+      },
+      {text: '', style: 'space'},
+      {
+        text: 'Na účely voľby poštou do Národnej rady Slovenskej republiky v roku 2016',
+        alignment: 'center'
+      },
+      {text: '', style: 'space'},
+      {
+        text: 'čestne vyhlasujem,',
+        style: 'header',
+        alignment: 'center'
+      },
+      {text: '', style: 'space'},
+      {
+        text: 'že nemám trvalý pobyt na území Slovenskej republiky.'
+      },
+      signature2
     ];
   }
 
@@ -359,6 +394,7 @@ function createDocument(preview,download) {
     content: [
       formContent,
       signature,
+      vyhlasenie,
       idPhoto,
     ],
     styles: {

@@ -56,9 +56,10 @@ https://volby.digital/test/
 * Android 4.1, Opera - Nefunguje
 * Android 4.1, Sony Xperia E 4.1 (Vstavaý prehliadač) - Nefunguje
 * Android 4.1, Chrome - Náhľad nefunguje, súbory náhľadu a finálnej žiadosti sú automaticky stiahnuté
-* Mac OS X El Capitan v10.11.1, Chrome 46.0.2490.86 (64-bit): Nefunguje - Podposiovanie je nefunkčné
-* Mac OS X El Capitan v10.11.1, Safari Version 9.0.1: Plná funkcionalita
-* iOS 9.2 (iPad),Mobile Safari 9.0: Plná funkcionalita
+* Mac OS X El Capitan v10.11.1, Chrome 47.0.2526.106 (64-bit) - Plná funkcionalita
+* Mac OS X El Capitan v10.11.1, Safari Version 9.0.1 - Plná funkcionalita
+* Mac OS X El Capitan v10.11.1, Firefox 43.0 - Plná funkcionalita
+* iOS 9.2 (iPad),Mobile Safari 9.0 - Plná funkcionalita
 * Ubuntu 14.10, Chrome 46.0.2490.86 - Podpisovanie je nefunkčné
 * Ubuntu 14.10, Firefox 42.0 - Plná funkcionalita
 

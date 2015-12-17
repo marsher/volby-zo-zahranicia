@@ -2,19 +2,25 @@ var App = window.election;
 
 function findZIP(){
 	var psc = $("#addressslovakia-zip").val().replace(' ','');
-	if(psc in App.psc){
-		kraj = App.psc[psc][2] + " kraj";
-		okres = "Okres "+ App.psc[psc][1];
-		obec = App.psc[psc][0];
-		
-		if($("#addressslovakia-kraj option[value='"+kraj+"']").length > 0){
-			$("#addressslovakia-kraj").val(kraj).trigger("change");
-		}
-		if($("#addressslovakia-okres option[value='"+okres+"']").length > 0){
-			$("#addressslovakia-okres").val(okres).trigger("change");
-		}
-		if($("#addressslovakia-city option[value='"+obec+"']").length > 0){
-			$("#addressslovakia-city").val(obec).trigger("change");
+	if( psc.length == 5 ){
+		if( psc in App.psc){
+			kraj = App.psc[psc][2] + " kraj";
+			okres = "Okres "+ App.psc[psc][1];
+			obec = App.psc[psc][0];
+			
+			if($("#addressslovakia-kraj option[value='"+kraj+"']").length > 0){
+				$("#addressslovakia-kraj").val(kraj).trigger("change");
+			}
+			if($("#addressslovakia-okres option[value='"+okres+"']").length > 0){
+				$("#addressslovakia-okres").val(okres).trigger("change");
+			}
+			if($("#addressslovakia-city option[value='"+obec+"']").length > 0){
+				$("#addressslovakia-city").val(obec).trigger("change");
+			}
+			
+			$('.help-block.psc').html('');
+		}else{
+			$('.help-block.psc').html('PSČ nie je v zozname. Vyberte prosím z možností nižšie, alebo sa opravte. ;)');
 		}
 	}
 }

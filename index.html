@@ -141,7 +141,7 @@
 			</p>
 			<div class="help panel panel-info"><div class="panel-heading">Pomoc</div><div class="panel-body">
 				<p>
-					Občania Slovenskej Republiky žijúci v zahraničí majú na výber si odhlásiť trvalý pobyt na území Slovenska. Odhlásením strácajú občiansky preukaz a identifikujú sa iba pasom.
+					Občania Slovenskej Republiky žijúci v zahraničí majú na výber si odhlásiť trvalý pobyt na území Slovenska. Odhlásením strácajú občiansky preukaz a identifikujú sa iba pasom.<br />
 					Občania SR môžu mať aj viac trvalých pobytov - aj v zahraničí aj na Slovensku. Tlačítko "Trvalý pobyt mám odhlásený zo SR" zadávajte iba v tedy ak na slovensku už trvalý pobyt máte odhlásený. V ostatných prípadoch stlačte tlačítko "Trvalý pobyt mám na Slovensku", teda ak máte trvalý pobyt aj v zahraničí.
 				</p>
 			</div></div>
@@ -351,9 +351,11 @@
 					</div>
 					<div class="form-group field-addressforeign-format posta-tp preukaz-tp nemam-tp">
 						<label class="control-label" for="addressforeign-format">Formát adresy</label>
-						<select id="addressforeign-format" class="form-control" name="AddressForeign[format]">
+						<select id="addressforeign-format" class="form-control" name="AddressForeign[format]" onchange="nastavPosteRestante()">
 							<option value="sk">SK formát - Ulica číslo, PSČ Mesto, Štát</option>
 							<option value="usa">USA formát - číslo ulica, Mesto PSČ, Štát</option>
+							<option value="sk-poste-restante">Poste Restante SK formát</option>
+							<option value="usa-poste-restante">Poste Restante USA formát</option>
 						</select>
 						<div class="help-block"></div>
 					</div>
@@ -366,7 +368,9 @@
 
 			<div class="help panel panel-info"><div class="panel-heading">Pomoc</div><div class="panel-body">
 				<p>
-					Vyplňte prosím formulár. Keď nevyplníte niektorú z informácií, ak je táto informácia potrebná, stránka Vás upozorní na jej vyplnenie.
+					Vyplňte prosím formulár. Keď nevyplníte niektorú z informácií, ak je táto informácia potrebná, stránka Vás upozorní na jej vyplnenie.<br />
+					Ak žijete v USA, kde je opačný formát adresy, použite prepínač "Formát adresy".<br />
+					Ak potrebujete zaslať dokumenty na adresu pošty, použite v prepínači "Formát adresy" možnosť "Poste Restante".
 				</p>
 			</div></div>
 		</div>
@@ -396,8 +400,8 @@
 			</div>
 			<div class="help panel panel-info"><div class="panel-heading">Pomoc</div><div class="panel-body">
 				<p>
-					Tu je zobrazený náhľad dokumentu. Ak je všetko vporiadku stlačte podpísať pre pokračovanie vyplňovania. 
-					Ak chcete dokument vytlačit a poslať poštou, môžete tak urobiť teraz.
+					Tu je zobrazený náhľad dokumentu. Ak je všetko vporiadku stlačte podpísať pre pokračovanie vyplňovania.<br />
+					Ak chcete dokument vytlačit a poslať poštou, môžete tak urobiť teraz.<br />
 					Ak náhľad nevidíte, možno to Váš prehliadač nepodporuje a pre kontrolu si môžete dokument stiahnuť.
 				</p>
 			</div></div>
@@ -472,7 +476,7 @@
 					Tu je Vaša vygenerovaná žiadosť. Stiahnite si ju do počítača. Z technických dôvodov ju nie je možné pripnúť automaticky k emailu ktorý Vám vygenerujeme v ďalšom kroku.
 				</p>
 				<p>
-					Ak si dokument uložíte do počítača vo formáte .PDF a chcete si vyskúšať vytváranie <b>zaručeného elektronického podpisu</b> (ZEP) pomocou Vašeho občianskeho preukazu, môžete tak urobiť napríklad aplikáciou <a href="https://www.slovensko.sk/sk/na-stiahnutie#podpisovac" target="_blank">XZep signer</a> zo stránky slovensko.sk. Podpisovanie ZEPom nie je vyžadované pre voľby, ale právna sila podpisu má podstatne vyššiu váhu.
+					Ak si dokument uložíte do počítača vo formáte .PDF a chcete si vyskúšať vytváranie zaručeného elektronického podpisu(ZEP) pomocou Vášho občianskeho preukazu, môžete tak urobiť napríklad aplikáciou <a href="https://www.slovensko.sk/sk/na-stiahnutie#podpisovac" target="_blank">XZep signer</a> zo stránky slovensko.sk. Podpisovanie <b>ZEPom nie je vyžadované pre voľby</b>, ale právna sila podpisu má podstatne vyššiu váhu.
 				</p>
 				 
 			</div></div>
@@ -487,17 +491,20 @@
 			<div class="" id="sendemail">
 				<h2>Odošlite email</h2>
 				<div class="alert alert-warning" role="alert">
-					Nezabudnite priložiť <b>žiadosť</b> k emailu.
+					Nezabudnite priložiť <b>stiahnutu žiadosť</b> k emailu.
+					<br /><small>(Tú s vytvoreným podpisom.)</small>
 				</div>
 				<div class="alert alert-warning nemam-tp" role="alert">
-					Nezabudnite priložiť <b>foto pasu</b> k emailu.
+					Nezabudnite priložiť <b>fotokópiu časti cestovného dokladu</b> Slovenskej republiky s osobnými údajmi voliča <b>alebo</b> fotokópiu osvedčenia o štátnom občianstve Slovenskej republiky.
 				</div>
-				<a id="send" class="btn btn-volby-blue btn-block" target="_blank" href="" role="button">Vytvoriť email</a>
-				
-				
 				<p>
-					Ak máte aktivovaného mailového klienta, tlačítko vyššie by malo vytvoriť email automaticky.
-					Ak nie, odošlite nasledovný email:</p>
+					Ak máte aktivovaného mailového klienta, tlačítko <b>Vytvoriť email</b> nižšie by malo vytvoriť email automaticky.
+				</p>
+				<a id="send" class="btn btn-volby-blue btn-block" target="_blank" href="" role="button">Vytvoriť email</a>
+				<p> 
+				</p>
+				<p>					
+					Ak to u Vás nefunguje, odošlite nasledovný email skopírovaním nasledujúcich textov do príjmateľa, predmetu a obsahu emailu. <br /><small>(Na kopírovanie do schránky použite <b>obrázky obálok</b> pri textoch a na vloženie do emailu na PC pravé tlačítko myši a vložiť, alebo "Ctrl" a súčasne "V". Na mobilnom telefóne podržťe prst na políčku, kde budete vkladať a po zobrazení ponuky stlačiť "vložiť", alebo "paste".)<small></p>
 				<p>
 					Na emailovú adresu: <strong><span id="sendto"></span></strong>
 					<button type="button" class="copy-btn" data-clipboard-target="#sendto" title="Skopírovať email do schránky (Ctrl+C)">
@@ -516,8 +523,16 @@
 						<img src="images/copy.png" alt="Skopíruj"/>
 					</button>
 				</p>
+				<hr>
 				<p>Po odoslaní emailu <strong>s prílohou</strong> očakávajte potvrdenie z obecného úradu, že Vaša žiadosť bola spracovaná. Ak sa tak nestane, kontaktujte ich telefonicky.</p>
-				<p id="phonetext">Ak nedostanete potvrdenie o prijatí Vašej pošty do 3 dní, skúste im zavolať na telefón: <b><span class="bold" id="phone"></span></b></p>
+				<p id="phonetext">Ak nedostanete potvrdenie o prijatí Vašej pošty do 3 dní, skúste im zavolať na telefón: (+421) <b><span class="bold" id="phone"></span></b></p>
+				<hr />
+				<p><b>Na dnes všetko. Ďakuje Vám
+					<a target="_blank" href="http://slovensko.digital/">
+						<img src="./images/standard-logo.png" style="height:16px">
+					</a>
+					a Vaše Slovensko </b> <img src="favicon.ico"> ;)   
+				</p>
 			</div>
 			<div class="row hidden justify" id="noemail">
 				<div class="col-lg-12">
@@ -527,7 +542,9 @@
 			</div>
 			<div class="help panel panel-info"><div class="panel-heading">Pomoc</div><div class="panel-body">
 					<p>
-						Odošlite Vašu žiadosť a nezabudnite pripnúť súbor žiadosti a prípadne fotky pasu (iba ak máte odhlásený trvalý pobyt). Ak nemáte nakonfigurovaný emailový klient na Vašom počítači, vytvorte email a môžete použiť vyššie zobrazené texty. Obrázok na pravej strane Vám skopíruje text do schránky, takže nemusíte text označovať.
+						Odošlite Vašu žiadosť a nezabudnite pripnúť súbor žiadosti a prípadne fotky pasu (iba ak máte odhlásený trvalý pobyt). <br />
+						Ak nemáte nakonfigurovaný emailový klient na Vašom počítači, vytvorte email a môžete použiť vyššie zobrazené texty. <br />
+						Obrázok na pravej strane Vám skopíruje text do schránky, takže nemusíte text označovať.
 					</p>
 				</div>
 			</div>

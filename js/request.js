@@ -15,7 +15,7 @@ function createDocument(preview,download) {
   }
   
   // playground requires you to assign document definition to a variable called dd
-  var paragraph, localaddress = [], noTP = [], vyhlasenie = [], signature = [], idPhoto = [];
+  var paragraph, localaddress = [], noTP = [], signature = [], idPhoto = [];
   var signaturedata = signaturePad.toDataURL();
   if (signaturedata.length > 10) {
     $('#signature').val(signaturedata);
@@ -121,10 +121,15 @@ function createDocument(preview,download) {
       }
     ];
   } else if (App.request_form == 'volbaPostouBezTrvalehoPobytu') {
-    paragraph = 'Podľa   § 59 ods. 1   zákona   č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu:';
+    paragraph = 'Podľa § 59 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu:';
     noTP = [
 
-      {text: '', style: 'spacesmall'},
+      {text: '', style: 'space'},
+	  {
+        text: 'Čestne vyhlasujem, že nemám trvalý pobyt na území Slovenskej republiky.',
+        style: 'header',
+      },
+      {text: '', style: 'space'},
       {
         text: 'Prílohy:',
         style: 'header',
@@ -132,50 +137,15 @@ function createDocument(preview,download) {
       },
       {
         ul: [
-          'čestné vyhlásenie voliča, že nemá trvalý pobyt na území Slovenskej republiky.',
           'fotokópia časti cestovného dokladu Slovenskej republiky s osobnými údajmi voliča alebo fotokópia osvedčenia o štátnom občianstve Slovenskej republiky voliča.',
         ]
       }
     ];
-    vyhlasenie = [
-      {
-        text: $('#basicinfo-name').val() + ' ' + $('#basicinfo-lastname').val() + ' ' + $('#basicinfo-birthno').val(),
-        alignment: 'center',
-        pageBreak: 'before'
-      },
-      {
-        text: getAddressOneLine('addressforeign'),
-        alignment: 'center',
-      },
-
-      {text: '', style: 'space'},
-      {
-        text: 'ČESTNÉ VYHLÁSENIE',
-        style: 'header',
-        alignment: 'center'
-      },
-      {text: '', style: 'space'},
-      {
-        text: 'Na účely voľby poštou do Národnej rady Slovenskej republiky v roku 2016',
-        alignment: 'center'
-      },
-      {text: '', style: 'space'},
-      {
-        text: 'čestne vyhlasujem,',
-        style: 'header',
-        alignment: 'center'
-      },
-      {text: '', style: 'space'},
-      {
-        text: 'že nemám trvalý pobyt na území Slovenskej republiky.'
-      },
-      signature2
-    ];
-
   }
 
   if (App.request_form === "volbaPostouSTrvalymPobytom" || App.request_form === "volbaPostouBezTrvalehoPobytu") {
-    formContent = [
+	
+	formContent = [
       {
         text: 'Žiadosť',
         style: 'header',
@@ -234,35 +204,35 @@ function createDocument(preview,download) {
       localaddress,
       {
         columns: [
-          {text: 'Ulica: ', style: 'line',},
-          {text: $('#addressforeign-street').val().toUpperCase(), style: 'value'},
+          {text: ( App.poste_res ? 'Adresa v cudzine:' : 'Ulica: '), style: 'line',},
+          {text: ( App.poste_res ? 'Poste Restante' : $('#addressforeign-street').val().toUpperCase() ), style: 'value'},
           {text: ''}
         ]
       },
       {
         columns: [
-          {text: 'Číslo domu: ', style: 'line',},
-          {text: $('#addressforeign-streetno').val().toUpperCase(), style: 'value'},
+          {text: ( App.poste_res ? ' ' : 'Číslo domu: '), style: 'line',},
+          {text: ( App.poste_res ? ' ' : $('#addressforeign-streetno').val().toUpperCase() ), style: 'value'},
           {text: ''}
         ]
       },
       {
         columns: [
-          {text: 'Obec: ', style: 'line',},
+          {text: ( App.poste_res ? ' ' : 'Obec: '), style: 'line',},
           {text: $('#addressforeign-city').val().toUpperCase(), style: 'value'},
           {text: ''}
         ]
       },
       {
         columns: [
-          {text: 'PSČ: ', style: 'line',},
+          {text: ( App.poste_res ? ' ' : 'PSČ: '), style: 'line',},
           {text: $('#addressforeign-zip').val(), style: 'value'},
           {text: ''}
         ]
       },
       {
         columns: [
-          {text: 'Štát: ', style: 'line',},
+          {text: ( App.poste_res ? ' ' : 'Štát: '), style: 'line',},
           {text: $('#addressforeign-country').val().toUpperCase(), style: 'value'},
           {text: ''}
         ]
@@ -389,7 +359,6 @@ function createDocument(preview,download) {
     content: [
       formContent,
       signature,
-      vyhlasenie,
       idPhoto,
     ],
     styles: {

@@ -21,13 +21,12 @@ function findZIP(){
 
 function getAddressOneLine(id) {
   var ret = "";
-  var format = $('#' + id + '-format').val();
-  if(!format) format = "sk";
+  var format = getAdressFormat(id);
 
   if ($('#' + id + '-street').val()) {
-	if(format=="sk"){
+	if(format=="sk" || format=="sk-poste-restante" ){
      ret += $('#' + id + '-street').val() + " " + $('#' + id + '-streetno').val();
-	}else if(format == "usa"){
+	}else if(format == "usa" || format=="usa-poste-restante" ){
      ret += $('#' + id + '-streetno').val() + " " + $('#' + id + '-street').val();
 	}
   } else {
@@ -35,9 +34,9 @@ function getAddressOneLine(id) {
       getObec() + " " + $('#' + id + '-streetno').val();
     } else {
 
- 	 if(format=="sk"){
+ 	 if(format=="sk" || format=="sk-poste-restante"){
       ret += $('#' + id + '-city').val() + " " + $('#' + id + '-streetno').val();
-	 }else if(format == "usa"){
+	 }else if(format == "usa" || format=="usa-poste-restante"){
       ret += $('#' + id + '-streetno').val() + " " + $('#' + id + '-city').val();
 	 }
     }
@@ -49,9 +48,9 @@ function getAddressOneLine(id) {
   if (id == "addressslovakia") {
 	ret += $('#' + id + '-zip').val() + " " + getObec();
   } else {
-   if(format=="sk"){
+   if(format=="sk" || format=="sk-poste-restante"){
     ret += $('#' + id + '-zip').val() + " " + $('#' + id + '-city').val();
-   }else if(format == "usa"){
+   }else if(format == "usa" || format=="usa-poste-restante"){
     ret += $('#' + id + '-city').val() + " " + $('#' + id + '-zip').val();
    }
   }
@@ -178,7 +177,7 @@ function nastavObec(obec) {
       var textemailu = "Dobrý deň, "+decodeURIComponent("%0D%0A%0D%0A")+"podľa § 60 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A%0D%0A")+"V prílohe zasielam podpísanú žiadosť. "+decodeURIComponent("%0D%0A%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A%0D%0A")+" "+meno;
     }else if(App.request_form == 'volbaPostouBezTrvalehoPobytu'){
       var subj = "Žiadosť o voľbu poštou pre voľby do NRSR";
-      var textemailu = "Dobrý deň, "+decodeURIComponent("%0D%0A%0D%0A")+"podľa   § 59 ods. 1   zákona   č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu uvedenú v žiadosti. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A%0D%0A")+"V prílohe zasielam podpísanú žiadosť. "+decodeURIComponent("%0D%0A%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A%0D%0A")+" "+meno;
+      var textemailu = "Dobrý deň, "+decodeURIComponent("%0D%0A%0D%0A")+"podľa § 59 ods. 1 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o voľbu poštou pre voľby do Národnej rady Slovenskej republiky v roku 2016 a o zaslanie hlasovacích lístkov a obálok na adresu uvedenú v žiadosti. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A%0D%0A")+"V prílohe zasielam podpísanú žiadosť. "+decodeURIComponent("%0D%0A%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A%0D%0A")+" "+meno;
     }else if(App.request_form == "ziadostOPreukazPostou"){
       var subj = "Žiadosť o hlasovací preukaz";
       var textemailu = "Dobrý deň, "+decodeURIComponent("%0D%0A%0D%0A")+"podľa § 46 zákona č. 180/2014 Z. z. o podmienkach výkonu volebného práva a o zmene a doplnení niektorých zákonov žiadam o vydanie hlasovacieho preukazu pre voľby do Národnej rady Slovenskej republiky v roku 2016. Hlasovací preukaz si želám odoslať na adresu uvedenú v žiadosti. Zároveň Vás chcem poprosiť o potvrdenie e-mailom že žiadosť bola prijatá a spracovaná. "+decodeURIComponent("%0D%0A%0D%0A")+"V prílohe zasielam podpísanú žiadosť. "+decodeURIComponent("%0D%0A%0D%0A")+"Ďakujem,"+decodeURIComponent("%0D%0A%0D%0A")+" "+meno;
@@ -196,4 +195,32 @@ function nastavObec(obec) {
 
     }
   }
+}
+
+function getAdressFormat(id){
+  var format = $('#' + id + '-format').val();
+  if(!format) format = "sk";
+  return format;
+}
+
+function isPosRes(format){
+	return ( format.indexOf('poste-restante') !== -1 );
+}
+
+function nastavPosteRestante(){
+	App.poste_res = isPosRes( getAdressFormat('addressforeign') );
+
+	if( App.poste_res ) {
+	  	$('.field-addressforeign-street label:first').html('Poste Restante');
+	  	$('#addressforeign-street').val('Poste Restante');
+	  	$('.field-addressforeign-streetno label:first').html('Adresa Pošty');
+	  	$('.field-addressforeign-city label:first').html('Mesto');
+	  	$('.field-addressforeign-zip label:first').html('PSČ Pošty');
+	} else {
+	  	$('.field-addressforeign-street label:first').html('Ulica');
+	  	$('#addressforeign-street').val('');
+	  	$('.field-addressforeign-streetno label:first').html('Číslo domu');
+	  	$('.field-addressforeign-city label:first').html('Mesto');
+	  	$('.field-addressforeign-zip label:first').html('PSČ');
+	}
 }

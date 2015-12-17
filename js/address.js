@@ -1,5 +1,24 @@
 var App = window.election;
 
+function findZIP(){
+	var psc = $("#addressslovakia-zip").val().replace(' ','');
+	if(psc in App.psc){
+		kraj = App.psc[psc][2] + " kraj";
+		okres = "Okres "+ App.psc[psc][1];
+		obec = App.psc[psc][0];
+		
+		if($("#addressslovakia-kraj option[value='"+kraj+"']").length > 0){
+			$("#addressslovakia-kraj").val(kraj).trigger("change");
+		}
+		if($("#addressslovakia-okres option[value='"+okres+"']").length > 0){
+			$("#addressslovakia-okres").val(okres).trigger("change");
+		}
+		if($("#addressslovakia-city option[value='"+obec+"']").length > 0){
+			$("#addressslovakia-city").val(obec).trigger("change");
+		}
+	}
+}
+
 function getAddressOneLine(id) {
   var ret = "";
   var format = $('#' + id + '-format').val();
@@ -52,7 +71,7 @@ function nacitajKraje(){
 	var options = $("#addressslovakia-kraj");
 	options.find('option').remove();
 	for (var key in election.cities) {
-		options.append($("<option />").text(key));
+		options.append($("<option />").val(key).text(key));
 	}
 	if(!iOSversion()){
 		options.select2({width:"100%"});
@@ -64,7 +83,7 @@ function nastavKraj(){
 	options.find('option').remove();
     var kraj = $("#addressslovakia-kraj").val();
 	for (var key in election.cities[kraj]) {
-		options.append($("<option />").text(key));
+		options.append($("<option />").val(key).text(key));
 	}
 	nastavOkres();
 	if(!iOSversion()){
@@ -96,7 +115,7 @@ function getObec(){
   }
   return "Nepodarilo sa načítať obec";
 }
-function nastavObec() {
+function nastavObec(obec) {
 
 	// list/db of all cities comes from external file (js/cities)
   var o = election.cities;
@@ -171,7 +190,7 @@ function nastavObec() {
     $("#emailsubject").html(subj);
     $("#emailbody").html(textemailu);
 	if(jQuery.data( document.body, "psc-locked")){}else{
-		$("#addressslovakia-zip").val(data[4]);
+		//$("#addressslovakia-zip").val(data[4]);
 	}
     $("#send").attr("href", "mailto:" + $("#sendto").html() + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(textemailu));
 

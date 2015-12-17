@@ -18,8 +18,15 @@ RequestGeneratorApp.prototype = {
 
         $('.btn-submit-form').on('click', function(e){
             e.preventDefault();
-
-            that.submitForm();
+			var submitform = true;
+			if($(".has-error").length > 0){
+				if(!confirm ("Ste si istý, že chcete vytvoriť žiadosť aj keď obsahuje chybu?")){
+					submitform = false;
+				}
+			}
+			if(submitform){
+				that.submitForm();
+			}
         });
 
         $('.btn-download-preview').on('click', function(e){

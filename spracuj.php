@@ -18,46 +18,261 @@ $out = array();
 $best = array();
 $bsetn = array();
 $okresc = array();
+$name2okresakraj = array();
 $csv = "";
 if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
-			$topCities = get_top_cities();
+	
+	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
+		if($i==1){
+			foreach($data as $k=>$v){
+				$n2k[$v] = $k;	
+			}
+		}else{
+			$name = Texts::clear($data[$n2k["obec"]]);
+			foreach(explode(";",$data[$n2k["email"]]) as $email){
+				$email = trim($email);
+				if(!$email) continue; 
+				$csv.='"'.$email.'","'.str_replace('"','""',$data[$n2k["obec"]]).'"'."\n";
+			}
+			$e = get_relevant_emails( $data[$n2k["email"]], $name );
+			if($e){
+				$emails = explode(";",$e);
+				foreach($emails as $em){
+					if(!Validate::check("email",$em)){
+						$chybneemaily .= $em."\n";
+					}
+				}
+			}
+			//if( $e ) echo $name,":\t",$e,'<br>';//for debug
 			
-			while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
-				if($i==1){
-					foreach($data as $k=>$v){
-						$n2k[$v] = $k;	
-					}
-				}else{
-					$name = Texts::clear($data[$n2k["obec"]]);
-					foreach(explode(";",$data[$n2k["email"]]) as $email){
-						$email = trim($email);
-						if(!$email) continue; 
-						$csv.='"'.$email.'","'.str_replace('"','""',$data[$n2k["obec"]]).'"'."\n";
-					}
-					$e = get_relevant_emails( $data[$n2k["email"]], $name );
-					if($e){
-						$emails = explode(";",$e);
-						foreach($emails as $em){
-							if(!Validate::check("email",$em)){
-								$chybneemaily .= $em."\n";
-							}
-						}
-					}
-					//if( $e ) echo $name,":\t",$e,'<br>';//for debug
-					
-					$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."']";
-					
-					$data[$n2k["pocetobyvatelov"]] = str_replace(" ","",$data[$n2k["pocetobyvatelov"]]);
-					
-					if(!isset($bestn[$data[$n2k["kraj"]]][$data[$n2k["okres"]]]) || $bestn[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] < $data[$n2k["pocetobyvatelov"]]){
-						$best[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] = $name;
-						$bestn[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] = $data[$n2k["pocetobyvatelov"]];
-					}
-					@$okresc[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] += $data[$n2k["pocetobyvatelov"]];
-					@$krajc[$data[$n2k["kraj"]]] += $data[$n2k["pocetobyvatelov"]];
+			$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."']";
+			
+			$data[$n2k["pocetobyvatelov"]] = str_replace(" ","",$data[$n2k["pocetobyvatelov"]]);
+			
+			if(!isset($bestn[$data[$n2k["kraj"]]][$data[$n2k["okres"]]]) || $bestn[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] < $data[$n2k["pocetobyvatelov"]]){
+				$best[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] = $name;
+				$bestn[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] = $data[$n2k["pocetobyvatelov"]];
+			}
+			@$okresc[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] += $data[$n2k["pocetobyvatelov"]];
+			@$krajc[$data[$n2k["kraj"]]] += $data[$n2k["pocetobyvatelov"]];
+			if(strpos($name,"bratislava")===0){
+				$name2okresakraj["bratislava"][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
+			}
+			if(strpos($name,"kosice")===0){
+				$name2okresakraj["kosice"][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
+			}
+			$name2okresakraj[$name][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
+			
+		}
+	}
+}
+
+function okres2okresname($name){
+	$name = str_replace("-"," ",$name);
+	if($name=="Nové Mesto n.Váhom") return "Nové Mesto nad Váhom";
+	if($name=="Bratislava 214") return "Bratislava 2";
+	if($name=="Bratislava 36") return "Bratislava 3";
+	if($name=="Bratislava 42") return "Bratislava 4";
+	if($name=="Bratislava 48") return "Bratislava 4";
+	if($name=="Bratislava 49") return "Bratislava 4";
+	if($name=="Bratislava 59") return "Bratislava 5";
+	if($name=="Bratislava I") return "Bratislava";
+	if($name=="Bratislava II") return "Bratislava 2";
+	if($name=="Bratislava III") return "Bratislava 3";
+	if($name=="Bratislava IV") return "Bratislava 4";
+	if($name=="Bratislava V") return "Bratislava 5";
+	if($name == "Košice okolie") return $name;
+	if(strpos($name,"Košice") === 0) return "Košice";
+
+	return $name;
+}		
+$pscdata = array();
+if (($handle = fopen("OBCE.txt", "r")) !== FALSE) {
+	$i = 0;
+	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
+		if($i==1) continue;
+		$psc = str_replace(" ","",$data[3]);
+		$name = Texts::clear($data[0]);
+		$okres = okres2okresname($data[2]);
+		$kraj = false;
+		$obyvatelov = 0;
+		if(isset($name2okresakraj[$name][$okres])){
+			$kraj = key($name2okresakraj[$name][$okres]);
+			$obyvatelov = reset($name2okresakraj[$name][$okres]);
+		}
+
+		if($psc == "05983" || $psc == "05981" || $psc == "05960" || $psc == "05951" || $psc == "05983" || $psc == "05331" || $psc == "05985" || $psc == "05954" || $psc == "05941" || $psc == "05984"){
+			// mestske casti mesta vysoke tatry
+			$okres = "Poprad";
+			$name = "vysoke-tatry";
+			$kraj = "Prešovský";
+			$obyvatelov = 1;
+		}
+				
+		/*
+		if($psc == "96663"){
+			var_dump($psc);
+			var_dump($name);
+			var_dump($okres);
+			var_dump($kraj);
+			var_dump($name2okresakraj[$name]);
+			exit;
+		}/**/
+		
+		if($psc && $name && $okres && $kraj){
+			
+			@$pscdata[$psc][$name][$okres][$kraj] = $obyvatelov;
+		}else{
+			
+			$name = Texts::clear($data[4]);
+			if($name == "hodrusa-hamre-1") $name = "hodrusa-hamre";
+			if($name == "horna-lehota-pri-brezne") $name = "horna-lehota";
+			$okres = okres2okresname($data[2]);
+
+			$kraj = false;
+			$obyvatelov = 0;
+			if(isset($name2okresakraj[$name][$okres])){
+				$kraj = key($name2okresakraj[$name][$okres]);
+				$obyvatelov = reset($name2okresakraj[$name][$okres]);
+			}
+			/*
+			if($psc == "05983"){
+				var_dump($psc);
+				var_dump($name);
+				var_dump($okres);
+				var_dump($kraj);
+				var_dump($name2okresakraj[$name]);
+				exit;
+			}/**/
+
+			if($psc && $name && $okres && $kraj){
+				
+				@$pscdata[$psc][$name][$okres][$kraj] = $obyvatelov;
+			}	
+		}
+	}
+}
+if (($handle = fopen("ULICE.txt", "r")) !== FALSE) {
+	$i = 0;
+	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
+		if($i==1) continue;
+		$psc = str_replace(" ","",$data[2]);
+		$name = Texts::clear($data[6]);
+		$okres =false;
+		$kraj = false;
+		$obyvatelov = 0;
+		
+		if(isset($name2okresakraj[$name])){
+			$okres = okres2okresname(key($name2okresakraj[$name]));
+			$kraj = key($name2okresakraj[$name][$okres]);
+			$obyvatelov = reset($name2okresakraj[$name][$okres]);
+		}
+		/*
+		
+		if($psc == "84107"){
+			var_dump($psc);
+			var_dump($name);
+			var_dump($okres);
+			var_dump($kraj);
+			var_dump($name2okresakraj[$name]);
+			exit;
+		}/**/
+		
+		if($psc && $name && $okres && $kraj){
+			@$pscdata[$psc][$name][$okres][$kraj] = $obyvatelov;
+		}else{
+			/*
+			$name = Texts::clear($data[6]);
+			$okres =false;
+			$kraj = false;
+			$obyvatelov = 0;
+			
+			if(isset($name2okresakraj[$name])){
+				$okres = key($name2okresakraj[$name]);
+				$kraj = key($name2okresakraj[$name][$okres]);
+				$obyvatelov = reset($name2okresakraj[$name][$okres]);
+			}/**/
+			
+		}
+		// psc[psc][clearobec]
+	}
+}
+
+foreach($pscdata as $psc=>$arr1){
+	$maxobyv = 0;
+	$vybrobec= null;
+	$vybrokres= null;
+	$vybrkraj= null;
+	
+	foreach($arr1 as $obec=>$arr2){
+		foreach($arr2 as $okres => $arr3){
+			foreach($arr3 as $kraj=>$obyvatelov){
+				if($obyvatelov > $maxobyv){
+					$maxobyv = $obyvatelov;
+									
+					$vybrobec= $obec;
+					$vybrokres= $okres;
+					$vybrkraj= $kraj;
 				}
 			}
 		}
+	}
+	if($vybrobec){
+		unset($pscdata[$psc]);
+		$pscdata[$psc][$vybrobec][$vybrokres][$vybrkraj] = $maxobyv;
+	}
+}
+// kontrola ci mame vsetky psc
+$nemame=array();
+if (($handle = fopen("OBCE.txt", "r")) !== FALSE) {
+	$i = 0;
+	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
+		if($i==1) continue;
+		$psc = str_replace(" ","",$data[3]);
+		
+		if(!isset($pscdata[$psc])){
+			if($data[3]){
+				$nemame[$data[4]] = $data[3];
+			}
+		}
+	}
+}
+
+
+if (($handle = fopen("ULICE.txt", "r")) !== FALSE) {
+	$i = 0;
+	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
+		if($i==1) continue;
+		$psc = str_replace(" ","",$data[2]);
+		
+		if(!isset($pscdata[$psc])){
+			if($data[2]){
+				$nemame[$data[4]] = $data[2];
+			}
+		}
+	}
+}
+
+
+$pscout = 'election.psc={';
+
+ksort($pscdata);
+foreach($pscdata as $psc=>$arr1){
+	foreach($arr1 as $obec=>$arr2){
+		foreach($arr2 as $okres=>$arr3){
+			foreach($arr3 as $kraj => $obyv){
+				$pscout.="'".$psc."':['".$obec."','".$okres."','".$kraj."'],\n";
+			}
+		}
+	}
+}
+$pscout = rtrim($pscout,",");
+$pscout.="};";
+
+var_dump(file_put_contents("nemame.txt",print_r($nemame,true)));
+var_dump(file_put_contents("psc.txt",print_r($pscdata,true)));
+var_dump(file_put_contents("pscout.txt",print_r($pscout,true)));
+		
 file_put_contents("chybneemaily.txt",$chybneemaily);
 file_put_contents("emaily.txt",$csv);
 
@@ -131,20 +346,6 @@ var_dump(file_put_contents("out01.html",print_r($out,true)));
 var_dump(file_put_contents("out02.html",$ret));
 
 
-function get_top_cities(){
-	$aTopCities = array();
-	
-	$aTmpTopCities = file("mesta_pocet_obyvatelov_2011.txt");
-	
-	foreach( $aTmpTopCities as $sLine ){
-		if( $sLine ){
-			$aLine = explode( ';', trim($sLine) );
-			$aTopCities[Texts::clear($aLine[1]) ] = $aLine[2];
-		}
-	}
-	
-	return $aTopCities;
-}
 
 
 function get_relevant_emails($sEmails, $sObecClearName){

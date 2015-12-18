@@ -18,10 +18,12 @@ function findZIP(){
 				$("#addressslovakia-city").val(obec).trigger("change");
 			}
 			
-			$('.help-block.psc').html('');
+			$('.wrong-psc').html('');
 		}else{
-			$('.help-block.psc').html('PSČ nie je v zozname. Vyberte prosím z možností nižšie, alebo sa opravte. ;)');
+			$('.wrong-psc').html('PSČ nie je v zozname. Vyberte z možností nižšie, alebo opravte.');
 		}
+	}else{
+		$('.wrong-psc').html('');
 	}
 }
 

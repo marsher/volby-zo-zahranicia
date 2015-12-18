@@ -11,7 +11,17 @@ $aPreferableEmailParts = array( 'sluzbyobcanom','podatelna','obec', 'ocu', 'ou',
 
 $chybneemaily = "";
 
-
+$overene = array();
+if (($handle = fopen("corrections.csv", "r")) !== FALSE) {
+	$i = 0;
+	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {$i++;
+		if($data[0]){
+			$overene[trim($data[0])] = trim($data[1]);
+		}else{
+			echo "Potvrdeny email nema overovatela: ".$data[1]."\n";
+		}
+	}
+}
 $i = 0;
 //$out["Mimo SR"]["Mimo SR"]["mvsr"] = "['Ministerstvo vnútra Slovenskej republiky','odbor volieb, referenda a politických strán','Drieňová','22','826 86','Bratislava 29','volby@minv.sk','','','','Ministerstvo vnútra Slovenskej republiky']";
 $out = array();
@@ -19,6 +29,7 @@ $best = array();
 $bsetn = array();
 $okresc = array();
 $name2okresakraj = array();
+$potvrdenych = 0;
 $csv = "";
 if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 	
@@ -29,23 +40,35 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 			}
 		}else{
 			$name = Texts::clear($data[$n2k["obec"]]);
+			$potvrdeny = "";
 			foreach(explode(";",$data[$n2k["email"]]) as $email){
 				$email = trim($email);
 				if(!$email) continue; 
 				$csv.='"'.$email.'","'.str_replace('"','""',$data[$n2k["obec"]]).'"'."\n";
+				
+				if(isset($overene[$email])){
+					$potvrdeny = $overene[$email];
+				}
 			}
-			$e = get_relevant_emails( $data[$n2k["email"]], $name );
-			if($e){
-				$emails = explode(";",$e);
-				foreach($emails as $em){
-					if(!Validate::check("email",$em)){
-						$chybneemaily .= $em."\n";
+			
+			if(!$potvrdeny){
+			
+				$e = get_relevant_emails( $data[$n2k["email"]], $name );
+				if($e){
+					$emails = explode(";",$e);
+					foreach($emails as $em){
+						if(!Validate::check("email",$em)){
+							$chybneemaily .= $em."\n";
+						}
 					}
 				}
+			}else{
+				$e = $potvrdeny;
+				$potvrdenych ++;
 			}
 			//if( $e ) echo $name,":\t",$e,'<br>';//for debug
 			
-			$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."']";
+			$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."','".($potvrdeny?1:0)."']";
 			
 			$data[$n2k["pocetobyvatelov"]] = str_replace(" ","",$data[$n2k["pocetobyvatelov"]]);
 			
@@ -66,7 +89,7 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 		}
 	}
 }
-
+echo "spolu mame $potvrdenych potvrdenych emailov\n";
 function okres2okresname($name){
 	$name = str_replace("-"," ",$name);
 	if($name=="Nové Mesto n.Váhom") return "Nové Mesto nad Váhom";

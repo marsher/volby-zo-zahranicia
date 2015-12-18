@@ -173,8 +173,12 @@ function nastavObec(obec) {
 		$("#sendemail").show();
 		$("#noemail").hide();
 	}
+	if(data[11] == "1"){
+		$("#emailpotvrdeny").show();
+    }else{
+		$("#emailpotvrdeny").hide();
+	}
 	
-    
 	var subj = "Ziadost";
     var textemailu = "";
 	var meno = $('#basicinfo-name').val()+" "+$('#basicinfo-lastname').val();

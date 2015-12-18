@@ -1,4 +1,10 @@
 <?php
+/**
+
+TENTO SÚBOR NIE JE NA SERVERI A POUŽÍVA SA IBA NA SPRACOVANIE DB EMAILOV OBCÍ
+
+*/
+
 require_once('c:\webserver\vhost\AsyncWeb\gitAW\AsyncWeb\src\AsyncWeb\Text\Texts.php');
 require_once('c:\webserver\vhost\AsyncWeb\gitAW\AsyncWeb\src\AsyncWeb\Text\Validate.php');
 use AsyncWeb\Text\Texts;
@@ -10,6 +16,7 @@ $aDisabledEmails = array('daniel.juracek@bosaca.eu','obec.bartosovce@wi-net.sk',
 $aPreferableEmailParts = array( 'sluzbyobcanom','podatelna','obec', 'ocu', 'ou', 'obu', 'urad', 'mu','msu','mesto','sekretariat','kancelaria','obecnyurad','miestnyurad','mestskyyurad','info','referent','NAZOVOBCE@NAZOVOBCE.SK','@NAZOVOBCE.SK','NAZOVOBCE','NAZOVOBCE@','primator','primatorka','starosta','starostka','kancelariaprimatora','prednosta','prednostka'); 
 
 $chybneemaily = "";
+file_put_contents("corrections.csv",file_get_contents("http://volby.digital/corrections.csv"));
 
 $overene = array();
 if (($handle = fopen("corrections.csv", "r")) !== FALSE) {
@@ -18,10 +25,23 @@ if (($handle = fopen("corrections.csv", "r")) !== FALSE) {
 		if($data[0]){
 			$overene[trim($data[0])] = trim($data[1]);
 		}else{
-			echo "Potvrdeny email nema overovatela: ".$data[1]."\n";
+			$tocheck[$data[1]] = $data[1];
+			//echo "Potvrdeny email nema overovatela: ".$data[1]."\n";
 		}
 	}
 }
+$checkout = "";
+file_put_contents("needschecking.txt",implode("\n",$tocheck));
+
+$bounce = array();
+if (($handle = fopen("hard-bounce2.csv", "r")) !== FALSE) {
+	$i = 0;
+	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {$i++;
+		if($i == 1) continue;
+		$bounce[trim($data[0])] = trim($data[0]);
+	}
+}
+
 $i = 0;
 //$out["Mimo SR"]["Mimo SR"]["mvsr"] = "['Ministerstvo vnútra Slovenskej republiky','odbor volieb, referenda a politických strán','Drieňová','22','826 86','Bratislava 29','volby@minv.sk','','','','Ministerstvo vnútra Slovenskej republiky']";
 $out = array();
@@ -41,15 +61,18 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 		}else{
 			$name = Texts::clear($data[$n2k["obec"]]);
 			$potvrdeny = "";
-			foreach(explode(";",$data[$n2k["email"]]) as $email){
-				$email = trim($email);
-				if(!$email) continue; 
+			$emaily = explode(";",$data[$n2k["email"]]);
+			foreach($emaily as $k=>$email){
+				$emaily[$k] = $email = trim($email);
+				if(isset($bounce[$email])){unset($emaily[$k]); continue;}
+				if(!$email) {unset($emaily[$k]); continue;}
 				$csv.='"'.$email.'","'.str_replace('"','""',$data[$n2k["obec"]]).'"'."\n";
 				
 				if(isset($overene[$email])){
 					$potvrdeny = $overene[$email];
 				}
 			}
+			$data[$n2k["email"]] = implode(";",$emaily);
 			
 			if(!$potvrdeny){
 			
@@ -292,12 +315,6 @@ foreach($pscdata as $psc=>$arr1){
 $pscout = rtrim($pscout,",");
 $pscout.="};";
 
-var_dump(file_put_contents("nemame.txt",print_r($nemame,true)));
-var_dump(file_put_contents("psc.txt",print_r($pscdata,true)));
-var_dump(file_put_contents("pscout.txt",print_r($pscout,true)));
-		
-file_put_contents("chybneemaily.txt",$chybneemaily);
-file_put_contents("emaily.txt",$csv);
 
 foreach($okresc as $kraj=>$odata){
 	arsort($odata);
@@ -365,11 +382,32 @@ foreach($out as $kraj=>$okdata){$ik ++;
 	$ret .= '};';
 
 
-var_dump(file_put_contents("out01.html",print_r($out,true)));
-var_dump(file_put_contents("out02.html",$ret));
+	
+var_dump(file_put_contents("nemame.txt",print_r($nemame,true)));
+//var_dump(file_put_contents("psc.txt",print_r($pscdata,true)));
+//var_dump(file_put_contents("pscout.txt",print_r($pscout,true)));
+		
+file_put_contents("chybneemaily.txt",$chybneemaily);
+file_put_contents("emaily.txt",$csv);
+
+//var_dump(file_put_contents("out01.html",print_r($out,true)));
+//var_dump(file_put_contents("out02.html",$ret));
 
 
+$ret = ';(function() {
 
+
+	"use strict";
+
+	// if exists inside of an another file, don\'t overwrite
+	window.election = window.election || {};
+
+	// "o" variable saves characters so the file is not as huge as with the regular keys
+	// "election" exports array in a variable so it\'s accessible inside of another files
+
+'.$ret."\n\n\n".$pscout."\n\n".'})();';
+
+var_dump(file_put_contents("cities.js",$ret));
 
 function get_relevant_emails($sEmails, $sObecClearName){
 	global $aForcedEmails,$aDisabledEmails,$aPreferableEmailParts;

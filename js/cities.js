@@ -4358,4 +4358,5 @@ election.psc={'01001':['zilina','Žilina','Žilinský'],
 '99142':['hrusov','Veľký Krtíš','Banskobystrický'],
 '99201':['modry-kamen','Veľký Krtíš','Banskobystrický'],
 };
+
 })();

@@ -259,9 +259,9 @@ RequestGeneratorApp.prototype = {
 
     finalizePdf: function()
     {
-        if(signaturePad.isEmpty())
+        if(signaturePad.isEmpty() && !confirm ("Ste si istý, že chcete vytvoriť žiadosť aj bez podpisu?"))
         {
-            alert("Podpíšte sa prosím");
+
         }
         else
         {

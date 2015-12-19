@@ -1566,7 +1566,7 @@ Košecké Podhradie	Košecké Podhradie	Ilava	018 31	Košecké Podhradie	Košeck
 Košecké Rovné	Košecké Rovné	Ilava	018 32	Zliechov	Zliechov	302	TC	
 Košice	Košice	Košice I			Pozri zoz.ulíc s PSČ	802	KI	
 Košice - Barca	Barca	Košice IV	040 17	Košice 17	Košice 17	805	KI	
-Košice - Dargovských hrdinov	Dargovských hrdinov	Košice III			Poz. zoz.ulíc Košice	804	KI	
+Košice - Dargovských hrdinov	Dargovských hrdinov	Košice III	040 22		Poz. zoz.ulíc Košice	804	KI	
 Košice - Džungľa	Džungľa	Košice I			Poz. zoz.ulíc Košice	802	KI	
 Košice - Juh	Juh	Košice IV			Poz. zoz.ulíc Košice	805	KI	
 Košice - Kavečany	Kavečany	Košice I	040 01	Košice 1	Košice 1	802	KI	

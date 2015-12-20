@@ -123,6 +123,13 @@ $(document).ready(function ()
 		//makeSecondStep6ButtonPrimary();
 	}
   }
+  if(isAndroid() || iosver > 1){
+	$("#intromobile").show();
+	$("#intro").hide();
+  }else{
+	$("#intro").show();
+	$("#intromobile").hide();
+  }
 
   nacitajKraje();
   nastavObec();

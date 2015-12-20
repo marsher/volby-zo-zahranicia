@@ -20,7 +20,7 @@ $(document).ready( function () {
     }
     function countDownVotingByPost() {
         var counter = $('#count-down-vote-by-post');
-		var text = 'Pre podanie žiadosti o voľbu poštou ostáva: ' + getRemainingTimeText('2016-02-15T23:59:59');
+		var text = 'Pre podanie žiadosti o voľbu poštou ostáva: ' + getRemainingTimeText('2016-01-15T23:59:59');
         counter.html(text);
     }
 	

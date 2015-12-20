@@ -76,9 +76,9 @@
 
 			<h1>Parlamentné voľby 2016</h1>
 			<p class="text-justify">
-				Toto je aplikácia na <b>zjednodušenie vytvorenia žiadosti</b> o možnosti voliť zo zahraničia alebo mimo miesta trvalého bydliska. 
+				Aplikácia na <b>zjednodušenie volieb</b> zo zahraničia alebo mimo miesta trvalého bydliska.
 				Na základe vygenerovanej žiadosti vám úrad pošle <b>hlasovacie lístky</b> alebo <b>hlasovací preukaz</b>. Žiadosť 
-				môžete poslať poštou, alebo najlepšie ju tu a teraz za 3 minúty vyplniť a poslať emailom, aby ste na to nezabudli a mali to jednoduchšie.
+				môžete poslať poštou, alebo najjednoduchšie ju tu a teraz za 3 minúty vyplniť a poslať emailom, aby ste na to nezabudli a mali to jednoduchšie.
 			</p>
 			
 			
@@ -87,6 +87,12 @@
 			<p>
 				<a class="btn btn-block btn-success btn-volby-blue" href="#start" role="button">Pripraviť žiadosť</a>
 			</p>
+			
+			<div class="label label-default" id="count-down-elections"></div>
+			<div class="label label-info" id="count-down-voting-pass"></div>
+			<div class="label label-success" id="count-down-vote-by-post"></div>
+			
+				
 			<p class="text-justify text-bigger paragraph-2">
 				Pripravte si žiadosť hoci aj cez telefón, bez tlačenia, skenovania či špeciálnej čítačky na&nbsp;občiansky preukaz.
 				Stačí Vám na to adresa, rodné číslo a Váš pas pokiaľ nemáte na Slovensku trvalý pobyt.
@@ -649,6 +655,7 @@
 <script src="assets/js/vfs_fonts.js"></script>
 <script src="assets/js/signature_pad.min.js"></script>
 <script src="assets/js/clipboard.min.js"></script>
+<script src="js/countdown.js"></script>
 <script src="js/validation.js"></script>
 <script src="js/ga.js"></script>
 </body>

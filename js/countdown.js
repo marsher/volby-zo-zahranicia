@@ -15,7 +15,7 @@ $(document).ready( function () {
 	
     function countDownVotingPass() {
         var counter = $('#count-down-voting-pass');
-		var text = 'Pre podanie žiadosti o hlasovací preukz ostáva: ' + getRemainingTimeText('2016-02-15T23:59:59');
+		var text = 'Pre podanie žiadosti o hlasovací preukaz ostáva: ' + getRemainingTimeText('2016-02-15T23:59:59');
         counter.html(text);
     }
     function countDownVotingByPost() {

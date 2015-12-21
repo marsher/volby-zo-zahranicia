@@ -10,12 +10,12 @@ var validateBirthNumber = function(value, messages) {
 	} else {
 		yii.validation.regularExpression(value, messages, {
 			"pattern":/^\d{2}[0156]\d{3}\/\d{4}$/,
-			"message":"Rodné číslo musí mať 10 číslic vo formáte XXXXXX/XXXX. Tretia číslica musí byť 0,1,5 alebo 6."
+			"message":"Rodné číslo musí mať 10 číslic vo formáte XXXXXX/XXXX. Tretia číslica musí byť 0, 1, 5 alebo 6."
 		});
 		if (messages.length == 0) {
 			var rc = value.substr(0,6).concat(value.substr(7,11));
 			if (rc % 11 != 0) {
-				yii.validation.addMessage(messages, "Rodné číslo by malo byť delitelné 11. Nemáte v ňom preklep?", value);
+				yii.validation.addMessage(messages, "Rodné číslo by malo byť deliteľné 11. Nemáte v ňom preklep?", value);
 			}
 		}
 	}
@@ -25,7 +25,7 @@ var validatePSC = function(value, messages) {
 	if( value.length != 5 ) yii.validation.addMessage(messages, "Vaše domáce PSČ by malo byť dlhé 5 číslic.", value);
 	else yii.validation.regularExpression(value, messages, {
 			"pattern":/^\d{5}$/,
-			"message":"Vaše domáce PSČ by malo obsahovať iba číslá."
+			"message":"Vaše domáce PSČ by malo obsahovať iba čísla."
 		});
 }
 

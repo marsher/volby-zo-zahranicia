@@ -2,6 +2,7 @@
 var validateBirthNumber = function(value, messages) {
 	// rules according to https://sk.wikipedia.org/wiki/Rodn%C3%A9_%C4%8D%C3%ADslo
 	// considering that people born in 2000 and later are not allowed to vote yet
+	
 	if (value.substr(0,2) < 54) {
 		yii.validation.regularExpression(value, messages, {
 			"pattern":/^\d{2}[0156]\d{3}\/\d{3}$/,
@@ -20,6 +21,25 @@ var validateBirthNumber = function(value, messages) {
 		}
 	}
 };
+
+function fixBirthNumberSlash(){
+	var value = $("#basicinfo-birthno").val();
+	var newvalue = "";
+	if(value.indexOf("/") == -1){
+		if (value.substr(0,2) < 54) { // ludi narodenych v tomto tisicroci pre ucely volieb 2016 mozme ignorovat
+			if(value.length == 9){
+				newvalue = value.substr(0,6) + "/" + value.substr(6);
+			}
+		}else{
+			if(value.length == 10){
+				newvalue = value.substr(0,6) + "/" + value.substr(6);
+			}
+		}
+	}
+	if( newvalue != ""){
+		$("#basicinfo-birthno").val(newvalue);
+	}
+} 
 
 var validatePSC = function(value, messages) {
 	if( value.length != 5 ) yii.validation.addMessage(messages, "Vaše domáce PSČ by malo byť dlhé 5 číslic.", value);

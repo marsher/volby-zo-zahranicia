@@ -159,5 +159,9 @@ $(document).ready(function ()
      e.clearSelection();
   });
   
+  $("#basicinfo-birthno").on("change",function(){
+	  fixBirthNumberSlash();
+  });;
+  
 });
 

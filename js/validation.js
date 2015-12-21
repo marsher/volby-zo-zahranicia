@@ -128,7 +128,7 @@ jQuery(document).ready(function () {
 		"input": "#addressslovakia-street",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Ulica Vášho trvalého pobytu nemôže byť nevyplnená."
+				"message": "Ulica Vášho trvalého pobytu musí byť vyplnená."
 			});
 		}
 	}, {
@@ -138,7 +138,7 @@ jQuery(document).ready(function () {
 		"input": "#addressslovakia-streetno",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Číslo domu Vášho trvalého pobytu nemôže byť nevyplnené."
+				"message": "Číslo domu Vášho trvalého pobytu musí byť vyplnené."
 			});
 		}
 	}, {
@@ -148,7 +148,7 @@ jQuery(document).ready(function () {
 		"input": "#addressslovakia-city",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Mesto Vášho trvalého pobytu nemôže byť nevyplnené."
+				"message": "Mesto Vášho trvalého pobytu musí byť vyplnené."
 			});
 		}
 	}, {
@@ -158,7 +158,7 @@ jQuery(document).ready(function () {
 		"input": "#addressslovakia-zip",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Poštové smerovacie číslo Vášho trvalého pobytu nemôže byť nevyplnené."
+				"message": "Poštové smerovacie číslo Vášho trvalého pobytu musí byť vyplnené."
 			});
 			validatePSC(value, messages);
 		}
@@ -170,7 +170,7 @@ jQuery(document).ready(function () {
 		"input": "#addressforeign-street",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Ulica adresy kde chcete odoslať žiadosť nemôže byť nevyplnená."
+				"message": "Vaša ulica kam si chcete odoslať hlasovacie lístky alebo hlasovací preukaz musí byť vyplnená."
 			});
 		}
 	}, {
@@ -180,7 +180,7 @@ jQuery(document).ready(function () {
 		"input": "#addressforeign-streetno",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Číslo domu adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."
+				"message": "Vaše číslo domu kam si chcete odoslať hlasovacie lístky alebo hlasovací preukaz musí byť vyplnené."
 			});
 		}
 	}, {
@@ -190,7 +190,7 @@ jQuery(document).ready(function () {
 		"input": "#addressforeign-city",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Mesto adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."
+				"message": "Mesto kam si chcete odoslať hlasovacie lístky alebo hlasovací preukaz musí byť vyplnené."
 			});
 		}
 	}, {
@@ -200,7 +200,7 @@ jQuery(document).ready(function () {
 		"input": "#addressforeign-zip",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Poštové smerovacie číslo adresy kde chcete odoslať žiadosť nemôže byť nevyplnené."
+				"message": "Poštové smerovacie číslo adresy kam si chcete odoslať hlasovacie lístky alebo hlasovací preukaz musí byť vyplnené."
 			});
 		}
 	}, {
@@ -210,7 +210,7 @@ jQuery(document).ready(function () {
 		"input": "#addressforeign-country",
 		"validate": function (attribute, value, messages, deferred, $form) {
 			yii.validation.required(value, messages, {
-				"message": "Štát adresy kde chcete odoslať žiadosť nemôže byť nevyplnený."
+				"message": "Štát adresy kam si chcete odoslať hlasovacie lístky musí byť vyplnený."
 			});
 		}
 	}], []);

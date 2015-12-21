@@ -98,6 +98,7 @@ $(document).ready(function ()
 
   if (detectIE())
   {
+    $(".internetexplorer").removeClass("hidden").show();
     $("#alertie").show();
     $(".body-content .section").css("padding", "100px 0 0 0");
     $("#intro").css("padding", "100px 0 0 0");
@@ -109,6 +110,10 @@ $(document).ready(function ()
 	makeSecondStep6ButtonPrimary();
   }
   if(isAndroid()){
+    $(".mobile").removeClass("hidden").show();
+    $(".android").removeClass("hidden").show();
+    $(".hiddenOnMobile").hide();
+    $(".hiddenOnAndroid").hide();
     $("#final").hide();
     $("#preview").hide();
     $("#download-final-btn").hide();
@@ -118,7 +123,12 @@ $(document).ready(function ()
   iosver =iOSversion();
   if(iosver){
 	$("#download-final-ios-text").show();
+    $(".ios").removeClass("hidden").show();
+    $(".mobile").removeClass("hidden").show();
+    $(".hiddenOnMobile").hide();
+    $(".hiddenOnIOS").hide();
 	if(iosver >= 8){
+		$(".ios8plus").show().removeClass("hidden");
 		//$("#download-final-btn").hide();
 		//makeSecondStep6ButtonPrimary();
 	}
@@ -127,6 +137,7 @@ $(document).ready(function ()
 	$("#intromobile").show();
 	$("#intro").hide();
   }else{
+    $(".pc").removeClass("hidden").show();
 	$("#intro").show();
 	$("#intromobile").hide();
   }

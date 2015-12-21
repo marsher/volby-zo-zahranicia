@@ -451,15 +451,15 @@ function createDocument(preview,download) {
   var name = "ziadost";
   if(preview){
 	  if (App.request_form === "ziadostOPreukazPostou" || App.request_form === "ziadostOPreukaPreSplnomocnenca") {
-		  name = "ziadost-o-hlasovaci-preukaz.pdf";
-	  }else{
-		  name = "ziadost-o-volbu-postou.pdf";
-	  }
-  }else{
-	  if (App.request_form === "ziadostOPreukazPostou" || App.request_form === "ziadostOPreukaPreSplnomocnenca") {
 		  name = "ziadost-o-hlasovaci-preukaz-nahlad.pdf";
 	  }else{
 		  name = "ziadost-o-volbu-postou-nahlad.pdf";
+	  }
+  }else{
+	  if (App.request_form === "ziadostOPreukazPostou" || App.request_form === "ziadostOPreukaPreSplnomocnenca") {
+		  name = "ziadost-o-hlasovaci-preukaz.pdf";
+	  }else{
+		  name = "ziadost-o-volbu-postou.pdf";
 	  }
   }
   

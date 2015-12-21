@@ -43,6 +43,17 @@ https://volby.digital/test/
 **Nápad vznikol na:**  
 [platforma.slovensko.digital](https://platforma.slovensko.digital/)
 
+**Ohlasy v médiách**
+
+21.12. [Info.sk: Aké majú možnosti Slováci v zahraničí?](http://www.info.sk/sprava/81039/volby-2016-ake-maju-moznosti-slovaci-v-zahranici/) 
+
+20.12. [TV Markiza](http://videoarchiv.markiza.sk/video/televizne-noviny/televizne-noviny/39681_televizne-noviny) (9. reportáž "Zo zahraničia sa volí skôr") 
+
+19.12. [TV RTVS](http://www.rtvs.sk/televizia/archiv/7600/82947) (Čas 26:20-29:05)
+
+13.12. [DennikN:V cudzine sú desaťtisíce hlasov, politici na ne nemyslia, mobilizujú aktivisti](https://dennikn.sk/319788/slovakov-zo-zahranicia-urnam-nemobilizuje-stat-aktivisti/)
+
+
 **Zoznam podporovaných/otestovaných zariadení:**  
 
 * Windows 10, Firefox 42.0 - Plná funkcionalita

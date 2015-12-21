@@ -15,16 +15,16 @@ $(document).ready( function () {
 	
     function countDownVotingPass() {
         var counter = $('#count-down-voting-pass');
-		var text = 'Pre podanie žiadosti o hlasovací preukaz ostáva: ' + getRemainingTimeText('2016-02-15T23:59:59');
+		var text = 'Požiadať o voľbu mimo bydliska v rámci SR môžete: ' + getRemainingTimeText('2016-02-15T23:59:59');
         counter.html(text);
     }
+    
     function countDownVotingByPost() {
         var counter = $('#count-down-vote-by-post');
-		var text = 'Pre podanie žiadosti o voľbu poštou ostáva: ' + getRemainingTimeText('2016-01-15T23:59:59');
+		var text = 'Požiadať o voľbu zo zahraničia môžete: ' + getRemainingTimeText('2016-01-15T23:59:59');
         counter.html(text);
     }
-	
-	
+
 	function getRemainingTimeText(time){
 		var remainingTime = (new Date(time)).getTime() - Date.now();
 

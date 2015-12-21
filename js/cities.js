@@ -539,7 +539,7 @@ election.cities={'Prešovský kraj':{'Okres Prešov':{'1presov':['Mestský úrad
 'vyskovce':['Obecný úrad','','','','090 21 ','Chotča','obecvyskovce@zoznam.sk','054','742 26 02','0907 997 078','Vyškovce','0'],
 'vysna-olsava':['Obecný úrad','','','124','090 32 ','Miňovce','obecvo@vl.sk','054','749 41 51 ','0903 610 794','Vyšná Olšava','1'],
 'vysny-hrabovec':['Obecný úrad','','','40','090 34 ','Tokajík','juraj.psar@stonline.sk','054','749 93 21, 749 41 11','0905 481 873 ','Vyšný Hrabovec','0']},
-'Okres Svidník':{'1svidnik':['Mestský úrad','','Sovietskych hrdinov','200/33','089 01','Svidník','primator@svidnik.sk','054','752 11 54,752 10 98','','Svidník','0'],
+'Okres Svidník':{'1svidnik':['Mestský úrad','','Sovietskych hrdinov','200/33','089 01','Svidník','adriana.zajarosova@svidnik.sk','054','752 10 98, 486 36 10','','Svidník','0'],
 'belejovce':['Obecný úrad','','','','089 01','Svidník ','sopoliga@pobox.sk','054','759 43 21','','Belejovce','1'],
 'benadikovce':['Obecný úrad','','','74','090 42 ','Okrúhle','ladislav.dzogan@gmail.com','054','759 12 09','0903 068 403','Beňadikovce','0'],
 'bodruzal':['Obecný úrad','','','','090 05','Krajná Poľana','dusan.zeliznak@gmail.com;ZeliP@zoznam.sk','054','759 33 19','0903 329 934','Bodružal','0'],

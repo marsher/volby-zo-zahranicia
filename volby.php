@@ -11,15 +11,17 @@ if (($handle = fopen("emaily.txt", "r")) !== FALSE) {
 }
 $thx = false;
 $email = $_REQUEST["u"];
-if(isset($_REQUEST["email"])){
+if(isset($_REQUEST["emailposta"])){
 	$out = fopen('corrections.csv', 'a+');
-	if(fputcsv($out, array($_REQUEST["u"],$email=$_REQUEST["email"],date("c"),$_SERVER["REMOTE_ADDR"]))){
+	if(fputcsv($out, array($_REQUEST["u"],$emailposta=$_REQUEST["emailposta"],date("c"),$_SERVER["REMOTE_ADDR"],$emailpreukaz=$_REQUEST["emailpreukaz"]))){
 		$thx = "1";
 	}else{
 		$thx = "2";
 	}
 	fclose($out);
 }
+if(!$emailposta) $emailposta = $email;
+if(!$emailpreukaz) $emailpreukaz = $email;
 
 ?><!DOCTYPE html>
 <html lang="sk">
@@ -50,10 +52,17 @@ if(isset($_REQUEST["email"])){
 				if($obec){echo '<div class="alert alert-info">Nastavujete email pre obec: <b>'.$obec.'</b></div>';}?>
 				<form class="form-horizontal" method="post" action="volby.php">
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+						<label for="inputEmail3" class="col-sm-2 control-label">Email pre voľbu poštou</label>
 						<div class="col-sm-10">
 							<input type="hidden" name="u" value="<?php echo htmlspecialchars($_REQUEST["u"]);?>">
-							<input type="email" name="email" class="form-control" id="inputEmail3" value="<?php echo htmlspecialchars($email);?>" placeholder="Email pre voľby">
+							<input  name="emailposta" class="form-control" id="inputEmail3" value="<?php echo htmlspecialchars($emailposta);?>" placeholder="Email pre podanie žiadostí o voľbu poštou">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-2 control-label">Email pre hlasovací preukaz</label>
+						<div class="col-sm-10">
+							<input type="hidden" name="u" value="<?php echo htmlspecialchars($_REQUEST["u"]);?>">
+							<input  name="emailpreukaz" class="form-control" id="inputEmail3" value="<?php echo htmlspecialchars($emailpreukaz);?>" placeholder="Email pre podanie žiadostí o hlasovací preukaz">
 						</div>
 					</div>
 					<?php
@@ -64,6 +73,7 @@ if(isset($_REQUEST["email"])){
 							<input type="submit" class="btn btn-primary" value="Potvrdiť emailovú adresu">
 						</div>
 					</div>
+					<p>Ak chcete zadať viac emailov, zadajte medzi ne bodkočiarku (;)</p>
 					<?php 
 					}
 					?>

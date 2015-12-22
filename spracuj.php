@@ -18,12 +18,37 @@ $aPreferableEmailParts = array( 'sluzbyobcanom','podatelna','obec', 'ocu', 'ou',
 $chybneemaily = "";
 file_put_contents("corrections.csv",file_get_contents("http://volby.digital/corrections.csv"));
 
-$overene = array();
+$overenePostou = array();
+$overenePreukaz = array();
 if (($handle = fopen("corrections.csv", "r")) !== FALSE) {
 	$i = 0;
 	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {$i++;
 		if($data[0]){
-			$overene[trim($data[0])] = trim($data[1]);
+			$emails = explode(";",$data[1]);
+			foreach($emails as $k=>$v){
+				$emails[$k] = $em = trim($v);
+				if(!$em){unset($emails[$k]);continue;}
+				if(!Validate::check("email",$em)){
+					echo "!!! OVERENY EMAIL NIE JE VALIDNY! ".$em."\n";
+					unset($emails[$k]);
+				}
+			}
+			
+			$overenePostou[trim($data[0])] = implode(";",$emails);
+			
+			
+			if(isset($data[4]) && $data[4]){
+				$emails = explode(";",$data[4]);
+				foreach($emails as $k=>$v){
+					$emails[$k] = $em = trim($v);
+					if(!$em){unset($emails[$k]);continue;}
+					if(!Validate::check("email",$em)){
+						echo "!!! OVERENY EMAIL NIE JE VALIDNY! ".$em."\n";
+						unset($emails[$k]);
+					}
+				}
+				$overenePreukaz[trim($data[0])] = implode(";",$emails);
+			}
 		}else{
 			$tocheck[$data[1]] = $data[1];
 			//echo "Potvrdeny email nema overovatela: ".$data[1]."\n";
@@ -60,7 +85,8 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 			}
 		}else{
 			$name = Texts::clear($data[$n2k["obec"]]);
-			$potvrdeny = "";
+			$potvrdenyPostou = "";
+			$potvrdenyPreukaz = "";
 			$emaily = explode(";",$data[$n2k["email"]]);
 			foreach($emaily as $k=>$email){
 				$emaily[$k] = $email = trim($email);
@@ -68,13 +94,16 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 				if(!$email) {unset($emaily[$k]); continue;}
 				$csv.='"'.$email.'","'.str_replace('"','""',$data[$n2k["obec"]]).'"'."\n";
 				
-				if(isset($overene[$email])){
-					$potvrdeny = $overene[$email];
+				if(isset($overenePostou[$email])){
+					$potvrdenyPostou = $overenePostou[$email];
+				}
+				if(isset($overenePreukaz[$email])){
+					$potvrdenyPreukaz = $overenePreukaz[$email];
 				}
 			}
 			$data[$n2k["email"]] = implode(";",$emaily);
 			
-			if(!$potvrdeny){
+			if(!$potvrdenyPostou){
 			
 				$e = get_relevant_emails( $data[$n2k["email"]], $name );
 				if($e){
@@ -86,12 +115,12 @@ if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
 					}
 				}
 			}else{
-				$e = $potvrdeny;
+				$e = $potvrdenyPostou;
 				$potvrdenych ++;
 			}
 			//if( $e ) echo $name,":\t",$e,'<br>';//for debug
 			
-			$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."','".($potvrdeny?1:0)."']";
+			$out[$data[$n2k["kraj"]]][$data[$n2k["okres"]]][$name] = "['".$data[$n2k["urad"]]."','','".$data[$n2k["ulica"]]."','".$data[$n2k["cislo"]]."','".$data[$n2k["psc"]]."','".$data[$n2k["posta"]]."','".$e."','".$data[$n2k["predvolba"]]."','".$data[$n2k["telefon"]]."','".$data[$n2k["mobil"]]."','".$data[$n2k["obec"]]."','".($potvrdenyPostou?1:0)."','".$potvrdenyPreukaz."']";
 			
 			$data[$n2k["pocetobyvatelov"]] = str_replace(" ","",$data[$n2k["pocetobyvatelov"]]);
 			
@@ -434,7 +463,24 @@ $ret = ';(function() {
 	// "o" variable saves characters so the file is not as huge as with the regular keys
 	// "election" exports array in a variable so it\'s accessible inside of another files
 
-'.$ret."\n\n\n".$pscout."\n\n".'})();';
+	// column mapping
+election.C2N_TYP_URADU 					= 0;
+election.C2N_TYP_URADU_RIADOK2 			= 1;
+election.C2N_ADRESA_URADU_ULICA 		= 2;
+election.C2N_ADRESA_URADU_CISLO_DOMU 	= 3;
+election.C2N_ADRESA_URADU_PSC 			= 4;
+election.C2N_ADRESA_URADU_MESTO 		= 5;
+election.C2N_EMAIL 						= 6;
+election.C2N_TEL_PREDVOLBA 				= 7;
+election.C2N_TELEFON 					= 8;
+election.C2N_MOBIL 						= 9;
+election.C2N_NAZOV_OBCE 				= 10;
+election.C2N_POTVRDENE_UDAJE 			= 11;
+election.C2N_ALT_EMAIL_PRE_PREUKAZ 		= 12;
+
+	// data
+'.$ret."\n\n
+	// data for zip to city link\n\n".$pscout."\n\n".'})();';
 
 var_dump(file_put_contents("cities.js",$ret));
 

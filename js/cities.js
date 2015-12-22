@@ -9,6 +9,22 @@
 	// "o" variable saves characters so the file is not as huge as with the regular keys
 	// "election" exports array in a variable so it's accessible inside of another files
 
+	// column mapping
+election.C2N_TYP_URADU 					= 0;
+election.C2N_TYP_URADU_RIADOK2 			= 1;
+election.C2N_ADRESA_URADU_ULICA 		= 2;
+election.C2N_ADRESA_URADU_CISLO_DOMU 	= 3;
+election.C2N_ADRESA_URADU_PSC 			= 4;
+election.C2N_ADRESA_URADU_MESTO 		= 5;
+election.C2N_EMAIL 						= 6;
+election.C2N_TEL_PREDVOLBA 				= 7;
+election.C2N_TELEFON 					= 8;
+election.C2N_MOBIL 						= 9;
+election.C2N_NAZOV_OBCE 				= 10;
+election.C2N_POTVRDENE_UDAJE 			= 11;
+election.C2N_ALT_EMAIL_PRE_PREUKAZ 		= 12;
+
+	// data
 election.cities={'Prešovský kraj':{'Okres Prešov':{'1presov':['Mestský úrad','','Hlavná','73','080 68','Prešov 1','volby@presov.sk','051','772 30 41, 3100 101, 3100 109','','Prešov','1',''],
 'abranovce':['Obecný úrad','','','25','082 52','Kokošovce','obecabranovce@centrum.sk','051','779 83 34','0902 239 331','Abranovce','1',''],
 'bajerov':['Obecný úrad','','','','082 41 ','Bajerov ','obecbajerov@centrum.sk','051','778 31 18','0918 451 887,0918 835 754','Bajerov','1',''],
@@ -2938,6 +2954,8 @@ election.cities={'Prešovský kraj':{'Okres Prešov':{'1presov':['Mestský úrad
 'zakopcie':['Obecný úrad','','Stred','824','023 11','Zákopčie ','obec@zakopcie.sk','041','434 41 21,139','0911 270 159','Zákopčie','0',''],
 'zborov-nad-bystricou':['Obecný úrad','','Zborov nad Bystricou','223','023 03','Zborov nad Bystricou','starosta@zborovnadbystricou.sk','041','439 13 81','0917 942 367,0911 907 251,0911 951 292','Zborov nad Bystricou','1','']}}};
 
+
+	// data for zip to city link
 
 election.psc={'01001':['zilina','Žilina','Žilinský'],
 '01003':['zilina','Žilina','Žilinský'],

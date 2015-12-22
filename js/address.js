@@ -103,7 +103,7 @@ function nastavOkres(){
     var kraj = $("#addressslovakia-kraj").val();
     var okres = $("#addressslovakia-okres").val();
 	for (var key in election.cities[kraj][okres]) {
-		options.append($("<option />").val(key).text(election.cities[kraj][okres][key][10]));
+		options.append($("<option />").val(key).text(election.cities[kraj][okres][key][App.C2N_NAZOV_OBCE]));
 	}
 	nastavObec();
 	if(!iOSversion()){
@@ -118,7 +118,7 @@ function getObec(){
   var o = election.cities;
 
   if (ico && o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
-	return o[kraj][okres][ico][10];
+	return o[kraj][okres][ico][App.C2N_NAZOV_OBCE];
   }
   return "Nepodarilo sa načítať obec";
 }
@@ -136,22 +136,30 @@ function nastavObec(obec) {
 
     if (o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
 	  var data = o[kraj][okres][ico];
-      adresa = data[0] + "\n";
-      if (data[1] != "") {
-        adresa += data[1] + "\n";
+      adresa = data[App.C2N_TYP_URADU] + "\n";
+      if (data[App.C2N_TYP_URADU_RIADOK2] != "") {
+        adresa += data[App.C2N_TYP_URADU_RIADOK2] + "\n";
       }
-      if (data[2] != "" || data[3] != "") {
-        if (data[2]) {
-          adresa += data[2] + " ";
+      if (data[App.C2N_ADRESA_URADU_ULICA] != "" || data[App.C2N_ADRESA_URADU_CISLO_DOMU] != "") {
+        if (data[App.C2N_ADRESA_URADU_ULICA]) {
+          adresa += data[App.C2N_ADRESA_URADU_ULICA] + " ";
         }
-        if (data[3]) {
-          adresa += data[3];
+        if (data[App.C2N_ADRESA_URADU_CISLO_DOMU]) {
+          adresa += data[App.C2N_ADRESA_URADU_CISLO_DOMU];
         }
         adresa += "\n";
       }
-      adresa += data[4] + " " + data[5] + "\n" + data[6].replace(/;/i, "\n");
+	  
+	  
+	  var email = data[App.C2N_EMAIL];
+	  
+	  if((App.request_form == "ziadostOPreukazPostou" || App.request_form =="ziadostOPreukaPreSplnomocnenca") && data[App.C2N_ALT_EMAIL_PRE_PREUKAZ].indexOf("@") != -1){
+		  email = data[App.C2N_ALT_EMAIL_PRE_PREUKAZ];
+	  }
+	  
+      adresa += data[App.C2N_ADRESA_URADU_PSC] + " " + data[App.C2N_ADRESA_URADU_MESTO] + "\n" + email.replace(/;/i, "\n");
 
-
+	
     if(App.request_form == 'volbaPostouBezTrvalehoPobytu'){
   	  $("#adresa").val("Ministerstvo vnútra Slovenskej republiky\nodbor volieb, referenda a politických strán\nDrieňová 22\n826 86  Bratislava 29\nSLOVAK REPUBLIC");
       $("#sendto").html("volby@minv.sk");
@@ -159,9 +167,9 @@ function nastavObec(obec) {
 	  $("#phonetext").hide();
     }else{
       $("#adresa").val(adresa);
-	  $("#sendto").html(data[6]);
-	  if(data[8] != ""){
-		  $("#phone").html(data[7] + " / " + data[8]);
+	  $("#sendto").html(email);
+	  if(data[App.C2N_TELEFON] != ""){
+		  $("#phone").html(data[App.C2N_TEL_PREDVOLBA] + " / " + data[App.C2N_TELEFON]);
 		  $("#phonetext").show();
 	  }else{
 		  $("#phone").html("");
@@ -175,7 +183,7 @@ function nastavObec(obec) {
 		$("#sendemail").show();
 		$("#noemail").hide();
 	}
-	if(data[11] == "1"){
+	if(data[App.C2N_POTVRDENE_UDAJE] == "1"){
 		$("#emailpotvrdeny").show();
     }else{
 		$("#emailpotvrdeny").hide();

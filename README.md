@@ -51,6 +51,10 @@ https://volby.digital/test/
 
 19.12. [TV RTVS](http://www.rtvs.sk/televizia/archiv/7600/82947) (Čas 26:20-29:05)
 
+18.12. [BB Online: Voľby do NRSR: Desiatky Bystričanov kandidujú do národného parlamentu](http://bbonline.sk/volby-do-nrsr-desiatky-bystricanov-kandiduju-do-narodneho-parlamentu/)
+
+17.12. [StartitUp: Slovensko.digital zvládla za niekoľko dní to, čo štát nedokázal roky!](http://www.startitup.sk/slovakia-digital-zvladla-za-niekolko-dni-to-co-stat-nedokazal-roky/)
+
 13.12. [DennikN:V cudzine sú desaťtisíce hlasov, politici na ne nemyslia, mobilizujú aktivisti](https://dennikn.sk/319788/slovakov-zo-zahranicia-urnam-nemobilizuje-stat-aktivisti/)
 
 

@@ -82,6 +82,12 @@ https://volby.digital/test/
 ---
 
 **Changelog:**  
+  1.0-stable 23.12.2015 
+	Aktualizácia údajov potvrdených obcami
+	Výber kraja okresu a obce podľa PSČ
+	Umiestnenie najpočetnejšieho kraja, okresu a obce na vrch výberu a ostatné zoradené podľa abecedy
+	Podpora rôznych emailov pre odosielanie žiadostí o hlasovanie poštou a žiadostí o hlasovací preukaz
+		
   1.0-beta 11.12.2015 
 	Formulár žiadosti o hlasovací preukaz poštou bol skontrolovaný
 	Formulár žiadosti o hlasovací preukaz pre splnomocnenca bol skontrolovaný

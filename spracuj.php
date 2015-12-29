@@ -310,6 +310,7 @@ if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
 		$cast = $xpath->query("td[2]",$row)->item(0)->nodeValue;
 		$name = Texts::clear("bratislava-".$cast);
 		$psc = str_replace(" ","",$xpath->query("td[4]",$row)->item(0)->nodeValue);
+		$psc = str_replace("O","0",$psc);
 		if($pos=strpos($psc,",")){//zober iba prve psc na tej ulici
 			$psc = substr($psc,0,$pos);
 		}

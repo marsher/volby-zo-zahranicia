@@ -76,7 +76,7 @@ $okresc = array();
 $name2okresakraj = array();
 $potvrdenych = 0;
 $csv = "";
-if (($handle = fopen("../obce_13_12_2015 V2.txt", "r")) !== FALSE) {
+if (($handle = fopen("obce_13_12_2015-V2.txt", "r")) !== FALSE) {
 	
 	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
 		if($i==1){
@@ -297,10 +297,37 @@ if($dom = @DomDocument::loadHtmlFile("kosice-psc-na-mestsku-cast.htm")){
 }else{
 	echo "!NEMAM UDAJE O KOSICIACH\n";
 }
+echo "$i spracovanych ulic KE\n";
 
-file_put_contents("04012.txt",print_r($pscdata["04012"],true));
-file_put_contents("04022.txt",print_r($pscdata["04022"],true));
-file_put_contents("04023.txt",print_r($pscdata["04023"],true));
+$ke = array();
+if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
+	$xpath=new DomXpath($dom);
+	$i = 0;
+	foreach($xpath->query("//table/tbody/tr") as $row){$i++;
+		//if($i == 1) continue;
+		if(!$xpath->query("td[4]",$row)->item(0)) continue;
+		
+		$cast = $xpath->query("td[2]",$row)->item(0)->nodeValue;
+		$name = Texts::clear("bratislava-".$cast);
+		$psc = str_replace(" ","",$xpath->query("td[4]",$row)->item(0)->nodeValue);
+		if($pos=strpos($psc,",")){//zober iba prve psc na tej ulici
+			$psc = substr($psc,0,$pos);
+		}
+		
+		if(isset($name2okresakraj[$name])){
+			$okres = key($name2okresakraj[$name]);
+			$kraj = key($name2okresakraj[$name][$okres]);
+			$obyvatelov = reset($name2okresakraj[$name][$okres]);
+			
+			@$pscdata[$psc][$name][$okres][$kraj] = $obyvatelov;
+		}
+		//$ke[$psc][$cast] = 
+	}
+}else{
+	echo "!NEMAM UDAJE O KOSICIACH\n";
+}
+echo "$i spracovanych ulic BA\n";
+file_put_contents("83101.txt",print_r($pscdata["83101"],true));
 
 foreach($pscdata as $psc=>$arr1){
 	$maxobyv = 0;

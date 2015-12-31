@@ -8116,4 +8116,10 @@ election.psc={'':['bratislava-petrzalka','Bratislava 5','Bratislavský'],
 '99201':['modry-kamen','Veľký Krtíš','Banskobystrický'],
 };
 
-})();
+
+  nacitajKraje();
+  nastavObec();
+  nastavPosteRestante();
+  findZIP();
+	
+	})();

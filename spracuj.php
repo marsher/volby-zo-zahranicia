@@ -379,6 +379,12 @@ if (($handle = fopen("POBoxy.txt", "r")) !== FALSE) {
 		if($i==1) continue;
 		$name = Texts::clear($data[0]);
 		$name = normalize_city_name($name);
+		if(substr($name,0,strlen("bratislava")) == "bratislava"){
+			$name = "bratislava-stare-mesto";
+		}
+		if(substr($name,0,strlen("kosice")) == "kosice"){
+			$name = "kosice-dargovskych-hrdinov";
+		}
 		
 		if(isset($name2okresakraj[$name])){
 			$data[1] = str_replace("  ","\t",$data[1]);
@@ -393,7 +399,7 @@ if (($handle = fopen("POBoxy.txt", "r")) !== FALSE) {
 						$okres = key($name2okresakraj[$name]);
 						$kraj = key($name2okresakraj[$name][$okres]);
 						$obyvatelov = 1;
-						if( $psc1 && $name && $okres && $kraj){
+						if( $psc1 && $name && $okres && $kraj && strlen($psc1) == 5){
 							@$pscdata[$psc1][$name][$okres][$kraj] += $obyvatelov;
 						}
 					}
@@ -403,7 +409,7 @@ if (($handle = fopen("POBoxy.txt", "r")) !== FALSE) {
 						$okres = key($name2okresakraj[$name]);
 						$kraj = key($name2okresakraj[$name][$okres]);
 						$obyvatelov = 1;
-						if( $psc1 && $name && $okres && $kraj){
+						if( $psc1 && $name && $okres && $kraj && strlen($psc1) == 5){
 							@$pscdata[$psc1][$name][$okres][$kraj] += $obyvatelov;
 						}
 					
@@ -597,7 +603,13 @@ election.C2N_ALT_EMAIL_PRE_PREUKAZ 		= 12;
 
 	// data
 '.$ret."\n\n
-	// data for zip to city link\n\n".$pscout."\n\n".'})();';
+	// data for zip to city link\n\n".$pscout."\n\n
+  nacitajKraje();
+  nastavObec();
+  nastavPosteRestante();
+  findZIP();
+	
+	".'})();';
 
 var_dump(file_put_contents("cities.js",$ret));
 

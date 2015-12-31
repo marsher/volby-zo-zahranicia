@@ -1,3 +1,5 @@
+var App = window.election;
+
 var RequestGeneratorApp = function() {
     this.state = {
         tp: -1, // {'tp-na-slovensku', 'tp-odhlaseny'}
@@ -259,13 +261,13 @@ RequestGeneratorApp.prototype = {
 
     finalizePdf: function()
     {
-        if(signaturePad.isEmpty() && !confirm ("Ste si istý, že chcete vytvoriť žiadosť aj bez podpisu?"))
+        if(App.signaturePad.isEmpty() && !confirm ("Ste si istý, že chcete vytvoriť žiadosť aj bez podpisu?"))
         {
 
         }
         else
         {
-            $('#signature').val(signaturePad.toDataURL());
+            $('#signature').val(App.signaturePad.toDataURL());
             createDocument(false);
 
             $('#pdf-final').show();

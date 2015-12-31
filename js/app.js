@@ -70,11 +70,11 @@ $(document).ready(function ()
 {
   resizeCanvas();
 
-  signaturePad = new SignaturePad(canvas);
+  App.signaturePad = new SignaturePad(canvas);
 
   $('#clear-button').on("click", function (event)
   {
-    signaturePad.clear();
+    App.signaturePad.clear();
   });
 
   $('#step6but1').on("click", function(event){
@@ -142,11 +142,7 @@ $(document).ready(function ()
 	$("#intromobile").hide();
   }
 
-  nacitajKraje();
-  nastavObec();
-  nastavPosteRestante();// osetrenie refreshu stranky
-  findZIP();//detto
-  
+   
   $("#showhelp").on("click",function(){
 	  $(".help").show();	
 	  $("html, body").animate({ scrollTop: $(document).height() }, 1000);

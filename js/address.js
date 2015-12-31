@@ -77,7 +77,7 @@ function getAddressOneLine(id) {
 function nacitajKraje(){
 	var options = $("#addressslovakia-kraj");
 	options.find('option').remove();
-	for (var key in election.cities) {
+	for (var key in App.cities) {
 		options.append($("<option />").val(key).text(key));
 	}
 	if(!iOSversion()){
@@ -89,7 +89,7 @@ function nastavKraj(){
 	var options = $("#addressslovakia-okres");
 	options.find('option').remove();
     var kraj = $("#addressslovakia-kraj").val();
-	for (var key in election.cities[kraj]) {
+	for (var key in App.cities[kraj]) {
 		options.append($("<option />").val(key).text(key));
 	}
 	nastavOkres();
@@ -102,8 +102,8 @@ function nastavOkres(){
 	options.find('option').remove();
     var kraj = $("#addressslovakia-kraj").val();
     var okres = $("#addressslovakia-okres").val();
-	for (var key in election.cities[kraj][okres]) {
-		options.append($("<option />").val(key).text(election.cities[kraj][okres][key][App.C2N_NAZOV_OBCE]));
+	for (var key in App.cities[kraj][okres]) {
+		options.append($("<option />").val(key).text(App.cities[kraj][okres][key][App.C2N_NAZOV_OBCE]));
 	}
 	nastavObec();
 	if(!iOSversion()){
@@ -115,7 +115,7 @@ function getObec(){
   var ico = $("#addressslovakia-city").val();
   var kraj = $("#addressslovakia-kraj").val();
   var okres = $("#addressslovakia-okres").val();
-  var o = election.cities;
+  var o = App.cities;
 
   if (ico && o[kraj] && o[kraj][okres] && o[kraj][okres][ico]) {
 	return o[kraj][okres][ico][App.C2N_NAZOV_OBCE];
@@ -125,7 +125,7 @@ function getObec(){
 function nastavObec(obec) {
 
 	// list/db of all cities comes from external file (js/cities)
-  var o = election.cities;
+  var o = App.cities;
 
   var adresa = "";
   var ico = $("#addressslovakia-city").val();

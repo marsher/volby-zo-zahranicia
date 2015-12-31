@@ -1,4 +1,6 @@
-election.Analytics = (function(undefined) {
+var App = window.election;
+
+App.Analytics = (function(undefined) {
     /**
      * Track user flow in application
      * @param {string} step

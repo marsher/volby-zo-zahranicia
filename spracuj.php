@@ -131,16 +131,20 @@ if (($handle = fopen("obce_13_12_2015-V2.txt", "r")) !== FALSE) {
 			@$okresc[$data[$n2k["kraj"]]][$data[$n2k["okres"]]] += $data[$n2k["pocetobyvatelov"]];
 			@$krajc[$data[$n2k["kraj"]]] += $data[$n2k["pocetobyvatelov"]];
 			if(strpos($name,"bratislava")===0){
-				$name2okresakraj["bratislava"][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
+				//$name2okresakraj["bratislava"][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
 			}
 			if(strpos($name,"kosice")===0){
-				$name2okresakraj["kosice"][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
+				//$name2okresakraj["kosice"][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
 			}
-			$name2okresakraj[$name][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
 			
+			$name2okresakraj[$name][$data[$n2k["okres"]]][$data[$n2k["kraj"]]] = $data[$n2k["pocetobyvatelov"]];
+			if($name == "bratislava"){
+				var_dump($data);exit;
+			}
 		}
 	}
 }
+//var_dump($name2okresakraj["bratislava"]);
 echo "spolu mame $potvrdenych potvrdenych emailov\n";
 function okres2okresname($name){
 	$name = str_replace("-"," ",$name);
@@ -227,6 +231,8 @@ if (($handle = fopen("OBCE.txt", "r")) !== FALSE) {
 		}
 	}
 }
+
+
 if (($handle = fopen("ULICE.txt", "r")) !== FALSE) {
 	$i = 0;
 	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
@@ -273,9 +279,13 @@ if (($handle = fopen("ULICE.txt", "r")) !== FALSE) {
 	}
 }
 
+function normalize_city_name($name){
+	if($name == "kosice-kvp") return "kosice-sidlisko-kvp";
+	return $name;
+}
 
 // spracovanie kosic
-$ke = array();
+$pocetulic = array();
 if($dom = @DomDocument::loadHtmlFile("kosice-psc-na-mestsku-cast.htm")){
 	$xpath=new DomXpath($dom);
 	$i = 0;
@@ -283,6 +293,20 @@ if($dom = @DomDocument::loadHtmlFile("kosice-psc-na-mestsku-cast.htm")){
 		if($i == 1) continue;
 		$cast = $xpath->query("td[2]",$row)->item(0)->nodeValue;
 		$name = Texts::clear("kosice-".$cast);
+		$name = normalize_city_name($name);
+		@$pocetulic[$name] ++;
+	}
+}
+
+
+if($dom = @DomDocument::loadHtmlFile("kosice-psc-na-mestsku-cast.htm")){
+	$xpath=new DomXpath($dom);
+	$i = 0;
+	foreach($xpath->query("//table[@id='maintable']/tr") as $row){$i++;
+		if($i == 1) continue;
+		$cast = $xpath->query("td[2]",$row)->item(0)->nodeValue;
+		$name = Texts::clear("kosice-".$cast);
+		$name = normalize_city_name($name);
 		$psc = str_replace(" ","",$xpath->query("td[3]",$row)->item(0)->nodeValue);
 
 		if(isset($name2okresakraj[$name])){
@@ -290,7 +314,9 @@ if($dom = @DomDocument::loadHtmlFile("kosice-psc-na-mestsku-cast.htm")){
 			$kraj = key($name2okresakraj[$name][$okres]);
 			$obyvatelov = reset($name2okresakraj[$name][$okres]);
 			
-			@$pscdata[$psc][$name][$okres][$kraj] = $obyvatelov;
+			@$pscdata[$psc][$name][$okres][$kraj] += $obyvatelov/$pocetulic[$name];
+		}else{
+			echo "oblast $name nebola najdena\n";
 		}
 		//$ke[$psc][$cast] = 
 	}
@@ -299,7 +325,7 @@ if($dom = @DomDocument::loadHtmlFile("kosice-psc-na-mestsku-cast.htm")){
 }
 echo "$i spracovanych ulic KE\n";
 
-$ke = array();
+
 if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
 	$xpath=new DomXpath($dom);
 	$i = 0;
@@ -309,6 +335,22 @@ if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
 		
 		$cast = $xpath->query("td[2]",$row)->item(0)->nodeValue;
 		$name = Texts::clear("bratislava-".$cast);
+		$name = normalize_city_name($name);
+		@$pocetulic[$name] ++;
+	}
+}
+
+if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
+	$xpath=new DomXpath($dom);
+	$i = 0;
+	foreach($xpath->query("//table/tbody/tr") as $row){$i++;
+		//if($i == 1) continue;
+		if(!$xpath->query("td[4]",$row)->item(0)) continue;
+		
+		$cast = $xpath->query("td[2]",$row)->item(0)->nodeValue;
+		$name = Texts::clear("bratislava-".$cast);
+		$name = normalize_city_name($name);
+
 		$psc = str_replace(" ","",$xpath->query("td[4]",$row)->item(0)->nodeValue);
 		$psc = str_replace("O","0",$psc);
 		if($pos=strpos($psc,",")){//zober iba prve psc na tej ulici
@@ -320,7 +362,9 @@ if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
 			$kraj = key($name2okresakraj[$name][$okres]);
 			$obyvatelov = reset($name2okresakraj[$name][$okres]);
 			
-			@$pscdata[$psc][$name][$okres][$kraj] = $obyvatelov;
+			@$pscdata[$psc][$name][$okres][$kraj] += $obyvatelov/$pocetulic[$name];
+		}else{
+			echo "oblast $name nebola najdena\n";
 		}
 		//$ke[$psc][$cast] = 
 	}
@@ -329,6 +373,8 @@ if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
 }
 echo "$i spracovanych ulic BA\n";
 file_put_contents("83101.txt",print_r($pscdata["83101"],true));
+file_put_contents("83102.txt",print_r($pscdata["83102"],true));
+file_put_contents("04023.txt",print_r($pscdata["04023"],true));
 
 foreach($pscdata as $psc=>$arr1){
 	$maxobyv = 0;

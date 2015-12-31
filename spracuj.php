@@ -371,6 +371,49 @@ if($dom = @DomDocument::loadHtmlFile("ulice-ba.html")){
 }else{
 	echo "!NEMAM UDAJE O KOSICIACH\n";
 }
+
+
+if (($handle = fopen("POBoxy.txt", "r")) !== FALSE) {
+	$i = 0;
+	while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {$i++;
+		if($i==1) continue;
+		$name = Texts::clear($data[0]);
+		$name = normalize_city_name($name);
+		
+		if(isset($name2okresakraj[$name])){
+			$data[1] = str_replace("  ","\t",$data[1]);
+			foreach(explode("\t",$data[1]) as $psc){
+				$psc = trim(str_replace(" ","",$psc));
+				if(substr($psc,5,1) == "-"){
+					$start = substr($psc,0,5);
+					$end = substr($psc,6,5);
+					for($psc1 = $start;$psc1<=$end;$psc1++){
+						$psc1 = str_pad($psc1,5,"0",STR_PAD_LEFT);
+						if(isset($pscdata[$psc1])) continue;
+						$okres = key($name2okresakraj[$name]);
+						$kraj = key($name2okresakraj[$name][$okres]);
+						$obyvatelov = 1;
+						if( $psc1 && $name && $okres && $kraj){
+							@$pscdata[$psc1][$name][$okres][$kraj] += $obyvatelov;
+						}
+					}
+				}else{
+					$psc1 = $psc;
+						if(isset($pscdata[$psc1])) continue;
+						$okres = key($name2okresakraj[$name]);
+						$kraj = key($name2okresakraj[$name][$okres]);
+						$obyvatelov = 1;
+						if( $psc1 && $name && $okres && $kraj){
+							@$pscdata[$psc1][$name][$okres][$kraj] += $obyvatelov;
+						}
+					
+				}
+				
+			}
+		}
+	}
+}
+
 echo "$i spracovanych ulic BA\n";
 file_put_contents("83101.txt",print_r($pscdata["83101"],true));
 file_put_contents("83102.txt",print_r($pscdata["83102"],true));

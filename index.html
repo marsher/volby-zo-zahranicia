@@ -661,7 +661,10 @@
 		<h1>Zistili sme, že Váš prehliadač nepodporuje JavaScript</h1>
 		<p>Táto aplikácia na vytváranie žiadosti pomocou JavaScriptu ho vyžaduje. Ak nechcete povoliť JavaScript, vygenerujte si žiadosť na stránke <a href="http://volby.scholtz.sk/">volby.scholtz.sk</a>.</p>
 	</noscript>
-<script>window.election = window.election || {};</script>
+<script>window.election = window.election || {};
+window.election.cities = {};
+window.election.psc = {};
+</script>
 <script src="assets/js/jquery-latest.min.js"></script>
 <script src="assets/js/jquery.mobile.hashchange.min.js"></script>
 <script src="assets/js/signature_pad.min.js"></script>

@@ -110,7 +110,6 @@ $(document).ready(function ()
 	makeSecondStep6ButtonPrimary();
   }
   if(isAndroid()){
-    $(".mobile").removeClass("hidden").show();
     $(".android").removeClass("hidden").show();
     $(".hiddenOnMobile").hide();
     $(".hiddenOnAndroid").hide();
@@ -124,7 +123,7 @@ $(document).ready(function ()
   if(iosver){
 	$("#download-final-ios-text").show();
     $(".ios").removeClass("hidden").show();
-    $(".mobile").removeClass("hidden").show();
+    
     $(".hiddenOnMobile").hide();
     $(".hiddenOnIOS").hide();
 	if(iosver >= 8){
@@ -134,8 +133,9 @@ $(document).ready(function ()
 	}
   }
   if(isAndroid() || iosver > 1){
+    $(".mobile").removeClass("hidden").show();
+	$("#intro").show();
 	$("#intromobile").show();
-	$("#intro").hide();
   }else{
     $(".pc").removeClass("hidden").show();
 	$("#intro").show();

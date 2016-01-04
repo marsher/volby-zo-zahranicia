@@ -16,7 +16,7 @@ function createDocument(preview,download) {
   
   // playground requires you to assign document definition to a variable called dd
   var paragraph, localaddress = [], noTP = [], vyhlasenie = [], signature = [], idPhoto = [];
-  var signaturedata = signaturePad.toDataURL();
+  var signaturedata = App.signaturePad.toDataURL();
   if (signaturedata.length > 10) {
     $('#signature').val(signaturedata);
   }

@@ -281,6 +281,7 @@ RequestGeneratorApp.prototype = {
     {
         var hash = location.hash.replace( /^#/, '').replace(/&action-.*/, '');
         location.hash = hash + '&action-send';
+		fbq('track', 'CompleteRegistration');
     },
 
     initForm: function() {

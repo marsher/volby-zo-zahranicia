@@ -9,28 +9,36 @@ $(document).ready( function () {
 
     function countDownElections() {
         var counter = $('#count-down-elections');
-		var text = 'Do volieb zostáva: ' + getRemainingTimeText('2016-03-05T07:00:00');
-        counter.html(text);
+		var remaining = getRemainingTimeText('2016-03-05T07:00:00','#count-down-elections','Voľby sa už začali');
+		if(remaining){
+			var text = 'Do volieb zostáva: ' + remaining;
+			counter.html(text);
+		}
     }
 	
     function countDownVotingPass() {
         var counter = $('#count-down-voting-pass');
-		var text = 'Pre podanie žiadosti o hlasovací preukaz ostáva: ' + getRemainingTimeText('2016-02-15T23:59:59');
-        counter.html(text);
+		var remaining = getRemainingTimeText('2016-02-15T23:59:59','#count-down-voting-pass','Uplynul termín pre podanie žiadosti o hlasovací preukaz');
+		if(remaining){
+			var text = 'Pre podanie žiadosti o hlasovací preukaz ostáva: ' + remaining;
+			counter.html(text);
+		}
     }
     function countDownVotingByPost() {
         var counter = $('#count-down-vote-by-post');
-		var text = 'Pre podanie žiadosti o voľbu poštou ostáva: ' + getRemainingTimeText('2016-01-15T23:59:59');
-        counter.html(text);
+		var remaining = getRemainingTimeText('2016-01-15T23:59:59','#count-down-vote-by-post','Uplynul termín pre podanie žiadosti o voľbu poštou');
+		if(remaining){
+			var text = 'Pre podanie žiadosti o hlasovací preukaz ostáva: ' + remaining;
+			counter.html(text);
+		}
     }
 	
 	
-	function getRemainingTimeText(time){
+	function getRemainingTimeText(time,elid,timeouttext){
 		var remainingTime = (new Date(time)).getTime() - Date.now();
-
+		var counter = $(elid);
         if (remainingTime < 0) {
-            if (! counter.hasClass('label-success')) switchLabelClass('label-success');
-            counter.html('Voľby sa skončili!');
+            counter.html(timeouttext);
             return;
         } else {
             var daysInfo = 90;

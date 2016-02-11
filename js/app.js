@@ -148,7 +148,14 @@ $(document).ready(function ()
 	  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
   });
   $(".help").hide();
-
+  
+  $("#copyadress").on("click",function(){
+	  if ($('#addressslovakia-street').val()) $('#addressforeign-street').val($('#addressslovakia-street').val());
+	  if ($('#addressslovakia-streetno').val()) $('#addressforeign-streetno').val($('#addressslovakia-streetno').val());
+	  if ($('#addressslovakia-city').val()) $('#addressforeign-city').val($('#select2-addressslovakia-city-container').html());
+	  if ($('#addressslovakia-zip').val()) $('#addressforeign-zip').val($('#addressslovakia-zip').val());
+	  $("html, body").animate({ scrollTop: $(document).height() }, 100);
+  });
   
   var clipboard = new Clipboard('.copy-btn');
   clipboard.on('success', function(e) {
